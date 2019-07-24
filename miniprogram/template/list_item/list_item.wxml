@@ -1,6 +1,6 @@
 <!-- 活动 -->
 <template name="activity_item">
-    <view class="flex-container" style="height: 110px; padding-top: 15rpx">
+    <view class="flex-container item_box">
         <image src="{{img}}" lazy-load="true" mode="aspectFill" style="max-height: 100%"></image>
         <view class="flex-container item_intro">
             <text class="list_item_title">{{title}}</text>
@@ -17,7 +17,7 @@
 </template>
 <!-- 积分商品 -->
 <template name="goods_item">
-    <view class="flex-container" style="height: 110px; padding-top: 15rpx">
+    <view class="flex-container item_box">
         <image src="{{img}}" lazy-load="true" mode="aspectFill" style="max-height: 100%"></image>
         <view class="flex-container item_intro">
             <view>

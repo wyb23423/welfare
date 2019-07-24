@@ -1,0 +1,28 @@
+@import "/template/list_item/list_item.wxss";
+
+.search_box {
+    width: 50%;
+    border: 1px solid #ccc;
+    justify-content: flex-start;
+    margin-left: 100%;
+    transform: translateX(-100%);
+    padding: 0 10rpx;
+}
+
+.search_input {
+    flex-grow: 1;
+    margin-left: 10rpx;
+}
+
+.item {
+    border-top: 1px solid #ccc;
+    margin-top: 10rpx;
+}
+
+.more {
+    font-size: 16px;
+    font-weight: 700;
+    height: 50px;
+    text-align: right;
+    line-height: 50px;
+}
