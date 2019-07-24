@@ -1,0 +1,28 @@
+/**index.wxss**/
+@import "/template/list_item/list_item.wxss";
+
+.main {
+  width: 98%;
+  margin: 0 auto 30px;
+}
+
+.title {
+  padding: 10rpx;
+  border-bottom: 1rpx solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title_text {
+  font-size: 16px;
+  font-weight: 700;
+  border-left: 10rpx solid #009688;
+  padding-left: 20rpx;
+  padding-top: 5rpx;
+}
+
+.title_more {
+  color: #009688;
+  font-size: 12px;
+}

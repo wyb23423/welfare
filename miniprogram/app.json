@@ -1,0 +1,32 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "锦城公益",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#6fc",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "public/images/index.png",
+        "selectedIconPath": "public/images/index_active.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "公益活动",
+        "iconPath": "public/images/activity.png",
+        "selectedIconPath": "public/images/activity_active.png"
+      }
+    ]
+  }
+}

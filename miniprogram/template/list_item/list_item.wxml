@@ -1,0 +1,44 @@
+<!-- 活动 -->
+<template name="activity_item">
+    <view class="flex-container" style="height: 110px; padding-top: 15rpx">
+        <image src="{{img}}" lazy-load="true" mode="aspectFill" style="max-height: 100%"></image>
+        <view class="flex-container item_intro">
+            <text class="list_item_title">{{title}}</text>
+            <text class="item_text authentication">{{authentication}}</text>
+            <view class="flex-container" style="width: 100%">
+                <text style="font-size: 12px">{{sign}}/{{size}}</text>
+                <text class="item_text item_info">仅剩{{size - sign}}名额</text>
+                <navigator class="item_text item_info" catch:tap="none" style="border-radius: 5px" url="/pages/sign/sign?id={{id}}">
+                    立即报名
+                </navigator>
+            </view>
+        </view>
+    </view>
+</template>
+<!-- 积分商品 -->
+<template name="goods_item">
+    <view class="flex-container" style="height: 110px; padding-top: 15rpx">
+        <image src="{{img}}" lazy-load="true" mode="aspectFill" style="max-height: 100%"></image>
+        <view class="flex-container item_intro">
+            <view>
+                <text class="iconfont icon-huo" style="color: #e00"></text>
+                <text class="list_item_title">{{title}}</text>
+            </view>
+            <view class="flex-container" style="width: 100%">
+                <text class="item_text authentication">{{authentication}}</text>
+                <text class="item_text item_info">仅剩{{size - sign}}名额</text>
+                <text class="iconfont icon-heart{{isCollected ? '-solid' : ''}}" data-id="{{id}}" data-collect="{{isCollected}}" style="color: #e00; font-size: 24px" catch:tap="collect"></text>
+            </view>
+            <view class="flex-container" style="width: 100%">
+                <view style="font-size: 14px">
+                    <text class="iconfont icon-dollar" style="color: #e00; font-size: 12px"></text>
+                    <text style="color: #e00; font-size: 16px;">{{cost}}</text>
+                    <text decode="true">&nbsp;积分</text>
+                </view>
+                <view class="item_text item_info" data-id="{{id}}" style="border-radius: 5px" catch:tap="exchange">
+                    立即兑换
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
