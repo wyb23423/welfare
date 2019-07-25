@@ -1,45 +1,46 @@
 /**
- * 公益活动
+ * 兑换商品
  */
 import * as listFunc from "../../template/list_item/list_item";
 
 Page({
     data: {
-        activitys: [] as IAnyObject[]
+        goods: [] as IAnyObject[]
     },
     // ==============================事件
     ...listFunc,
     // =============================生命周期
     onLoad() {
-        const activitys = [];
+        const goods = [];
         for (let i = 1; i < 10; i++) {
-            activitys.push({
+            goods.push({
                 id: i,
                 img: '/public/images/23.jpg',
-                title: '有爱的我们不孤独——自闭症儿童义诊系列活动__' + i,
+                title: '少儿基础篮球培训课1节',
                 authentication: '社区认证',
                 sign: 11,
-                size: 24
+                size: 24,
+                cost: 50 + i * 40,
+                isCollected: i > 1
             });
         };
 
-        this.setData!({ activitys });
+        this.setData!({ goods });
     },
     getMore() {
         for (let i = 1; i < 10; i++) {
-            this.data.activitys.push({
+            this.data.goods.push({
                 id: i,
                 img: '/public/images/23.jpg',
-                title: '有爱的我们不孤独——自闭症儿童义诊系列活动__' + i,
+                title: '少儿基础篮球培训课1节',
                 authentication: '社区认证',
                 sign: 11,
-                size: 24
+                size: 24,
+                cost: 50 + i * 40,
+                isCollected: i > 1
             });
         };
 
-        this.setData!({ activitys: this.data.activitys });
-    },
-    search(e: IAnyObject) {
-        console.log(e.detail.value);
+        this.setData!({ goods: this.data.goods });
     }
 })
