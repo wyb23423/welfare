@@ -9,6 +9,7 @@
 .name {
     font-size: 28rpx;
     margin-top: 20rpx;
+    color: #fff;
 }
 
 .info {
@@ -42,7 +43,8 @@
     align-items: stretch;
     line-height: normal;
     font-size: 24rpx;
-    padding: 30rpx 80rpx;
+    padding: 0 80rpx;
+    height: 140rpx;
 }
 
 .history .iconfont {

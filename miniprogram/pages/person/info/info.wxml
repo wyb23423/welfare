@@ -1,0 +1,6 @@
+<view>
+    <view class="flex-center-v info">
+        <image src="{{img}}" class="avator" mode="aspectFill" />
+        <text class="name">{{name}}</text>
+    </view>
+</view>

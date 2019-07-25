@@ -5,7 +5,8 @@
     "pages/activity/list/list",
     "pages/activity/details/details",
     "pages/goods/list/list",
-    "pages/person/index/index"
+    "pages/person/index/index",
+    "pages/person/info/info"
   ],
   "window": {
     "backgroundTextStyle": "light",
