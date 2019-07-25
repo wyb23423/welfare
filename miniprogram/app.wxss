@@ -8,6 +8,25 @@
   box-sizing: border-box;
 }
 
+.flex-center-v {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ellipsis {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  word-break: break-all;
+}
+
 page {
   font-size: 24rpx;
+}
+
+button::after {
+  border: 0;
 }

@@ -19,7 +19,8 @@ Page({
             authentication: true,
             activityCount: 12,
             fans: 52,
-            img: '/public/images/23.jpg'
+            img: '/public/images/23.jpg',
+            desc: '北京医疗儿童发展中心的孤独症和其他障碍敢于服务，是xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
         }
     },
     // ==============================事件

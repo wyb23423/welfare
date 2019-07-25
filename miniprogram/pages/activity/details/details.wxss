@@ -1,11 +1,12 @@
 .details {
     padding: 20rpx;
+    padding-bottom: 0;
     font-size: 28rpx;
 }
 
 .details_item {
     border-top: 2rpx solid #ccc;
-    line-height: 80rpx;
+    line-height: 70rpx;
     font-weight: 500;
 }
 
@@ -13,4 +14,52 @@
     margin-right: 15rpx;
     font-weight: 700;
     font-size: 36rpx;
+}
+
+.user {
+    display: flex;
+    align-items: stretch;
+    border-top: 8rpx solid #ccc;
+    padding: 30rpx 0;
+}
+.user_name {
+    font-size: 32rpx;
+    font-weight: 700;
+}
+
+.avator_box {
+    width: 40%;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.avator {
+    border-radius: 50%;
+    width: 160rpx;
+    height: 160rpx;
+}
+
+.bottom {
+    height: 110rpx;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    align-items: stretch;
+    border-top: 2rpx solid #ccc;
+}
+
+.bottom button, .bottom navigator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    border-right: 2rpx solid #ccc;
+    border-radius: 0;
+    line-height: normal;
+    font-size: 24rpx;
+}
+
+button.submit {
+    flex-grow: 1;
+    font-size: 28rpx;
 }
