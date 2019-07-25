@@ -1,0 +1,55 @@
+@import '/pages/activity/details/details.wxss';
+
+.avator {
+    border-radius: 50%;
+    width: 140rpx;
+    height: 140rpx;
+}
+
+.name {
+    font-size: 28rpx;
+    margin-top: 20rpx;
+}
+
+.info {
+    height: 326rpx; 
+    background: rgb(0, 150, 136);
+    position: relative;
+}
+
+.point {
+    position: absolute;
+    top: 0rpx;
+    right: 10rpx;
+    color: #6cf;
+    font-weight: 700;
+    font-size: 40rpx;
+}
+
+.menu {
+    position: relative;
+    font-size: 36rpx;
+    padding: 0 40rpx;
+    line-height: 80rpx;
+}
+
+.right {
+    position: absolute;
+    right: 40rpx;
+}
+
+.history {
+    align-items: stretch;
+    line-height: normal;
+    font-size: 24rpx;
+    padding: 30rpx 80rpx;
+}
+
+.history .iconfont {
+    margin: 0;
+    margin-bottom: 10rpx;
+}
+.ad {
+    height: 120rpx;
+    margin-top: 10rpx;
+}

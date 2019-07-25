@@ -4,7 +4,8 @@
     "pages/logs/logs",
     "pages/activity/list/list",
     "pages/activity/details/details",
-    "pages/goods/list/list"
+    "pages/goods/list/list",
+    "pages/person/index/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -25,10 +26,22 @@
         "selectedIconPath": "public/images/index_active.png"
       },
       {
-        "pagePath": "pages/logs/logs",
+        "pagePath": "pages/activity/list/list",
         "text": "公益活动",
         "iconPath": "public/images/activity.png",
         "selectedIconPath": "public/images/activity_active.png"
+      },
+      {
+        "pagePath": "pages/goods/list/list",
+        "text": "积分兑换",
+        "iconPath": "public/images/buy.png",
+        "selectedIconPath": "public/images/buy_active.png"
+      },
+      {
+        "pagePath": "pages/person/index/index",
+        "text": "个人中心",
+        "iconPath": "public/images/person.png",
+        "selectedIconPath": "public/images/person_active.png"
       }
     ]
   }

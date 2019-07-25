@@ -3,7 +3,9 @@
   <view class="main">
     <view class="title">
       <text class="title_text">公益活动</text>
-      <navigator class="title_more" url="/pages/activity/list/list">更多公益></navigator>
+      <navigator class="title_more" url="/pages/activity/list/list" open-type="switchTab">
+        更多公益>
+      </navigator>
     </view>
     <navigator wx:for="{{activity}}" wx:key="{{item.id}}" hover-class="none" style="padding:0 10rpx" url="/pages/activity/details/details?id={{item.id}}">
       <template is="activity_item" data="{{...item}}"></template>
