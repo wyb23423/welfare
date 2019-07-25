@@ -2,7 +2,7 @@
 
 .search_box {
     width: 50%;
-    border: 1px solid #ccc;
+    border: 2rpx solid #ccc;
     justify-content: flex-start;
     margin-left: 100%;
     transform: translateX(-100%);
@@ -15,14 +15,14 @@
 }
 
 .item {
-    border-top: 1px solid #ccc;
+    border-top: 2rpx solid #ccc;
     margin-top: 10rpx;
 }
 
 .more {
-    font-size: 16px;
+    font-size: 32rpx;
     font-weight: 700;
-    height: 50px;
+    height: 100rpx;
     text-align: right;
-    line-height: 50px;
+    line-height: 100rpx;
 }

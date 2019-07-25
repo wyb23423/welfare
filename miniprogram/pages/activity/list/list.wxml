@@ -4,7 +4,7 @@
         <text class="iconfont icon-sousuo"></text>
         <input value="" placeholder="搜索精彩活动" class="search_input" bind:confirm="search" />
     </view>
-    <navigator wx:for="{{activitys}}" wx:key="{{item.id}}" hover-class="none" class="item">
+    <navigator wx:for="{{activitys}}" wx:key="{{item.id}}" hover-class="none" class="item" url="/pages/activity/details/details?id={{item.id}}">
         <template is="activity_item" data="{{...item}}"></template>
     </navigator>
     <view class="more">

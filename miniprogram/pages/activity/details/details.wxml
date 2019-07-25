@@ -1,0 +1,21 @@
+<view>
+    <image src="{{img}}" mode="aspectFill" style="width: 100%; height: 360rpx" />
+    <view class="details">
+        <view>{{title}}</view>
+        <view style="line-height: 80rpx">
+            <text decode="true">浏览&nbsp;{{look}}&nbsp;&nbsp;&nbsp;收藏&nbsp;{{collect}}</text>
+        </view>
+        <view class="details_item">
+            <text class="iconfont icon-shijian"></text>
+            <text>{{startTime}} --- {{endTime}}</text>
+        </view>
+        <view class="details_item">
+            <text class="iconfont icon-83"></text>
+            <text>{{address}}</text>
+        </view>
+        <view class="details_item">
+            <text class="iconfont icon-dollar"></text>
+            <text style="color: #009688">{{money || '免费'}}</text>
+        </view>
+    </view>
+</view>

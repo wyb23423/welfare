@@ -1,6 +1,6 @@
 .list_item_title {
     font-weight: 700;
-    font-size: 14px;
+    font-size: 28rpx;
 }
 
 .authentication {
@@ -10,9 +10,9 @@
 }
 
 .item_text {
-    font-size: 12px;
+    font-size: 24rpx;
     padding: 4rpx 8rpx;
-    border-width: 1px;
+    border-width: 2rpx;
     border-style: solid;
 }
 
@@ -31,6 +31,6 @@
 }
 
 .item_box {
-    height: 110px;
+    height: 220rpx;
     padding-top: 15rpx;
 }
