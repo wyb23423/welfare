@@ -12,7 +12,7 @@ export type Rule = {
     required?: boolean;
     min?: number;
     max?: number;
-    regexp?: RegExp;
+    regexp?: string;
     func?: (value: string | number) => string | boolean | void | Promise<string | boolean | void>;
     message?: string;
 };
@@ -23,7 +23,7 @@ export default Behavior<InputBehavior>({
             type: String,
             value: ''
         },
-        labelWidth: {
+        labelwidth: {
             type: String,
             value: 'auto'
         },
@@ -55,6 +55,11 @@ export default Behavior<InputBehavior>({
         errMsg: '',
         currType: 'text'
     },
+    attached() {
+        this.setData({
+            isRequired: this.data.required || this.data.rules.some((v: Rule) => !!v.required)
+        });
+    },
     methods: {
         onInput(e: BaseEvent) {
             const value = this._getValue(e.detail.value);
@@ -68,10 +73,14 @@ export default Behavior<InputBehavior>({
         },
         // 检测内容是否有效
         async valid(value: string | number): Promise<true> {
-            this.data.errMsg = '';
-
             const rules: Rule[] = this.data.rules;
+
+            let hasRquired: boolean = false;
             for (const rule of rules) {
+                if (rule.required) {
+                    hasRquired = true;
+                }
+
                 const valid = this._required(value, rule)
                     && this._len(value, rule)
                     && this._exec(value, rule)
@@ -83,6 +92,12 @@ export default Behavior<InputBehavior>({
                 }
             }
 
+            if (!hasRquired && this.data.required && !this._required(value, {})) {
+                this.setData({ errMsg: this.data.errMsg });
+                return Promise.reject();
+            }
+
+            this.setData({ errMsg: '' });
             return true;
         },
         // 检测必需性
@@ -114,9 +129,12 @@ export default Behavior<InputBehavior>({
         },
         // 根据正则检测
         _exec(value: string | number, rule: Rule): boolean {
-            if (rule.regexp && !rule.regexp.test(value + '')) {
-                this.data.errMsg = rule.message || `${this.data.lable}不满足正则${rule.regexp}`;
-                return false;
+            if (value != null && value !== '' && rule.regexp) {
+                const exp = new RegExp(rule.regexp);
+                if (!exp.test(value + '')) {
+                    this.data.errMsg = rule.message || `${this.data.lable}不满足正则${rule.regexp}`;
+                    return false;
+                }
             }
 
             return true;
@@ -151,7 +169,7 @@ export default Behavior<InputBehavior>({
             })
         },
         _getValue(value: string) {
-            if(this.data.currType !== 'text' && value !== '') {
+            if (this.data.currType !== 'text' && value !== '') {
                 return +value;
             }
 

@@ -1,1 +1,23 @@
 @import '../index/index.wxss';
+
+.btn {
+    border: 1px solid #ccc;
+    background: none;
+    text-align: center;
+    margin: 0;
+    font-size: 32rpx;
+}
+
+.tip {
+    font-size:28rpx;
+    text-align: center;
+}
+
+.save {
+    padding: 20rpx;
+    font-size: 32rpx;
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

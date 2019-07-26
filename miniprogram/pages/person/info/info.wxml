@@ -3,7 +3,26 @@
         <image src="{{img}}" class="avator" mode="aspectFill" />
         <text class="name">{{name}}</text>
     </view>
-    <app-input type="tel" lable="tel" custom-class="flex-container" required="true">
-        <input></input>
-    </app-input>
+    <view style="padding: 20rpx" id="form">
+        <app-input type="text" lable="真实姓名" id="name" custom-class="flex-container" required="true" placeholder="真实姓名" value="{{form.name}}" bind:input="onInput"></app-input>
+        <app-input type="text" lable="身份证号" id="idcard" custom-class="flex-container" required="true" placeholder="身份证号码 18位" value="{{form.idcard}}" rules="{{[idcardRule]}}" bind:input="onInput"></app-input>
+        <app-input type="tel" lable="电话号码" id="phone" custom-class="flex-container" required="true" placeholder="电话号码" value="{{form.phone}}" bind:input="onInput"></app-input>
+        <app-input labelwidth="133rpx" custom-class="flex-container" required="true">
+            <view class="flex-container" style="align-items: stretch">
+                <input type="number" style="flex-grow: 1" placeholder="输入验证码" id="code" value="{{form.code}}" bindinput="onInput"></input>
+                <button class="btn" disabled="{{!canGetCode}}" bind:tap="getCode">
+                    {{codeBtnText}}
+                </button>
+            </view>
+        </app-input>
+        <app-input type="email" labelwidth="133rpx" lable="电子邮箱" custom-class="flex-container" placeholder="电子邮箱" id="email" value="{{form.email || ''}}" bind:input="onInput"></app-input>
+        <app-input type="text" lable="居住地址" custom-class="flex-container" required="true" placeholder="小区-楼栋-单元-房号" id="address" value="{{form.address}}" bind:input="onInput"></app-input>
+    </view>
+    <view>
+        <view class="tip">
+            <icon size="14" type="info" color="rgb(255, 64, 129)"></icon>
+            根据规定，你的信息不会外露，并仅对该小程序使用
+        </view>
+        <button type="primary" class="save" bind:tap="save">保存</button>
+    </view>
 </view>

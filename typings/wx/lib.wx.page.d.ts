@@ -112,7 +112,7 @@ declare namespace Page {
   interface PageInstance<
     D extends IAnyObject = any,
     T extends IAnyObject = any
-  > extends PageInstanceBaseProps<D> {
+    > extends PageInstanceBaseProps<D> {
     /** 生命周期回调—监听页面加载
      *
      * 页面加载时触发。一个页面只会调用一次，可以在 onLoad 的参数中获取打开当前页面路径中的参数。
@@ -191,6 +191,10 @@ declare namespace Page {
       /** 窗口尺寸参数 */
       options?: IResizeOption,
     ): void;
+
+    selectComponent?(selector: string): WxComponent;
+    /** 创建一个 SelectorQuery 对象，选择器选取范围为这个组件实例内 */
+    createSelectorQuery?(): wx.SelectorQuery;
   }
 
   interface PageConstructor {

@@ -30,3 +30,11 @@ page {
 button::after {
   border: 0;
 }
+button {
+  line-height: normal;
+  border-radius: 0;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
