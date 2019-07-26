@@ -57,9 +57,12 @@
     border-radius: 0;
     line-height: normal;
     font-size: 24rpx;
+    background: #fff;
 }
 
-button.submit {
+navigator.submit {
     flex-grow: 1;
     font-size: 28rpx;
+    background: #009688;
+    color: #fff;
 }

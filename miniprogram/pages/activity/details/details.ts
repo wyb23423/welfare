@@ -5,6 +5,7 @@ import { formatTime } from "../../../utils/util";
 
 Page({
     data: {
+        id: 1,
         address: '北京海淀花园北路建设智谷大厦5层',
         startTime: formatTime(new Date()),
         endTime: formatTime(new Date(Date.now() + 1000 * 60 * 60 * 24)),
@@ -27,7 +28,7 @@ Page({
 
     // =============================生命周期
     onLoad(query: any) {
-        console.log(query);
+        this.setData!({ id: query.id });
     }
     // ============================其他
 

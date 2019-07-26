@@ -21,7 +21,7 @@ Page({
             {
                 name: '我的发起',
                 icon: 'list-2-copy',
-                url: ''
+                url: '../history/history?type=initiate'
             },
             {
                 name: '入驻商家',
