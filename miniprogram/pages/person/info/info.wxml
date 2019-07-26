@@ -7,7 +7,7 @@
         <app-input type="text" lable="真实姓名" id="name" custom-class="flex-container" required="true" placeholder="真实姓名" value="{{form.name}}" bind:input="onInput"></app-input>
         <app-input type="text" lable="身份证号" id="idcard" custom-class="flex-container" required="true" placeholder="身份证号码 18位" value="{{form.idcard}}" rules="{{[idcardRule]}}" bind:input="onInput"></app-input>
         <app-input type="tel" lable="电话号码" id="phone" custom-class="flex-container" required="true" placeholder="电话号码" value="{{form.phone}}" bind:input="onInput"></app-input>
-        <app-input labelwidth="133rpx" custom-class="flex-container" required="true">
+        <app-input labelwidth="133rpx" custom-class="flex-container">
             <view class="flex-container" style="align-items: stretch">
                 <input type="number" style="flex-grow: 1" placeholder="输入验证码" id="code" value="{{form.code}}" bindinput="onInput"></input>
                 <button class="btn" disabled="{{!canGetCode}}" bind:tap="getCode">
