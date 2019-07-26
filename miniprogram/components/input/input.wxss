@@ -1,9 +1,10 @@
 .box {
     font-size: 24rpx;
 }
-input {
+input, textarea {
     border: 1px solid #ccc;
     padding: 10rpx 20rpx;
+    width: 100%;
 }
 .lable {
     padding-right: 20rpx;

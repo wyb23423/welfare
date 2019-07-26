@@ -5,6 +5,7 @@ export interface InputBehavior extends WxComponent {
     _len(value: string | number, rule: Rule): boolean;
     _exec(value: string | number, rule: Rule): boolean;
     _func(value: string | number, rule: Rule): Promise<boolean>;
+    _getValue(value: string): string | number;
 }
 
 export type Rule = {
@@ -56,15 +57,16 @@ export default Behavior<InputBehavior>({
     },
     methods: {
         onInput(e: BaseEvent) {
-            const value = this.data.currType !== 'text' ? +e.detail.value : e.detail.value;
-            this.valid(value).catch((errMsg: string) => this.setData({ errMsg }));
+            const value = this._getValue(e.detail.value);
+            this.valid(value).catch(console.log);
             this.triggerEvent('input', { value }, {});
         },
         onConfirm(e: BaseEvent) {
             this.triggerEvent('confirm', {
-                value: this.data.currType !== 'text' ? +e.detail.value : e.detail.value
+                value: this._getValue(e.detail.value)
             }, {});
         },
+        // 检测内容是否有效
         async valid(value: string | number): Promise<true> {
             this.data.errMsg = '';
 
@@ -76,7 +78,8 @@ export default Behavior<InputBehavior>({
                     && (await this._func(value, rule));
 
                 if (!valid) {
-                    return Promise.reject(this.data.errMsg);
+                    this.setData({ errMsg: this.data.errMsg });
+                    return Promise.reject();
                 }
             }
 
@@ -85,7 +88,7 @@ export default Behavior<InputBehavior>({
         // 检测必需性
         _required(value: string | number, rule: Rule): boolean {
             if ((rule.required || this.data.required) && (value == null || value === '')) {
-                this.data.errMsg = rule.message || `${this.data.lable}不能为空`;
+                this.data.errMsg = rule.required && rule.message ? rule.message : `${this.data.lable}不能为空`;
                 return false;
             }
 
@@ -97,9 +100,13 @@ export default Behavior<InputBehavior>({
             const max = rule.max == null ? Number.MAX_VALUE : rule.max;
 
             const v: string | number = typeof value === 'number' ? value : value.length;
-            if (v < min || v > max) {
-                const main = `${this.data.lable}${typeof value === 'string' ? '的长度' : ''}`;
-                this.data.errMsg = rule.message || `${main}应处于${min} - ${max}之间`;
+            const main = `${this.data.lable}${typeof value === 'string' ? '的长度' : ''}`;
+            if (v < min) {
+                this.data.errMsg = rule.message || `${main}不能小于${min}`;
+                return false;
+            }
+            if (v > max) {
+                this.data.errMsg = rule.message || `${main}不能大于${max}`;
                 return false;
             }
 
@@ -142,6 +149,13 @@ export default Behavior<InputBehavior>({
                     resolve(true);
                 }
             })
+        },
+        _getValue(value: string) {
+            if(this.data.currType !== 'text' && value !== '') {
+                return +value;
+            }
+
+            return value;
         }
     }
 })

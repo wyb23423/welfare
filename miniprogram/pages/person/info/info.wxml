@@ -3,5 +3,7 @@
         <image src="{{img}}" class="avator" mode="aspectFill" />
         <text class="name">{{name}}</text>
     </view>
-    <app-input type="tel" lable="test" custom-class="flex-container"></app-input>
+    <app-input type="tel" lable="tel" custom-class="flex-container" required="true">
+        <input></input>
+    </app-input>
 </view>

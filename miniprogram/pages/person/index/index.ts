@@ -50,6 +50,6 @@ Page({
         this.setData!({
             name: userInfo.nickName,
             img: userInfo.avatarUrl
-        })
+        });
     }
 });

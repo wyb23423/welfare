@@ -1,9 +1,16 @@
 <view class="box custom-class">
-    <label wx:if="{{lable}}" style="width: {{labelWidth}};" class="lable label-class" for="input">
+    <label style="width: {{labelWidth}};" class="lable label-class">
         {{lable}}
     </label>
     <view class="input_box">
-        <input class="input-class {{errMsg ? 'error' : ''}}" placeholder="{{placeholder}}" value="{{value}}" type="{{currType}}" password="{{type==='password'}}" confirm-type="{{confirmType}}" maxlength="{{maxlength}}" disabled="{{disabled}}" bindinput="onInput" bindconfirm="onConfirm" id="input" />
+        <!-- 已实现样式的内容检测的表单组件 -->
+        <input class="input-class {{errMsg ? 'error' : ''}}" placeholder="{{placeholder}}" value="{{value}}" type="{{currType}}" password="{{type==='password'}}" confirm-type="{{confirmType}}" maxlength="{{maxlength}}" disabled="{{disabled}}" bindinput="onInput" bindconfirm="onConfirm" wx:if="{{type && type !== 'textarea'}}" />
+        <textarea class="input-class {{errMsg ? 'error' : ''}}" placeholder="{{placeholder}}" value="{{value}}" maxlength="{{maxlength}}" disabled="{{disabled}}" bindinput="onInput" bindconfirm="onConfirm" wx:if="{{type === 'textarea'}}"></textarea>
+
+        <!-- 自定义内容 -->
+        <slot wx:if="{{!type}}"></slot>
+
+        <!-- 错误信息 -->
         <view wx:if="{{!!errMsg}}" class="error_text">{{errMsg}}</view>
     </view>
 </view>
