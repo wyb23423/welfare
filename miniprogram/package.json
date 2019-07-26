@@ -1,0 +1,14 @@
+{
+  "name": "welfare",
+  "version": "1.0.0",
+  "description": "锦城公益小程序",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "miniprogram-computed": "^2.0.0"
+  }
+}

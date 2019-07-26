@@ -4,7 +4,7 @@
         <text style="font-weight: 700; font-size: 36rpx;">活动列表</text>
         <view class="flex-container search_box">
             <text class="iconfont icon-sousuo"></text>
-            <input value="" placeholder="搜索精彩活动" class="search_input" bind:confirm="search" />
+            <input value="" placeholder="搜索精彩活动" class="search_input" bind:confirm="search" confirm-type="search" />
         </view>
     </view>
     <navigator wx:for="{{activitys}}" wx:key="{{item.id}}" hover-class="none" class="item" url="/pages/activity/details/details?id={{item.id}}">

@@ -58,7 +58,7 @@ declare interface TriggerEventOption {
   capturePhase?: boolean;
 }
 
-declare interface WxComponent extends BaseComponent {
+declare interface WxComponent extends BaseComponent<{}> {
   /** 组件的文件路径 */
   is: string;
   /** 节点id */
@@ -162,7 +162,7 @@ declare interface ComponentOptions {
   addGlobalClass?: boolean;
 }
 
-declare interface BaseComponent extends ComponentLifetimes {
+declare interface BaseComponent<T> extends ComponentLifetimes {
   /** 组件的对外属性，是属性名到属性设置的映射表 */
   properties?: {
     [propertyName: string]: PropertyOption;
@@ -173,7 +173,7 @@ declare interface BaseComponent extends ComponentLifetimes {
   observers?: IAnyObject;
   /** object组件的方法，包括事件响应函数和任意的自定义方法，关于事件响应函数的使用，参见 [组件事件](events.md) */
   methods?: {
-    [methodName: string]: (this: WxComponent) => any;
+    [methodName: string]: (this: T, ...args: any[]) => any;
   };
   /** 类似于mixins和traits的组件间代码复用机制，参见 [behaviors](behaviors.md) */
   behaviors?: string[];
@@ -208,6 +208,6 @@ declare interface BaseComponent extends ComponentLifetimes {
  * * 从基础库 `2.0.9` 开始，对象类型的属性和 data 字段中可以包含函数类型的子字段，即可以通过对象类型的属性字段来传递函数。低于这一版本的基础库不支持这一特性。
  * * `bug` : 对于 type 为 Object 或 Array 的属性，如果通过该组件自身的 `this.setData` 来改变属性值的一个子字段，则依旧会触发属性 observer ，且 observer 接收到的 `newVal` 是变化的那个子字段的值， `oldVal` 为空， `changedPath` 包含子字段的字段名相关信息。
  */
-declare function Component(
-  /** 自定义组件注册参数 */ options: BaseComponent,
+declare function Component<T extends WxComponent = WxComponent>(
+  /** 自定义组件注册参数 */ options: BaseComponent<T>,
 ): void;

@@ -1,0 +1,9 @@
+<view class="box custom-class">
+    <label wx:if="{{lable}}" style="width: {{labelWidth}};" class="lable label-class" for="input">
+        {{lable}}
+    </label>
+    <view class="input_box">
+        <input class="input-class {{errMsg ? 'error' : ''}}" placeholder="{{placeholder}}" value="{{value}}" type="{{currType}}" password="{{type==='password'}}" confirm-type="{{confirmType}}" maxlength="{{maxlength}}" disabled="{{disabled}}" bindinput="onInput" bindconfirm="onConfirm" id="input" />
+        <view wx:if="{{!!errMsg}}" class="error_text">{{errMsg}}</view>
+    </view>
+</view>

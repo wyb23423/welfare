@@ -20,6 +20,12 @@
     "strictPropertyInitialization": true,
     "typeRoots": [
       "./typings"
+    ],
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
     ]
   },
   "include": [

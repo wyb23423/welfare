@@ -1,4 +1,6 @@
 {
-    "usingComponents": {},
+    "usingComponents": {
+        "app-input": "/components/input/input"
+    },
     "navigationBarTitleText": "我的信息"
 }
