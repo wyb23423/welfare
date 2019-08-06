@@ -1,0 +1,4 @@
+.flex-container {
+    border-bottom: 2rpx solid #ccc;
+    padding: 20rpx 10%;
+}

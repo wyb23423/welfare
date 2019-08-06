@@ -8,6 +8,7 @@
     "pages/person/info/info",
     "pages/person/history/history",
     "pages/person/points/points",
+    "pages/person/points/details/details",
     "pages/comment/comment"
   ],
   "window": {
