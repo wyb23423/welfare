@@ -1,10 +1,7 @@
 /**
- * 
+ * 修改个人信息
  */
-import { IMyApp } from "../../../app";
 import { InputBehavior } from "../../../behavior/input";
-
-const app = <IMyApp>getApp();
 
 Page({
     data: {
@@ -22,13 +19,6 @@ Page({
         },
         canGetCode: true,
         codeBtnText: '获取验证码',
-    },
-    onLoad() {
-        const userInfo: wx.UserInfo = app.globalData.userInfo;
-        this.setData!({
-            name: userInfo.nickName,
-            img: userInfo.avatarUrl
-        })
     },
     onInput(e: BaseEvent) {
         this.setData!({ [`form.${e.target.id}`]: e.detail.value });

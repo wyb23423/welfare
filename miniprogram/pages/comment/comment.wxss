@@ -9,14 +9,14 @@
 
 .activity_head_info {
     padding:0 10rpx 20rpx;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 2rpx solid #ccc;
     margin-bottom: 20rpx;
 }
 
 .star-item {
     padding: 30rpx;
     display: flex;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 2rpx solid #ccc;
 }
 
 .icon-xing {
@@ -24,7 +24,7 @@
 }
 
 .comment {
-    border: 1px solid #ccc;
+    border: 2rpx solid #ccc;
     margin: 40rpx auto 60rpx;
     padding: 5px;
     max-width: 100%;

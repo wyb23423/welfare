@@ -1,9 +1,6 @@
 /**
  * 个人中心
  */
-import { IMyApp } from "../../../app";
-
-const app = <IMyApp>getApp();
 
 Page({
     data: {
@@ -44,12 +41,5 @@ Page({
                 url: ''
             },
         ]
-    },
-    onLoad() {
-        const userInfo: wx.UserInfo = app.globalData.userInfo;
-        this.setData!({
-            name: userInfo.nickName,
-            img: userInfo.avatarUrl
-        });
     }
 });

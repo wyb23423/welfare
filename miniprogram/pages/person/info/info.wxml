@@ -1,8 +1,5 @@
 <view>
-    <view class="flex-center-v info">
-        <image src="{{img}}" class="avator" mode="aspectFill" />
-        <text class="name">{{name}}</text>
-    </view>
+    <person-head></person-head>
     <view style="padding: 20rpx" id="form">
         <app-input type="text" lable="真实姓名" id="name" custom-class="flex-container" required="true" placeholder="真实姓名" value="{{form.name}}" bind:input="onInput"></app-input>
         <app-input type="text" lable="身份证号" id="idcard" custom-class="flex-container" required="true" placeholder="身份证号码 18位" value="{{form.idcard}}" rules="{{[idcardRule]}}" bind:input="onInput"></app-input>

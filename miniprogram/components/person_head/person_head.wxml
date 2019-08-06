@@ -1,0 +1,5 @@
+<view class="info">
+    <image src="{{img}}" class="avator" mode="aspectFill" />
+    <text class="name">{{name}}</text>
+    <navigator class="point" url="../info/info" wx:if="{{isindex}}">···</navigator>
+</view>

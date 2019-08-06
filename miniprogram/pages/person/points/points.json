@@ -2,5 +2,5 @@
     "usingComponents": {
         "person-head": "/components/person_head/person_head"
     },
-    "navigationBarTitleText": "个人中心"
+    "navigationBarTitleText": "我的积分"
 }

@@ -3,10 +3,9 @@
  */
 
 import inputBehavior from '../../behavior/input';
-import * as computed from 'miniprogram-computed';
 
 Component({
-    behaviors: [inputBehavior, computed],
+    behaviors: [inputBehavior],
     externalClasses: ['custom-class', 'label-class', 'input-class'],
     properties: {
         confirmType: {

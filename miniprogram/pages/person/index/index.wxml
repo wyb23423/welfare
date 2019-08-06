@@ -1,10 +1,6 @@
 <view>
-    <view class="flex-center-v info">
-        <image src="{{img}}" class="avator" mode="aspectFill" />
-        <text class="name">{{name}}</text>
-        <navigator class="point" url="../info/info">···</navigator>
-    </view>
-    <navigator class="details_item menu" hover-class="none">
+    <person-head isindex="true"></person-head>
+    <navigator class="details_item menu" url="../points/points">
         <text>我的积分</text>
         <text class="iconfont icon-jiantou right"></text>
     </navigator>

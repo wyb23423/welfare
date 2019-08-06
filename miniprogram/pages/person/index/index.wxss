@@ -1,32 +1,5 @@
 @import '/pages/activity/details/details.wxss';
 
-.avator {
-    border-radius: 50%;
-    width: 140rpx;
-    height: 140rpx;
-}
-
-.name {
-    font-size: 28rpx;
-    margin-top: 20rpx;
-    color: #fff;
-}
-
-.info {
-    height: 326rpx; 
-    background: rgb(0, 150, 136);
-    position: relative;
-}
-
-.point {
-    position: absolute;
-    top: 0rpx;
-    right: 10rpx;
-    color: #6cf;
-    font-weight: 700;
-    font-size: 40rpx;
-}
-
 .menu {
     position: relative;
     font-size: 36rpx;

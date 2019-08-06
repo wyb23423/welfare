@@ -1,0 +1,30 @@
+.avator {
+    border-radius: 50%;
+    width: 140rpx;
+    height: 140rpx;
+}
+
+.name {
+    font-size: 28rpx;
+    margin-top: 20rpx;
+    color: #fff;
+}
+
+.info {
+    height: 326rpx; 
+    background: rgb(0, 150, 136);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.point {
+    position: absolute;
+    top: 0;
+    right: 10rpx;
+    color: #6cf;
+    font-weight: 700;
+    font-size: 40rpx;
+}

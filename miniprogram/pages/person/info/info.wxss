@@ -1,7 +1,5 @@
-@import '../index/index.wxss';
-
 .btn {
-    border: 1px solid #ccc;
+    border: 2rpx solid #ccc;
     background: none;
     text-align: center;
     margin: 0;
