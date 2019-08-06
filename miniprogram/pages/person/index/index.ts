@@ -8,7 +8,7 @@ Page({
             {
                 name: '我的关注',
                 icon: 'heart',
-                url: ''
+                url: '../follow/follow'
             },
             {
                 name: '我的收藏',

@@ -7,6 +7,7 @@
     "pages/person/index/index",
     "pages/person/info/info",
     "pages/person/history/history",
+    "pages/person/follow/follow",
     "pages/person/points/points",
     "pages/person/points/details/details",
     "pages/comment/comment"

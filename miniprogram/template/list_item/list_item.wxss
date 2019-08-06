@@ -34,3 +34,10 @@
     height: 220rpx;
     padding-top: 15rpx;
 }
+
+.heart {
+    color: #e00;
+    font-size: 48rpx;
+    margin: 0;
+    background: none;
+}

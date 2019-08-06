@@ -33,7 +33,7 @@ Page({
     delete(e: WxTouchEvent) {
         const id = +e.target.dataset.id;
         wx.showModal({
-            content: '确认删除活动该活动？',
+            content: '删除该活动？',
             success(res) {
                 if (res.confirm) {
                     console.log(id);

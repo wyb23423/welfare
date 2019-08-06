@@ -27,7 +27,7 @@
             <view class="flex-container" style="width: 100%">
                 <text class="item_text authentication">{{authentication}}</text>
                 <text class="item_text item_info">仅剩{{size - sign}}名额</text>
-                <text class="iconfont icon-heart{{isCollected ? '-solid' : ''}}" data-id="{{id}}" data-collect="{{isCollected}}" style="color: #e00; font-size: 48rpx" catch:tap="collect"></text>
+                <button class="iconfont icon-heart{{isCollected ? '-solid' : ''}} heart" hover-class="btn-tap" hover-stop-propagation="true" data-id="{{id}}" data-collect="{{isCollected}}" catch:tap="collect"></button>
             </view>
             <view class="flex-container" style="width: 100%">
                 <view style="font-size: 28rpx">

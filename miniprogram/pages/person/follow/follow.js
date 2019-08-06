@@ -1,0 +1,33 @@
+"use strict";
+Page({
+    data: {
+        list: []
+    },
+    onLoad: function () {
+        var list = [];
+        for (var i = 0; i < 10; i++) {
+            list.push({
+                id: i,
+                authentication: Math.random() > 0.5,
+                img: '/public/images/23.jpg',
+                name: '北京儿童医疗发展中心',
+                desc: '北京医疗儿童发展中心的孤独症和其他障碍敢于服务，是xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+            });
+        }
+        this.setData({ list: list });
+    },
+    delete: function (e) {
+        var dataset = e.target.dataset;
+        if (dataset.name) {
+            wx.showModal({
+                content: "\u53D6\u6D88\u5173\u6CE8" + dataset.name + "\uFF1F",
+                success: function (res) {
+                    if (res.confirm) {
+                        console.log(+dataset.id);
+                    }
+                }
+            });
+        }
+    }
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZm9sbG93LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiZm9sbG93LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFRQSxJQUFJLENBQUM7SUFDRCxJQUFJLEVBQUU7UUFDRixJQUFJLEVBQWMsRUFBRTtLQUN2QjtJQUNELE1BQU07UUFDRixJQUFNLElBQUksR0FBZSxFQUFFLENBQUM7UUFDNUIsS0FBSyxJQUFJLENBQUMsR0FBRyxDQUFDLEVBQUUsQ0FBQyxHQUFHLEVBQUUsRUFBRSxDQUFDLEVBQUUsRUFBRTtZQUN6QixJQUFJLENBQUMsSUFBSSxDQUFDO2dCQUNOLEVBQUUsRUFBRSxDQUFDO2dCQUNMLGNBQWMsRUFBRSxJQUFJLENBQUMsTUFBTSxFQUFFLEdBQUcsR0FBRztnQkFDbkMsR0FBRyxFQUFFLHVCQUF1QjtnQkFDNUIsSUFBSSxFQUFFLFlBQVk7Z0JBQ2xCLElBQUksRUFBRSxzRUFBc0U7YUFDL0UsQ0FBQyxDQUFBO1NBQ0w7UUFFRCxJQUFJLENBQUMsT0FBUSxDQUFDLEVBQUUsSUFBSSxNQUFBLEVBQUUsQ0FBQyxDQUFDO0lBQzVCLENBQUM7SUFDRCxNQUFNLFlBQUMsQ0FBZTtRQUNsQixJQUFNLE9BQU8sR0FBRyxDQUFDLENBQUMsTUFBTSxDQUFDLE9BQU8sQ0FBQztRQUNqQyxJQUFJLE9BQU8sQ0FBQyxJQUFJLEVBQUU7WUFDZCxFQUFFLENBQUMsU0FBUyxDQUFDO2dCQUNULE9BQU8sRUFBRSw2QkFBTyxPQUFPLENBQUMsSUFBSSxXQUFHO2dCQUMvQixPQUFPLFlBQUMsR0FBRztvQkFDUCxJQUFJLEdBQUcsQ0FBQyxPQUFPLEVBQUU7d0JBQ2IsT0FBTyxDQUFDLEdBQUcsQ0FBQyxDQUFDLE9BQU8sQ0FBQyxFQUFFLENBQUMsQ0FBQztxQkFDNUI7Z0JBQ0wsQ0FBQzthQUNKLENBQUMsQ0FBQztTQUNOO0lBQ0wsQ0FBQztDQUNKLENBQUMsQ0FBQSIsInNvdXJjZXNDb250ZW50IjpbImludGVyZmFjZSBJU3BvbnNvciB7XHJcbiAgICBpbWc6IHN0cmluZztcclxuICAgIG5hbWU6IHN0cmluZztcclxuICAgIGRlc2M6IHN0cmluZztcclxuICAgIGF1dGhlbnRpY2F0aW9uOiBib29sZWFuO1xyXG4gICAgaWQ6IG51bWJlcjtcclxufVxyXG5cclxuUGFnZSh7XHJcbiAgICBkYXRhOiB7XHJcbiAgICAgICAgbGlzdDogPElTcG9uc29yW10+W11cclxuICAgIH0sXHJcbiAgICBvbkxvYWQoKSB7XHJcbiAgICAgICAgY29uc3QgbGlzdDogSVNwb25zb3JbXSA9IFtdO1xyXG4gICAgICAgIGZvciAobGV0IGkgPSAwOyBpIDwgMTA7IGkrKykge1xyXG4gICAgICAgICAgICBsaXN0LnB1c2goe1xyXG4gICAgICAgICAgICAgICAgaWQ6IGksXHJcbiAgICAgICAgICAgICAgICBhdXRoZW50aWNhdGlvbjogTWF0aC5yYW5kb20oKSA+IDAuNSxcclxuICAgICAgICAgICAgICAgIGltZzogJy9wdWJsaWMvaW1hZ2VzLzIzLmpwZycsXHJcbiAgICAgICAgICAgICAgICBuYW1lOiAn5YyX5Lqs5YS/56ul5Yy755aX5Y+R5bGV5Lit5b+DJyxcclxuICAgICAgICAgICAgICAgIGRlc2M6ICfljJfkuqzljLvnlpflhL/nq6Xlj5HlsZXkuK3lv4PnmoTlraTni6znl4flkozlhbbku5bpmpznoo3mlaLkuo7mnI3liqHvvIzmmK94eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4J1xyXG4gICAgICAgICAgICB9KVxyXG4gICAgICAgIH1cclxuXHJcbiAgICAgICAgdGhpcy5zZXREYXRhISh7IGxpc3QgfSk7XHJcbiAgICB9LFxyXG4gICAgZGVsZXRlKGU6IFd4VG91Y2hFdmVudCkge1xyXG4gICAgICAgIGNvbnN0IGRhdGFzZXQgPSBlLnRhcmdldC5kYXRhc2V0O1xyXG4gICAgICAgIGlmIChkYXRhc2V0Lm5hbWUpIHtcclxuICAgICAgICAgICAgd3guc2hvd01vZGFsKHtcclxuICAgICAgICAgICAgICAgIGNvbnRlbnQ6IGDlj5bmtojlhbPms6gke2RhdGFzZXQubmFtZX3vvJ9gLFxyXG4gICAgICAgICAgICAgICAgc3VjY2VzcyhyZXMpIHtcclxuICAgICAgICAgICAgICAgICAgICBpZiAocmVzLmNvbmZpcm0pIHtcclxuICAgICAgICAgICAgICAgICAgICAgICAgY29uc29sZS5sb2coK2RhdGFzZXQuaWQpO1xyXG4gICAgICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgICAgIH1cclxuICAgICAgICAgICAgfSk7XHJcbiAgICAgICAgfVxyXG4gICAgfVxyXG59KVxyXG4iXX0=

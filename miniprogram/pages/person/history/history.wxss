@@ -20,9 +20,6 @@
     display: inline-block;
     margin: 0;
 }
-.btn-tap {
-    transform: scale(1.2);
-}
 
 .evaluate_box {
     justify-content: flex-end;

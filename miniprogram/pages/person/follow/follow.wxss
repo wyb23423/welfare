@@ -1,0 +1,17 @@
+@import '/pages/activity/details/details.wxss';
+
+.user {
+    border-top: none;
+    border-bottom: 2rpx solid #ccc;
+    position: relative;
+    padding: 20rpx;
+}
+
+.delete {
+    color: #e00;
+    background: none;
+    font-size: 36rpx;
+    position: absolute;
+    right: 0;
+    top: 20rpx;
+}
