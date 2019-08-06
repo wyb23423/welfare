@@ -47,6 +47,12 @@ Page({
             }
         });
 
-        Promise.all(arr).then(() => console.log(this.data.form)).catch(console.log);
+        Promise.all(arr)
+            .then(() => {
+                console.log('修改个人信息成功');
+            })
+            .catch(console.log);
+
+        this.setData!({ 'form.code': '' });
     },
 })

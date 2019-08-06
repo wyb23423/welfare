@@ -6,7 +6,8 @@
     "pages/goods/list/list",
     "pages/person/index/index",
     "pages/person/info/info",
-    "pages/person/history/history"
+    "pages/person/history/history",
+    "pages/comment/comment"
   ],
   "window": {
     "backgroundTextStyle": "light",
