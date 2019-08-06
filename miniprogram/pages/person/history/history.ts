@@ -11,8 +11,8 @@ Page({
                 img: '/public/images/23.jpg',
                 title: '有爱的我们不孤独——自闭症儿童义诊系列活动__' + i,
                 authentication: '认证',
-                sign: 11,
-                size: 24,
+                sign: Math.round(Math.random() * 10) + 1,
+                size: Math.round(Math.random() * 20) + 11,
                 review: Math.random() < 0.5
             });
         };
@@ -23,10 +23,25 @@ Page({
             toAudit: '待审核',
             haveToAttend: '已参加',
             toEvaluate: '待评价',
-            initiate: '我的发起'
-        }
+            initiate: '我的发起',
+            collection: '我的收藏'
+        };
         wx.setNavigationBarTitle({
             title: titles[query.type]
+        });
+    },
+    delete(e: WxTouchEvent) {
+        const id = +e.target.dataset.id;
+        wx.showModal({
+            content: '确认删除活动该活动？',
+            success(res) {
+                if (res.confirm) {
+                    console.log(id);
+                }
+            }
         })
+    },
+    none() {
+        //
     }
 })

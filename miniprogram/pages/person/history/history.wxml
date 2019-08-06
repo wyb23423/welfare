@@ -1,14 +1,46 @@
+<!-- 待参加 -->
+<template name="toStayIn">
+    <view class="flex-container" style="width: 100%">
+        <text style="font-size: 24rpx">{{sign}}/{{size}}</text>
+        <text class="item_text item_info">仅剩{{size - sign}}名额</text>
+        <text class="item_text item_info" style="border-radius: 10rpx">等待参加</text>
+    </view>
+</template>
+<!-- 待审核 -->
 <template name="toAudit">
     <view class="flex-container" style="width: 100%">
         <text style="font-size: 24rpx">{{sign}}/{{size}}</text>
         <text class="item_text item_info">仅剩{{size - sign}}名额</text>
-        <navigator class="item_text item_info" style="border-radius: 10rpx">等待审核</navigator>
+        <text class="item_text item_info" style="border-radius: 10rpx">等待审核</text>
     </view>
 </template>
-<template name="toStayIn"></template>
-<template name="haveToAttend"></template>
-<template name="toEvaluate"></template>
-<template name="initiate"></template>
+<!-- 已参加 -->
+<template name="haveToAttend">
+    <view style="text-align: right;">
+        <button class="iconfont icon-delete" hover-class="btn-tap" hover-stop-propagation="true" data-id="{{id}}" catch:tap="delete"></button>
+    </view>
+</template>
+<!-- 待评价 -->
+<template name="toEvaluate">
+    <view class="evaluate_box flex-container">
+        <navigator class="iconfont icon-pingjia" hover-class="btn-tap" hover-stop-propagation="true" url="/page/comment/comment?id={{id}}" catch:tap="none"></navigator>
+        <button class="iconfont icon-delete" hover-class="btn-tap" hover-stop-propagation="true" data-id="{{id}}" catch:tap="delete"></button>
+    </view>
+</template>
+<!-- 我的发起 -->
+<template name="initiate">
+    <view style="text-align: right">
+        <icon type="{{review ? 'success_no_circle' : 'cancel'}}" size="120rpx" class="icon"></icon>
+        <button class="iconfont icon-delete" hover-class="btn-tap" hover-stop-propagation="true" data-id="{{id}}" catch:tap="delete"></button>
+    </view>
+</template>
+<!-- 我的收藏 -->
+<template name="collection">
+    <template is="haveToAttend" data="{{id}}"></template>
+</template>
+<!--  -->
+<!--  -->
+<!-- history -->
 <view style="padding: 10rpx">
     <navigator class="flex-container item_box" wx:for="{{history}}" wx:key="{{item.id}}" url="/pages/activity/details/details?id={{item.id}}">
         <image src="{{item.img}}" lazy-load="true" mode="aspectFill" style="max-height: 100%"></image>

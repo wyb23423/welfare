@@ -8,7 +8,7 @@
             <view class="flex-container" style="width: 100%">
                 <text style="font-size: 24rpx">{{sign}}/{{size}}</text>
                 <text class="item_text item_info">仅剩{{size - sign}}名额</text>
-                <navigator class="item_text item_info" catch:tap="none" style="border-radius: 10rpx" url="/pages/sign/sign?id={{id}}">
+                <navigator class="item_text item_info" hover-stop-propagation="true" catch:tap="none" style="border-radius: 10rpx" url="/pages/sign/sign?id={{id}}">
                     立即报名
                 </navigator>
             </view>
@@ -35,9 +35,9 @@
                     <text style="color: #e00; font-size: 32rpx;">{{cost}}</text>
                     <text decode="true">&nbsp;积分</text>
                 </view>
-                <view class="item_text item_info" data-id="{{id}}" style="border-radius: 10rpx" catch:tap="exchange">
+                <button class="item_text item_info" data-id="{{id}}" hover-stop-propagation="true" style="border-radius: 10rpx; margin: 0" catch:tap="exchange">
                     立即兑换
-                </view>
+                </button>
             </view>
         </view>
     </view>

@@ -3384,7 +3384,7 @@ innerAudioContext.onError((res) => {
     /** 提示的内容 */
     content: string;
     /** 提示的标题 */
-    title: string;
+    title?: string;
     /** 取消按钮的文字颜色，必须是 16 进制格式的颜色字符串 */
     cancelColor?: string;
     /** 取消按钮的文字，最多 4 个字符 */

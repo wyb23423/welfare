@@ -16,7 +16,7 @@ Page({
             {
                 name: '我的收藏',
                 icon: 'shoucang',
-                url: ''
+                url: '../history/history?type=collection'
             },
             {
                 name: '我的发起',
