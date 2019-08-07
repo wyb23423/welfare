@@ -28,7 +28,7 @@ Page({
             {
                 name: '创建活动',
                 icon: 'chuangjianhuodong',
-                url: ''
+                url: '/pages/activity/create/create'
             },
             {
                 name: '商品上架',

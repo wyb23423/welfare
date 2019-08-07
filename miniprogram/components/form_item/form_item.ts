@@ -1,6 +1,6 @@
-import { Rule } from "../components/form/form";
+import { Rule } from "../form/form";
 
-export interface InputBehavior extends WxComponent {
+export interface FormItem extends WxComponent {
     valid(value: string | number): Promise<true>;
     _required(value: string | number, rule: Rule): boolean;
     _len(value: string | number, rule: Rule): boolean;
@@ -9,9 +9,10 @@ export interface InputBehavior extends WxComponent {
     _getValue(value: string): string | number;
 }
 
-export default Behavior<InputBehavior>({
+Component<FormItem>({
+    externalClasses: ['custom-class', 'label-class'],
     properties: {
-        lable: {
+        label: {
             type: String,
             value: ''
         },
@@ -19,25 +20,15 @@ export default Behavior<InputBehavior>({
             type: String,
             value: 'auto'
         },
-        value: {
-            type: String,
-            value: '',
-            optionalTypes: [Number]
-        },
-        placeholder: {
+        prop: {
             type: String,
             value: ''
         },
-        disabled: {
-            type: Boolean,
-            value: false
-        },
-        // 检测规则
         rules: {
             type: Array,
-            value: []
+            value: [],
+            optionalTypes: [Object]
         },
-        // 是否必须
         required: {
             type: Boolean,
             value: false
@@ -45,24 +36,45 @@ export default Behavior<InputBehavior>({
     },
     data: {
         errMsg: '',
-        currType: 'text'
+        isRequired: false
     },
     attached() {
+        const rules = this.data.rules;
+        if (!Array.isArray(rules)) {
+            this.data.rules = [rules];
+        }
+
         this.setData({
             isRequired: this.data.required || this.data.rules.some((v: Rule) => !!v.required)
         });
     },
+    relations: {
+        '../form/form': {
+            type: 'parent',
+            linked(target) {
+                if (this.data.labelwidth !== 'auto') {
+                    const parentLabelWidth: string = target.data.labelwidth;
+                    if (parentLabelWidth) {
+                        if (parentLabelWidth === 'auto') {
+                            this.createSelectorQuery()
+                                .select('#label')
+                                .boundingClientRect(rect => {
+                                    if (rect.width > target.data.labelWidth) {
+                                        target.setData!({ labelWidth: rect.width });
+                                    } else {
+                                        this.setData!({ labelwidth: this.data.labelWidth + 'px' });
+                                    }
+                                });
+                        } else {
+                            this.setData!({ labelwidth: parentLabelWidth });
+                        }
+                    }
+                }
+
+            }
+        }
+    },
     methods: {
-        onInput(e: BaseEvent) {
-            const value = this._getValue(e.detail.value);
-            this.valid(value).catch(console.log);
-            this.triggerEvent('input', { value }, {});
-        },
-        onConfirm(e: BaseEvent) {
-            this.triggerEvent('confirm', {
-                value: this._getValue(e.detail.value)
-            }, {});
-        },
         // 检测内容是否有效
         async valid(value: string | number): Promise<true> {
             const rules: Rule[] = this.data.rules;
@@ -95,7 +107,7 @@ export default Behavior<InputBehavior>({
         // 检测必需性
         _required(value: string | number, rule: Rule): boolean {
             if ((rule.required || this.data.required) && (value == null || value === '')) {
-                this.data.errMsg = rule.required && rule.message ? rule.message : `${this.data.lable}不能为空`;
+                this.data.errMsg = rule.required && rule.message ? rule.message : `${this.data.label}不能为空`;
                 return false;
             }
 
@@ -107,7 +119,7 @@ export default Behavior<InputBehavior>({
             const max = rule.max == null ? Number.MAX_VALUE : rule.max;
 
             const v: string | number = typeof value === 'number' ? value : value.length;
-            const main = `${this.data.lable}${typeof value === 'string' ? '的长度' : ''}`;
+            const main = `${this.data.label}${typeof value === 'string' ? '的长度' : ''}`;
             if (v < min) {
                 this.data.errMsg = rule.message || `${main}不能小于${min}`;
                 return false;
@@ -124,7 +136,7 @@ export default Behavior<InputBehavior>({
             if (value != null && value !== '' && rule.regexp) {
                 const exp = new RegExp(rule.regexp);
                 if (!exp.test(value + '')) {
-                    this.data.errMsg = rule.message || `${this.data.lable}不满足正则${rule.regexp}`;
+                    this.data.errMsg = rule.message || `${this.data.label}不满足正则${rule.regexp}`;
                     return false;
                 }
             }
@@ -142,7 +154,7 @@ export default Behavior<InputBehavior>({
                         }
 
                         if (result === false) {
-                            this.data.errMsg = `${this.data.lable}无效`;
+                            this.data.errMsg = `${this.data.label}无效`;
                             return resolve(false);
                         }
 
@@ -159,13 +171,17 @@ export default Behavior<InputBehavior>({
                     resolve(true);
                 }
             })
-        },
-        _getValue(value: string) {
-            if (this.data.currType !== 'text' && value !== '') {
-                return +value;
+        }
+    },
+    observers: {
+        rules(val: Rule[] | Rule) {
+            if (!Array.isArray(val)) {
+                val = [val];
             }
 
-            return value;
+            this.setData({
+                isRequired: this.data.required || val.some((v: Rule) => !!v.required)
+            });
         }
     }
-})
+});

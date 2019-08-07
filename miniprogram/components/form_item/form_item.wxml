@@ -1,0 +1,12 @@
+<view class="box custom-class">
+    <label style="width: {{labelwidth}};" class="label label-class" id="label">
+        <text style="color: #e00" wx:if="{{isRequired && !!label}}">*</text>
+        {{label}}
+    </label>
+    <view class="input_box">
+        <view class="input {{errMsg ? 'error' : ''}}">
+            <slot></slot>
+        </view>
+        <view wx:if="{{!!errMsg}}" class="error_text">{{errMsg}}</view>
+    </view>
+</view>

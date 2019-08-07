@@ -1,0 +1,36 @@
+.box {
+    font-size: 24rpx;
+    width: 100%;
+}
+.input {
+    border: 2rpx solid #ccc;
+    padding: 6rpx 12rpx;
+}
+
+.input textarea {
+    width: 100%;
+}
+
+.label {
+    padding-right: 20rpx;
+    padding-bottom: 40rpx;
+    vertical-align: middle;
+    font-size: 28rpx;
+    text-align: right;
+}
+.error {
+    border-color: #e00;
+}
+.error_text {
+    color: #e00;
+    align-items: middle;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.input_box {
+    flex-grow: 1;
+    padding-top: 10rpx;
+    padding-bottom: 40rpx;
+    position: relative;
+}
