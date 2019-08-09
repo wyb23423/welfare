@@ -1,0 +1,7 @@
+<view class="flex-container img" bind:tap="choose">
+    <view wx:if="{{!value}}" style="color: rgba(0, 0, 0, 0.64);text-align: center">
+        <view class="iconfont icon-shangchuan" style="font-size: 120rpx"></view>
+        <view style="font-size: 36rpx;">上传图片</view>
+    </view>
+    <image src="{{value}}" wx:else mode="aspectFill" style="width: 100%;"></image>
+</view>

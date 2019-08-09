@@ -20,6 +20,7 @@ interface IRange extends WxComponent {
     data: IRangeData;
     switchPicker(): void;
     ok(): void;
+    _fillValue(value?: number[]): number[];
 }
 
 Component<IRange, IRangeData>({
@@ -49,7 +50,7 @@ Component<IRange, IRangeData>({
         layoutData: []
     },
     attached() {
-        this.setData({ progress: 0 });
+        this.triggerEvent('input', { value: (<IRange>this)._fillValue() }, {});
         wx.getSystemInfo({ success: res => this.data.px2rpxRatio = 750 / res.windowWidth });
     },
     methods: {
@@ -96,7 +97,7 @@ Component<IRange, IRangeData>({
                 this.setData({ progress: 1 });
             }
 
-            this.triggerEvent('input', value, {});
+            this.triggerEvent('input', { value }, {});
         },
         scroll(e: BaseEvent): false | void {
             if (this.data.setTop) {
@@ -117,6 +118,14 @@ Component<IRange, IRangeData>({
                     [`selectedIndex[${index}]`]: itemIndex
                 });
             }
+        },
+        _fillValue(value?: number[]) {
+            value = (value || this.data.value).filter(v => !!v);
+            while (value.length < 2) {
+                value.push(Date.now());
+            }
+
+            return value.sort((a, b) => a - b);
         }
     },
     observers: {
@@ -132,18 +141,14 @@ Component<IRange, IRangeData>({
             }, 100);
         },
         'value.**, progress, layout': function (value: number[], progress: number, layout: string) {
-            value = value.filter(v => !!v);
-            while (value.length < 2) {
-                value.push(Date.now());
-            }
-            this.data.value = value = value.sort((a, b) => a - b);
+            this.data.value = value = this._fillValue(value);
 
             const date = value.map(v => formatTime(layout, v));
             const layoutData = getLayoutData(layout, value[progress]);
 
             this.setData({
                 date, layoutData,
-                selectedIndex: calcSelIndex(layoutData, this.data.value[this.data.progress])
+                selectedIndex: calcSelIndex(layoutData, value[progress])
             });
         }
     }

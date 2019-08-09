@@ -1,16 +1,16 @@
 import { Rule } from "../form/form";
 
 export interface FormItem extends WxComponent {
-    valid(value: string | number): Promise<true>;
-    _required(value: string | number, rule: Rule): boolean;
-    _len(value: string | number, rule: Rule): boolean;
-    _exec(value: string | number, rule: Rule): boolean;
-    _func(value: string | number, rule: Rule): Promise<boolean>;
-    _getValue(value: string): string | number;
+    valid(value: any): Promise<true>;
+    _required(value: any, rule: Rule): boolean;
+    _len(value: any, rule: Rule): boolean;
+    _exec(value: any, rule: Rule): boolean;
+    _func(value: any, rule: Rule): Promise<boolean>;
+    _getValue(value: string): any;
 }
 
 Component<FormItem>({
-    externalClasses: ['custom-class', 'label-class'],
+    externalClasses: ['custom-class', 'label-class', 'input-class', 'msg-class'],
     properties: {
         label: {
             type: String,
@@ -76,7 +76,7 @@ Component<FormItem>({
     },
     methods: {
         // 检测内容是否有效
-        async valid(value: string | number): Promise<true> {
+        async valid(value: any): Promise<true> {
             const rules: Rule[] = this.data.rules;
 
             let hasRquired: boolean = false;
@@ -105,20 +105,26 @@ Component<FormItem>({
             return true;
         },
         // 检测必需性
-        _required(value: string | number, rule: Rule): boolean {
-            if ((rule.required || this.data.required) && (value == null || value === '')) {
-                this.data.errMsg = rule.required && rule.message ? rule.message : `${this.data.label}不能为空`;
+        _required(value: any, rule: Rule): boolean {
+            if (
+                (rule.required || this.data.required)
+                && (
+                    value == null
+                    || typeof value !== 'number' && !Object.keys(value).length
+                )
+            ) {
+                this.data.errMsg = rule.required && rule.message ? rule.message : `${this.data.label || '必填项'}不能为空`;
                 return false;
             }
 
             return true;
         },
         // 检测值或值长度的范围
-        _len(value: string | number, rule: Rule): boolean {
+        _len(value: any, rule: Rule): boolean {
             const min = rule.min == null ? -Number.MAX_VALUE : rule.min;
             const max = rule.max == null ? Number.MAX_VALUE : rule.max;
 
-            const v: string | number = typeof value === 'number' ? value : value.length;
+            const v: any = typeof value === 'number' ? value : Object.keys(value).length;
             const main = `${this.data.label}${typeof value === 'string' ? '的长度' : ''}`;
             if (v < min) {
                 this.data.errMsg = rule.message || `${main}不能小于${min}`;
@@ -132,7 +138,7 @@ Component<FormItem>({
             return true;
         },
         // 根据正则检测
-        _exec(value: string | number, rule: Rule): boolean {
+        _exec(value: any, rule: Rule): boolean {
             if (value != null && value !== '' && rule.regexp) {
                 const exp = new RegExp(rule.regexp);
                 if (!exp.test(value + '')) {
@@ -144,7 +150,7 @@ Component<FormItem>({
             return true;
         },
         // 使用检测函数
-        _func(value: string | number, rule: Rule): Promise<boolean> {
+        _func(value: any, rule: Rule): Promise<boolean> {
             return new Promise((resolve) => {
                 if (rule.func) {
                     const fn = (result: string | boolean | void) => {

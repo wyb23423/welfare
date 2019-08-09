@@ -10,7 +10,7 @@ export type Rule = {
 };
 
 export interface Form extends WxComponent {
-    valid(): Promise<true>,
+    valid(...keys: string[]): Promise<true>,
     reset(): void;
 }
 
@@ -47,7 +47,7 @@ Component<Form>(({
         '../form_item/form_item': {
             type: 'child',
             linked(target) {
-                this.data.fileds[target.data.prop || this.data.id++] = target;
+                this.data.fileds[target.data.prop || '__default__'] = target;
 
                 const rules = this.data.rules[target.data.prop];
                 if (rules) {
@@ -61,7 +61,7 @@ Component<Form>(({
                 }
             },
             unlinked(target) {
-                delete this.data.fileds[target.id];
+                delete this.data.fileds[target.data.prop];
             }
         }
     },
@@ -73,11 +73,19 @@ Component<Form>(({
         }
     },
     methods: {
-        valid() {
-            const arr = (<FormItem[]>Object.values(this.data.fileds))
-                .map(v => v.valid(this.data.model[v.data.prop]));
+        valid(...keys: string[]) {
+            if (keys.length === 0) {
+                keys = Object.keys(this.data.fileds);
+            }
 
-            return Promise.all(arr);
+            return Promise.all(keys.map(k => {
+                const filed: FormItem = this.data.fileds[k];
+                if (filed) {
+                    return filed.valid(this.data.model[filed.data.prop]);
+                }
+
+                return true;
+            }));
         },
         reset() {
             (<FormItem[]>Object.values(this.data.fileds)).forEach(v => v.setData!({ errMsg: '' }));

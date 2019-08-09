@@ -1,7 +1,5 @@
 .submit {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+    margin-top: 30rpx;
     height: 90rpx;
     background: rgb(0, 150, 136);
     color: #fff;
@@ -10,4 +8,22 @@
 
 .form {
     padding: 0 30rpx;
+    position: relative;
+}
+
+.no-border {
+    border: none !important;
+}
+
+.radio {
+    transform: scale(0.6);
+}
+
+.img-msg-class {
+    padding-left: 30rpx;
+}
+
+.img {
+    padding: 20rpx !important;
+    border-style: solid none !important;
 }

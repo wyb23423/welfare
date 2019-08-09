@@ -10,12 +10,15 @@ Page({
             intro: '',
             details: '',
             size: '',
-            start: '',
-            end: '',
+            time: [],
             location: '',
-            type: 0
+            type: 0,
+            img: ''
         },
-        img: '',
+        timeRule: {
+            min: 2,
+            message: '活动时间需选择两个时间点'
+        }
     },
     onInput(e: BaseEvent) {
         let value = e.detail.value;
@@ -24,8 +27,13 @@ Page({
             value = value === '' ? value : +value;
         }
         this.setData!({ [`form.${name}`]: value });
+        (<Form>this.selectComponent!('#form'))
+            .valid(name)
+            .catch(console.log)
     },
     onSubmit() {
-        (<Form>this.selectComponent!('#form')).valid().catch(console.log)
+        (<Form>this.selectComponent!('#form')).valid()
+            .then(() => console.log(this.data.form))
+            .catch(console.log)
     }
 });

@@ -1,20 +1,44 @@
 <view>
-    <app-form model="{{form}}" id="form" custom-class="form">
-        <app-form-item prop="name" label="活动名称" required="true">
-            <input id="name" value="{{form.name}}" bindinput="onInput" />
+    <app-form model="{{form}}" id="form">
+        <app-form-item prop="img" required input-class="img" msg-class="img-msg-class">
+            <upload id="img" value="{{form.img}}" bind:input="onInput"></upload>
         </app-form-item>
-        <app-form-item prop="intro" label="活动简介" required="true">
-            <input id="intro" value="{{form.intro}}" bindinput="onInput" />
-        </app-form-item>
-        <app-form-item prop="details" label="活动详情" required="true">
-            <textarea id="details" value="{{form.details}}" bindinput="onInput"></textarea>
-        </app-form-item>
-        <app-form-item prop="size" label="活动人数" required="true">
-            <input id="size" value="{{form.size}}" bindinput="onInput" />
-        </app-form-item>
-        <app-form-item prop="start" label="开始时间" required="true">
-            <datetimerange></datetimerange>
-        </app-form-item>
+        <view class="form">
+            <app-form-item prop="name" label="活动名称" required>
+                <input id="name" value="{{form.name}}" bindinput="onInput" />
+            </app-form-item>
+            <app-form-item prop="intro" label="活动简介" required>
+                <input id="intro" value="{{form.intro}}" bindinput="onInput" />
+            </app-form-item>
+            <app-form-item prop="details" label="活动详情" required>
+                <textarea id="details" value="{{form.details}}" bindinput="onInput"></textarea>
+            </app-form-item>
+            <app-form-item prop="size" label="活动人数" required>
+                <input id="size" value="{{form.size}}" type="number" bindinput="onInput" />
+            </app-form-item>
+            <app-form-item prop="time" label="活动时间" rules="{{[timeRule]}}" required>
+                <datetimerange id="time" value="{{form.time}}" bindinput="onInput"></datetimerange>
+            </app-form-item>
+            <app-form-item prop="location" label="活动地点" required>
+                <input id="location" value="{{form.location}}" bindinput="onInput" />
+            </app-form-item>
+            <app-form-item prop="type" label="活动类型" required input-class="no-border" custom-class="flex-container">
+                <radio-group id="type" bindchange="onInput">
+                    <label>
+                        <radio value="0" checked="{{form.type === 0}}" class="radio" />
+                        <text>创建人付费</text>
+                    </label>
+                    <label>
+                        <radio value="1" checked="{{form.type === 1}}" class="radio" />
+                        <text>参加人付费</text>
+                    </label>
+                    <label>
+                        <radio value="2" checked="{{form.type === 2}}" class="radio" />
+                        <text>免费</text>
+                    </label>
+                </radio-group>
+            </app-form-item>
+        </view>
     </app-form>
     <button class="submit" bind:tap="onSubmit">创建活动</button>
 </view>
