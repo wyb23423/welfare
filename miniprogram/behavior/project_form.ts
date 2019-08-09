@@ -8,7 +8,7 @@ interface ProjectForm extends WxComponent {
         formEl?: Form | null,
         form: IAnyObject
     },
-    _submit(): void;
+    _submit(): Promise<true> | void;
     _parseValue(value: string, name: string): any;
 }
 
