@@ -1,0 +1,22 @@
+<view>
+    <app-form model="{{form}}" id="form">
+        <app-form-item prop="img" required input-class="img" msg-class="img-msg-class">
+            <upload id="img" value="{{form.img}}" bind:input="onInput"></upload>
+        </app-form-item>
+        <view class="form">
+            <app-form-item prop="name" label="店铺名称" required>
+                <input id="name" value="{{form.name}}" bindinput="onInput" />
+            </app-form-item>
+            <app-form-item prop="tel" label="电话号码" required rules="{{[telRule]}}">
+                <input id="tel" value="{{form.tel}}" bindinput="onInput" />
+            </app-form-item>
+            <app-form-item prop="details" label="店铺介绍" required>
+                <textarea id="details" value="{{form.details}}" bindinput="onInput"></textarea>
+            </app-form-item>
+            <app-form-item prop="location" label="活动地点" required>
+                <input id="location" value="{{form.location}}" bindinput="onInput" />
+            </app-form-item>
+        </view>
+    </app-form>
+    <button class="submit" bind:tap="onSubmit">申请入驻</button>
+</view>

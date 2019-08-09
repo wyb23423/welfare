@@ -11,6 +11,7 @@
     "pages/person/history/history",
     "pages/person/follow/follow",
     "pages/person/points/points",
+    "pages/person/settled_in/settled_in",
     "pages/person/points/details/details",
     "pages/comment/comment"
   ],

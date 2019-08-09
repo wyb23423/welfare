@@ -26,7 +26,6 @@ export default Behavior<ProjectForm>({
                     .valid(name)
                     .catch(console.log)
             }
-
         },
         onSubmit() {
             if (this.data.formEl) {

@@ -23,7 +23,7 @@ Page({
             {
                 name: '入驻商家',
                 icon: 'shangjiarenzheng',
-                url: ''
+                url: '/pages/person/settled_in/settled_in'
             },
             {
                 name: '创建活动',
