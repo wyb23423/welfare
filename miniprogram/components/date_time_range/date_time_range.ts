@@ -26,7 +26,7 @@ Component<IRange, IRangeData>({
     properties: {
         value: {
             type: Array,
-            value: [Date.now(), Date.now()]
+            value: []
         },
         layout: {
             type: String,
@@ -49,7 +49,7 @@ Component<IRange, IRangeData>({
         layoutData: []
     },
     attached() {
-        this.setData({ value: (<number[]>this.data.value).filter(v => !!v).sort((a, b) => a - b) });
+        this.setData({ progress: 0 });
         wx.getSystemInfo({ success: res => this.data.px2rpxRatio = 750 / res.windowWidth });
     },
     methods: {
@@ -132,12 +132,14 @@ Component<IRange, IRangeData>({
             }, 100);
         },
         'value.**, progress, layout': function (value: number[], progress: number, layout: string) {
-            let date: string[] = [];
-            let layoutData: string[][] = [];
-            if (Array.isArray(value)) {
-                date = value.map(v => formatTime(layout, v));
-                layoutData = getLayoutData(layout, value[progress]);
+            value = value.filter(v => !!v);
+            while (value.length < 2) {
+                value.push(Date.now());
             }
+            this.data.value = value = value.sort((a, b) => a - b);
+
+            const date = value.map(v => formatTime(layout, v));
+            const layoutData = getLayoutData(layout, value[progress]);
 
             this.setData({
                 date, layoutData,
