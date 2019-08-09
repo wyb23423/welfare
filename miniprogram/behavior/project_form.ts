@@ -30,7 +30,7 @@ export default Behavior<ProjectForm>({
         onSubmit() {
             if (this.data.formEl) {
                 this.data.formEl.valid()
-                    .then(() => this._submit())
+                    .then(() => this._submit() || true)
                     .catch(console.log)
             } else {
                 this._submit();
