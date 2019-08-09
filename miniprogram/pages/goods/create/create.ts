@@ -1,5 +1,5 @@
 /**
- * 创建活动
+ * 商品上架
  */
 import ProjectFormBehavior from '../../../behavior/project_form';
 

@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "app-form": "/components/form/form",
+        "app-form-item": "/components/form_item/form_item"
+    },
+    "navigationBarTitleText": "活动报名"
+}
