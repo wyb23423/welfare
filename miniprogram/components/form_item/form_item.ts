@@ -111,6 +111,7 @@ Component<FormItem>({
                 && (
                     value == null
                     || typeof value !== 'number' && !Object.keys(value).length
+                    || value !== value
                 )
             ) {
                 this.data.errMsg = rule.required && rule.message ? rule.message : `${this.data.label || '必填项'}不能为空`;
