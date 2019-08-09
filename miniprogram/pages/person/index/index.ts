@@ -33,7 +33,7 @@ Page({
             {
                 name: '商品上架',
                 icon: 'shangjia',
-                url: ''
+                url: '/pages/goods/create/create'
             },
             {
                 name: '我的订单',

@@ -1,0 +1,25 @@
+<view>
+    <app-form model="{{form}}" id="form">
+        <app-form-item prop="img" required input-class="img" msg-class="img-msg-class">
+            <upload id="img" value="{{form.img}}" bind:input="onInput"></upload>
+        </app-form-item>
+        <view class="form">
+            <app-form-item prop="name" label="商品名称" required>
+                <input id="name" value="{{form.name}}" bindinput="onInput" />
+            </app-form-item>
+            <app-form-item prop="grade" label="商品积分" required>
+                <input id="grade" value="{{form.grade}}" type="number" bindinput="onInput" />
+            </app-form-item>
+            <app-form-item prop="details" label="商品详情" required>
+                <textarea id="details" value="{{form.details}}" bindinput="onInput"></textarea>
+            </app-form-item>
+            <app-form-item prop="award" label="信用积分" required>
+                <input id="award" value="{{form.award}}" type="number" bindinput="onInput" />
+            </app-form-item>
+            <app-form-item prop="time" label="兑换时间" rules="{{[timeRule]}}" required>
+                <datetimerange id="time" value="{{form.time}}" bindinput="onInput"></datetimerange>
+            </app-form-item>
+        </view>
+    </app-form>
+    <button class="submit" bind:tap="onSubmit">创建活动</button>
+</view>

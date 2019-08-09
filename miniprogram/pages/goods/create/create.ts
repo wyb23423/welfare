@@ -8,22 +8,20 @@ Component({
     data: {
         form: {
             name: '',
-            intro: '',
+            grade: '',
+            award: '',
             details: '',
-            size: '',
             time: [],
-            location: '',
-            type: 0,
             img: ''
         },
         timeRule: {
             min: 2,
-            message: '活动时间需选择两个时间点'
+            message: '兑换时间需选择两个时间点'
         }
     },
     methods: {
         _parseValue(value: string, name: string) {
-            if (name === 'type' || name === 'size') {
+            if (name === 'grade' || name === 'award') {
                 return isNaN(+value) ? '' : +value;
             }
 
