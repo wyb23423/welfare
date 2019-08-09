@@ -1,7 +1,8 @@
 {
     "usingComponents": {
         "app-form": "/components/form/form",
-        "app-form-item": "/components/form_item/form_item"
+        "app-form-item": "/components/form_item/form_item",
+        "datetimerange": "/components/date_time_range/date_time_range"
     },
     "navigationBarTitleText": "创建活动"
 }

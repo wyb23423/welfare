@@ -12,6 +12,9 @@
         <app-form-item prop="size" label="活动人数" required="true">
             <input id="size" value="{{form.size}}" bindinput="onInput" />
         </app-form-item>
+        <app-form-item prop="start" label="开始时间" required="true">
+            <datetimerange></datetimerange>
+        </app-form-item>
     </app-form>
     <button class="submit" bind:tap="onSubmit">创建活动</button>
 </view>

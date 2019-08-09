@@ -10,11 +10,12 @@ Page({
             intro: '',
             details: '',
             size: '',
-            time: '',
+            start: '',
+            end: '',
             location: '',
             type: 0
         },
-        img: ''
+        img: '',
     },
     onInput(e: BaseEvent) {
         let value = e.detail.value;
