@@ -51,6 +51,6 @@
             <text class="iconfont icon-fenxiang"></text>
             <text>分享</text>
         </button>
-        <navigator class="submit">立即报名</navigator>
+        <navigator class="submit" url="/pages/sign/sign?id={{id}}">立即报名</navigator>
     </view>
 </view>

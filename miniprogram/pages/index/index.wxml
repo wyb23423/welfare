@@ -14,10 +14,12 @@
   <view class="main">
     <view class="title">
       <text class="title_text">积分兑换</text>
-      <navigator class="title_more" url="/pages/goods/list/list">更多商品></navigator>
+      <navigator class="title_more" open-type="switchTab" url="/pages/goods/list/list">
+        更多商品>
+      </navigator>
     </view>
-    <navigator wx:for="{{goods}}" wx:key="{{item.id}}" style="padding:0 10rpx">
+    <view wx:for="{{goods}}" wx:key="{{item.id}}" style="padding:0 10rpx">
       <template is="goods_item" data="{{...item}}"></template>
-    </navigator>
+    </view>
   </view>
 </view>
