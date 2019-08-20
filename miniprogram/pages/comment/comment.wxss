@@ -45,3 +45,7 @@
     color: #fff;
     font-size: 32rpx;
 }
+
+.icon-xing {
+    transition: color .4s ease;
+}
