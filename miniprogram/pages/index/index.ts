@@ -1,42 +1,48 @@
 /**
  * 首页
  */
-
 import * as listFunc from "../../template/list_item/list_item";
+import { HOST, AUTHENTICATION } from "../../constant";
 
 Page({
   data: {
-    activity: [] as IAnyObject[],
-    goods: [] as IAnyObject[]
+    activity: [] as IActive[],
+    goods: [] as ICommodity[]
   },
   // ==============================事件
   ...listFunc,
   // =============================生命周期
   onLoad() {
-    const activity = [];
-    const goods = [];
-    for (let i = 1; i < 3; i++) {
-      activity.push({
-        id: i,
-        img: '/public/images/23.jpg',
-        title: '有爱的我们不孤独——自闭症儿童义诊系列活动__' + i,
-        authentication: '社区认证',
-        sign: 11,
-        size: 24
-      });
+    wx.request({
+      url: HOST + '/api/activity/pagingQuery',
+      data: {
+        currentPage: 1,
+        pageSize: 2
+      },
+      success: (res) => {
+        const { data: { list } } = <RespoensData<PageData<IActive>>>res.data;
+        this.setData!({ activity: list.map(this._parseData) });
+      }
+    });
 
-      goods.push({
-        id: i,
-        img: '/public/images/23.jpg',
-        title: '少儿基础篮球培训课1节',
-        authentication: '社区认证',
-        sign: 11,
-        size: 24,
-        cost: 50 + i * 40,
-        isCollected: i > 1
-      });
-    };
+    wx.request({
+      url: HOST + '/api/commodity/pagingQuery',
+      data: {
+        currentPage: 1,
+        pageSize: 2
+      },
+      success: (res) => {
+        const { data: { list } } = <RespoensData<PageData<ICommodity>>>res.data;
+        this.setData!({ goods: list.map(this._parseData) });
+      }
+    });
+  },
 
-    this.setData!({ activity, goods });
+  // =============================================
+  _parseData(v: ICommodity | IActive) {
+    v.authentication = Reflect.get(AUTHENTICATION, v.authentication) || '未认证';
+    v.img = '/public/images/23.jpg';
+
+    return v;
   }
-})
+});

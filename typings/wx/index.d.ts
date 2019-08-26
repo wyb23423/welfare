@@ -16,6 +16,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 /// <reference path="./lib.wx.behavior.d.ts" />
 /// <reference path="./lib.wx.computed.d.ts" />
 /// <reference path="./lib.wx.event.d.ts" />
+/// <reference path="../datas.d.ts" />
 
 declare type IAnyObject = Record<string, any>
 

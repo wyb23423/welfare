@@ -1,9 +1,3 @@
-interface IActive {
-    img: string;
-    title: string;
-    authentication: string;
-    id: number;
-}
 interface CommentData {
     id: number;
     active: number;
