@@ -13,7 +13,6 @@ Component({
             size: '',
             time: [],
             location: '',
-            type: 0,
             img: ''
         },
         timeRule: {

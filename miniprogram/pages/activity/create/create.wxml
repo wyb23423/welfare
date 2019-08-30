@@ -22,22 +22,6 @@
             <app-form-item prop="location" label="活动地点" required>
                 <input id="location" value="{{form.location}}" bindinput="onInput" />
             </app-form-item>
-            <app-form-item prop="type" label="活动类型" required input-class="no-border" custom-class="flex-container">
-                <radio-group id="type" bindchange="onInput">
-                    <label>
-                        <radio value="0" checked="{{form.type === 0}}" class="radio" />
-                        <text>创建人付费</text>
-                    </label>
-                    <label>
-                        <radio value="1" checked="{{form.type === 1}}" class="radio" />
-                        <text>参加人付费</text>
-                    </label>
-                    <label>
-                        <radio value="2" checked="{{form.type === 2}}" class="radio" />
-                        <text>免费</text>
-                    </label>
-                </radio-group>
-            </app-form-item>
         </view>
     </app-form>
     <button class="submit" bind:tap="onSubmit">创建活动</button>
