@@ -1,47 +1,50 @@
 /**
  * 兑换商品
  */
-import * as listFunc from "../../../template/list_item/list_item";
+import * as listFunc from '../../../template/list_item/list_item';
+import { HOST, parseData } from '../../../constant';
 
 Page({
     data: {
-        goods: [] as IAnyObject[]
+        goods: [] as ICommodity[],
+        hasMore: true
     },
     // ==============================事件
     ...listFunc,
     getMore() {
-        for (let i = 1; i < 10; i++) {
-            this.data.goods.push({
-                id: i,
-                img: '/public/images/23.jpg',
-                title: '少儿基础篮球培训课1节',
-                authentication: '社区认证',
-                sign: 11,
-                size: 24,
-                cost: 50 + i * 40,
-                isCollected: i > 1
-            });
-        };
-
-        this.setData!({ goods: this.data.goods });
+        this._getPageData()
+            .then(({ list, total }) => {
+                const goods = list.concat(this.data.goods);
+                this.setData!({
+                    goods,
+                    hasMore: total > goods.length
+                });
+            })
+            .catch(e => console.log(e.statusCode));
     },
 
     // =============================生命周期
     onLoad() {
-        const goods = [];
-        for (let i = 1; i < 10; i++) {
-            goods.push({
-                id: i,
-                img: '/public/images/23.jpg',
-                title: '少儿基础篮球培训课1节',
-                authentication: '社区认证',
-                sign: 11,
-                size: 24,
-                cost: 50 + i * 40,
-                isCollected: i > 1
-            });
-        };
+        this._getPageData()
+            .then(({ list, total }) => this.setData!({ goods: list, hasMore: total > list.length }))
+            .catch(e => console.log(e.statusCode));
+    },
 
-        this.setData!({ goods });
+    // ====================================
+    _getPageData(): Promise<{ list: ICommodity[], total: number }> {
+        return new Promise((resolve, reject) => {
+            wx.request({
+                url: HOST + '/api/commodity/pagingQuery',
+                data: {
+                    currentPage: Math.ceil(this.data.goods.length / 10) + 1,
+                    pageSize: 10
+                },
+                success: (res) => {
+                    const { data: { list, total } } = <RespoensData<PageData<ICommodity>>>res.data;
+                    resolve({ list: <ICommodity[]>list.map(parseData), total });
+                },
+                fail: reject
+            });
+        });
     }
-})
+});

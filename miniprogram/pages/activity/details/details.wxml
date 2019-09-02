@@ -11,11 +11,11 @@
         </view>
         <view class="details_item">
             <text class="iconfont icon-83"></text>
-            <text>{{address}}</text>
+            <text>{{location}}</text>
         </view>
         <view class="details_item">
             <text class="iconfont icon-dollar"></text>
-            <text style="color: #009688">{{money || '免费'}}</text>
+            <text style="color: #009688">{{integral}}</text>
         </view>
     </view>
     <view class="user">

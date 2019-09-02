@@ -14,7 +14,8 @@ App<IMyApp>({
         // console.log(_res.code)
         // 发送 _res.code 到后台换取 openId, sessionKey, unionId
       }
-    })
+    });
+
     // 获取用户信息
     wx.getSetting({
       success: (res) => {

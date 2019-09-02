@@ -1,27 +1,27 @@
 /**
  * 公益活动
  */
-import * as listFunc from "../../../template/list_item/list_item";
+import * as listFunc from '../../../template/list_item/list_item';
+import { HOST, parseData } from '../../../constant';
 
 Page({
     data: {
-        activitys: [] as IAnyObject[]
+        activitys: [] as IActive[],
+        defaultList: <IActive[]>[],
+        hasMore: true
     },
     // ==============================事件
     ...listFunc,
     getMore() {
-        for (let i = 1; i < 10; i++) {
-            this.data.activitys.push({
-                id: i,
-                img: '/public/images/23.jpg',
-                title: '有爱的我们不孤独——自闭症儿童义诊系列活动__' + i,
-                authentication: '社区认证',
-                sign: 11,
-                size: 24
-            });
-        };
-
-        this.setData!({ activitys: this.data.activitys });
+        this._getPageData()
+            .then(({ list, total }) => {
+                const activitys = list.concat(this.data.activitys);
+                this.setData!({
+                    activitys,
+                    hasMore: total > activitys.length
+                });
+            })
+            .catch(e => console.log(e.statusCode));
     },
     search(e: IAnyObject) {
         console.log(e.detail.value);
@@ -29,18 +29,25 @@ Page({
 
     // =============================生命周期
     onLoad() {
-        const activitys = [];
-        for (let i = 1; i < 10; i++) {
-            activitys.push({
-                id: i,
-                img: '/public/images/23.jpg',
-                title: '有爱的我们不孤独——自闭症儿童义诊系列活动__' + i,
-                authentication: '社区认证',
-                sign: 11,
-                size: 24
+        this._getPageData()
+            .then(({ list, total }) => this.setData!({ activitys: list, hasMore: total > list.length }))
+            .catch(e => console.log(e.statusCode));
+    },
+    // =====================================
+    _getPageData(): Promise<{ list: IActive[], total: number }> {
+        return new Promise((resolve, reject) => {
+            wx.request({
+                url: HOST + '/api/activity/pagingQuery',
+                data: {
+                    currentPage: Math.ceil(this.data.activitys.length / 10) + 1,
+                    pageSize: 10
+                },
+                success: (res) => {
+                    const { data: { list, total } } = <RespoensData<PageData<IActive>>>res.data;
+                    resolve({ list: <IActive[]>list.map(parseData), total });
+                },
+                fail: reject
             });
-        };
-
-        this.setData!({ activitys });
+        });
     }
-})
+});

@@ -5,6 +5,6 @@
         <template is="goods_item" data="{{...item}}"></template>
     </navigator>
     <view class="more more_goods">
-        <text bind:tap="getMore" style="cursor: pointer">更多商品></text>
+        <text bind:tap="getMore" style="cursor: pointer" wx:if="{{hasMore}}">更多商品></text>
     </view>
 </view>

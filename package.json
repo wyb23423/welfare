@@ -6,6 +6,7 @@
     "tsc": "node ./node_modules/typescript/lib/tsc.js"
   },
   "devDependencies": {
+    "tslint": "^5.19.0",
     "typescript": "^3.3.3333"
   },
   "dependencies": {}
