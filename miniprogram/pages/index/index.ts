@@ -2,7 +2,8 @@
  * 首页
  */
 import * as listFunc from '../../template/list_item/list_item';
-import { HOST, parseData } from '../../constant';
+import { parseData } from '../../constant';
+import { request } from '../../utils/http';
 
 Page({
   data: {
@@ -13,29 +14,25 @@ Page({
   ...listFunc,
   // =============================生命周期
   onLoad() {
-    wx.request({
-      url: HOST + '/api/activity/pagingQuery',
+    request<PageData<IActive>>({
+      url: '/api/activity/pagingQuery',
       data: {
         currentPage: 1,
         pageSize: 2
-      },
-      success: (res) => {
-        const { data: { list } } = <RespoensData<PageData<IActive>>>res.data;
-        this.setData!({ activity: list.map(parseData) });
       }
-    });
+    })
+      .then(({ data: { list } }) => this.setData!({ activity: list.map(parseData) }))
+      .catch(console.log);
 
-    wx.request({
-      url: HOST + '/api/commodity/pagingQuery',
+    request<PageData<ICommodity>>({
+      url: '/api/commodity/pagingQuery',
       data: {
         currentPage: 1,
         pageSize: 2
-      },
-      success: (res) => {
-        const { data: { list } } = <RespoensData<PageData<ICommodity>>>res.data;
-        this.setData!({ goods: list.map(parseData) });
       }
-    });
+    })
+      .then(({ data: { list } }) => this.setData!({ goods: list.map(parseData) }))
+      .catch(console.log);
   },
 
   // =============================================

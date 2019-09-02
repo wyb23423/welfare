@@ -35,14 +35,14 @@ declare interface IActive extends Base {
     userId: number // 创建者id
 }
 
-declare interface RespoensData<T> {
+declare interface RespoensData<T = any> {
     code: number;
     data: T;
     msg: string;
     ok: boolean;
 }
 
-declare interface PageData<T> {
+declare interface PageData<T = any> {
     list: T[],
     size: number;
     total: number;

@@ -1,16 +1,16 @@
-import { FormItem } from "../form_item/form_item";
+import { FormItem } from '../form_item/form_item';
 
-export type Rule = {
+export interface Rule {
     required?: boolean;
     min?: number;
     max?: number;
     regexp?: string;
     func?: (value: string | number) => string | boolean | void | Promise<string | boolean | void>;
     message?: string;
-};
+}
 
 export interface Form extends WxComponent {
-    valid(...keys: string[]): Promise<true>,
+    valid(...keys: string[]): Promise<true>;
     reset(): void;
 }
 

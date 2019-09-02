@@ -1,4 +1,4 @@
-import { Rule } from "../components/form/form";
+import { Rule } from '../components/form/form';
 
 export interface InputBehavior extends WxComponent {
     valid(value: string | number): Promise<true>;
@@ -147,7 +147,7 @@ export default Behavior<InputBehavior>({
                         }
 
                         resolve(true);
-                    }
+                    };
 
                     const res = rule.func(value);
                     if (res instanceof Promise) {
@@ -158,7 +158,7 @@ export default Behavior<InputBehavior>({
                 } else {
                     resolve(true);
                 }
-            })
+            });
         },
         _getValue(value: string) {
             if (this.data.currType !== 'text' && value !== '') {
@@ -168,4 +168,4 @@ export default Behavior<InputBehavior>({
             return value;
         }
     }
-})
+});

@@ -1,25 +1,25 @@
-//app.ts
+// app.ts
 export interface IMyApp {
-  userInfoReadyCallback?(res: wx.UserInfo): void
   globalData: {
     userInfo: wx.UserInfo
-  }
+  };
+  userInfoReadyCallback?(res: wx.UserInfo): void;
 }
 
 App<IMyApp>({
   onLaunch() {
     // 登录
     wx.login({
-      success(_res) {
-        // console.log(_res.code)
+      success(res) {
+        console.log(res);
         // 发送 _res.code 到后台换取 openId, sessionKey, unionId
       }
     });
 
     // 获取用户信息
     wx.getSetting({
-      success: (res) => {
-        if (res.authSetting['scope.userInfo']) {
+      success: ({ authSetting }) => {
+        if (authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
@@ -28,13 +28,13 @@ App<IMyApp>({
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res.userInfo)
+                this.userInfoReadyCallback(res.userInfo);
               }
             }
-          })
+          });
         }
       }
-    })
+    });
   },
   globalData: {
     userInfo: {
@@ -47,4 +47,4 @@ App<IMyApp>({
       province: '四川'
     }
   }
-})
+});

@@ -2,7 +2,8 @@
  * 公益活动
  */
 import * as listFunc from '../../../template/list_item/list_item';
-import { HOST, parseData } from '../../../constant';
+import { parseData } from '../../../constant';
+import { request } from '../../../utils/http';
 
 Page({
     data: {
@@ -21,7 +22,7 @@ Page({
                     hasMore: total > activitys.length
                 });
             })
-            .catch(e => console.log(e.statusCode));
+            .catch(e => console.log(e.errMsg));
     },
     search(e: IAnyObject) {
         console.log(e.detail.value);
@@ -31,23 +32,22 @@ Page({
     onLoad() {
         this._getPageData()
             .then(({ list, total }) => this.setData!({ activitys: list, hasMore: total > list.length }))
-            .catch(e => console.log(e.statusCode));
+            .catch(e => console.log(e.errMsg));
     },
     // =====================================
     _getPageData(): Promise<{ list: IActive[], total: number }> {
-        return new Promise((resolve, reject) => {
-            wx.request({
-                url: HOST + '/api/activity/pagingQuery',
-                data: {
-                    currentPage: Math.ceil(this.data.activitys.length / 10) + 1,
-                    pageSize: 10
-                },
-                success: (res) => {
-                    const { data: { list, total } } = <RespoensData<PageData<IActive>>>res.data;
-                    resolve({ list: <IActive[]>list.map(parseData), total });
-                },
-                fail: reject
-            });
-        });
+        return Promise.resolve()
+            .then(() => (
+                request<PageData<IActive>>({
+                    url: '/api/activity/pagingQuery',
+                    data: {
+                        currentPage: Math.ceil(this.data.activitys.length / 10) + 1,
+                        pageSize: 10
+                    }
+                })
+            ))
+            .then(({ data: { list, total } }) => (
+                { list: <IActive[]>list.map(parseData), total }
+            ));
     }
 });
