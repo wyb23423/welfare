@@ -5,15 +5,15 @@
         <text class="iconfont icon-jiantou right"></text>
     </navigator>
     <view class="details_item menu flex-container history">
-        <navigator class="flex-center-v" hover-class="none" url="../history/history?type=toStayIn">
+        <navigator class="flex-center-v" hover-class="none" url="../history/history?type=await">
             <text class="iconfont icon-wendang"></text>
             <text>待参加</text>
         </navigator>
-        <navigator class="flex-center-v" hover-class="none" url="../history/history?type=toAudit">
+        <navigator class="flex-center-v" hover-class="none" url="../history/history?type=auditing">
             <text class="iconfont icon-daishenhe"></text>
             <text>待审核</text>
         </navigator>
-        <navigator class="flex-center-v" hover-class="none" url="../history/history?type=haveToAttend">
+        <navigator class="flex-center-v" hover-class="none" url="../history/history?type=complete">
             <text class="iconfont icon-yiwancheng"></text>
             <text>已参加</text>
         </navigator>

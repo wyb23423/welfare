@@ -1,7 +1,7 @@
 /**
  * 个人信息页顶部头像及名称
  */
-import { IMyApp } from "../../app";
+import { IMyApp } from '../../app';
 
 const app = <IMyApp>getApp();
 
@@ -23,4 +23,4 @@ Component({
             img: userInfo.avatarUrl
         });
     }
-})
+});

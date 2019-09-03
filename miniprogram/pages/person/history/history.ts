@@ -1,27 +1,24 @@
+import { request } from '../../../utils/http';
+import { IMyApp } from '../../../app';
+import { parseData } from '../../../constant';
+
+type HistoryType = '_await' | '_auditing' | '_complete';
+
 Page({
     data: {
-        history: [] as IAnyObject[],
+        history: [] as IActive[],
         type: ''
     },
     onLoad(query: IAnyObject) {
-        const activitys = [];
-        for (let i = 1; i < 10; i++) {
-            activitys.push({
-                id: i,
-                img: '/public/images/23.jpg',
-                title: '有爱的我们不孤独——自闭症儿童义诊系列活动__' + i,
-                authentication: '认证',
-                sign: Math.round(Math.random() * 10) + 1,
-                size: Math.round(Math.random() * 20) + 11,
-                review: Math.random() < 0.5
-            });
-        };
-        this.setData!({ type: query.type, history: activitys });
+        this.data.type = query.type;
+
+        const type = <HistoryType>`_${query.type}`;
+        this[type] && this[type]();
 
         const titles: any = {
-            toStayIn: '待参加',
-            toAudit: '待审核',
-            haveToAttend: '已参加',
+            await: '待参加',
+            auditing: '待审核',
+            complete: '已参加',
             toEvaluate: '待评价',
             initiate: '我的发起',
             collection: '我的收藏'
@@ -39,9 +36,28 @@ Page({
                     console.log(id);
                 }
             }
-        })
+        });
     },
     none() {
         //
+    },
+
+    // ==================================
+    _await() {
+        this._request('/api/participation/await');
+    },
+    _auditing() {
+        this._request('/api/participation/auditing');
+    },
+    _complete() {
+        this._request('/api/participation/complete');
+    },
+    _request(url: string) {
+        request<IActive[]>({
+            url,
+            data: { userId: (<IMyApp>getApp()).globalData.userId }
+        })
+            .then(({ data }) => this.setData!({ type: this.data.type, history: data.map(parseData) }))
+            .catch(console.log);
     }
-})
+});

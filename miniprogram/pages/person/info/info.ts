@@ -1,7 +1,7 @@
 /**
  * 修改个人信息
  */
-import { InputBehavior } from "../../../behavior/input";
+import { InputBehavior } from '../../../behavior/input';
 
 Page({
     data: {
@@ -45,4 +45,4 @@ Page({
 
         this.setData!({ 'form.code': '' });
     },
-})
+});

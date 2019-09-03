@@ -1,7 +1,8 @@
 // app.ts
 export interface IMyApp {
   globalData: {
-    userInfo: wx.UserInfo
+    userInfo: wx.UserInfo,
+    userId: number
   };
   userInfoReadyCallback?(res: wx.UserInfo): void;
 }
@@ -45,6 +46,7 @@ App<IMyApp>({
       gender: 2,
       language: 'en',
       province: '四川'
-    }
+    },
+    userId: 1
   }
 });

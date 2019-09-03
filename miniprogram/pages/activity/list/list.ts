@@ -35,19 +35,15 @@ Page({
             .catch(e => console.log(e.errMsg));
     },
     // =====================================
-    _getPageData(): Promise<{ list: IActive[], total: number }> {
-        return Promise.resolve()
-            .then(() => (
-                request<PageData<IActive>>({
-                    url: '/api/activity/pagingQuery',
-                    data: {
-                        currentPage: Math.ceil(this.data.activitys.length / 10) + 1,
-                        pageSize: 10
-                    }
-                })
-            ))
-            .then(({ data: { list, total } }) => (
-                { list: <IActive[]>list.map(parseData), total }
-            ));
+    async _getPageData(): Promise<{ list: IActive[], total: number }> {
+        const { data: { list, total } } = await (request<PageData<IActive>>({
+            url: '/api/activity/pagingQuery',
+            data: {
+                currentPage: Math.ceil(this.data.activitys.length / 10) + 1,
+                pageSize: 10
+            }
+        }));
+
+        return ({ list: (<IActive[]>list.map(parseData)), total });
     }
 });

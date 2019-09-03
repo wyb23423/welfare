@@ -35,3 +35,13 @@
     top: 30rpx;
     opacity: 0.6;
 }
+
+.info_box {
+    display: flex;
+    height: 100%;
+    padding-left: 10rpx;
+    width: 50%;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+}
