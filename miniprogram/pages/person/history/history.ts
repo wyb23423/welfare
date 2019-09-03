@@ -1,5 +1,4 @@
 import { request } from '../../../utils/http';
-import { IMyApp } from '../../../app';
 import { parseData } from '../../../constant';
 
 type HistoryType = '_await' | '_auditing' | '_complete';
@@ -33,7 +32,13 @@ Page({
             content: '删除该活动？',
             success(res) {
                 if (res.confirm) {
-                    console.log(id);
+                    request({
+                        url: '/api/activity',
+                        method: 'DELETE',
+                        data: { id }
+                    })
+                        .then(() => wx.showToast({ title: '删除成功' }))
+                        .catch(console.log);
                 }
             }
         });
@@ -53,10 +58,7 @@ Page({
         this._request('/api/participation/complete');
     },
     _request(url: string) {
-        request<IActive[]>({
-            url,
-            data: { userId: (<IMyApp>getApp()).globalData.userId }
-        })
+        request<IActive[]>({ url })
             .then(({ data }) => this.setData!({ type: this.data.type, history: data.map(parseData) }))
             .catch(console.log);
     }

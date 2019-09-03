@@ -3,17 +3,18 @@
  */
 
 import ProjectFormBehavior from '../../behavior/project_form';
+import { request } from '../../utils/http';
 
 Component({
     behaviors: [ProjectFormBehavior],
     data: {
         form: {
             name: '',
-            tel: '',
+            phone: '',
             email: ''
         },
         rules: {
-            tel: {
+            phone: {
                 regexp: '^1[3456789]\\d{9}$',
                 message: '无效电话号码'
             },
@@ -25,13 +26,21 @@ Component({
     },
     methods: {
         _submit() {
-            console.log(this.data.form);
-
             const page = getCurrentPages<IAnyObject, any>().pop();
             if (!(page && page.options && page.options.id)) {
                 return Promise.reject('非法访问!');
             }
-            console.log(page.options.id);
+
+            request({
+                url: '/api/participation',
+                method: 'PUT',
+                data: {
+                    ...this.data.form,
+                    activityId: page.options.id
+                }
+            })
+                .then(() => wx.showToast({ title: '报名成功, 请准时参加!!' }))
+                .catch(console.log);
 
             return true;
         }

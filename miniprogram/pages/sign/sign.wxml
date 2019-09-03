@@ -4,8 +4,8 @@
             <app-form-item prop="name" label="姓名" required>
                 <input id="name" value="{{form.name}}" bindinput="onInput" />
             </app-form-item>
-            <app-form-item prop="tel" label="手机" required>
-                <input id="tel" value="{{form.tel}}" bindinput="onInput" />
+            <app-form-item prop="phone" label="手机" required>
+                <input id="phone" value="{{form.phone}}" bindinput="onInput" />
             </app-form-item>
             <app-form-item prop="email" label="邮箱" required>
                 <input id="email" value="{{form.email}}" bindinput="onInput"></input>
