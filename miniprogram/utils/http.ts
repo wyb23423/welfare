@@ -6,7 +6,9 @@ function handle<T>(
 ): Promise<RespoensData<T>> {
     const fail = options.fail;
     const success = options.success;
+
     options.url = HOST + options.url;
+    options.header = { cookie: wx.getStorageSync('cookie'), ...(options.header || {}) };
 
     return new Promise((resolve, reject) => {
         options.success = (res: any) => {

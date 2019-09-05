@@ -1,5 +1,7 @@
 <view class="info">
-    <image src="{{img}}" class="avator" mode="aspectFill" />
-    <text class="name">{{name}}</text>
+    <view class="avator">
+        <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <open-data type="userNickName" class="name"></open-data>
     <navigator class="point" url="../info/info" wx:if="{{isindex}}">···</navigator>
 </view>
