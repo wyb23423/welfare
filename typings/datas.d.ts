@@ -21,6 +21,7 @@ declare interface ICommodity extends Base {
 
 declare interface IActive extends Base {
     authentication: number, // 认证
+    credit: number; // 拥有参加权限需要的最低信用积分
     details: string, // 详情
     finish: number, // 结束时间
     origination: number, // 活动开始时间

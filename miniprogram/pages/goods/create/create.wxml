@@ -1,5 +1,5 @@
 <view>
-    <app-form model="{{form}}" id="form">
+    <app-form model="{{form}}" id="form" bind:rest="rest">
         <app-form-item prop="img" required input-class="img" msg-class="img-msg-class">
             <upload id="img" value="{{form.img}}" bind:input="onInput"></upload>
         </app-form-item>

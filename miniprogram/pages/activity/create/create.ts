@@ -14,7 +14,9 @@ Component({
             size: '',
             time: [],
             location: '',
-            img: ''
+            img: '',
+            credit: '',
+            integral: ''
         },
         timeRule: {
             min: 2,
@@ -25,7 +27,7 @@ Component({
         _submit() {
             uploadFile({
                 url: '/api/activity',
-                filePath: this.data.from.img,
+                filePath: this.data.form.img,
                 name: 'file',
                 formData: {
                     ...this.data.form,
@@ -38,7 +40,7 @@ Component({
                 .catch(console.log);
         },
         _parseValue(value: string, name: string) {
-            if (name === 'size') {
+            if (['size', 'integral', 'credit'].includes(name)) {
                 return isNaN(+value) ? '' : +value;
             }
 

@@ -12,6 +12,10 @@ function handle<T>(
 
     return new Promise((resolve, reject) => {
         options.success = (res: any) => {
+            if (typeof res.data === 'string') {
+                res.data = JSON.parse(res.data);
+            }
+
             if (isSucess(res)) {
                 success && success(res);
                 resolve(res.data);

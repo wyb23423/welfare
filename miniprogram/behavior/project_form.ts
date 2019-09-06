@@ -17,6 +17,9 @@ export default Behavior<ProjectForm>({
         this.data.formEl = this.selectComponent!('#form');
     },
     methods: {
+        reset({ detail }) {
+            this.setData({ form: detail });
+        },
         onInput(e: BaseEvent) {
             const name = e.target.id;
             this.setData!({ [`form.${name}`]: this._parseValue(e.detail.value, name) });

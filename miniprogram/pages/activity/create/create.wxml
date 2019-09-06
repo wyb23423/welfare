@@ -1,5 +1,5 @@
 <view>
-    <app-form model="{{form}}" id="form">
+    <app-form model="{{form}}" id="form" bind:reset="reset">
         <app-form-item prop="img" required input-class="img" msg-class="img-msg-class">
             <upload id="img" value="{{form.img}}" bind:input="onInput"></upload>
         </app-form-item>
@@ -9,6 +9,12 @@
             </app-form-item>
             <app-form-item prop="intro" label="活动简介" required>
                 <input id="intro" value="{{form.intro}}" bindinput="onInput" />
+            </app-form-item>
+            <app-form-item prop="credit" label="信用积分" required>
+                <input id="credit" value="{{form.credit}}" type="number" bindinput="onInput" />
+            </app-form-item>
+            <app-form-item prop="integral" label="可获得公益积分" required>
+                <input id="integral" value="{{form.integral}}" type="number" bindinput="onInput" />
             </app-form-item>
             <app-form-item prop="details" label="活动详情" required>
                 <textarea id="details" value="{{form.details}}" bindinput="onInput"></textarea>
