@@ -49,13 +49,13 @@ Page({
 
     // ==================================
     _await() {
-        this._request('/api/participation/await');
+        this._request('/api/activity/participation/await');
     },
     _auditing() {
-        this._request('/api/participation/auditing');
+        this._request('/api/activity/participation/auditing');
     },
     _complete() {
-        this._request('/api/participation/complete');
+        this._request('/api/activity/participation/complete');
     },
     _request(url: string) {
         request<IActive[]>({ url })

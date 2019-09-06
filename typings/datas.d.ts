@@ -1,5 +1,5 @@
-interface Base {
-    id: number,
+interface Base<T = number> {
+    id: T,
     created: number, // 创建时间
     updated: number, // 更新时间
 }
@@ -34,6 +34,17 @@ declare interface IActive extends Base {
     size: number, // 活动人数
     status: number, // 活动状态
     userId: number // 创建者id
+}
+declare interface IUser extends Base<string> {
+    authentication: boolean;
+    credit: number;
+    integral: number;
+    status: number; // 账号状态
+    realName: string;
+    idCard: string;
+    phone: string;
+    email: string;
+    adress: string;
 }
 
 declare interface RespoensData<T = any> {

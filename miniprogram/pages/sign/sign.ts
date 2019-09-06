@@ -32,7 +32,7 @@ Component({
             }
 
             request({
-                url: '/api/participation',
+                url: '/api/activity/participation',
                 method: 'PUT',
                 data: {
                     ...this.data.form,

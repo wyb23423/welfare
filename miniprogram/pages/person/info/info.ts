@@ -2,23 +2,47 @@
  * 修改个人信息
  */
 import { InputBehavior } from '../../../behavior/input';
+import { request } from '../../../utils/http';
 
 Page({
     data: {
         form: {
-            address: '学园都市',
-            idcard: '111111111111111111',
-            phone: 13111111111,
-            name: '御坂御坂',
+            address: '',
+            idCard: '',
+            phone: '',
+            realName: '',
             code: '',
             email: ''
         },
-        idcardRule: {
+        idCardRule: {
             regexp: '^[1-9]\\d{7}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}$|^[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}([0-9]|X)$',
             message: '无效身份证号'
         },
         canGetCode: true,
         codeBtnText: '获取验证码',
+        notGetInfo: false
+    },
+    onLoad(query?: IAnyObject) {
+        if (!(query && query.notGetInfo)) {
+            request<IUser>({ url: '/api/user' })
+                .then(({ data }) => {
+                    this.setData!(
+                        Object.keys(this.data.form).reduce(
+                            (form, k) => {
+                                if (k !== 'code') {
+                                    form[`form.${k}`] = (<IAnyObject>data)[k];
+                                }
+
+                                return form;
+                            },
+                            <IAnyObject>{}
+                        )
+                    );
+                })
+                .then(console.log);
+        } else {
+            this.data.notGetInfo = true;
+        }
     },
     onInput(e: BaseEvent) {
         this.setData!({ [`form.${e.target.id}`]: e.detail.value });
@@ -38,9 +62,20 @@ Page({
         });
 
         Promise.all(arr)
-            .then(() => {
-                console.log('修改个人信息成功');
-            })
+            .then(() => (
+                request({
+                    url: '/api/user',
+                    method: 'POST',
+                    data: this.data.form
+                })
+            ))
+            .then(() => new Promise(resolve => {
+                wx.showToast({
+                    title: '修改个人信息成功',
+                    complete: () => resolve(this.data.notGetInfo)
+                });
+            }))
+            .then(notGetInfo => notGetInfo && wx.reLaunch({ url: '/pages/index/index' }))
             .catch(console.log);
 
         this.setData!({ 'form.code': '' });

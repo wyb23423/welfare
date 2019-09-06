@@ -19,7 +19,18 @@ App({
               }
             }
 
-            wx.setStorageSync('username', (<RespoensData>res.data).data.username);
+            const data = (<RespoensData>res.data).data;
+            wx.setStorageSync('username', data.username);
+            if (!data.user.realName) {
+              wx.showModal({
+                title: '完善个人信息',
+                content: '小程序需要您的部分个人信息, 请完善个人信息',
+                showCancel: false,
+                complete() {
+                  wx.reLaunch({ url: '/pages/person/info/info?notGetInfo=1' });
+                }
+              });
+            }
           }
         })
           .catch(console.log);
