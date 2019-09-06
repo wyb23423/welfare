@@ -1,0 +1,19 @@
+<view>
+    <view wx:for="{{exchanges}}" class="grid_item_box item_box">
+        <image src="{{item.img}}" lazy-load="true" mode="aspectFill" class="grid_img"></image>
+        <view class="grid_name">
+            <text class="iconfont icon-huo" style="color: #e00" wx:if="{{item.isHeat}}"></text>
+            <text class="list_item_title">{{item.name}}</text>
+        </view>
+        <text class="grid_authentication item_text authentication">{{item.authentication}}</text>
+        <text class="grid_reset1 item_text item_info" style="margin-left: 20rpx">
+            仅剩{{item.size - (item.sign || 0)}}名额
+        </text>
+        <button class="grid_collection iconfont icon-heart{{item.isCollected ? '-solid' : ''}} heart" hover-class="btn-tap" hover-stop-propagation="true" data-id="{{item.id}}" data-collect="{{item.isCollected}}" catch:tap="collect" style="padding: 15rpx"></button>
+        <view class="grid_size" style="font-size: 28rpx">
+            <text class="iconfont icon-dollar" style="color: #e00; font-size: 24rpx"></text>
+            <text style="color: #e00; font-size: 32rpx;">{{item.integral}}</text>
+            <text decode="true">&nbsp;积分</text>
+        </view>
+    </view>
+</view>

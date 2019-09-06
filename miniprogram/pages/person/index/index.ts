@@ -35,11 +35,11 @@ Page({
                 icon: 'shangjia',
                 url: '/pages/goods/create/create'
             },
-            {
-                name: '我的订单',
-                icon: 'dingdan',
-                url: ''
-            },
+            // {
+            //     name: '我的订单',
+            //     icon: 'dingdan',
+            //     url: ''
+            // },
         ]
     }
 });

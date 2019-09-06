@@ -11,14 +11,14 @@ Component({
         form: {
             name: '',
             phone: '',
-            email: ''
+            mail: ''
         },
         rules: {
             phone: {
                 regexp: '^1[3456789]\\d{9}$',
                 message: '无效电话号码'
             },
-            email: {
+            mail: {
                 regexp: '^(\\w-*\\.*)+@(\\w-?)+(\\.\\w{2,})+$',
                 message: '无效邮箱'
             }

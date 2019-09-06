@@ -3,7 +3,7 @@ interface CommentData {
     active: number;
     sponsor: number;
     participant: number;
-    anonymous: boolean,
+    anonymous: boolean;
     comment: string;
 }
 type starKey = 'active' | 'sponsor' | 'participant';

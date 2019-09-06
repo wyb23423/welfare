@@ -1,0 +1,14 @@
+<view>
+    <image src="{{img}}" mode="aspectFill" style="width: 100%; height: 360rpx" />
+    <view class="details">
+        <view style="font-weight: 700">{{name}}</view>
+        <view style="line-height: 80rpx">
+            <text decode="true">粉丝&nbsp;{{fans}}&nbsp;&nbsp;&nbsp;活动&nbsp;{{activityCount}}</text>
+        </view>
+    </view>
+    <view class="user">{{details}}</view>
+    <button class="bottom collect">
+        <text class="iconfont icon-heart{{isCollected ? '-solid' : ''}}"></text>
+        <text>收藏</text>
+    </button>
+</view>

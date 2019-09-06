@@ -17,6 +17,9 @@ declare interface ICommodity extends Base {
     userId: number // 创建者id
     isCollected: boolean;
     isHeat: boolean;
+
+    index: number;
+    originImg: string;
 }
 
 declare interface IActive extends Base {
@@ -34,6 +37,9 @@ declare interface IActive extends Base {
     size: number, // 活动人数
     status: number, // 活动状态
     userId: number // 创建者id
+
+    index: number;
+    originImg: string;
 }
 declare interface IUser extends Base<string> {
     authentication: boolean;

@@ -18,7 +18,7 @@ Page({
             await: '待参加',
             auditing: '待审核',
             complete: '已参加',
-            toEvaluate: '待评价',
+            evaluate: '待评价',
             initiate: '我的发起',
             collection: '我的收藏'
         };
@@ -27,17 +27,23 @@ Page({
         });
     },
     delete(e: WxTouchEvent) {
-        const id = +e.target.dataset.id;
+        const index = +e.target.dataset.index;
+        const history = this.data.history;
+
         wx.showModal({
             content: '删除该活动？',
-            success(res) {
+            success: (res) => {
                 if (res.confirm) {
                     request({
                         url: '/api/activity',
                         method: 'DELETE',
-                        data: { id }
+                        data: { activityId: history[index].id }
                     })
-                        .then(() => wx.showToast({ title: '删除成功' }))
+                        .then(() => {
+                            wx.showToast({ title: '删除成功' });
+                            history.splice(index, 1);
+                            this.setData!({ history });
+                        })
                         .catch(console.log);
                 }
             }
@@ -49,13 +55,16 @@ Page({
 
     // ==================================
     _await() {
-        this._request('/api/activity/participation/await');
+        this._request('/api/activity/participation/list/await');
     },
     _auditing() {
-        this._request('/api/activity/participation/auditing');
+        this._request('/api/activity/participation/list/auditing');
     },
     _complete() {
-        this._request('/api/activity/participation/complete');
+        this._request('/api/activity/participation/list/complete');
+    },
+    _evaluate() {
+        this._request('/api/activity/participation/list/evaluate');
     },
     _request(url: string) {
         request<IActive[]>({ url })

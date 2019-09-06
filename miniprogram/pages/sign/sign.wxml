@@ -7,8 +7,8 @@
             <app-form-item prop="phone" label="手机" required>
                 <input id="phone" value="{{form.phone}}" bindinput="onInput" />
             </app-form-item>
-            <app-form-item prop="email" label="邮箱" required>
-                <input id="email" value="{{form.email}}" bindinput="onInput"></input>
+            <app-form-item prop="mail" label="邮箱" required>
+                <input id="mail" value="{{form.mail}}" bindinput="onInput"></input>
             </app-form-item>
         </view>
     </app-form>

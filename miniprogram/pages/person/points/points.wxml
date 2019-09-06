@@ -8,8 +8,8 @@
         <text>积分明细</text>
         <text class="iconfont icon-jiantou right"></text>
     </navigator>
-    <navigator class="details_item menu" open-type="switchTab" url="/pages/goods/list/list">
-        <text>兑换中心</text>
+    <navigator class="details_item menu" url="/pages/person/exchange/exchange">
+        <text>我的兑换</text>
         <text class="iconfont icon-jiantou right"></text>
     </navigator>
 </view>

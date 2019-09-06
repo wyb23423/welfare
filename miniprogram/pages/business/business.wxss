@@ -1,0 +1,7 @@
+@import '/pages/activity/details/details.wxss';
+
+.collect {
+    height: 90rpx;
+    background: #009688;
+    color: #fff;
+}

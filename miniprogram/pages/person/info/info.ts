@@ -7,15 +7,10 @@ import { request } from '../../../utils/http';
 Page({
     data: {
         form: {
-            address: '',
-            idCard: '',
-            phone: '',
-            realName: '',
-            code: '',
-            email: ''
+            code: ''
         },
         idCardRule: {
-            regexp: String.raw`^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$`,
+            regexp: '',
             message: '无效身份证号'
         },
         canGetCode: true,
@@ -23,20 +18,20 @@ Page({
         notGetInfo: false
     },
     onLoad(query?: IAnyObject) {
+        this._setIdCardRule();
+
         if (!(query && query.notGetInfo)) {
             request<IUser>({ url: '/api/user' })
                 .then(({ data }) => {
                     this.setData!(
-                        Object.keys(this.data.form).reduce(
-                            (form, k) => {
-                                if (k !== 'code') {
+                        ['address', 'idCard', 'phone', 'realName', 'email']
+                            .reduce(
+                                (form, k) => {
                                     form[`form.${k}`] = (<IAnyObject>data)[k];
-                                }
-
-                                return form;
-                            },
-                            <IAnyObject>{}
-                        )
+                                    return form;
+                                },
+                                <IAnyObject>{}
+                            )
                     );
                 })
                 .then(console.log);
@@ -80,4 +75,12 @@ Page({
 
         this.setData!({ 'form.code': '' });
     },
+    _setIdCardRule() {
+        const common = String.raw`((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}`;
+
+        const str15 = String.raw`(\d{7}${common})`;
+        const str18 = String.raw`(\d{5}[1-9]\d{3}${common}([0-9]|X))`;
+
+        this.setData!({ 'idCardRule.regexp': `^[1-9](${str15}|${str18})$` });
+    }
 });

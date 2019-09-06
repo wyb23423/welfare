@@ -17,7 +17,7 @@
             <text class="iconfont icon-yiwancheng"></text>
             <text>已参加</text>
         </navigator>
-        <navigator class="flex-center-v" hover-class="none" url="../history/history?type=toEvaluate">
+        <navigator class="flex-center-v" hover-class="none" url="../history/history?type=evaluate">
             <text class="iconfont icon-daipingjia"></text>
             <text>待评价</text>
         </navigator>

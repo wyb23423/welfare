@@ -39,11 +39,12 @@ Page({
             }
         })
             .then(({ data }) => {
+                data = <IActive>parseData(data);
                 this.setData!({
-                    ...parseData(data),
+                    ...data,
                     startTime: formatTime(new Date(data.origination)),
                     endTime: formatTime(new Date(data.finish)),
-                    img: '/public/images/23.jpg'
+                    img: data.originImg
                 });
             })
             .catch(console.log);

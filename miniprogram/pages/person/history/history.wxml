@@ -17,21 +17,21 @@
 <!-- 已参加 -->
 <template name="complete">
     <view style="text-align: right;">
-        <button class="iconfont icon-delete" hover-class="btn-tap" hover-stop-propagation="true" data-id="{{id}}" catch:tap="delete"></button>
+        <button class="iconfont icon-delete" hover-class="btn-tap" hover-stop-propagation="true" data-index="{{index}}" catch:tap="delete"></button>
     </view>
 </template>
 <!-- 待评价 -->
 <template name="toEvaluate">
     <view class="evaluate_box flex-container">
-        <navigator class="iconfont icon-pingjia" hover-class="btn-tap" hover-stop-propagation="true" url="/pages/comment/comment?id={{id}}&title={{title}}&authentication={{authentication}}&img={{img}}" catch:tap="none"></navigator>
-        <button class="iconfont icon-delete" hover-class="btn-tap" hover-stop-propagation="true" data-id="{{id}}" catch:tap="delete"></button>
+        <navigator class="iconfont icon-pingjia" hover-class="btn-tap" hover-stop-propagation="true" url="/pages/comment/comment?id={{id}}&name={{name}}&authentication={{authentication}}&img={{img}}" catch:tap="none"></navigator>
+        <button class="iconfont icon-delete" hover-class="btn-tap" hover-stop-propagation="true" data-index="{{index}}" catch:tap="delete"></button>
     </view>
 </template>
 <!-- 我的发起 -->
 <template name="initiate">
     <view style="text-align: right">
         <icon type="{{review ? 'success_no_circle' : 'cancel'}}" size="120rpx" class="icon"></icon>
-        <button class="iconfont icon-delete" hover-class="btn-tap" hover-stop-propagation="true" data-id="{{id}}" catch:tap="delete"></button>
+        <button class="iconfont icon-delete" hover-class="btn-tap" hover-stop-propagation="true" data-index="{{index}}" catch:tap="delete"></button>
     </view>
 </template>
 <!-- 我的收藏 -->
