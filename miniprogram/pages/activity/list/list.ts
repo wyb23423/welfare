@@ -2,8 +2,8 @@
  * 公益活动
  */
 import * as listFunc from '../../../template/list_item/list_item';
-import { parseData } from '../../../constant';
 import { request } from '../../../utils/http';
+import { parseData } from '../../../utils/util';
 
 Page({
     data: {

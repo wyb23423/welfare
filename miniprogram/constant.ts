@@ -20,12 +20,4 @@ export const AUTHENTICATION = {
 };
 
 export const HOST = 'http://192.168.1.171:8080'; // 请求域名
-
-export function parseData(v: ICommodity | IActive) {
-    v.authentication = Reflect.get(AUTHENTICATION, v.authentication) || '未认证';
-    v.img = '/public/images/23.jpg';
-    (<any>v).sign = (<any>v).sign || 0;
-    v.size = v.size || 0;
-
-    return v;
-}
+export const COMPRESS_SIZE = 300;

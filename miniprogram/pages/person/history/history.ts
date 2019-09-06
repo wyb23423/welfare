@@ -1,5 +1,5 @@
 import { request } from '../../../utils/http';
-import { parseData } from '../../../constant';
+import { parseData } from '../../../utils/util';
 
 type HistoryType = '_await' | '_auditing' | '_complete';
 

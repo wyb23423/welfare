@@ -1,8 +1,7 @@
 /**
  * 公益活动详情
  */
-import { formatTime } from '../../../utils/util';
-import { parseData } from '../../../constant';
+import { formatTime, parseData } from '../../../utils/util';
 import { request } from '../../../utils/http';
 
 Page({
