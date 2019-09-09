@@ -2,6 +2,7 @@
     <image src="{{img}}" mode="aspectFill" style="width: 100%; height: 360rpx" />
     <view class="details">
         <view style="font-weight: 700">{{name}}</view>
+        <view>{{intro}}</view>
         <view style="line-height: 80rpx">
             <text decode="true">浏览&nbsp;{{look}}&nbsp;&nbsp;&nbsp;收藏&nbsp;{{collect}}</text>
         </view>
@@ -17,6 +18,7 @@
             <text class="iconfont icon-dollar"></text>
             <text style="color: #009688">{{integral}}</text>
         </view>
+        <view style="margin: 20rpx 0">{{details}}</view>
     </view>
     <view class="user">
         <view class="flex-container avator_box">
@@ -43,11 +45,11 @@
             <text class="iconfont icon-shouye1-copy"></text>
             <text>首页</text>
         </navigator>
-        <button>
+        <button bind:tap="collect">
             <text class="iconfont icon-heart{{isCollected ? '-solid' : ''}}"></text>
             <text>收藏</text>
         </button>
-        <button>
+        <button open-type="share">
             <text class="iconfont icon-fenxiang"></text>
             <text>分享</text>
         </button>

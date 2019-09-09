@@ -12,6 +12,16 @@ Page({
   },
   // ==============================事件
   ...listFunc,
+  collect(e: WxTouchEvent) {
+    listFunc.collect(e)
+      .then(({ id, collect }) => {
+        const index = this.data.goods.findIndex(v => v.id === id);
+        if (index > -1) {
+          this.setData!({ [`goods[${index}].isCollected`]: !collect });
+        }
+      })
+      .catch(console.log);
+  },
   // =============================生命周期
   onLoad() {
     request<PageData<IActive>>({

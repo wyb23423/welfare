@@ -13,10 +13,20 @@ export function exchange(this: any, e: IAnyObject) {
 /**
  * (取消)收藏商品
  */
-export function collect(e: IAnyObject) {
+export function collect(e: WxTouchEvent) {
     // tslint:disable-next-line:no-shadowed-variable
     const { id, collect } = e.target.dataset;
-    console.log(id, collect);
+
+    return request({
+        url: '/api/like',
+        method: collect ? 'DELETE' : 'PUT',
+        data: {
+            targetId: id,
+            type: 1
+        }
+    })
+        // .then(() => wx.showToast({ title: '操作成功' }))
+        .then(() => ({ id, collect }));
 }
 
 export function none() {

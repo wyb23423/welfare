@@ -12,6 +12,7 @@ Page({
         location: '北京海淀花园北路建设智谷大厦5层',
         name: '有爱的我们不孤独——自闭症儿童义诊系列活动',
         size: 1,
+        intro: '',
         startTime: formatTime(new Date()),
         endTime: formatTime(new Date(Date.now() + 1000 * 60 * 60 * 24)),
         look: 23,
@@ -28,7 +29,18 @@ Page({
         }
     },
     // ==============================事件
-
+    collect() {
+        request({
+            url: '/api/like',
+            method: this.data.isCollected ? 'DELETE' : 'PUT',
+            data: {
+                targetId: this.data.id,
+                type: 0
+            }
+        })
+            .then(() => this.setData!({ isCollected: !this.data.isCollected }))
+            .catch(console.log);
+    },
     // =============================生命周期
     onLoad(query: any) {
         request<IActive>({
