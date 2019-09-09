@@ -5,8 +5,10 @@ type HistoryType = '_await' | '_auditing' | '_complete';
 
 Page({
     data: {
-        history: [] as IActive[],
-        type: ''
+        history: [] as Array<IActive | ICommodity>,
+        type: '',
+        tabType: 0,
+        another: <Array<IActive | ICommodity>>[]
     },
     onLoad(query: IAnyObject) {
         this.data.type = query.type;
@@ -31,9 +33,13 @@ Page({
         const history = this.data.history;
 
         wx.showModal({
-            content: '删除该活动？',
+            content: this.data.type === 'collection' ? '取消收藏？' : '删除该活动？',
             success: (res) => {
                 if (res.confirm) {
+                    if (this.data.type === 'collection') {
+                        return this._cancelCollect(index);
+                    }
+
                     request({
                         url: '/api/activity',
                         method: 'DELETE',
@@ -52,8 +58,37 @@ Page({
     none() {
         //
     },
+    switch(e: WxTouchEvent) {
+        this.data.tabType = +e.target.dataset.type;
+        const another = this.data.another;
+        this.data.another = this.data.history;
 
+        if (another.length) {
+            this.data.history = another;
+            return this.setData!(this.data);
+        }
+
+        this._collection();
+    },
     // ==================================
+    _cancelCollect(index: number) {
+        const history = this.data.history;
+
+        request({
+            url: '/api/like',
+            method: 'DELETE',
+            data: {
+                targetId: history[index].id,
+                type: this.data.tabType
+            }
+        })
+            .then(() => {
+                wx.showToast({ title: '取消搜藏成功' });
+                history.splice(index, 1);
+                this.setData!({ history });
+            })
+            .catch(console.log);
+    },
     _await() {
         this._request('/api/activity/participation/list/await');
     },
@@ -65,6 +100,21 @@ Page({
     },
     _evaluate() {
         this._request('/api/activity/participation/list/evaluate');
+    },
+    _initiate() {
+        this._request('/api/activity/my');
+    },
+    _collection() {
+        request<ICommodity[] | IActive[]>({
+            url: '/api/like',
+            data: { type: this.data.tabType }
+        })
+            .then(({ data }) => this.setData!({
+                history: (<any[]>data).map(parseData),
+                type: this.data.type,
+                tabType: this.data.tabType
+            }))
+            .catch(console.log);
     },
     _request(url: string) {
         request<IActive[]>({ url })

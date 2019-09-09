@@ -2,15 +2,16 @@
  * 商家入驻
  */
 import ProjectFormBehavior from '../../../behavior/project_form';
+import { uploadFile } from '../../../utils/http';
 
 Component({
     behaviors: [ProjectFormBehavior],
     data: {
         form: {
             name: '',
-            tel: '',
-            details: '',
-            location: '',
+            phone: '',
+            detail: '',
+            address: '',
             img: ''
         },
         telRule: {
@@ -19,6 +20,15 @@ Component({
         }
     },
     methods: {
-
+        _submit() {
+            uploadFile({
+                url: '/api/merchant',
+                name: 'file',
+                filePath: this.data.form.img,
+                formData: this.data.form
+            })
+                .then(() => wx.showToast({ title: '入驻成功' }))
+                .catch(console.log);
+        }
     }
 });

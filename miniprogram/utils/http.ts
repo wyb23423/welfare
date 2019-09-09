@@ -59,5 +59,7 @@ export function request<T>(options: wx.RequestOption) {
 }
 
 export function uploadFile<T>(options: wx.UploadFileOption) {
+    options.name = options.name || 'file';
+
     return handle<T>('uploadFile', options);
 }
