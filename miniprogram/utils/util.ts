@@ -10,7 +10,7 @@ export function formatTime(date: Date): string {
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute].map(formatNumber).join(':');
 }
 
-export function parseData(v: ICommodity | IActive, i: number = 0) {
+export function parseData(v: IAnyObject, i: number = 0) {
   v.authentication = Reflect.get(AUTHENTICATION, v.authentication) || '未认证';
 
   v.originImg = v.img;

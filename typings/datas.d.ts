@@ -40,6 +40,7 @@ declare interface IActive extends Base {
 
     index: number;
     originImg: string;
+    merchant: IMerchant
 }
 declare interface IUser extends Base<string> {
     authentication: boolean;
@@ -51,6 +52,15 @@ declare interface IUser extends Base<string> {
     phone: string;
     email: string;
     adress: string;
+}
+
+declare interface IMerchant extends Base {
+    address: string;
+    authentication: number;
+    img: string;
+    name: string;
+    phone: string;
+    userId: string;
 }
 
 declare interface RespoensData<T = any> {

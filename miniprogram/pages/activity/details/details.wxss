@@ -20,7 +20,7 @@
     display: flex;
     align-items: stretch;
     border-top: 8rpx solid #ccc;
-    padding: 30rpx 0;
+    padding: 30rpx 0 140rpx;
 }
 .user_name {
     font-size: 32rpx;

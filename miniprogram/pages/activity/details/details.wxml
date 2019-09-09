@@ -18,28 +18,30 @@
             <text class="iconfont icon-dollar"></text>
             <text style="color: #009688">{{integral}}</text>
         </view>
-        <view style="margin: 20rpx 0">{{details}}</view>
+        <view style="margin: 20rpx 0;">{{details}}</view>
     </view>
-    <view class="user">
+    <navigator class="user" url="/pages/business/business?img={{merchant.originImg}}&name={{merchant.name}}&details={{merchant.detail}}&userId={{merchant.userId}}">
         <view class="flex-container avator_box">
-            <image src="{{user.img}}" class="avator" mode="aspectFill" />
+            <image src="{{merchant.img}}" class="avator" mode="aspectFill" />
         </view>
         <view style="flex-grow: 1; padding-right: 40rpx">
             <view class="user_name">
-                {{user.name}}
+                {{merchant.name}}
                 <icon type="success" color="rgb(255, 152, 0)" size="12"></icon>
             </view>
             <view class="ellipsis" style="line-height: 36rpx; margin: 20rpx 0 40rpx;">
-                {{user.desc}}
+                {{merchant.detail}}
             </view>
-            <view>
+            <view class="flex-container" style="justify-content: flex-start">
                 <text class="iconfont icon-heart"></text>
-                <text style="margin: 0 60rpx 0 10rpx">粉丝: {{user.fans}}</text>
+                <text style="margin: 0 60rpx 0 10rpx">粉丝: {{merchant.fans || 0}}</text>
                 <text class="iconfont icon-huodong" style="font-weight: 700; font-size: 36rpx"></text>
-                <text style="margin-left: 10rpx; font-weight: 700">活动: {{user.activityCount}}</text>
+                <view style="margin-left: 10rpx; font-weight: 700">
+                    活动: {{merchant.activityCount || 0}}
+                </view>
             </view>
         </view>
-    </view>
+    </navigator>
     <view class="flex-container bottom">
         <navigator url="/pages/index/index" open-type="switchTab">
             <text class="iconfont icon-shouye1-copy"></text>

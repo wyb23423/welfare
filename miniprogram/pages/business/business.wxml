@@ -7,7 +7,7 @@
         </view>
     </view>
     <view class="user">{{details}}</view>
-    <button class="bottom collect">
+    <button class="bottom collect" bind:tap="collect" wx:if="{{!disabled}}">
         <text class="iconfont icon-heart{{isCollected ? '-solid' : ''}}"></text>
         <text>收藏</text>
     </button>

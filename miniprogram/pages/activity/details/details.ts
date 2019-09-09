@@ -19,44 +19,45 @@ Page({
         collect: 40,
         img: '/public/images/23.jpg',
         isCollected: false,
-        user: {
+        merchant: {
             name: '北京儿童医疗发展中心',
-            authentication: true,
             activityCount: 12,
             fans: 52,
             img: '/public/images/23.jpg',
-            desc: '北京医疗儿童发展中心的孤独症和其他障碍敢于服务，是xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+            detail: '北京医疗儿童发展中心的孤独症和其他障碍敢于服务，是xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+            id: 1,
+            originImg: '/public/images/23.jpg',
+            userId: 'fsdfsfd'
         }
     },
     // ==============================事件
     collect() {
+        const old = this.data.isCollected;
         request({
             url: '/api/like',
-            method: this.data.isCollected ? 'DELETE' : 'PUT',
+            method: old ? 'DELETE' : 'PUT',
             data: {
                 targetId: this.data.id,
                 type: 0
             }
         })
-            .then(() => this.setData!({ isCollected: !this.data.isCollected }))
+            .then(() => this.setData!({
+                isCollected: !old,
+                collect: old ? this.data.collect - 1 : this.data.collect + 1
+            }))
             .catch(console.log);
     },
     // =============================生命周期
     onLoad(query: any) {
-        request<IActive>({
-            url: '/api/activity/' + query.id,
-            data: {
-                currentPage: 1,
-                pageSize: 2
-            }
-        })
+        request<IActive>({ url: '/api/activity/' + query.id })
             .then(({ data }) => {
                 data = <IActive>parseData(data);
                 this.setData!({
                     ...data,
-                    startTime: formatTime(new Date(data.origination)),
-                    endTime: formatTime(new Date(data.finish)),
-                    img: data.originImg
+                    startTime: formatTime(new Date(+data.origination)),
+                    endTime: formatTime(new Date(+data.finish)),
+                    img: data.originImg,
+                    merchant: parseData(data.merchant)
                 });
             })
             .catch(console.log);
