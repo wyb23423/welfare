@@ -52,25 +52,23 @@ Component<FormItem>({
         '../form/form': {
             type: 'parent',
             linked(target) {
-                if (this.data.labelwidth !== 'auto') {
+                if (this.data.labelwidth === 'auto') {
                     const parentLabelWidth: string = target.data.labelwidth;
-                    if (parentLabelWidth) {
-                        if (parentLabelWidth === 'auto') {
-                            this.createSelectorQuery()
-                                .select('#label')
-                                .boundingClientRect(rect => {
-                                    if (rect.width > target.data.labelWidth) {
-                                        target.setData!({ labelWidth: rect.width });
-                                    } else {
-                                        this.setData!({ labelwidth: this.data.labelWidth + 'px' });
-                                    }
-                                });
-                        } else {
-                            this.setData!({ labelwidth: parentLabelWidth });
-                        }
+                    if (!parentLabelWidth || parentLabelWidth === 'auto') {
+                        this.createSelectorQuery()
+                            .select('#label')
+                            .boundingClientRect(rect => {
+                                // 不会执行。。。
+                                if (rect.width > target.data.labelWidth) {
+                                    target.setData!({ labelWidth: rect.width });
+                                } else {
+                                    this.setData!({ labelwidth: this.data.labelWidth + 'px' });
+                                }
+                            });
+                    } else {
+                        this.setData!({ labelwidth: parentLabelWidth });
                     }
                 }
-
             }
         }
     },

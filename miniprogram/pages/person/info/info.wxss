@@ -15,7 +15,9 @@
     padding: 20rpx;
     font-size: 32rpx;
     color: #fff;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+    margin-top: 40rpx;
+}
+
+.code_box {
+    padding-left: 153rpx;
 }

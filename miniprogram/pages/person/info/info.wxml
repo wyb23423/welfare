@@ -1,25 +1,37 @@
 <view>
     <person-head></person-head>
-    <view style="padding: 20rpx" id="form">
-        <app-input type="text" lable="真实姓名" id="realName" custom-class="flex-container" required="true" placeholder="真实姓名" value="{{form.realName}}" bind:input="onInput"></app-input>
-        <app-input type="text" lable="身份证号" id="idCard" custom-class="flex-container" required="true" placeholder="身份证号码 18位" value="{{form.idCard}}" rules="{{[idCardRule]}}" bind:input="onInput"></app-input>
-        <app-input type="tel" lable="电话号码" id="phone" custom-class="flex-container" required="true" placeholder="电话号码" value="{{form.phone}}" bind:input="onInput"></app-input>
-        <app-input labelwidth="133rpx" custom-class="flex-container">
-            <view class="flex-container" style="align-items: stretch">
-                <input type="number" style="flex-grow: 1" placeholder="输入验证码" id="code" value="{{form.code}}" bindinput="onInput"></input>
-                <button class="btn" disabled="{{!canGetCode}}" bind:tap="getCode">
-                    {{codeBtnText}}
-                </button>
-            </view>
-        </app-input>
-        <app-input type="email" labelwidth="133rpx" lable="电子邮箱" custom-class="flex-container" placeholder="电子邮箱" id="email" value="{{form.email || ''}}" bind:input="onInput"></app-input>
-        <app-input type="text" lable="居住地址" custom-class="flex-container" required="true" placeholder="小区-楼栋-单元-房号" id="address" value="{{form.address}}" bind:input="onInput"></app-input>
+    <view style="padding: 20rpx">
+        <app-form model="{{form}}" rules="{{rules}}" id="form" labelwidth="140rpx">
+            <app-form-item prop="realName" label="真实姓名" required custom-class="flex-container">
+                <input id="realName" value="{{form.realName}}" bindinput="onInput" />
+            </app-form-item>
+            <app-form-item prop="idCard" label="身份证号" required custom-class="flex-container">
+                <input id="idCard" value="{{form.idCard}}" bindinput="onInput" />
+            </app-form-item>
+            <app-form-item prop="phone" label="电话号码" required custom-class="flex-container">
+                <input id="phone" value="{{form.phone}}" type="number" bindinput="onInput" />
+            </app-form-item>
+            <app-form-item prop="code" label="验证码" required custom-class="flex-container">
+                <view style="display: flex">
+                    <input type="number" style="flex-grow: 1" placeholder="输入验证码" id="code" value="{{form.code}}" bindinput="onInput"></input>
+                    <button class="btn" disabled="{{!canGetCode}}" bind:tap="getCode">
+                        {{codeBtnText}}
+                    </button>
+                </view>
+            </app-form-item>
+            <app-form-item prop="email" label="电子邮箱" required custom-class="flex-container">
+                <input id="email" value="{{form.email}}" bindinput="onInput"></input>
+            </app-form-item>
+            <app-form-item prop="address" label="居住地址" required custom-class="flex-container">
+                <input id="address" value="{{form.address}}" type="number" bindinput="onInput" />
+            </app-form-item>
+        </app-form>
     </view>
     <view>
         <view class="tip">
             <icon size="14" type="info" color="rgb(255, 64, 129)"></icon>
             根据规定，你的信息不会外露，并仅对该小程序使用
         </view>
-        <button type="primary" class="save" bind:tap="save">保存</button>
+        <button type="primary" class="save" bind:tap="onSubmit">保存</button>
     </view>
 </view>

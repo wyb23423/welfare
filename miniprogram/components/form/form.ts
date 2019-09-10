@@ -27,7 +27,7 @@ Component<Form>(({
         },
         labelwidth: {
             type: String,
-            value: ''
+            value: 'auto'
         },
         inline: {
             type: Boolean,

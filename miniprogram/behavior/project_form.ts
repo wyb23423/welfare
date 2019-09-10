@@ -3,7 +3,7 @@
  */
 import { Form } from '../components/form/form';
 
-interface ProjectForm extends WxComponent {
+export interface ProjectForm extends WxComponent {
     data: {
         formEl?: Form | null,
         form: IAnyObject

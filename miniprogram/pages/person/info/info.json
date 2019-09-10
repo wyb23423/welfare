@@ -1,6 +1,7 @@
 {
     "usingComponents": {
-        "app-input": "/components/input/input",
+        "app-form": "/components/form/form",
+        "app-form-item": "/components/form_item/form_item",
         "person-head": "/components/person_head/person_head"
     },
     "navigationBarTitleText": "我的信息"
