@@ -1,4 +1,4 @@
-@import '/pages/activity/details/details.wxss';
+@import '/components/details/details.wxss';
 
 .collect {
     height: 90rpx;

@@ -1,4 +1,4 @@
-import { Rule } from "../form/form";
+import { Rule } from '../form/form';
 
 export interface FormItem extends WxComponent {
     valid(value: any): Promise<true>;
@@ -166,7 +166,7 @@ Component<FormItem>({
                         }
 
                         resolve(true);
-                    }
+                    };
 
                     const res = rule.func(value);
                     if (res instanceof Promise) {
@@ -177,7 +177,7 @@ Component<FormItem>({
                 } else {
                     resolve(true);
                 }
-            })
+            });
         }
     },
     observers: {
