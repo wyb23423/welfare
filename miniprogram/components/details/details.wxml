@@ -3,7 +3,7 @@
     <view class="details">
         <view style="font-weight: 700">{{name}}</view>
         <view style="line-height: 80rpx">
-            <text decode="true">浏览&nbsp;{{look}}&nbsp;&nbsp;&nbsp;收藏&nbsp;{{collect}}</text>
+            <text decode="true">浏览&nbsp;{{look}}&nbsp;&nbsp;&nbsp;收藏&nbsp;{{like}}</text>
         </view>
         <view class="details_item">
             <text class="iconfont icon-shijian"></text>
@@ -51,7 +51,7 @@
         </navigator>
         <button bind:tap="collect">
             <text class="iconfont icon-heart{{isCollected ? '-solid' : ''}}"></text>
-            <text>收藏</text>
+            <text>{{isCollected ? '已' : ''}}收藏</text>
         </button>
         <button open-type="share">
             <text class="iconfont icon-fenxiang"></text>
@@ -61,7 +61,7 @@
             立即报名
         </navigator>
         <button class="submit" bind:tap="exchange" data-id="{{id}}" wx:else>
-            立即兑换({{integral}})
+            兑换(所需公益积分: {{integral}})
         </button>
     </view>
 </view>

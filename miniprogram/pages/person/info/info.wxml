@@ -19,11 +19,11 @@
                     </button>
                 </view>
             </app-form-item>
-            <app-form-item prop="email" label="电子邮箱" required custom-class="flex-container">
+            <app-form-item prop="email" label="电子邮箱" custom-class="flex-container">
                 <input id="email" value="{{form.email}}" bindinput="onInput"></input>
             </app-form-item>
             <app-form-item prop="address" label="居住地址" required custom-class="flex-container">
-                <input id="address" value="{{form.address}}" type="number" bindinput="onInput" />
+                <input id="address" value="{{form.address}}" bindinput="onInput" />
             </app-form-item>
         </app-form>
     </view>

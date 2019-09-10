@@ -1,7 +1,7 @@
 <view>
     <person-head></person-head>
     <view class="flex-container points">
-        <text style="border-right: 2rpx solid #ccc">公益积分: {{welfare}}</text>
+        <text style="border-right: 2rpx solid #ccc">公益积分: {{integral}}</text>
         <text>信用积分: {{credit}}</text>
     </view>
     <navigator class="details_item menu" url="./details/details">

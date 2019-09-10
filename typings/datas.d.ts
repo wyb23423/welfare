@@ -13,13 +13,12 @@ declare interface ICommodity extends Base {
     img: string,
     integral: number, // 兑换商品需要的公益积分
     name: string,
+    sign: number;
     size: number, // 剩余数量
     userId: number // 创建者id
     isCollected: boolean;
     isHeat: boolean;
-
-    index: number;
-    originImg: string;
+    liked: boolean;
 }
 
 declare interface IActive extends Base {
@@ -34,14 +33,24 @@ declare interface IActive extends Base {
     location: string, // 活动地址
     money: number,
     name: string,
+    sign: number,
     size: number, // 活动人数
     status: number, // 活动状态
     userId: number // 创建者id
-
-    index: number;
-    originImg: string;
-    merchant: IMerchant
+    liked: boolean;
+    merchant: IMerchant;
 }
+
+declare interface IMerchant extends Base {
+    address: string;
+    authentication: number;
+    img: string;
+    name: string;
+    phone: string;
+    userId: string;
+    liked: boolean;
+}
+
 declare interface IUser extends Base<string> {
     authentication: boolean;
     credit: number;
@@ -54,13 +63,25 @@ declare interface IUser extends Base<string> {
     adress: string;
 }
 
-declare interface IMerchant extends Base {
-    address: string;
-    authentication: number;
-    img: string;
-    name: string;
-    phone: string;
-    userId: string;
+// ======================================
+declare interface IActive {
+    index: number;
+    originImg: string;
+    isCollected: boolean;
+}
+declare interface IMerchant {
+    index: number;
+    originImg: string;
+    isCollected: boolean;
+
+    // ==============
+    sign?: number;
+    size?: number;
+}
+declare interface ICommodity {
+    index: number;
+    originImg: string;
+    isCollected: boolean;
 }
 
 declare interface RespoensData<T = any> {

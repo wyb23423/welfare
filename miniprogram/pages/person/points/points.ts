@@ -1,13 +1,16 @@
 /**
  * 我的积分
  */
+import { request } from '../../../utils/http';
 
 Page({
     data: {
-        welfare: 0,
+        integral: 0,
         credit: 0
     },
     onLoad() {
-        //
+        request<IUser>({ url: '/api/user' })
+            .then(({ data: { integral, credit } }) => this.setData!({ integral, credit }))
+            .catch(console.log);
     }
-})
+});

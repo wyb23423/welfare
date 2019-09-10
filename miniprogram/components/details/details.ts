@@ -26,7 +26,7 @@ Component({
         startTime: formatTime(new Date()),
         endTime: formatTime(new Date(Date.now() + 1000 * 60 * 60 * 24)),
         look: 23,
-        collect: 40,
+        like: 40,
         img: '/public/images/23.jpg',
         isCollected: false,
         merchant: {
@@ -67,7 +67,7 @@ Component({
             })
                 .then(() => this.setData!({
                     isCollected: !old,
-                    collect: old ? this.data.collect - 1 : this.data.collect + 1
+                    like: old ? this.data.like - 1 : this.data.like + 1
                 }))
                 .catch(console.log);
         },

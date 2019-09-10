@@ -10,14 +10,20 @@ export function formatTime(date: Date): string {
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute].map(formatNumber).join(':');
 }
 
-export function parseData(v: IAnyObject, i: number = 0) {
+/**
+ * 将从服务器获取的数据处理成需要的数据格式
+ * @param v 源数据
+ * @param i 源数据在数据列表中的索引
+ */
+export function parseData(v: IActive | ICommodity | IMerchant, i: number = 0) {
   v.authentication = Reflect.get(AUTHENTICATION, v.authentication) || '未认证';
 
-  v.originImg = v.img;
-  v.img = getCompressImg(v.img);
-  (<any>v).sign = (<any>v).sign || 0;
-  v.size = v.size || 0;
-  v.index = i;
+  v.originImg = v.img; // 保存原始图片
+  v.img = getCompressImg(v.img); // 获取压缩图片路径
+  v.sign = v.sign || 0; // 设置已兑换/参加默认值
+  v.size = v.size || 0; // 设置可兑换/参加默认值
+  v.index = i; // 设置索引
+  v.isCollected = !!v.liked; // 转化是否收藏/关注字段名(该字段是前端完成后服务端才在返回数据中添加的)
 
   return v;
 }

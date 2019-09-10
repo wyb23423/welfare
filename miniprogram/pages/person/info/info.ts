@@ -38,7 +38,7 @@ Component({
         codeBtnText: '获取验证码',
         notGetInfo: false
     },
-    attached() {
+    ready() {
         const page = getCurrentPages<IAnyObject, any>().pop();
         if (!(page && page.route === 'pages/person/info/info')) {
             return wx.showModal({

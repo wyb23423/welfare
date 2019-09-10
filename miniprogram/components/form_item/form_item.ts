@@ -120,6 +120,10 @@ Component<FormItem>({
         },
         // 检测值或值长度的范围
         _len(value: any, rule: Rule): boolean {
+            if (value == null || value === '') {
+                return true;
+            }
+
             const min = rule.min == null ? -Number.MAX_VALUE : rule.min;
             const max = rule.max == null ? Number.MAX_VALUE : rule.max;
 
