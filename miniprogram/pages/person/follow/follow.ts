@@ -1,40 +1,35 @@
-interface ISponsor {
-    img: string;
-    name: string;
-    desc: string;
-    authentication: boolean;
-    id: number;
-}
+import { request } from '../../../utils/http';
+import { parseData } from '../../../utils/util';
 
 Page({
     data: {
-        list: <ISponsor[]>[]
+        list: <IMerchant[]>[]
     },
     onLoad() {
-        const list: ISponsor[] = [];
-        for (let i = 0; i < 10; i++) {
-            list.push({
-                id: i,
-                authentication: Math.random() > 0.5,
-                img: '/public/images/23.jpg',
-                name: '北京儿童医疗发展中心',
-                desc: '北京医疗儿童发展中心的孤独症和其他障碍敢于服务，是xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-            });
-        }
-
-        this.setData!({ list });
+        request<IMerchant[]>({ url: '/api/follow' })
+            .then(({ data }) => this.setData!({ list: data.map(parseData) }))
+            .catch(console.log);
     },
     delete(e: WxTouchEvent) {
-        const dataset = e.target.dataset;
-        if (dataset.name) {
-            wx.showModal({
-                content: `取消关注${dataset.name}？`,
-                success(res) {
-                    if (res.confirm) {
-                        console.log(+dataset.id);
-                    }
+        const index = e.target.dataset.index;
+        const merchant = this.data.list[index];
+
+        wx.showModal({
+            content: `取消关注${merchant.name}？`,
+            success: (res) => {
+                if (res.confirm) {
+                    request({
+                        url: `/api/follow?targetId=${merchant.userId}`,
+                        method: 'DELETE'
+                    })
+                        .then(() => {
+                            wx.showToast({ title: '取消关注成功' });
+                            this.data.list.splice(index, 1);
+                            this.setData!(this.data);
+                        })
+                        .catch(console.log);
                 }
-            });
-        }
+            }
+        });
     }
 });

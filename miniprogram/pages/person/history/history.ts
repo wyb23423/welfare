@@ -8,7 +8,8 @@ Page({
         history: [] as Array<IActive | ICommodity>,
         type: '',
         tabType: 0,
-        another: <Array<IActive | ICommodity>>[]
+        another: <Array<IActive | ICommodity>>[],
+        url: '/pages/activity/details/details'
     },
     onLoad(query: IAnyObject) {
         this.data.type = query.type;
@@ -105,14 +106,16 @@ Page({
         this._request('/api/activity/my');
     },
     _collection() {
+        const tabType = this.data.tabType;
         request<ICommodity[] | IActive[]>({
             url: '/api/like',
-            data: { type: this.data.tabType }
+            data: { type: tabType }
         })
             .then(({ data }) => this.setData!({
                 history: (<any[]>data).map(parseData),
                 type: this.data.type,
-                tabType: this.data.tabType
+                tabType,
+                url: tabType ? '' : '/pages/activity/details/details'
             }))
             .catch(console.log);
     },

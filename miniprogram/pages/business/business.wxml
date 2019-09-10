@@ -5,6 +5,14 @@
         <view style="line-height: 80rpx">
             <text decode="true">粉丝&nbsp;{{fans}}&nbsp;&nbsp;&nbsp;活动&nbsp;{{activityCount}}</text>
         </view>
+        <view class="details_item">
+            <text class="iconfont icon-83"></text>
+            <text>{{address}}</text>
+        </view>
+        <view class="details_item">
+            <text class="iconfont icon-shouji"></text>
+            <text>{{phone}}</text>
+        </view>
     </view>
     <view class="user">{{details}}</view>
     <button class="bottom collect" bind:tap="collect" wx:if="{{!disabled}}">

@@ -28,7 +28,7 @@ function formatNumber(n: number) {
 }
 
 function getCompressImg(src: string) {
-  const i = src.lastIndexOf('.');
+  const i = (src || '').lastIndexOf('.');
   if (i < 0) {
     return '/public/images/23.jpg';
   }

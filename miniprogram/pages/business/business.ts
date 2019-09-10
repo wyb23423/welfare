@@ -14,12 +14,13 @@ Page({
         userId: '',
         disabled: false
     },
-    onLoad(query) {
+    onLoad(query?: IAnyObject) {
         query = query || {};
 
         this.setData!({
             ...query,
-            disabled: query.userId === wx.getStorageSync('username')
+            disabled: query.userId === wx.getStorageSync('username'),
+            isCollected: !!query.isCollected
         });
     },
     collect() {

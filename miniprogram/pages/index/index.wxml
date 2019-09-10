@@ -18,8 +18,8 @@
         更多商品>
       </navigator>
     </view>
-    <view wx:for="{{goods}}" wx:key="{{item.id}}" style="padding:0 10rpx">
+    <navigator wx:for="{{goods}}" wx:key="{{item.id}}" style="padding:0 10rpx" url="/pages/goods/details/details?id={{item.id}}">
       <template is="goods_item" data="{{...item}}"></template>
-    </view>
+    </navigator>
   </view>
 </view>

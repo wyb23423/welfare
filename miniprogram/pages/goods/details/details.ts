@@ -3,6 +3,7 @@
  */
 import { formatTime, parseData } from '../../../utils/util';
 import { request } from '../../../utils/http';
+import { exchange } from '../../../template/list_item/list_item';
 
 Page({
     data: {
@@ -10,10 +11,8 @@ Page({
         id: 1,
         integral: 21,
         credit: 0,
-        location: '北京海淀花园北路建设智谷大厦5层',
         name: '有爱的我们不孤独——自闭症儿童义诊系列活动',
         size: 1,
-        intro: '',
         startTime: formatTime(new Date()),
         endTime: formatTime(new Date(Date.now() + 1000 * 60 * 60 * 24)),
         look: 23,
@@ -32,6 +31,7 @@ Page({
         }
     },
     // ==============================事件
+    exchange,
     collect() {
         const old = this.data.isCollected;
         request({
@@ -50,7 +50,7 @@ Page({
     },
     // =============================生命周期
     onLoad(query: any) {
-        request<IActive>({ url: '/api/activity/' + query.id })
+        request<IActive>({ url: '/api/commodity/' + query.id })
             .then(({ data }) => {
                 data = <IActive>parseData(data);
                 this.setData!({

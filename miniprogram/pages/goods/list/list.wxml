@@ -1,7 +1,7 @@
 <import src="/template/list_item/list_item.wxml"></import>
 <view style="padding: 0 20rpx;">
     <text class="goods_list_title">兑换商品列表</text>
-    <navigator wx:for="{{goods}}" wx:key="{{item.id}}" hover-class="none" class="item">
+    <navigator wx:for="{{goods}}" wx:key="{{item.id}}" hover-class="none" class="item" url="/pages/goods/details/details?id={{item.id}}">
         <template is="goods_item" data="{{...item}}"></template>
     </navigator>
     <view class="more more_goods">
