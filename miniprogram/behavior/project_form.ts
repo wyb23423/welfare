@@ -6,7 +6,8 @@ import { Form } from '../components/form/form';
 export interface ProjectForm extends WxComponent {
     data: {
         formEl?: Form | null,
-        form: IAnyObject
+        form: IAnyObject,
+        hasMask: boolean
     };
     _submit(): Promise<true> | void;
     _parseValue(value: string, name: string): any;
@@ -19,6 +20,10 @@ export default Behavior<ProjectForm>({
     methods: {
         reset({ detail }) {
             this.setData({ form: detail });
+        },
+        mask(e: BaseEvent) {
+            console.log(e);
+            this.setData({ hasMask: e.detail.visible });
         },
         onInput(e: BaseEvent) {
             const name = e.target.id;

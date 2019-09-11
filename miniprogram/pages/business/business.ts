@@ -16,11 +16,11 @@ Page({
     },
     onLoad(query?: IAnyObject) {
         query = query || {};
-
+        console.log(query);
         this.setData!({
             ...query,
             disabled: query.userId === wx.getStorageSync('username'),
-            isCollected: !!query.isCollected
+            isCollected: !!+query.isCollected
         });
     },
     collect() {

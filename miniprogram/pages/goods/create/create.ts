@@ -24,7 +24,7 @@ Component({
         _submit() {
             uploadFile({
                 url: '/api/commodity',
-                filePath: this.data.from.img,
+                filePath: this.data.form.img,
                 name: 'file',
                 formData: {
                     ...this.data.form,

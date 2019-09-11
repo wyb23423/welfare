@@ -4,7 +4,7 @@
         <text style="margin: 0 6rpx">至</text>
         <text class="ellipsis" style="text-align: right">{{date[1] || ''}}</text>
     </view>
-    <view class="picker-box" wx:if="{{visible}}">
+    <view class="picker-box" wx:if="{{visible}}" catch:touchmove="none">
         <view class="picker" catch:tap="none">
             <view class="flex-center head">
                 <text class="btn-text" style="color: #999;" bind:tap="switchPicker">取消</text>

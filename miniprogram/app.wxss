@@ -42,3 +42,11 @@ button {
   align-items: center;
   justify-content: center;
 }
+
+.empty:after {
+  content: '暂无数据';
+  display: block;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+}

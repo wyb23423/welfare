@@ -11,7 +11,7 @@ interface IRangeData {
     px2rpxRatio: number;
     timer: number | null;
     selectedIndex: number[];
-    scrollTop: number[],
+    scrollTop: number[];
     setTop: boolean;
     progress: number;
 }
@@ -55,10 +55,13 @@ Component<IRange, IRangeData>({
     },
     methods: {
         switchPicker() {
+            const visible = !this.data.visible;
             this.setData({
-                visible: !this.data.visible,
+                visible,
                 progress: 0
             });
+
+            this.triggerEvent('mask', { visible }, {});
         },
         none() {
             //
@@ -89,9 +92,9 @@ Component<IRange, IRangeData>({
 
             let value = this.data.value;
             value[this.data.progress] = date.getTime();
-            this.data.value = value = value.filter(v => !!v).sort((a, b) => a - b);
 
             if (this.data.progress) {
+                this.data.value = value = value.filter(v => !!v).sort((a, b) => a - b);
                 this.switchPicker();
             } else {
                 this.setData({ progress: 1 });
@@ -101,7 +104,7 @@ Component<IRange, IRangeData>({
         },
         scroll(e: BaseEvent): false | void {
             if (this.data.setTop) {
-                return this.data.setTop = false;;
+                return this.data.setTop = false;
             }
 
             const itemIndex = e.target.dataset.index;
@@ -129,7 +132,7 @@ Component<IRange, IRangeData>({
         }
     },
     observers: {
-        'selectedIndex.**': function (val: number[]) {
+        'selectedIndex.**'(val: number[]) {
             if (this.data.timer) {
                 clearTimeout(this.data.timer);
                 this.data.timer = null;
@@ -140,7 +143,7 @@ Component<IRange, IRangeData>({
                 this.setData({ scrollTop: val.map(v => v * 64) });
             }, 100);
         },
-        'value.**, progress, layout': function (value: number[], progress: number, layout: string) {
+        'value.**, progress, layout'(value: number[], progress: number, layout: string) {
             this.data.value = value = this._fillValue(value);
 
             const date = value.map(v => formatTime(layout, v));

@@ -5,7 +5,7 @@
 	},
 	"miniprogramRoot": "miniprogram/",
 	"compileType": "miniprogram",
-	"libVersion": "2.7.7",
+	"libVersion": "2.8.2",
 	"projectname": "welfare",
 	"scripts": {
 		"beforeCompile": "npm run tsc",

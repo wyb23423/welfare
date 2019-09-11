@@ -1,5 +1,5 @@
 <view>
-    <image src="{{img}}" mode="aspectFill" style="width: 100%; height: 360rpx" />
+    <image src="{{img}}" mode="aspectFill" style="width: 100%; height: 600rpx" />
     <view class="details">
         <view style="font-weight: 700">{{name}}</view>
         <view style="line-height: 80rpx">
@@ -22,7 +22,7 @@
         </view>
         <view style="margin: 20rpx 0;">{{details}}</view>
     </view>
-    <navigator class="user" url="/pages/business/business?img={{merchant.originImg}}&name={{merchant.name}}&details={{merchant.detail}}&userId={{merchant.userId}}&isCollected={{merchant.isCollected}}&address={{merchant.address}}&phone={{merchant.phone}}">
+    <navigator class="user" url="/pages/business/business?name={{merchant.name}}&details={{merchant.detail}}&userId={{merchant.userId}}&isCollected={{merchant.isCollected}}&address={{merchant.address}}&phone={{merchant.phone}}&img={{merchant.originImg}}">
         <view class="flex-container avator_box">
             <image src="{{merchant.img}}" class="avator" mode="aspectFill" />
         </view>

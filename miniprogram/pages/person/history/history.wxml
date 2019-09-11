@@ -23,7 +23,7 @@
 <!-- 待评价 -->
 <template name="evaluate">
     <view class="evaluate_box flex-container">
-        <navigator class="iconfont icon-pingjia" hover-class="btn-tap" hover-stop-propagation="true" url="/pages/comment/comment?id={{id}}&name={{name}}&authentication={{authentication}}&img={{img}}" catch:tap="none"></navigator>
+        <navigator class="iconfont icon-pingjia" hover-class="btn-tap" hover-stop-propagation="true" url="/pages/comment/comment?id={{id}}&name={{name}}&authentication={{authentication}}&img={{originImg}}" catch:tap="none"></navigator>
         <button class="iconfont icon-delete" hover-class="btn-tap" hover-stop-propagation="true" data-index="{{index}}" catch:tap="delete"></button>
     </view>
 </template>

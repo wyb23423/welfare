@@ -1,5 +1,5 @@
 <view>
-    <image src="{{img}}" mode="aspectFill" style="width: 100%; height: 360rpx" />
+    <image src="{{img}}" mode="aspectFill" style="width: 100%; height: 600rpx" />
     <view class="details">
         <view style="font-weight: 700">{{name}}</view>
         <view style="line-height: 80rpx">

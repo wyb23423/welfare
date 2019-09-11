@@ -1,4 +1,4 @@
-import { AUTHENTICATION, COMPRESS_SIZE } from '../constant';
+import { AUTHENTICATION } from '../constant';
 
 export function formatTime(date: Date): string {
   const year = date.getFullYear();
@@ -18,7 +18,7 @@ export function formatTime(date: Date): string {
 export function parseData(v: IActive | ICommodity | IMerchant, i: number = 0) {
   v.authentication = Reflect.get(AUTHENTICATION, v.authentication) || '未认证';
 
-  v.originImg = v.img; // 保存原始图片
+  v.originImg = v.img + '/false'; // 保存原始图片
   v.img = getCompressImg(v.img); // 获取压缩图片路径
   v.sign = v.sign || 0; // 设置已兑换/参加默认值
   v.size = v.size || 0; // 设置可兑换/参加默认值
@@ -34,10 +34,11 @@ function formatNumber(n: number) {
 }
 
 function getCompressImg(src: string) {
-  const i = (src || '').lastIndexOf('.');
-  if (i < 0) {
-    return '/public/images/23.jpg';
-  }
+  return src + '/true';
+  // const i = (src || '').lastIndexOf('.');
+  // if (i < 0) {
+  //   return '/public/images/23.jpg';
+  // }
 
-  return `${src.substring(0, i)}_${COMPRESS_SIZE}x${COMPRESS_SIZE}${src.substring(i)}`;
+  // return `${src.substring(0, i)}_${COMPRESS_SIZE}x${COMPRESS_SIZE}${src.substring(i)}`;
 }

@@ -10,6 +10,7 @@
     <navigator wx:for="{{activity}}" wx:key="{{item.id}}" style="padding:0 10rpx" url="/pages/activity/details/details?id={{item.id}}">
       <template is="activity_item" data="{{...item}}"></template>
     </navigator>
+    <view class="empty" wx:if="{{!activity.length}}"></view>
   </view>
   <view class="main">
     <view class="title">
@@ -21,5 +22,6 @@
     <navigator wx:for="{{goods}}" wx:key="{{item.id}}" style="padding:0 10rpx" url="/pages/goods/details/details?id={{item.id}}">
       <template is="goods_item" data="{{...item}}"></template>
     </navigator>
+    <view class="empty" wx:if="{{!goods.length}}"></view>
   </view>
 </view>
