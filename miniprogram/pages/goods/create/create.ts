@@ -37,7 +37,7 @@ Component({
                 .catch(console.log);
         },
         _parseValue(value: string, name: string) {
-            if (name === 'credit' || name === 'integral') {
+            if (['credit', 'integral', 'size'].includes(name)) {
                 return isNaN(+value) ? '' : +value;
             }
 

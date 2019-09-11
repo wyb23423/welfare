@@ -29,7 +29,7 @@ Page({
     },
 
     // =============================生命周期
-    onLoad() {
+    onShow() {
         this._getPageData()
             .then(({ list, total }) => this.setData!({ activitys: list, hasMore: total > list.length }))
             .catch(e => console.log(e.errMsg));

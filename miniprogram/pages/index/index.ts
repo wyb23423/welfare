@@ -23,7 +23,7 @@ Page({
       .catch(console.log);
   },
   // =============================生命周期
-  onLoad() {
+  onShow() {
     request<PageData<IActive>>({
       url: '/api/activity/pagingQuery',
       data: {

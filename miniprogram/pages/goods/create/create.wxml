@@ -17,6 +17,9 @@
             <app-form-item prop="credit" label="信用积分" required>
                 <input id="credit" value="{{form.credit}}" type="number" bindinput="onInput" />
             </app-form-item>
+            <app-form-item prop="size" label="商品数量" required>
+                <input id="size" value="{{form.size}}" type="number" bindinput="onInput" />
+            </app-form-item>
             <app-form-item prop="time" label="兑换时间" rules="{{[timeRule]}}" required>
                 <datetimerange id="time" value="{{form.time}}" bindinput="onInput" bindmask="mask"></datetimerange>
             </app-form-item>
