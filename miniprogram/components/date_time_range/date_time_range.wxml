@@ -19,7 +19,7 @@
             </view>
             <view class="flex-center head">
                 <text class="ellipsis">{{date[0] || ''}}</text>
-                <text style="margin: 0 6rpx">至</text>
+                <!-- <text style="margin: 0 6rpx">至</text> -->
                 <text class="ellipsis" style="text-align: right">{{date[1] || ''}}</text>
             </view>
             <view class="flex-center" style="position: relative;">

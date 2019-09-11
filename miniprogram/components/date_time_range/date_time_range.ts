@@ -94,11 +94,13 @@ Component<IRange, IRangeData>({
             value[this.data.progress] = date.getTime();
 
             if (this.data.progress) {
-                this.data.value = value = value.filter(v => !!v).sort((a, b) => a - b);
                 this.switchPicker();
             } else {
+                value[1] = date.getTime();
                 this.setData({ progress: 1 });
             }
+
+            this.data.value = value = value.filter(v => !!v).sort((a, b) => a - b);
 
             this.triggerEvent('input', { value }, {});
         },
