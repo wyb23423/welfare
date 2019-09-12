@@ -1,1 +1,1 @@
-<app-details id="{{id}}" isActivity="{{false}}"></app-details>
+<app-details itemid="{{id}}" isActivity="{{false}}"></app-details>

@@ -1,0 +1,33 @@
+@import '/app.wxss';
+@import "/template/list_item/list_item.wxss";
+
+.more {
+    font-weight: normal;
+    color: #009688;
+    font-size: 24rpx;
+    text-align: right;
+    padding: 30rpx 0;
+}
+
+.goods_list_title {
+    font-weight: 700;
+    font-size: 36rpx;
+    margin: 10rpx 0;
+}
+
+.search_box {
+    width: 50%;
+    border: 2rpx solid #ccc;
+    justify-content: flex-start;
+    padding: 0 10rpx;
+}
+
+.search_input {
+    flex-grow: 1;
+    margin-left: 10rpx;
+}
+
+.item {
+    border-top: 2rpx solid #ccc;
+    margin-top: 10rpx;
+}

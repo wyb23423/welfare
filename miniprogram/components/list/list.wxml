@@ -1,0 +1,17 @@
+<import src="/template/list_item/list_item.wxml"></import>
+<view style="padding: 0 20rpx;">
+    <view class="flex-container" wx:if="{{type === 'activity'}}">
+        <text style="font-weight: 700; font-size: 36rpx;">活动列表</text>
+        <view class="flex-container search_box">
+            <text class="iconfont icon-sousuo"></text>
+            <input value="" placeholder="搜索精彩活动" class="search_input" bind:confirm="search" confirm-type="search" />
+        </view>
+    </view>
+    <text class="goods_list_title" wx:else>兑换商品列表</text>
+    <navigator wx:for="{{list}}" wx:key="{{item.id}}" hover-class="none" class="item" url="/pages/{{type}}/details/details?id={{item.id}}">
+        <template is="{{type}}_item" data="{{...item}}"></template>
+    </navigator>
+    <view class="more">
+        <text bind:tap="getMore" style="cursor: pointer" wx:if="{{hasMore}}">更多>></text>
+    </view>
+</view>

@@ -11,7 +11,7 @@ Component({
             type: Boolean,
             value: true
         },
-        id: {
+        itemid: {
             type: Number,
             value: 1
         }
@@ -39,8 +39,8 @@ Component({
             userId: 'fsdfsfd'
         }
     },
-    attached() {
-        request<IActive>({ url: `/api/${this.data.isActivity ? 'activity' : 'commodity'}/${this.data.id}` })
+    ready() {
+        request<IActive>({ url: `/api/${this.data.isActivity ? 'activity' : 'commodity'}/${this.data.itemid}` })
             .then(({ data }) => {
                 data = <IActive>parseData(data);
                 this.setData!({
@@ -61,7 +61,7 @@ Component({
                 url: '/api/like',
                 method: old ? 'DELETE' : 'PUT',
                 data: {
-                    targetId: this.data.id,
+                    targetId: this.data.itemid,
                     type: +!this.data.isActivity
                 }
             })

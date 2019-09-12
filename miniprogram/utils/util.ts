@@ -11,6 +11,25 @@ export function formatTime(date: Date): string {
 }
 
 /**
+ * 获取当前页面路由参数
+ */
+export function getOptions(path: string) {
+  const page = getCurrentPages<IAnyObject, any>().pop();
+  if (!(page && page.route === path)) {
+    return wx.showModal({
+      title: '非法访问',
+      content: '路由参数错误，即将返回主页',
+      showCancel: false,
+      complete() {
+        wx.reLaunch({ url: '/pages/index/index' });
+      }
+    });
+  }
+
+  return page.options || {};
+}
+
+/**
  * 将从服务器获取的数据处理成需要的数据格式
  * @param v 源数据
  * @param i 源数据在数据列表中的索引

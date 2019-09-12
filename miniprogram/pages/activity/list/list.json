@@ -1,4 +1,6 @@
 {
-    "usingComponents": {},
+    "usingComponents": {
+        "app-list": "/components/list/list"
+    },
     "navigationBarTitleText": "公益活动"
 }

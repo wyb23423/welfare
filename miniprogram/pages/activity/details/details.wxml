@@ -1,1 +1,1 @@
-<app-details id="{{id}}"></app-details>
+<app-details itemid="{{id}}"></app-details>

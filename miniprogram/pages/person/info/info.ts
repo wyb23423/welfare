@@ -3,6 +3,7 @@
  */
 import { request } from '../../../utils/http';
 import ProjectFormBehavior from '../../../behavior/project_form';
+import { getOptions } from '../../../utils/util';
 
 
 function getIdCardRule() {
@@ -39,19 +40,8 @@ Component({
         notGetInfo: false
     },
     ready() {
-        const page = getCurrentPages<IAnyObject, any>().pop();
-        if (!(page && page.route === 'pages/person/info/info')) {
-            return wx.showModal({
-                title: '非法访问',
-                content: '路由参数错误，即将返回主页',
-                showCancel: false,
-                complete() {
-                    wx.reLaunch({ url: '/pages/index/index' });
-                }
-            });
-        }
-
-        if (!(page.options && page.options.notGetInfo)) {
+        const options = getOptions('pages/person/info/info');
+        if (!options.notGetInfo) {
             request<IUser>({ url: '/api/user' })
                 .then(({ data }) => {
                     this.setData!(
