@@ -33,7 +33,7 @@
 }
 
 .item_box {
-    height: 220rpx;
+    height: 228rpx;
     padding-top: 15rpx;
 }
 
