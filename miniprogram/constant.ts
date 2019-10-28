@@ -19,5 +19,5 @@ export const AUTHENTICATION = {
     [Authentication.official]: '官方认证'
 };
 
-export const HOST = 'http://192.168.1.171:8080'; // 请求域名
+export const HOST = 'http://192.168.1.126:8080'; // 请求域名
 export const COMPRESS_SIZE = 300;

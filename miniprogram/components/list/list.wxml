@@ -12,6 +12,7 @@
         <template is="{{type}}_item" data="{{...item}}"></template>
     </navigator>
     <view class="more">
-        <text bind:tap="getMore" style="cursor: pointer" wx:if="{{hasMore}}">更多>></text>
+        <!-- <text bind:tap="getMore" style="cursor: pointer" wx:if="{{hasMore}}">更多>></text> -->
+        <text wx:if="{{!hasMore}}">暂无更多</text>
     </view>
 </view>

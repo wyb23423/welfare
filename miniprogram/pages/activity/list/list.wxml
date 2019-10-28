@@ -1,1 +1,2 @@
-<app-list type="activity" modify="{{count}}"></app-list>
+<!-- 小程序tab页无法传参, 使用两个页面构建 -->
+<app-list type="activity" id="list"></app-list>

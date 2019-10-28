@@ -2,11 +2,11 @@
  * 公益活动
  */
 
+import { ListComponent } from '../../../components/list/list';
+
 Page({
-    data: {
-        count: 0
-    },
-    onShow() {
-        this.setData!({ count: this.data.count++ });
+    onReachBottom() {
+        const { getMore } = <ListComponent>this.selectComponent!('#list');
+        getMore && getMore();
     }
 });
