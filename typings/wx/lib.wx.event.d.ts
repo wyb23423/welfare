@@ -1,6 +1,6 @@
-type Target = {
+type Target<T> = {
     id: string;
-    dataset: IAnyObject;
+    dataset: T;
     [x: string]: any;
 }
 
@@ -12,13 +12,18 @@ type WxTouch = {
     clientY: number;
 }
 
-declare interface BaseEvent {
+declare interface BaseEvent<
+    T extends object = IAnyObject,
+    C extends object = T,
+    M extends object = IAnyObject,
+    D extends object = IAnyObject
+> {
     type: string;
-    detail: IAnyObject;
-    target: Target;
-    currentTarget: Target;
+    detail: D;
+    target: Target<T>;
+    currentTarget: Target<C>;
     timeStamp: number;
-    mark: IAnyObject;
+    mark: M;
 }
 
 declare interface WxTouchEvent extends BaseEvent {

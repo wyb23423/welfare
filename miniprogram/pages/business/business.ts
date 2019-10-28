@@ -2,6 +2,7 @@
  * 商家信息
  */
 import { request } from '../../utils/http';
+import { USER_NAME } from '../../constant/store';
 
 Page({
     data: {
@@ -19,7 +20,7 @@ Page({
         console.log(query);
         this.setData!({
             ...query,
-            disabled: query.userId === wx.getStorageSync('username'),
+            disabled: query.userId === wx.getStorageSync(USER_NAME),
             isCollected: !!+query.isCollected
         });
     },

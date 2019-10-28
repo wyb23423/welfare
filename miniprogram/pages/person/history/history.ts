@@ -1,5 +1,7 @@
 import { request } from '../../../utils/http';
 import { parseData } from '../../../utils/util';
+import { EnList } from '../../../components/enlist/enlist';
+import { ActiveStatus } from '../../../constant';
 
 type HistoryType = '_await' | '_auditing' | '_complete';
 
@@ -55,6 +57,24 @@ Page({
                 }
             }
         });
+    },
+    openEnList(e: WxTouchEvent) {
+        const index = +e.target.dataset.index;
+        const enList = <EnList>this.selectComponent!('#en-list');
+
+        enList.show(this.data.history[index].id);
+    },
+    ok(e: WxTouchEvent) {
+        const index = +e.target.dataset.index;
+        const history = <IActive[]>this.data.history;
+
+        request({ url: '/api/activity/achieve/' + history[index].id })
+            .then(() => {
+                wx.showToast({title: '操作成功'});
+                history[index].status = ActiveStatus.complete;
+                this.setData!({history});
+            })
+            .catch(console.log);
     },
     none() {
         //

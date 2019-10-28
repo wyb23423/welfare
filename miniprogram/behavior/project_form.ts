@@ -22,7 +22,6 @@ export default Behavior<ProjectForm>({
             this.setData({ form: detail });
         },
         mask(e: BaseEvent) {
-            console.log(e);
             this.setData({ hasMask: e.detail.visible });
         },
         onInput(e: BaseEvent) {

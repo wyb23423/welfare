@@ -1,4 +1,5 @@
 import { HOST } from '../constant';
+import { COOKIE } from '../constant/store';
 
 function handle<T>(
     method: 'request' | 'uploadFile',
@@ -8,7 +9,7 @@ function handle<T>(
     const success = options.success;
 
     options.url = HOST + options.url;
-    options.header = { cookie: wx.getStorageSync('cookie'), ...(options.header || {}) };
+    options.header = { cookie: wx.getStorageSync(COOKIE), ...(options.header || {}) };
 
     return new Promise((resolve, reject) => {
         options.success = (res: any) => {

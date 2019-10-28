@@ -1,57 +1,107 @@
 <!-- 待参加 -->
 <template name="await">
-    <view class="flex-container" style="width: 100%">
-        <text style="font-size: 24rpx">{{sign}}/{{size}}</text>
-        <text class="item_text item_info">仅剩{{size - sign}}名额</text>
-        <text class="item_text item_info" style="border-radius: 10rpx">等待参加</text>
-    </view>
+	<view class="flex-container" style="width: 100%">
+		<text style="font-size: 24rpx">{{sign}}/{{size}}</text>
+		<text class="item_text item_info">仅剩{{size - sign}}名额</text>
+		<text class="item_text item_info" style="border-radius: 10rpx">等待参加</text>
+	</view>
 </template>
 <!-- 待审核 -->
 <template name="auditing">
-    <view class="flex-container" style="width: 100%">
-        <text style="font-size: 24rpx">{{sign}}/{{size}}</text>
-        <text class="item_text item_info">仅剩{{size - sign}}名额</text>
-        <text class="item_text item_info" style="border-radius: 10rpx">等待审核</text>
-    </view>
+	<view class="flex-container" style="width: 100%">
+		<text style="font-size: 24rpx">{{sign}}/{{size}}</text>
+		<text class="item_text item_info">仅剩{{size - sign}}名额</text>
+		<text class="item_text item_info" style="border-radius: 10rpx">等待审核</text>
+	</view>
 </template>
 <!-- 已参加 -->
 <template name="complete">
-    <view style="text-align: right; width: 100%">
-        <button class="iconfont icon-delete" hover-class="btn-tap" hover-stop-propagation="true" data-index="{{index}}" catch:tap="delete"></button>
-    </view>
+	<view style="text-align: right; width: 100%">
+		<button
+		 class="iconfont icon-delete"
+		 hover-class="btn-tap"
+		 hover-stop-propagation="true"
+		 data-index="{{index}}"
+		 catch:tap="delete"
+		/>
+	</view>
 </template>
 <!-- 待评价 -->
 <template name="evaluate">
-    <view class="evaluate_box flex-container">
-        <navigator class="iconfont icon-pingjia" hover-class="btn-tap" hover-stop-propagation="true" url="/pages/comment/comment?id={{id}}&name={{name}}&authentication={{authentication}}&img={{originImg}}" catch:tap="none"></navigator>
-        <button class="iconfont icon-delete" hover-class="btn-tap" hover-stop-propagation="true" data-index="{{index}}" catch:tap="delete"></button>
-    </view>
+	<view class="evaluate_box flex-container">
+		<navigator
+		 class="iconfont icon-pingjia"
+		 hover-class="btn-tap"
+		 hover-stop-propagation="true"
+		 url="/pages/comment/comment?id={{id}}&name={{name}}&authentication={{authentication}}&img={{originImg}}"
+		 catch:tap="none"
+		/>
+		<button
+		 class="iconfont icon-delete"
+		 hover-class="btn-tap"
+		 hover-stop-propagation="true"
+		 data-index="{{index}}"
+		 catch:tap="delete"
+		/>
+	</view>
 </template>
 <!-- 我的发起 -->
 <template name="initiate">
-    <view style="text-align: right">
-        <icon type="{{review ? 'success_no_circle' : 'cancel'}}" size="120rpx" class="icon"></icon>
-        <button class="iconfont icon-delete" hover-class="btn-tap" hover-stop-propagation="true" data-index="{{index}}" catch:tap="delete"></button>
-    </view>
+	<view class="ok" wx:if="{{status === 2}}">
+		<button
+		 class="iconfont icon-delete"
+		 hover-class="btn-tap"
+		 hover-stop-propagation="true"
+		 data-index="{{index}}"
+		 catch:tap="delete"
+		/>
+	</view>
+	<view style="width: 95%; text-align: right" wx:else>
+		<text
+			class="item_text item_info"
+			data-index="{{index}}"
+			style="border-radius: 10rpx; margin-right: 20rpx"
+			catch:tap="openEnList"
+		>报名审核</text>
+		<text
+		class="item_text item_info"
+		data-index="{{index}}"
+		style="border-radius: 10rpx"
+		catch:tap="ok"
+		decode="{{true}}"
+		>&nbsp;完成&nbsp;</text>
+	</view>
 </template>
 <!-- 我的收藏 -->
 <template name="collection">
-    <template is="complete" data="{{index}}"></template>
+	<template is="complete" data="{{index}}" />
 </template>
 <!--  -->
 <!--  -->
 <!-- history -->
 <view style="padding: 10rpx">
-    <view class="tab" wx:if="{{type==='collection'}}" bind:tap="switch">
-        <view class="{{tabType ? '' : 'active'}}" data-type="0">活动</view>
-        <view class="{{tabType ? 'active' : ''}}" data-type="1">商品</view>
-    </view>
-    <navigator class="flex-container item_box" wx:for="{{history}}" wx:key="{{item.id}}" url="/pages/{{tabType ? 'goods' : 'activity'}}/details/details?id={{item.id}}">
-        <image src="{{item.img}}" lazy-load="true" mode="aspectFill" style="max-height: 100%; width: 50%"></image>
-        <view class="info_box">
-            <view class="list_item_title">{{item.name}}</view>
-            <view class="item_text authentication">{{item.authentication}}</view>
-            <template is="{{type}}" data="{{...item}}"></template>
-        </view>
-    </navigator>
+	<view class="tab" wx:if="{{type==='collection'}}" bind:tap="switch">
+		<view class="{{tabType ? '' : 'active'}}" data-type="0">活动</view>
+		<view class="{{tabType ? 'active' : ''}}" data-type="1">商品</view>
+	</view>
+	<navigator
+	 class="flex-container item_box"
+	 wx:for="{{history}}"
+	 wx:key="{{item.id}}"
+	 url="/pages/{{tabType ? 'goods' : 'activity'}}/details/details?id={{item.id}}"
+	>
+		<image
+		 src="{{item.img}}"
+		 lazy-load="true"
+		 mode="aspectFill"
+		 style="max-height: 100%; width: 50%"
+		/>
+		<view class="info_box">
+			<view class="list_item_title">{{item.name}}</view>
+			<view class="item_text authentication">{{item.authentication}}</view>
+			<template is="{{type}}" data="{{...item}}" />
+		</view>
+	</navigator>
+	<en-list id="en-list" />
 </view>
+

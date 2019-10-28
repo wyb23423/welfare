@@ -1,14 +1,13 @@
-import { formatTime } from "../../../../utils/util";
-
 /**
  * 积分明细
  */
+import { formatTime } from '../../../../utils/util';
+
 interface DetailsItem {
     title: string;
     time: string;
     value: number;
 }
-
 
 Page({
     data: {
@@ -33,11 +32,11 @@ Page({
                 title: '公益活动参加',
                 time: formatTime(new Date(now + this._getTestData())),
                 value: [100, 500, 600][i]
-            })
+            });
         }
         this.setData!({ list });
     },
     _getTestData() {
         return Math.round(Math.random() * 518400000) - 259200000;
     }
-})
+});

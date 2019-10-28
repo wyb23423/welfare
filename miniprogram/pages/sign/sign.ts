@@ -39,7 +39,7 @@ Component({
                     activityId: page.options.id
                 }
             })
-                .then(() => wx.showToast({ title: '报名成功, 请准时参加!!' }))
+                .then(() => wx.showToast({ title: '报名成功' }))
                 .catch(console.log);
 
             return true;

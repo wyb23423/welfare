@@ -1,0 +1,6 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.USER_NAME = 'username';
+exports.COOKIE = 'cookie';
+exports.IS_BUSINESS = 'isBusiness';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic3RvcmUuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJzdG9yZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFhLFFBQUEsU0FBUyxHQUFHLFVBQVUsQ0FBQztBQUN2QixRQUFBLE1BQU0sR0FBRyxRQUFRLENBQUM7QUFDbEIsUUFBQSxXQUFXLEdBQUcsWUFBWSxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGNvbnN0IFVTRVJfTkFNRSA9ICd1c2VybmFtZSc7IC8vIOeUqOaIt+WQjVxyXG5leHBvcnQgY29uc3QgQ09PS0lFID0gJ2Nvb2tpZSc7IC8vIGNvb2tpZVxyXG5leHBvcnQgY29uc3QgSVNfQlVTSU5FU1MgPSAnaXNCdXNpbmVzcyc7IC8vIOaYr+WQpuaYr+WVhuWutlxyXG4iXX0=

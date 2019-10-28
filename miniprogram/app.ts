@@ -1,4 +1,5 @@
 import { request } from './utils/http';
+import { COOKIE, USER_NAME, IS_BUSINESS } from './constant/store';
 
 // app.ts
 App({
@@ -13,15 +14,19 @@ App({
           success(res) {
             if (res.header) {
               if ('Set-Cookie' in res.header) {
-                wx.setStorageSync('cookie', (<any>res.header)['Set-Cookie']);
+                wx.setStorageSync(COOKIE, (<any>res.header)['Set-Cookie']);
               } else if ('set-cookie' in res.header) {
-                wx.setStorageSync('cookie', (<any>res.header)['set-cookie']);
+                wx.setStorageSync(COOKIE, (<any>res.header)['set-cookie']);
               }
             }
 
             const data = (<RespoensData>res.data).data;
-            wx.setStorageSync('username', data.username);
-            if (!data.user.realName) {
+            const { realName, authentication } = <IUser>data.user;
+
+            wx.setStorageSync(USER_NAME, data.username);
+            wx.setStorageSync(IS_BUSINESS, authentication);
+
+            if (!realName) {
               wx.showModal({
                 title: '完善个人信息',
                 content: '小程序需要您的部分个人信息, 请完善个人信息',
