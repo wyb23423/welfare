@@ -56,7 +56,7 @@
 		 catch:tap="delete"
 		/>
 	</view>
-	<view style="width: 95%; text-align: right" wx:else>
+	<view style="width: 95%; text-align: right" wx:elif="{{status === 0}}">
 		<text
 			class="item_text item_info"
 			data-index="{{index}}"
@@ -70,6 +70,9 @@
 		catch:tap="ok"
 		decode="{{true}}"
 		>&nbsp;完成&nbsp;</text>
+	</view>
+	<view class="ok" wx:else>
+		<text class="item_text item_info">{{status === 1 ? '进行中' : '意外中止'}}</text>
 	</view>
 </template>
 <!-- 我的收藏 -->

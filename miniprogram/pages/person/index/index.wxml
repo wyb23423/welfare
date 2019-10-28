@@ -1,31 +1,39 @@
 <view>
-    <person-head isindex="true"></person-head>
-    <navigator class="details_item menu" url="../points/points">
-        <text>我的积分</text>
-        <text class="iconfont icon-jiantou right"></text>
+	<person-head isindex="true" />
+	<navigator class="details_item menu" url="../points/points">
+		<text>我的积分</text>
+		<text class="iconfont icon-jiantou right"/>
+
     </navigator>
-    <view class="details_item menu flex-container history">
-        <navigator class="flex-center-v" hover-class="none" url="../history/history?type=await">
-            <text class="iconfont icon-wendang"></text>
-            <text>待参加</text>
-        </navigator>
-        <navigator class="flex-center-v" hover-class="none" url="../history/history?type=auditing">
-            <text class="iconfont icon-daishenhe"></text>
-            <text>待审核</text>
-        </navigator>
-        <navigator class="flex-center-v" hover-class="none" url="../history/history?type=complete">
-            <text class="iconfont icon-yiwancheng"></text>
-            <text>已参加</text>
-        </navigator>
-        <navigator class="flex-center-v" hover-class="none" url="../history/history?type=evaluate">
-            <text class="iconfont icon-daipingjia"></text>
-            <text>待评价</text>
-        </navigator>
-    </view>
-    <navigator wx:for="{{menu}}" wx:key="{{index}}" url="{{item.url}}" class="details_item menu">
-        <text class="iconfont icon-{{item.icon}}"></text>
-        <text>{{item.name}}</text>
-        <text class="iconfont icon-jiantou right"></text>
+	<view class="details_item menu flex-container history">
+		<navigator class="flex-center-v" hover-class="none" url="../history/history?type=auditing">
+			<text class="iconfont icon-daishenhe"/>
+			<text>待审核</text>
+		</navigator>
+		<navigator class="flex-center-v" hover-class="none" url="../history/history?type=await">
+			<text class="iconfont icon-wendang"/>
+			<text>待参加</text>
+		</navigator>
+		<navigator class="flex-center-v" hover-class="none" url="../history/history?type=evaluate">
+			<text class="iconfont icon-daipingjia"/>
+			<text>待评价</text>
+		</navigator>
+		<navigator class="flex-center-v" hover-class="none" url="../history/history?type=complete">
+			<text class="iconfont icon-yiwancheng"/>
+			<text>已参加</text>
+		</navigator>
+	</view>
+	<navigator
+	 wx:for="{{menu}}"
+	 wx:key="{{index}}"
+	 url="{{item.url}}"
+	 class="details_item menu"
+	>
+		<text class="iconfont icon-{{item.icon}}"/>
+		<text>{{item.name}}</text>
+		<text class="iconfont icon-jiantou right"/>
+
     </navigator>
-    <view class="ad"></view>
+	<view class="ad" />
 </view>
+
