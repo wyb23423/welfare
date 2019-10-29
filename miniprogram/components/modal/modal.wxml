@@ -1,5 +1,5 @@
-<view class="popup" hidden="{{!isShow}}">
-	<view class="popup-container">
+<view class="popup" hidden="{{!isShow}}" bind:tap="close">
+	<view class="popup-container" catch:tap="none">
 		<view class="popup-title">
 			{{title}}
 			<text bind:tap="close" style="font-size: 48rpx">×</text>

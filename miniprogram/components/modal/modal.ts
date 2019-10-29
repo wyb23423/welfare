@@ -9,5 +9,13 @@ Component({
             type: Boolean,
             value: false
         }
+    },
+    methods: {
+        close() {
+            this.triggerEvent('close', {}, {});
+        },
+        none() {
+            //
+        }
     }
 });

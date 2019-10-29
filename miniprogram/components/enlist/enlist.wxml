@@ -1,4 +1,4 @@
-<modal title="报名审核" isShow="{{isShow}}">
+<modal title="报名审核" isShow="{{isShow}}" bindclose="close">
 	<view wx:for="{{list}}" class="list-item" wx:key="{{item.userId}}">
 		<text>{{item.name}}</text>
 		<text>{{item.phone}}</text>
