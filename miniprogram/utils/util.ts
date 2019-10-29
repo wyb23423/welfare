@@ -37,8 +37,8 @@ export function getOptions(path: string) {
 export function parseData<T extends IActive | ICommodity | IMerchant>(v: T, i: number = 0): T {
   v.authentication = Reflect.get(AUTHENTICATION, v.authentication) || '未认证';
 
-  v.originImg = v.img + '/false'; // 保存原始图片
-  v.img = getCompressImg(v.img); // 获取压缩图片路径
+  v.originImg = v.img; // 保存原始图片
+  v.img = v.img + '?thumb=true'; // 获取压缩图片路径
   v.sign = v.sign || 0; // 设置已兑换/参加默认值
   v.size = v.size || 0; // 设置可兑换/参加默认值
   v.index = i; // 设置索引
@@ -50,14 +50,4 @@ export function parseData<T extends IActive | ICommodity | IMerchant>(v: T, i: n
 function formatNumber(n: number) {
   const str = n.toString();
   return str[1] ? str : '0' + str;
-}
-
-function getCompressImg(src: string) {
-  return src + '/true';
-  // const i = (src || '').lastIndexOf('.');
-  // if (i < 0) {
-  //   return '/public/images/23.jpg';
-  // }
-
-  // return `${src.substring(0, i)}_${COMPRESS_SIZE}x${COMPRESS_SIZE}${src.substring(i)}`;
 }
