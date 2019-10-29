@@ -34,7 +34,7 @@ export function getOptions(path: string) {
  * @param v 源数据
  * @param i 源数据在数据列表中的索引
  */
-export function parseData(v: IActive | ICommodity | IMerchant, i: number = 0) {
+export function parseData<T extends IActive | ICommodity | IMerchant>(v: T, i: number = 0): T {
   v.authentication = Reflect.get(AUTHENTICATION, v.authentication) || '未认证';
 
   v.originImg = v.img + '/false'; // 保存原始图片

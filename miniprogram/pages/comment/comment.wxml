@@ -1,21 +1,29 @@
-<import src="/template/list_item/list_item.wxml"></import>
-<template name="star"></template>
+<import src="/template/list_item/list_item.wxml" />
+<template name="star" />
 <view>
-    <navigator class="activity_head_info" url="/pages/activity/details/details?id={{item.id}}">
-        <template is="activity_item" data="{{...value}}"></template>
-    </navigator>
-    <form bindsubmit="onSubmit">
-        <view style="width: 80%; margin: 0 auto;">
-            <view wx:for="{{starList}}" wx:key="{{index}}" class="star-item" bind:tap="score" data-index="{{index}}">
-                <text style="width: 30%">{{item.name}}:</text>
-                <text wx:for="{{[1, 2, 3, 4, 5]}}" wx:for-item="star" wx:key="{{star}}" class="iconfont icon-xing" data-star="{{star}}" style="color: {{item.star >= star ? 'rgb(0, 150, 136)' : ''}}"></text>
+	<navigator class="activity_head_info" url="/pages/details/details?id={{item.id}}&isGoods=0">
+		<template is="activity_item" data="{{...value}}" />
+	</navigator>
+	<form bindsubmit="onSubmit">
+		<view style="width: 80%; margin: 0 auto;">
+			<view
+			 wx:for="{{starList}}"
+			 wx:key="{{index}}"
+			 class="star-item"
+			 bind:tap="score"
+			 data-index="{{index}}"
+			>
+				<text style="width: 30%">{{item.name}}:</text>
+				<text wx:for="{{[1, 2, 3, 4, 5]}}" wx:for-item="star" wx:key="{{star}}" class="iconfont icon-xing" data-star="{{star}}" style="color: {{item.star >= star ? 'rgb(0, 150, 136)' : ''}}"/>
+
             </view>
-            <textarea placeholder="评价内容" class="comment" name="comment"></textarea>
-            <checkbox-group name="anonymous">
-                <checkbox class="checkbox" value="1" />
-                <text>匿名评价</text>
-            </checkbox-group>
-        </view>
-        <button class="submit" form-type="submit">发起评价</button>
-    </form>
+			<textarea placeholder="评价内容" class="comment" name="comment" />
+			<checkbox-group name="anonymous">
+				<checkbox class="checkbox" value="1" />
+				<text>匿名评价</text>
+			</checkbox-group>
+		</view>
+		<button class="submit" form-type="submit">发起评价</button>
+	</form>
 </view>
+

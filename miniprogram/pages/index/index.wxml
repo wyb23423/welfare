@@ -1,27 +1,38 @@
-<import src="/template/list_item/list_item.wxml"></import>
+<import src="/template/list_item/list_item.wxml" />
 <view>
-  <view class="main">
-    <view class="title">
-      <text class="title_text">公益活动</text>
-      <navigator class="title_more" url="/pages/activity/list/list" open-type="switchTab">
-        更多公益>
-      </navigator>
-    </view>
-    <navigator wx:for="{{activity}}" wx:key="{{item.id}}" style="padding:0 10rpx" url="/pages/activity/details/details?id={{item.id}}">
-      <template is="activity_item" data="{{...item}}"></template>
-    </navigator>
-    <view class="empty" wx:if="{{!activity.length}}"></view>
-  </view>
-  <view class="main">
-    <view class="title">
-      <text class="title_text">积分兑换</text>
-      <navigator class="title_more" open-type="switchTab" url="/pages/goods/list/list">
-        更多商品>
-      </navigator>
-    </view>
-    <navigator wx:for="{{goods}}" wx:key="{{item.id}}" style="padding:0 10rpx" url="/pages/goods/details/details?id={{item.id}}">
-      <template is="goods_item" data="{{...item}}"></template>
-    </navigator>
-    <view class="empty" wx:if="{{!goods.length}}"></view>
-  </view>
+	<view class="main">
+		<view class="title">
+			<text class="title_text">公益活动</text>
+			<navigator class="title_more" url="/pages/activity/list/list" open-type="switchTab">
+				更多公益>
+			</navigator>
+		</view>
+		<navigator
+		 wx:for="{{activity}}"
+		 wx:key="{{item.id}}"
+		 style="padding:0 10rpx"
+		 url="/pages/details/details?id={{item.id}}&isGoods=0"
+		>
+			<template is="activity_item" data="{{...item}}" />
+		</navigator>
+		<view class="empty" wx:if="{{!activity.length}}" />
+	</view>
+	<view class="main">
+		<view class="title">
+			<text class="title_text">积分兑换</text>
+			<navigator class="title_more" open-type="switchTab" url="/pages/goods/list/list">
+				更多商品>
+			</navigator>
+		</view>
+		<navigator
+		 wx:for="{{goods}}"
+		 wx:key="{{item.id}}"
+		 style="padding:0 10rpx"
+		 url="/pages/details/details?id={{item.id}}&isGoods=1"
+		>
+			<template is="goods_item" data="{{...item}}" />
+		</navigator>
+		<view class="empty" wx:if="{{!goods.length}}" />
+	</view>
 </view>
+

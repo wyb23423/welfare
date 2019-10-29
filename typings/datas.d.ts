@@ -3,8 +3,14 @@ interface Base<T = number> {
     created: number, // 创建时间
     updated: number, // 更新时间
 }
+interface ActiveCommodity {
+    index: number;
+    originImg: string;
+    isCollected: boolean;
+    merchant: IMerchant;
+}
 
-declare interface ICommodity extends Base {
+declare interface ICommodity extends Base, ActiveCommodity {
     authentication: number, // 认证
     credit: number, // 拥有兑换权限需要的最低信用积分
     details: string, // 详情,
@@ -21,7 +27,7 @@ declare interface ICommodity extends Base {
     liked: boolean;
 }
 
-declare interface IActive extends Base {
+declare interface IActive extends Base, ActiveCommodity {
     authentication: number, // 认证
     credit: number; // 拥有参加权限需要的最低信用积分
     details: string, // 详情
@@ -38,7 +44,6 @@ declare interface IActive extends Base {
     status: number, // 活动状态
     userId: number // 创建者id
     liked: boolean;
-    merchant: IMerchant;
 }
 
 declare interface IMerchant extends Base {
@@ -64,11 +69,6 @@ declare interface IUser extends Base<string> {
 }
 
 // ======================================
-declare interface IActive {
-    index: number;
-    originImg: string;
-    isCollected: boolean;
-}
 declare interface IMerchant {
     index: number;
     originImg: string;
@@ -77,11 +77,6 @@ declare interface IMerchant {
     // ==============
     sign?: number;
     size?: number;
-}
-declare interface ICommodity {
-    index: number;
-    originImg: string;
-    isCollected: boolean;
 }
 
 declare interface RespoensData<T = any> {

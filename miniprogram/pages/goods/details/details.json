@@ -1,6 +1,0 @@
-{
-    "usingComponents": {
-        "app-details": "/components/details/details"
-    },
-    "navigationBarTitleText": "活动详情"
-}

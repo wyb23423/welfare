@@ -91,7 +91,7 @@
 	 class="flex-container item_box"
 	 wx:for="{{history}}"
 	 wx:key="{{item.id}}"
-	 url="/pages/{{tabType ? 'goods' : 'activity'}}/details/details?id={{item.id}}"
+	 url="/pages/details/details?id={{item.id}}&isGoods={{tabType}}"
 	>
 		<image
 		 src="{{item.img}}"

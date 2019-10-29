@@ -3,11 +3,10 @@
     "pages/index/index",
     "pages/sign/sign",
     "pages/activity/list/list",
-    "pages/activity/details/details",
     "pages/activity/create/create",
     "pages/goods/list/list",
-    "pages/goods/details/details",
     "pages/goods/create/create",
+    "pages/details/details",
     "pages/business/business",
     "pages/person/index/index",
     "pages/person/info/info",
@@ -17,7 +16,8 @@
     "pages/person/points/points",
     "pages/person/settled_in/settled_in",
     "pages/person/points/details/details",
-    "pages/comment/comment"
+    "pages/comment/comment",
+    "pages/person/order/order"
   ],
   "window": {
     "backgroundTextStyle": "light",

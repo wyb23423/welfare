@@ -49,7 +49,7 @@ Page({
                         {
                             name: '我的订单',
                             icon: 'dingdan',
-                            url: ''
+                            url: '/pages/person/order/order'
                         }
                     );
                     this.setData!({ menu });

@@ -1,20 +1,12 @@
-<view class="popup" hidden="{{!isShow}}">
-	<view class="popup-container">
-		<view class="popup-title">
-			报名审核
-			<text bind:tap="close" style="font-size: 48rpx">×</text>
-		</view>
-		<view class="popup-con">
-			<view wx:for="{{list}}" class="list-item" wx:key="{{item.userId}}">
-				<text>{{item.name}}</text>
-				<text>{{item.phone}}</text>
-				<view style="font-size: 48rpx" bind:tap="doAuit" data-index="{{index}}">
-					<text style="color: #e00; margin-right: 20rpx">×</text>
-					<text style="color: #6fc" data-ok="1">√</text>
-				</view>
-			</view>
-			<view class="no-data" wx:if="{{!list.length}}">暂无数据</view>
+<modal title="报名审核" isShow="{{isShow}}">
+	<view wx:for="{{list}}" class="list-item" wx:key="{{item.userId}}">
+		<text>{{item.name}}</text>
+		<text>{{item.phone}}</text>
+		<view style="font-size: 48rpx" bind:tap="doAuit" data-index="{{index}}">
+			<text style="color: #e00; margin-right: 20rpx">×</text>
+			<text style="color: #6fc" data-ok="1">√</text>
 		</view>
 	</view>
-</view>
+	<view class="no-data" wx:if="{{!list.length}}">暂无数据</view>
+</modal>
 

@@ -1,0 +1,12 @@
+<view class="popup" hidden="{{!isShow}}">
+	<view class="popup-container">
+		<view class="popup-title">
+			{{title}}
+			<text bind:tap="close" style="font-size: 48rpx">×</text>
+		</view>
+		<view class="popup-con">
+			<slot/>
+		</view>
+	</view>
+</view>
+

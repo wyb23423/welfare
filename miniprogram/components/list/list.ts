@@ -16,9 +16,9 @@ export interface ListComponent extends WxComponent {
 
 Component<ListComponent>({
     properties: {
-        type: {
-            type: String,
-            value: 'activity'
+        isGoods: {
+            type: Number,
+            value: 0
         }
     },
     data: {
@@ -55,9 +55,8 @@ Component<ListComponent>({
                 .catch(e => console.log(e.errMsg));
         },
         async getPageData(page: number = 1) {
-            const type = this.data.type;
             const { data: { list, total } } = await (request<PageData<IActive | ICommodity>>({
-                url: `/api/${type === 'activity' ? type : 'commodity'}/pagingQuery`,
+                url: `/api/${this.data.isGoods ? 'commodity' : 'activity' }/pagingQuery`,
                 data: {
                     currentPage: page,
                     pageSize: 4

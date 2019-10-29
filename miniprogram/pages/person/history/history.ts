@@ -10,8 +10,7 @@ Page({
         history: [] as Array<IActive | ICommodity>,
         type: '',
         tabType: 0,
-        another: <Array<IActive | ICommodity>>[],
-        url: '/pages/activity/details/details'
+        another: <Array<IActive | ICommodity>>[]
     },
     onLoad(query: IAnyObject) {
         this.data.type = query.type;
@@ -134,8 +133,7 @@ Page({
             .then(({ data }) => this.setData!({
                 history: (<any[]>data).map(parseData),
                 type: this.data.type,
-                tabType,
-                url: tabType ? '' : '/pages/activity/details/details'
+                tabType
             }))
             .catch(console.log);
     },

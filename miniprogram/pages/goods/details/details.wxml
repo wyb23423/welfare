@@ -1,1 +1,0 @@
-<app-details itemid="{{id}}" isActivity="{{false}}"></app-details>
