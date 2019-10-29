@@ -1,7 +1,9 @@
 <view class="info">
-    <view class="avator">
-        <open-data type="userAvatarUrl"></open-data>
-    </view>
-    <open-data type="userNickName" class="name"></open-data>
-    <navigator class="point" url="../info/info" wx:if="{{isindex}}">···</navigator>
+	<view class="avator">
+		<open-data type="userAvatarUrl" />
+	</view>
+	<open-data type="userNickName" class="name" />
+	<view style="color: #fff">ID: {{username}}</view>
+	<navigator class="point" url="../info/info" wx:if="{{isindex}}">···</navigator>
 </view>
+
