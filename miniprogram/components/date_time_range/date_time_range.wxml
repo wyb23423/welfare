@@ -33,7 +33,7 @@
 				 scroll-y
 				 wx:for="{{layoutData}}"
 				 wx:key="{{index}}"
-				 scroll-top="{{scrollTop[index]}}rpx"
+				 scroll-top="{{scrollTop[index]}}px"
 				 data-index="{{index}}"
 				 bindscroll="scroll"
 				 bind:tap="setScrollIndex"

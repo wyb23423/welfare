@@ -51,7 +51,7 @@ Component<IRange, IRangeData>({
     },
     attached() {
         this.triggerEvent('input', { value: (<IRange>this)._fillValue() }, {});
-        wx.getSystemInfo({ success: res => this.data.px2rpxRatio = 750 / res.windowWidth });
+        // wx.getSystemInfo({ success: res => this.data.px2rpxRatio = 750 / res.windowWidth });
     },
     methods: {
         switchPicker() {
@@ -143,7 +143,7 @@ Component<IRange, IRangeData>({
 
             this.data.timer = setTimeout(() => {
                 this.data.setTop = true;
-                this.setData({ scrollTop: val.map(v => v * 64) });
+                this.setData({ scrollTop: val.map(v => v * 32) });
             }, 100);
         },
         'value.**, progress, layout'(value: number[], progress: number, layout: string) {

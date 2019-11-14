@@ -72,8 +72,8 @@
 
 .option {
     color: #999;
-    height: 64rpx;
-    line-height: 64rpx;
+    height: 32px;
+    line-height: 32px;
 }
 
 .selected {
@@ -89,5 +89,5 @@
     top: 238rpx;
     left: 0;
     width: 100%;
-    height: 64rpx;
+    height: 32px;
 }
