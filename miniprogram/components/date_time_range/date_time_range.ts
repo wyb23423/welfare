@@ -111,6 +111,7 @@ Component<IRange, IRangeData>({
 
             const itemIndex = e.target.dataset.index;
             const index = Math.round(e.detail.scrollTop / 64 * this.data.px2rpxRatio);
+
             this.setData({
                 [`selectedIndex[${itemIndex}]`]: index
             });

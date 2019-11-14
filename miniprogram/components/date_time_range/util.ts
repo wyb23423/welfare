@@ -50,7 +50,7 @@ export function calcSelIndex(layoutData: string[][], time?: number) {
 
 export function formatTime(layout: string, timeStamp?: number) {
     if (!timeStamp) {
-        return ''
+        return '';
     }
     const date = new Date(timeStamp);
 
@@ -99,5 +99,5 @@ function getArgObj(time?: number) {
         hours: [24, '时', 0],
         minutes: [60, '分', 0],
         seconds: [60, '秒', 0]
-    }
+    };
 }

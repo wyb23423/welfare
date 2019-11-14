@@ -14,19 +14,18 @@
 			/>
 		</view>
 	</view>
-	<text class="goods_list_title" wx:else>兑换商品列表
+    <view wx:else class="goods_list_title">兑换商品列表</view>
+    <navigator
+        wx:for="{{list}}"
+        wx:key="{{item.id}}"
+        hover-class="none"
+        class="item"
+        url="/pages/details/details?id={{item.id}}&isGoods={{isGoods}}"
+    >
+        <template is="{{isGoods ? 'goods' : 'activity'}}_item" data="{{...item}}" />
+    </navigator>
+    <view class="more"><text wx:if="{{!hasMore}}">暂无更多
 </text>
-			<navigator
-			 wx:for="{{list}}"
-			 wx:key="{{item.id}}"
-			 hover-class="none"
-			 class="item"
-			 url="/pages/details/details?id={{item.id}}&isGoods={{isGoods}}"
-			>
-				<template is="{{isGoods ? 'goods' : 'activity'}}_item" data="{{...item}}" />
-			</navigator>
-			<view class="more">
-				<text wx:if="{{!hasMore}}">暂无更多</text>
-			</view>
 		</view>
+	</view>
 
