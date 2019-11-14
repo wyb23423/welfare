@@ -15,7 +15,6 @@
 		</view>
 	</view>
 	<text class="goods_list_title" wx:else>兑换商品列表
-
 </text>
 			<navigator
 			 wx:for="{{list}}"
@@ -24,7 +23,7 @@
 			 class="item"
 			 url="/pages/details/details?id={{item.id}}&isGoods={{isGoods}}"
 			>
-				<template is="{{isGoods ? 'commodity' : 'activity'}}_item" data="{{...item}}" />
+				<template is="{{isGoods ? 'goods' : 'activity'}}_item" data="{{...item}}" />
 			</navigator>
 			<view class="more">
 				<text wx:if="{{!hasMore}}">暂无更多</text>
