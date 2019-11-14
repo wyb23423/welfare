@@ -70,3 +70,9 @@
     padding-right: 30rpx;
     box-sizing: border-box;
 }
+
+.initiate_btn_group {
+    display: flex;
+    width: 95%;
+    justify-content: flex-end;
+}
