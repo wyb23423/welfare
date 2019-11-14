@@ -1,4 +1,4 @@
-import { HOST } from '../constant';
+import { HOST } from '../constant/index';
 import { COOKIE } from '../constant/store';
 
 function handle<T>(

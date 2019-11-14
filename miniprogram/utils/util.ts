@@ -1,4 +1,4 @@
-import { AUTHENTICATION } from '../constant';
+import { AUTHENTICATION } from '../constant/index';
 
 export function formatTime(date: Date): string {
   const year = date.getFullYear();

@@ -1,7 +1,7 @@
 import { request } from '../../../utils/http';
 import { parseData } from '../../../utils/util';
 import { EnList } from '../../../components/enlist/enlist';
-import { ActiveStatus } from '../../../constant';
+import { ActiveStatus } from '../../../constant/index';
 
 type HistoryType = '_await' | '_auditing' | '_complete';
 
