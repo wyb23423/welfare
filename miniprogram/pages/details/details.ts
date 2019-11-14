@@ -69,7 +69,8 @@ Page({
                     startTime: formatTime(new Date(+data.origination)),
                     endTime: formatTime(new Date(+data.finish)),
                     img: data.originImg,
-                    merchant: data.merchant ? parseData(data.merchant) : null
+                    merchant: data.merchant ? parseData(data.merchant) : null,
+                    isActivity: !isGoods
                 });
             })
             .catch(console.log);
