@@ -39,7 +39,7 @@ export function parseData<T extends IActive | ICommodity | IMerchant>(v: T, i: n
 
   v.originImg = v.img; // 保存原始图片
   v.img = v.img + '?thumb=true'; // 获取压缩图片路径
-  v.sign = v.sign || 0; // 设置已兑换/参加默认值
+  v.sign = v.attended || v.sign || 0; // 设置已兑换/参加默认值
   v.size = v.size || 0; // 设置可兑换/参加默认值
   v.index = i; // 设置索引
   v.isCollected = !!v.liked; // 转化是否收藏/关注字段名(该字段是前端完成后服务端才在返回数据中添加的)

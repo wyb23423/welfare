@@ -44,7 +44,7 @@ Component<ListComponent>({
                 return;
             }
 
-            this.getPageData(Math.ceil(this.data.list.length / 4) + 1)
+            this.getPageData(Math.ceil(this.data.list.length / 8) + 1)
                 .then(({ list, total }) => {
                     const tempList = list.concat(this.data.list);
                     this.setData!({
@@ -59,7 +59,7 @@ Component<ListComponent>({
                 url: `/api/${this.data.isGoods ? 'commodity' : 'activity' }/pagingQuery`,
                 data: {
                     currentPage: page,
-                    pageSize: 4
+                    pageSize: 8
                 }
             }));
 
