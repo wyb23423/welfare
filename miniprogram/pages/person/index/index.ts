@@ -60,6 +60,10 @@ Page({
             {
                 name: '审核商家',
                 url: '/pages/audit/business/business'
+            },
+            {
+                name: '审核商品',
+                url: '/pages/audit/goods/goods'
             }
         );
         this.setData!({ menu });

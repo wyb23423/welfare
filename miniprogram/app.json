@@ -7,6 +7,7 @@
     "pages/goods/list/list",
     "pages/goods/create/create",
     "pages/audit/business/business",
+    "pages/audit/goods/goods",
     "pages/details/details",
     "pages/business/business",
     "pages/person/index/index",
