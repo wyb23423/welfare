@@ -1,5 +1,5 @@
 import { request } from './utils/http';
-import { COOKIE, USER_NAME, IS_BUSINESS } from './constant/store';
+import { COOKIE, USER_NAME, USER_AUTHENTICATION } from './constant/store';
 
 // app.ts
 App({
@@ -24,7 +24,7 @@ App({
             const { realName, authentication } = <IUser>data.user;
 
             wx.setStorageSync(USER_NAME, data.username);
-            wx.setStorageSync(IS_BUSINESS, authentication);
+            wx.setStorageSync(USER_AUTHENTICATION, authentication);
 
             if (!realName) {
               wx.showModal({

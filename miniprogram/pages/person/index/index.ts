@@ -1,4 +1,5 @@
-import { IS_BUSINESS } from '../../../constant/store';
+import { USER_AUTHENTICATION } from '../../../constant/store';
+import { Authentication } from '../../../constant/index';
 
 /**
  * 个人中心
@@ -26,20 +27,22 @@ Page({
                 name: '入驻商家',
                 icon: 'shangjiarenzheng',
                 url: '/pages/person/settled_in/settled_in'
-            },
-            {
-                name: '创建活动',
-                icon: 'chuangjianhuodong',
-                url: '/pages/activity/create/create',
             }
         ]
     },
     onShow() {
         wx.getStorage({
-            key: IS_BUSINESS,
+            key: USER_AUTHENTICATION,
             success: ({ data }) => {
                 const menu = this.data.menu;
-                if (data) {
+                if(data === Authentication.commodity) {
+                    menu.push({
+                        name: '创建活动',
+                        icon: 'chuangjianhuodong',
+                        url: '/pages/activity/create/create',
+                    });
+                    this.setData!({ menu });
+                } else if (data === Authentication.official) {
                     menu.push(
                         {
                             name: '商品上架',

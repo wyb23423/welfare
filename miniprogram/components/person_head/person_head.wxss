@@ -29,3 +29,13 @@
     font-weight: 700;
     font-size: 40rpx;
 }
+
+.btn {
+    top: 10rpx;
+    position: absolute;
+    color: #6cf;
+    text-decoration: underline;
+    left: 10rpx;
+    font-weight: 400;
+    font-size: 28rpx;
+}

@@ -10,7 +10,8 @@ export enum ActiveStatus {
 export enum Authentication {
     none = 0, // 未认证
     commodity = 1, // 社区认证
-    official = 2 // 官方认证
+    official = 2, // 官方认证
+    auditing = 3 // 审核中
 }
 
 export const AUTHENTICATION = {
@@ -19,5 +20,5 @@ export const AUTHENTICATION = {
     [Authentication.official]: '官方认证'
 };
 
-export const HOST = 'https://www.cdjcsq.cn:8080'; // 请求域名
+export const HOST = 'http://192.168.1.128:8080'; // 'https://www.cdjcsq.cn:8080'; // 请求域名
 export const COMPRESS_SIZE = 300;

@@ -57,7 +57,7 @@ declare interface IMerchant extends Base {
 }
 
 declare interface IUser extends Base<string> {
-    authentication: boolean;
+    authentication: number;
     credit: number;
     integral: number;
     status: number; // 账号状态
