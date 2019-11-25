@@ -27,7 +27,10 @@ Component<ListComponent>({
                       data: {
                         isOk: !!tapIndex,
                         userId: user
-                      }
+                      },
+                      header: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
                   })
                     .then(() => wx.showToast({title: '操作成功'}))
                     .then(() => this.onShow())

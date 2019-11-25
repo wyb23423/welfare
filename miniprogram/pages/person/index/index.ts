@@ -66,7 +66,7 @@ Page({
     },
     merchant() {
         const menu: MenuItem[]  = this.data.menu;
-        menu[4].name = '修改商家信息';
+        menu[3].name = '修改商家信息';
         menu.push(
             {
                 name: '商品上架',
