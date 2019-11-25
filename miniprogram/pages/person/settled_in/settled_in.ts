@@ -2,7 +2,9 @@
  * 商家入驻
  */
 import ProjectFormBehavior from '../../../behavior/project_form';
-import { uploadFile } from '../../../utils/http';
+import { uploadFile, request } from '../../../utils/http';
+import { USER_AUTHENTICATION } from '../../../constant/store';
+import { Authentication } from '../../../constant/index';
 
 Component({
     behaviors: [ProjectFormBehavior],
@@ -17,18 +19,37 @@ Component({
         telRule: {
             regexp: '^1[3456789]\\d{9}$',
             message: '无效电话号码'
+        },
+        oldImg: ''
+    },
+    ready() {
+        if(wx.getStorageSync(USER_AUTHENTICATION) === Authentication.official) {
+            request<IMerchant>({url: '/api/merchant/getByUserId'})
+                .then(({data}) => {
+                    this.data.oldImg = data.img;
+                    this.setData!({form: data});
+                })
+                .catch(console.log);
         }
     },
     methods: {
         _submit() {
-            uploadFile({
-                url: '/api/merchant',
-                name: 'file',
-                filePath: this.data.form.img,
-                formData: this.data.form
-            })
-                .then(() => wx.showToast({ title: '入驻成功' }))
-                .catch(console.log);
+            const {oldImg, form} = this.data;
+            const url = oldImg ? '/api/merchant/update' : '/api/merchant';
+            const message = oldImg ? '修改信息成功' : '入驻成功';
+            if(oldImg === form.img) {
+                request({ url, data: form })
+                    .then(() => wx.showToast({ title: message }))
+                    .catch(console.log);
+            } else {
+                uploadFile({
+                    url, name: 'file',
+                    filePath: form.img,
+                    formData: form
+                })
+                    .then(() => wx.showToast({ title: message }))
+                    .catch(console.log);
+            }
         }
     }
 });

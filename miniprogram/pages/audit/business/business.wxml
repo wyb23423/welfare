@@ -1,0 +1,14 @@
+<view bind:tap="authentication">
+    <view class="user" wx:for="{{list}}" wx:key="{{item.id}}" mark:user="{{item.userId}}">
+        <view class="flex-container avator_box">
+            <image src="{{item.img}}" class="avator" mode="aspectFill" />
+        </view>
+        <view style="flex-grow: 1; padding-right: 40rpx">
+            <view class="user_name">{{item.name}}</view>
+            <view class="ellipsis" style="line-height: 36rpx; margin: 20rpx 0 40rpx;">
+                {{item.detail}}
+            </view>
+        </view>
+    </view>
+</view>
+

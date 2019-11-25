@@ -3,7 +3,6 @@
 	<navigator class="details_item menu" url="../points/points">
 		<text>我的积分</text>
 		<text class="iconfont icon-jiantou right"/>
-
     </navigator>
 	<view class="details_item menu flex-container history">
 		<navigator class="flex-center-v" hover-class="none" url="../history/history?type=auditing">
@@ -29,7 +28,7 @@
 	 url="{{item.url}}"
 	 class="details_item menu"
 	>
-		<text class="iconfont icon-{{item.icon}}"/>
+		<text wx:if="{{!!item.icon}}" class="iconfont icon-{{item.icon}}"/>
 		<text>{{item.name}}</text>
 		<text class="iconfont icon-jiantou right"/>
 

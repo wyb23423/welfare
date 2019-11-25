@@ -5,6 +5,12 @@ import { Authentication } from '../../../constant/index';
  * 个人中心
  */
 
+interface MenuItem {
+    name: string;
+    icon?: string;
+    url: string;
+}
+
 Page({
     data: {
         menu: [
@@ -31,33 +37,48 @@ Page({
         ]
     },
     onShow() {
+        this.data.menu.length = 4;
         wx.getStorage({
             key: USER_AUTHENTICATION,
             success: ({ data }) => {
-                const menu = this.data.menu;
                 if(data === Authentication.commodity) {
-                    menu.push({
-                        name: '创建活动',
-                        icon: 'chuangjianhuodong',
-                        url: '/pages/activity/create/create',
-                    });
-                    this.setData!({ menu });
+                    this.commodity();
                 } else if (data === Authentication.official) {
-                    menu.push(
-                        {
-                            name: '商品上架',
-                            icon: 'shangjia',
-                            url: '/pages/goods/create/create',
-                        },
-                        {
-                            name: '我的订单',
-                            icon: 'dingdan',
-                            url: '/pages/person/order/order'
-                        }
-                    );
-                    this.setData!({ menu });
+                    this.merchant();
                 }
             }
         });
     },
+    commodity() {
+        const menu: MenuItem[]  = this.data.menu;
+        menu.push(
+            {
+                name: '创建活动',
+                icon: 'chuangjianhuodong',
+                url: '/pages/activity/create/create',
+            },
+            {
+                name: '审核商家',
+                url: '/pages/audit/business/business'
+            }
+        );
+        this.setData!({ menu });
+    },
+    merchant() {
+        const menu: MenuItem[]  = this.data.menu;
+        menu[4].name = '修改商家信息';
+        menu.push(
+            {
+                name: '商品上架',
+                icon: 'shangjia',
+                url: '/pages/goods/create/create',
+            },
+            {
+                name: '我的订单',
+                icon: 'dingdan',
+                url: '/pages/person/order/order'
+            }
+        );
+        this.setData!({ menu });
+    }
 });

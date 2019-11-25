@@ -1,8 +1,7 @@
 /**
  * 公益活动
  */
-
-import { ListComponent } from '../../../components/list/list';
+import { ListComponent } from '../../../behavior/page_query';
 
 Page({
     onReachBottom() {
