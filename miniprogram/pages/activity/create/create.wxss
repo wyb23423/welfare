@@ -1,7 +1,7 @@
 .submit {
     margin-top: 30rpx;
     height: 90rpx;
-    background: rgb(0, 150, 136);
+    background: #07c160;
     color: #fff;
     font-size: 32rpx;
 }

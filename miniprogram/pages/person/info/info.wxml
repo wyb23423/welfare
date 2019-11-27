@@ -1,5 +1,5 @@
 <view>
-    <person-head></person-head>
+    <person-head hasinfo="{{hasInfo}}"></person-head>
     <view style="padding: 20rpx">
         <app-form model="{{form}}" rules="{{rules}}" id="form" labelwidth="140rpx">
             <app-form-item prop="realName" label="真实姓名" required custom-class="flex-container">

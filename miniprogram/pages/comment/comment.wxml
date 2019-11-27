@@ -8,13 +8,13 @@
 		<view style="width: 80%; margin: 0 auto;">
 			<view
 			 wx:for="{{starList}}"
-			 wx:key="{{index}}"
+			 wx:key="key"
 			 class="star-item"
 			 bind:tap="score"
 			 data-index="{{index}}"
 			>
 				<text style="width: 30%">{{item.name}}:</text>
-				<text wx:for="{{[1, 2, 3, 4, 5]}}" wx:for-item="star" wx:key="{{star}}" class="iconfont icon-xing" data-star="{{star}}" style="color: {{item.star >= star ? 'rgb(0, 150, 136)' : ''}}"/>
+				<text wx:for="{{[1, 2, 3, 4, 5]}}" wx:for-item="star" wx:key="key" class="iconfont icon-xing" data-star="{{star}}" style="color: {{item.star >= star ? 'rgb(0, 150, 136)' : ''}}"/>
 
             </view>
 			<textarea placeholder="评价内容" class="comment" name="comment" />

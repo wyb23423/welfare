@@ -3,8 +3,6 @@
  */
 import { request } from '../../../utils/http';
 import ProjectFormBehavior from '../../../behavior/project_form';
-import { getOptions } from '../../../utils/util';
-
 
 function getIdCardRule() {
     const common = String.raw`((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}`;
@@ -37,28 +35,22 @@ Component({
         },
         canGetCode: true,
         codeBtnText: '获取验证码',
-        notGetInfo: false
+        hasInfo: false
     },
     ready() {
-        const options = getOptions('pages/person/info/info');
-        if (!options.notGetInfo) {
-            request<IUser>({ url: '/api/user' })
-                .then(({ data }) => {
-                    this.setData!(
-                        ['address', 'idCard', 'phone', 'realName', 'email']
-                            .reduce(
-                                (form, k) => {
-                                    form[`form.${k}`] = (<IAnyObject>data)[k];
-                                    return form;
-                                },
-                                <IAnyObject>{}
-                            )
-                    );
-                })
-                .then(console.log);
-        } else {
-            this.data.notGetInfo = true;
-        }
+        request<IUser>({ url: '/api/user' })
+            .then(({ data }) => {
+                const obj = ['address', 'idCard', 'phone', 'realName', 'email'].reduce(
+                    (form, k) => {
+                        form[`form.${k}`] = (<IAnyObject>data)[k];
+                        return form;
+                    },
+                    <IAnyObject>{}
+                );
+                obj.hasInfo = !!obj.realName;
+                this.setData(obj);
+            })
+            .then(console.log);
     },
     methods: {
         getCode() {

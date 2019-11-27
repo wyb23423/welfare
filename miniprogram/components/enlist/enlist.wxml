@@ -1,5 +1,5 @@
 <modal title="报名审核" isShow="{{isShow}}" bindclose="close">
-	<view wx:for="{{list}}" class="list-item" wx:key="{{item.userId}}">
+	<view wx:for="{{list}}" class="list-item" wx:key="key">
 		<text>{{item.name}}</text>
 		<text>{{item.phone}}</text>
 		<view style="font-size: 48rpx" bind:tap="doAuit" data-index="{{index}}">

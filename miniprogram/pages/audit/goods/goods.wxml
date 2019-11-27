@@ -1,5 +1,5 @@
 <view bind:tap="authentication">
-    <view wx:for="{{list}}" wx:key="{{item.id}}" mark:id="{{item.id}}" class="grid_item_box item_box">
+    <view wx:for="{{list}}" wx:key="key" mark:id="{{item.id}}" class="grid_item_box item_box">
         <image
             src="{{item.img}}"
             lazy-load="true"

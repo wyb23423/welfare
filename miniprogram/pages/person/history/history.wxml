@@ -95,7 +95,7 @@
 	<navigator
 	 class="flex-container item_box"
 	 wx:for="{{history}}"
-	 wx:key="{{item.id}}"
+	 wx:key="key"
 	 url="/pages/details/details?id={{item.id}}&isGoods={{tabType}}"
 	>
 		<image

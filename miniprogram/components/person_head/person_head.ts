@@ -10,6 +10,10 @@ Component({
         isindex: {
             type: Boolean,
             value: false
+        },
+        hasinfo: {
+            type: Boolean,
+            value: true
         }
     },
     ready() {

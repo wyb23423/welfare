@@ -1,5 +1,5 @@
 <view style="padding: 20rpx">
-	<navigator wx:for="{{list}}" wx:key="{{item.id}}" url="/pages/details/details?id={{item.id}}&isGoods=1">
+	<navigator wx:for="{{list}}" wx:key="key" url="/pages/details/details?id={{item.id}}&isGoods=1">
 		<view class="grid_item_box item_box">
 			<image
 			 src="{{item.img}}"
@@ -21,7 +21,7 @@
 		</view>
 	</navigator>
 	<modal isShow="{{isShow}}" title="确认订单" bindclose="close">
-		<view wx:for="{{list[index].orders}}" class="list-item" wx:key="{{item.id}}">
+		<view wx:for="{{list[index].orders}}" class="list-item" wx:key="key">
 			<text>{{item.userId}}</text>
 			<view style="font-size: 48rpx" bind:tap="doConfirm" data-index="{{index}}">
 				<text style="color: #e00; margin-right: 20rpx">×</text>

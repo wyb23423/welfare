@@ -24,7 +24,7 @@
 	</view>
 	<navigator
 	 wx:for="{{menu}}"
-	 wx:key="{{index}}"
+	 wx:key="key"
 	 url="{{item.url}}"
 	 class="details_item menu"
 	>

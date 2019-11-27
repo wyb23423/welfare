@@ -2,7 +2,7 @@
 <view>
 	<navigator
 	 wx:for="{{exchanges}}"
-	 wx:key="{{item.id}}"
+	 wx:key="key"
 	 hover-class="none"
 	 url="/pages/details/details?id={{item.id}}&isGoods=1"
 	>

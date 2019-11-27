@@ -1,5 +1,5 @@
 <view>
-    <navigator class="user" wx:for="{{list}}" wx:key="{{index}}" url="/pages/business/business?img={{item.originImg}}&name={{item.name}}&details={{item.detail}}&userId={{item.userId}}&isCollected=true&address={{item.address}}&phone={{merchant.phone}}">
+    <navigator class="user" wx:for="{{list}}" wx:key="key" url="/pages/business/business?img={{item.originImg}}&name={{item.name}}&details={{item.detail}}&userId={{item.userId}}&isCollected=true&address={{item.address}}&phone={{merchant.phone}}">
         <view class="flex-container avator_box">
             <image src="{{item.img}}" class="avator" mode="aspectFill" />
         </view>

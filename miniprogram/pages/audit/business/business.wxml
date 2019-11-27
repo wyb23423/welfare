@@ -1,5 +1,5 @@
 <view bind:tap="authentication">
-    <view class="user" wx:for="{{list}}" wx:key="{{item.id}}" mark:user="{{item.userId}}">
+    <view class="user" wx:for="{{list}}" wx:key="key" mark:user="{{item.userId}}">
         <view class="flex-container avator_box">
             <image src="{{item.img}}" class="avator" mode="aspectFill" />
         </view>

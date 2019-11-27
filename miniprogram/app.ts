@@ -21,21 +21,21 @@ App({
             }
 
             const data = (<RespoensData>res.data).data;
-            const { realName, authentication } = <IUser>data.user;
+            const { authentication } = <IUser>data.user;
 
             wx.setStorageSync(USER_NAME, data.username);
             wx.setStorageSync(USER_AUTHENTICATION, authentication);
 
-            if (!realName) {
-              wx.showModal({
-                title: '完善个人信息',
-                content: '小程序需要您的部分个人信息, 请完善个人信息',
-                showCancel: false,
-                complete() {
-                  wx.reLaunch({ url: '/pages/person/info/info?notGetInfo=1' });
-                }
-              });
-            }
+            // if (!realName) {
+            //   wx.showModal({
+            //     title: '完善个人信息',
+            //     content: '小程序需要您的部分个人信息, 请完善个人信息',
+            //     showCancel: false,
+            //     complete() {
+            //       wx.redirectTo({ url: '/pages/person/info/info?notGetInfo=1' });
+            //     }
+            //   });
+            // }
           }
         })
           .catch(console.log);

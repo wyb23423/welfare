@@ -32,7 +32,7 @@
 				 class="scroll-item"
 				 scroll-y
 				 wx:for="{{layoutData}}"
-				 wx:key="{{index}}"
+				 wx:key="key"
 				 scroll-top="{{scrollTop[index]}}px"
 				 data-index="{{index}}"
 				 bindscroll="scroll"
@@ -44,7 +44,7 @@
 						 wx:for="{{item}}"
 						 wx:for-item="option"
 						 wx:for-index="i"
-						 wx:key="{{i}}"
+						 wx:key="key"
 						 class="option {{i === selectedIndex[index] ? 'selected' : ''}}"
 						 data-index="{{i}}"
 						>
