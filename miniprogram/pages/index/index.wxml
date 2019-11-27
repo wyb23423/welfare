@@ -31,6 +31,6 @@
 			<template is="goods_item" data="{{...item}}" />
 		</navigator>
 		<view class="empty" wx:if="{{!goods.length}}" />
-	</view>
+    </view>
 </view>
 

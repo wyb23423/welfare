@@ -26,6 +26,7 @@ App({
             wx.setStorageSync(USER_NAME, data.username);
             wx.setStorageSync(USER_AUTHENTICATION, authentication);
 
+            console.log(authentication, 333333333333333);
             // if (!realName) {
             //   wx.showModal({
             //     title: '完善个人信息',

@@ -41,6 +41,7 @@ Page({
         wx.getStorage({
             key: USER_AUTHENTICATION,
             success: ({ data }) => {
+                console.log(data, 2222222222222);
                 if(data === Authentication.commodity) {
                     this.commodity();
                 } else if (data === Authentication.official) {

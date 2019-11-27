@@ -47,7 +47,7 @@ Component({
                     },
                     <IAnyObject>{}
                 );
-                obj.hasInfo = !!obj.realName;
+                obj.hasInfo = !!obj['form.realName'];
                 this.setData(obj);
             })
             .then(console.log);
