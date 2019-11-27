@@ -1,8 +1,7 @@
-<import src="/template/list_item/list_item.wxml" />
-<template name="star" />
 <view>
-	<navigator class="activity_head_info" url="/pages/details/details?id={{item.id}}&isGoods=0">
-		<template is="activity_item" data="{{...value}}" />
+	<navigator class="activity_head_info" url="/pages/details/details?id={{value.id}}&isGoods=0">
+        <image src="{{value.img}}" mode="aspectFill" style="width: 100%; height: 300rpx" />
+        <view style="font-weight: 700; font-size: 36rpx; ">{{value.name}}</view>
 	</navigator>
 	<form bindsubmit="onSubmit">
 		<view style="width: 80%; margin: 0 auto;">
