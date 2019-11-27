@@ -10,7 +10,6 @@
 		<navigator
 		 wx:for="{{activity}}"
 		 wx:key="{{item.id}}"
-		 style="padding:0 10rpx"
 		 url="/pages/details/details?id={{item.id}}&isGoods=0"
 		>
 			<template is="activity_item" data="{{...item}}" />
@@ -27,7 +26,6 @@
 		<navigator
 		 wx:for="{{goods}}"
 		 wx:key="{{item.id}}"
-		 style="padding:0 10rpx"
 		 url="/pages/details/details?id={{item.id}}&isGoods=1"
 		>
 			<template is="goods_item" data="{{...item}}" />

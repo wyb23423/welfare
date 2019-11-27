@@ -2,7 +2,7 @@
     <view wx:for="{{list}}" wx:key="{{index}}" class="flex-container">
         <text style="font-size: 32rpx">{{item.title}}</text>
         <text>{{item.time}}</text>
-        <view style="color: {{item.value > 0 ? '#009688' : '#e00'}}">
+        <view style="color: {{item.value > 0 ? '#07c160' : '#e00'}}">
             {{item.value > 0 ? '+' : ''}}{{item.value}}
         </view>
     </view>

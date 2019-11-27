@@ -6,16 +6,18 @@
 		 lazy-load="true"
 		 mode="aspectFill"
 		 class="grid_img"
-		/>
-		<text class="grid_name list_item_title">{{name}}</text>
-		<text class="grid_authentication item_text authentication">{{authentication}}</text>
-		<text class="grid_size" style="font-size: 24rpx">{{sign || 0}}/{{size}}</text>
-		<text class="grid_reset2 item_text item_info" style="margin-right: 20rpx">仅剩{{size - (sign || 0)}}名额</text>
+        />
+        <text class="grid_name list_item_title">{{name}}</text>
+		<view class="grid_authentication">
+            <text class="authentication">{{authentication}}</text>
+        </view>
+		<text class="grid_size" style="color: #cac7c7">{{sign || 0}}/{{size}}</text>
+		<!-- <text class="grid_reset2 item_text item_info" style="margin-right: 20rpx">仅剩{{size - (sign || 0)}}名额</text> -->
 		<navigator
 		 class="grid_btn item_text item_info"
 		 hover-stop-propagation="true"
 		 catch:tap="none"
-		 style="border-radius: 10rpx"
+		 style="border-radius: 6rpx"
 		 url="/pages/sign/sign?id={{id}}"
 		>
 			立即报名
@@ -34,10 +36,12 @@
 		<view class="grid_name">
 			<text class="iconfont icon-huo" style="color: #e00" wx:if="{{isHeat}}"/>
 			<text class="list_item_title">{{name}}</text>
-		</view>
-		<text class="grid_authentication item_text authentication">{{authentication}}</text>
-		<text class="grid_reset1 item_text item_info" style="margin-left: 20rpx">仅剩{{size - (sign || 0)}}名额</text>
-		<button
+        </view>
+        <view class="grid_authentication">
+            <text class="authentication">{{authentication}}</text>
+        </view>
+		<text class="grid_reset1" style="color: #cac7c7">{{sign || 0}}/{{size}}</text>
+		<!-- <button
 		 class="grid_collection iconfont icon-heart{{isCollected ? '-solid' : ''}} heart"
 		 hover-class="btn-tap"
 		 hover-stop-propagation="true"
@@ -45,8 +49,8 @@
 		 data-collect="{{isCollected}}"
 		 catch:tap="collect"
 		 style="padding: 15rpx"
-		/>
-		<view class="grid_size flex-container" style="font-size: 28rpx;">
+		/> -->
+		<view class="grid_size flex-container" style="font-size: 28rpx; justify-content: flex-start;">
 			<text class="iconfont icon-dollar" style="color: #e00; font-size: 24rpx"/>
 			<view style="color: #e00; font-size: 32rpx;">{{integral}}</view>
 			<text decode="true">&nbsp;积分</text>
@@ -55,7 +59,7 @@
 		 class="grid_btn item_text item_info"
 		 data-id="{{id}}"
 		 hover-stop-propagation="true"
-		 style="border-radius: 10rpx; margin: 0"
+		 style="border-radius: 6rpx; margin: 0"
 		 catch:tap="exchange"
 		>
 			立即兑换

@@ -29,6 +29,7 @@
 
 page {
   font-size: 24rpx;
+  padding: 15rpx 0;
 }
 
 button::after {

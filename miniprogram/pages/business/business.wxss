@@ -2,7 +2,7 @@
 
 .collect {
     height: 90rpx;
-    background: #009688;
+    background: #07c160;
     color: #fff;
     align-items: center;
 }

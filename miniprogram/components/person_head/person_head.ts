@@ -23,11 +23,13 @@ Component({
         authentication() {
             wx.showModal({
                 content: '申请成为社区管理员?',
-                success: () => {
-                    request({url: '/api/user/communityAuthorization'})
-                    .then(() => wx.showToast({title: '申请成功'}))
-                    .then(() => this.setData({hasCommodity: false}))
-                    .catch(console.log);
+                success: ({confirm}) => {
+                    if(confirm) {
+                        request({url: '/api/user/communityAuthorization'})
+                            .then(() => wx.showToast({title: '申请成功'}))
+                            .then(() => this.setData({hasCommodity: false}))
+                            .catch(console.log);
+                    }
                 }
             });
         }

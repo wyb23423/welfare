@@ -23,15 +23,15 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#07c160",
     "navigationBarTitleText": "锦城公益",
-    "navigationBarTextStyle": "black",
+    "navigationBarTextStyle": "white",
     "onReachBottomDistance": 50
   },
   "sitemapLocation": "sitemap.json",
   "tabBar": {
     "color": "#000",
-    "selectedColor": "#6fc",
+    "selectedColor": "#07c160",
     "backgroundColor": "#fff",
     "list": [
       {

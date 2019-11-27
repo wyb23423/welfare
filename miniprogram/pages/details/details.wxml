@@ -15,10 +15,10 @@
 		</view>
 		<view class="flex-container details_item" style="justify-content: flex-start">
 			<text class="iconfont icon-dollar"/>
-			<view wx:if="{{isActivity}}" style="color: #009688; margin-right: 20rpx">
+			<view wx:if="{{isActivity}}" style="color: #07c160; margin-right: 20rpx">
 				公益积分：{{integral}}
 			</view>
-			<view style="color: #009688">信用积分: {{credit}}</view>
+			<view style="color: #07c160">信用积分: {{credit}}</view>
 		</view>
 		<view style="margin: 20rpx 0;">{{details}}</view>
 	</view>

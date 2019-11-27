@@ -7,7 +7,7 @@
 }
 
 .details_item {
-    border-top: 2rpx solid #ccc;
+    border-bottom: 4rpx solid #ccc;
     line-height: 70rpx;
     font-weight: 500;
 }
@@ -65,6 +65,6 @@
 .submit {
     flex-grow: 1;
     font-size: 28rpx;
-    background: #009688 !important;
+    background: #07c160 !important;
     color: #fff;
 }

@@ -31,7 +31,6 @@
 		<text wx:if="{{!!item.icon}}" class="iconfont icon-{{item.icon}}"/>
 		<text>{{item.name}}</text>
 		<text class="iconfont icon-jiantou right"/>
-
     </navigator>
 	<view class="ad" />
 </view>

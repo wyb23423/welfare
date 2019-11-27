@@ -1,12 +1,21 @@
-<view class="info">
-	<view class="avator">
-		<open-data type="userAvatarUrl" />
-	</view>
-	<view style="margin: 10rpx 0">
-		<open-data type="userNickName" class="name" />
-	</view>
-	<view style="color: #fff">ID: {{username}}</view>
-	<text wx:if="{{isindex && hasCommodity}}" class="btn" bind:tap="authentication">社区认证</text>
-	<navigator class="point" url="../info/info" wx:if="{{isindex}}">···</navigator>
-</view>
+<template name="head">
+    <view class="info">
+        <view class="avator">
+            <open-data type="userAvatarUrl" />
+        </view>
+        <view style="margin: 10rpx 0">
+            <open-data type="userNickName" class="name" />
+        </view>
+    </view>
+</template>
 
+<view>
+    <navigator style="position: relative;" wx:if="{{isindex}}" url="../info/info">
+        <template is="head" isindex="{{true}}" />
+        <text class="point iconfont icon-jiantou"></text>
+    </navigator>
+    <view style="position: relative;" wx:else>
+        <template is="head" />
+        <text wx:if="{{hasCommodity}}" class="point btn" bind:tap="authentication">社区认证</text>
+    </view>
+</view>
