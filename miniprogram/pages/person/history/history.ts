@@ -64,16 +64,23 @@ Page({
         enList.show(this.data.history[index].id);
     },
     ok(e: WxTouchEvent) {
-        const index = +e.target.dataset.index;
-        const history = <IActive[]>this.data.history;
+        wx.showModal({
+            content: '该活动已完成?',
+            success: (res) => {
+                if (res.confirm) {
+                    const index = +e.target.dataset.index;
+                    const history = <IActive[]>this.data.history;
 
-        request({ url: '/api/activity/achieve/' + history[index].id })
-            .then(() => {
-                wx.showToast({title: '操作成功'});
-                history[index].status = ActiveStatus.complete;
-                this.setData!({history});
-            })
-            .catch(console.log);
+                    request({ url: '/api/activity/achieve/' + history[index].id })
+                        .then(() => {
+                            wx.showToast({title: '操作成功'});
+                            history[index].status = ActiveStatus.complete;
+                            this.setData!({history});
+                        })
+                        .catch(console.log);
+                }
+            }
+        });
     },
     none() {
         //
