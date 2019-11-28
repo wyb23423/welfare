@@ -2,6 +2,7 @@ import { request } from '../utils/http';
 import { parseData } from '../utils/util';
 
 export interface ListComponent extends WxComponent {
+    reflash(): void;
     onShow(): void;
     getMore(): void;
     getPageData(page?: number): Promise<{
@@ -20,6 +21,9 @@ export default Behavior<ListComponent>({
         }
     },
     methods: {
+        reflash() {
+            this.data.list.length > 1 ? this.onShow() : this.setData({list: []});
+        },
         onShow() {
             this.getPageData()
                 .then(({ list, total }) => this.setData!({ list, hasMore: total > list.length }))

@@ -33,7 +33,7 @@ Component<ListComponent>({
                         }
                   })
                     .then(() => wx.showToast({title: '操作成功'}))
-                    .then(() => this.onShow())
+                    .then(() => this.reflash())
                     .catch(console.log);
                 }
             });
