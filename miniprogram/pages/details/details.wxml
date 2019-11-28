@@ -1,6 +1,6 @@
 <view>
 	<image src="{{img}}" mode="aspectFill" style="width: 100%; height: 600rpx" />
-	<view class="details">
+	<view class="details" style="padding-bottom: {{merchant ? 0 : 140}}rpx">
 		<view style="font-weight: 700">{{name}}</view>
 		<view style="line-height: 80rpx">
 			<text decode="true">浏览&nbsp;{{look}}&nbsp;&nbsp;&nbsp;收藏&nbsp;{{like}}</text>

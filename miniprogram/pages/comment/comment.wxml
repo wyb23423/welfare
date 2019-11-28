@@ -16,7 +16,7 @@
 				<text wx:for="{{[1, 2, 3, 4, 5]}}" wx:for-item="star" wx:key="key" class="iconfont icon-xing" data-star="{{star}}" style="color: {{item.star >= star ? 'rgb(0, 150, 136)' : ''}}"/>
 
             </view>
-			<textarea placeholder="评价内容" class="comment" name="comment" />
+			<textarea maxlength="{{-1}}" placeholder="评价内容" class="comment" name="comment" />
 			<checkbox-group name="anonymous">
 				<checkbox class="checkbox" value="1" />
 				<text>匿名评价</text>

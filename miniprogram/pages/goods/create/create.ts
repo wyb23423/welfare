@@ -22,6 +22,7 @@ Component({
     },
     methods: {
         _submit() {
+            console.log(this.data.form.details);
             uploadFile({
                 url: '/api/commodity',
                 filePath: this.data.form.img,

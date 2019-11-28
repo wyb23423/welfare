@@ -2,7 +2,6 @@
 
 .details {
     padding: 20rpx;
-    padding-bottom: 0;
     font-size: 28rpx;
 }
 
@@ -67,4 +66,8 @@
     font-size: 28rpx;
     background: #07c160 !important;
     color: #fff;
+}
+
+page {
+    padding-top: 0 !important;
 }

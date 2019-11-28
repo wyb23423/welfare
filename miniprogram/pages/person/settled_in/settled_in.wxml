@@ -11,7 +11,7 @@
                 <input id="phone" value="{{form.phone}}" bindinput="onInput" />
             </app-form-item>
             <app-form-item prop="detail" label="介绍" required>
-                <textarea id="detail" value="{{form.detail}}" bindinput="onInput"></textarea>
+                <textarea maxlength="{{-1}}" id="detail" value="{{form.detail}}" bindinput="onInput"></textarea>
             </app-form-item>
             <app-form-item prop="address" label="地址" required>
                 <input id="address" value="{{form.address}}" bindinput="onInput" />

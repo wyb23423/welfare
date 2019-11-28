@@ -17,7 +17,14 @@
                 <input id="integral" value="{{form.integral}}" type="number" bindinput="onInput" />
             </app-form-item>
             <app-form-item prop="details" label="活动详情" required>
-                <textarea id="details" style="height: 300rpx" value="{{form.details}}" bindinput="onInput" wx:if="{{!hasMask}}"></textarea>
+                <textarea 
+                    maxlength="{{-1}}" 
+                    id="details" 
+                    style="height: 300rpx" 
+                    value="{{form.details}}" 
+                    bindinput="onInput" 
+                    wx:if="{{!hasMask}}"
+                ></textarea>
                 <view style="height: 300rpx" wx:else>{{form.details}}</view>
             </app-form-item>
             <app-form-item prop="size" label="活动人数" required>
