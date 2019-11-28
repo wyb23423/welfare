@@ -10,7 +10,7 @@
             <text class="iconfont icon-huo" style="color: #e00" wx:if="{{isHeat}}"/>
             <text class="list_item_title">{{item.name}}</text>
         </view>
-        <view class="grid_authentication flex-container" style="font-size: 28rpx;width: 120rpx">
+        <view class="grid_authentication flex-container" style="font-size: 28rpx;justify-content: flex-start;">
             <text class="iconfont icon-dollar" style="color: #e00; font-size: 24rpx"/>
             <view style="color: #e00; font-size: 32rpx;">{{item.integral}}</view>
             <text decode="true">&nbsp;积分</text>
