@@ -67,7 +67,3 @@
     background: #07c160 !important;
     color: #fff;
 }
-
-page {
-    padding-top: 0 !important;
-}

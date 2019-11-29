@@ -11,14 +11,14 @@
             <app-form-item prop="phone" label="电话号码" required custom-class="flex-container">
                 <input id="phone" value="{{form.phone}}" type="number" bindinput="onInput" />
             </app-form-item>
-            <app-form-item prop="code" label="验证码" required custom-class="flex-container">
+            <!-- <app-form-item prop="code" label="验证码" required custom-class="flex-container">
                 <view style="display: flex">
                     <input type="number" style="flex-grow: 1" placeholder="输入验证码" id="code" value="{{form.code}}" bindinput="onInput"></input>
                     <button class="btn" disabled="{{!canGetCode}}" bind:tap="getCode">
                         {{codeBtnText}}
                     </button>
                 </view>
-            </app-form-item>
+            </app-form-item> -->
             <app-form-item prop="email" label="电子邮箱" custom-class="flex-container">
                 <input id="email" value="{{form.email}}" bindinput="onInput"></input>
             </app-form-item>

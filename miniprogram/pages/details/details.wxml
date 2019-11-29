@@ -3,7 +3,7 @@
 	<view class="details" style="padding-bottom: {{merchant ? 0 : 140}}rpx">
 		<view style="font-weight: 700">{{name}}</view>
 		<view style="line-height: 80rpx">
-			<text decode="true">浏览&nbsp;{{look}}&nbsp;&nbsp;&nbsp;收藏&nbsp;{{like}}</text>
+			<text decode="true">浏览&nbsp;{{look || 0}}&nbsp;&nbsp;&nbsp;收藏&nbsp;{{like}}</text>
 		</view>
 		<view class="details_item">
 			<text class="iconfont icon-shijian"/>
@@ -15,7 +15,7 @@
 		</view>
 		<view class="flex-container details_item" style="justify-content: flex-start">
 			<text class="iconfont icon-dollar"/>
-			<view wx:if="{{isActivity}}" style="color: #07c160; margin-right: 20rpx">
+			<view style="color: #07c160; margin-right: 20rpx">
 				公益积分：{{integral}}
 			</view>
 			<view style="color: #07c160">信用积分: {{credit}}</view>
@@ -66,8 +66,9 @@
 		 data-id="{{id}}"
 		 wx:else
 		>
-			兑换(所需公益积分: {{integral}})
+			兑换
 		</button>
 	</view>
 </view>
+
 

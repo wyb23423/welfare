@@ -5,7 +5,7 @@ export interface ListComponent extends WxComponent {
     reflash(): void;
     onShow(): void;
     getMore(): void;
-    getPageData(page?: number): Promise<{
+    getPageData(page?: number, size?: number): Promise<{
         list: Array<IActive | ICommodity>;
         total: number;
     }>;
@@ -25,7 +25,7 @@ export default Behavior<ListComponent>({
             this.data.list.length > 1 ? this.onShow() : this.setData({list: []});
         },
         onShow() {
-            this.getPageData()
+            this.getPageData(1, this.data.list.length || 8)
                 .then(({ list, total }) => this.setData!({ list, hasMore: total > list.length }))
                 .catch(e => console.log(e.errMsg));
         },
@@ -34,9 +34,10 @@ export default Behavior<ListComponent>({
                 return;
             }
 
-            this.getPageData(Math.ceil(this.data.list.length / 8) + 1)
+            const dataList = this.data.list;
+            this.getPageData(Math.ceil(dataList.length / 8) + 1)
                 .then(({ list, total }) => {
-                    const tempList = list.concat(this.data.list);
+                    const tempList = dataList.concat(list);
                     this.setData!({
                         list: tempList,
                         hasMore: total > tempList.length
@@ -44,7 +45,7 @@ export default Behavior<ListComponent>({
                 })
                 .catch(e => console.log(e.errMsg));
         },
-        async getPageData(page: number = 1) {
+        async getPageData(page: number = 1, size: number = 8) {
             if(!this.data.url) {
                 return Promise.reject({errMsg: '请求路径错误'});
             }
@@ -54,7 +55,7 @@ export default Behavior<ListComponent>({
                 url: this.data.url,
                 data: {
                     [currentPage]: page,
-                    [pageSize]: 8
+                    [pageSize]: size
                 }
             }));
             return ({ list: (<any[]>list.map(parseData)), total });

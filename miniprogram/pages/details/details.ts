@@ -8,28 +8,28 @@ import { exchange } from '../../template/list_item/list_item';
 Page({
     isGoods: 0,
     data: {
-        id: 1,
-        details: '123',
-        integral: 21,
-        credit: 0,
-        name: '有爱的我们不孤独——自闭症儿童义诊系列活动',
-        size: 1,
-        location: '',
-        startTime: formatTime(new Date()),
-        endTime: formatTime(new Date(Date.now() + 1000 * 60 * 60 * 24)),
-        look: 23,
-        like: 40,
-        img: '/public/images/23.jpg',
-        isCollected: false,
-        merchant: {
-            name: '北京儿童医疗发展中心',
-            activityCount: 12,
-            fans: 52,
-            img: '/public/images/23.jpg',
-            detail: '北京医疗儿童发展中心的孤独症和其他障碍敢于服务，是xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-            originImg: '/public/images/23.jpg',
-            userId: 'fsdfsfd'
-        }
+        // id: 1,
+        // details: '123',
+        // integral: 21,
+        // credit: 0,
+        // name: '有爱的我们不孤独——自闭症儿童义诊系列活动',
+        // size: 1,
+        // location: '',
+        // startTime: formatTime(new Date()),
+        // endTime: formatTime(new Date(Date.now() + 1000 * 60 * 60 * 24)),
+        // look: 23,
+        // like: 40,
+        // img: '/public/images/23.jpg',
+        // isCollected: false,
+        // merchant: {
+        //     name: '北京儿童医疗发展中心',
+        //     activityCount: 12,
+        //     fans: 52,
+        //     img: '/public/images/23.jpg',
+        //     detail: '北京医疗儿童发展中心的孤独症和其他障碍敢于服务，是xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+        //     originImg: '/public/images/23.jpg',
+        //     userId: 'fsdfsfd'
+        // }
     },
     onLoad(query?: Record<'isGoods' | 'id', string>) {
         if(!query) {
