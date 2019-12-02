@@ -33,15 +33,11 @@ Page({
                 name: '入驻商家',
                 icon: 'shangjiarenzheng',
                 url: '/pages/person/settled_in/settled_in'
-            },
-            {
-                name: '广告设置',
-                url: '/pages/ad_setting/ad'
             }
         ]
     },
     onShow() {
-        this.data.menu.length = 5;
+        this.data.menu.length = 4;
         wx.getStorage({
             key: USER_AUTHENTICATION,
             success: ({ data }) => {
@@ -68,6 +64,10 @@ Page({
             {
                 name: '审核商品',
                 url: '/pages/audit/goods/goods'
+            },
+            {
+                name: '广告设置',
+                url: '/pages/ad_setting/ad'
             }
         );
         this.setData!({ menu });

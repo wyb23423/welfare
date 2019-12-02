@@ -15,7 +15,7 @@ Component<AdIndex>({
         }
     },
     data: {
-        imgs: new Array(5).fill('/public/images/23.jpg'),
+        imgs: [],
         isDouble: true
     },
     methods: {

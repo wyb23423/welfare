@@ -8,7 +8,7 @@ Component({
         }
     },
     data: {
-        imgs: ['/public/images/23.jpg', '', ''],
+        imgs: ['', '', ''],
         radioIndex: 0,
         options: ['活动列表', '商品列表', '个人中心']
     },
