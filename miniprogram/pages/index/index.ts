@@ -9,7 +9,7 @@ Page({
   data: {
     activity: [] as IActive[],
     goods: [] as ICommodity[],
-    ad: new Array(2).fill('/public/images/23.jpg')
+    ad: new Array(5).fill('/public/images/23.jpg')
   },
   // ==============================事件
   ...listFunc,
