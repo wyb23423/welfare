@@ -1,6 +1,12 @@
 <import src="/template/list_item/list_item.wxml" />
 <view>
-	<view class="main">
+    <carousel>
+        <carousel-item name="1">1111111111</carousel-item>
+        <carousel-item name="2">2222222222</carousel-item>
+        <carousel-item name="3">3333333333</carousel-item>
+        <carousel-item name="4">4444444444</carousel-item>
+    </carousel>
+	<view class="main" style="margin-top: 20rpx">
 		<view class="title">
 			<text class="title_text">公益活动</text>
 			<navigator class="title_more" url="/pages/activity/list/list" open-type="switchTab">

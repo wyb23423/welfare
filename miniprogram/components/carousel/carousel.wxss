@@ -1,0 +1,31 @@
+.carousel_box {
+    overflow: hidden;
+    position: relative;
+    background: #eee;
+}
+
+.carousel_content {
+    height: 100%;
+    position: relative;
+}
+
+.label_box {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    bottom: 20rpx;
+    width: 100%;
+}
+
+.label_item {
+    width: 15rpx;
+    height: 15rpx;
+    border-radius: 50%;
+    background: #99a9bf;
+    margin: 0 10rpx;
+}
+
+.active {
+    background: #fff;
+}

@@ -1,0 +1,6 @@
+<view 
+    class="carousel_item"
+    style="transform: translateX({{translate}}); opacity: {{translate==='0%' ? 1 : 0}};"
+>
+    <slot></slot>
+</view>

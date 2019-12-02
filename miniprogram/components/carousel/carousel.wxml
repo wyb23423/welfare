@@ -1,0 +1,19 @@
+<view 
+    class="carousel_box" 
+    style="height: {{height}};" 
+    bind:touchstart="touchStart"
+    bind:touchmove="touchMove"
+    bind:touchend="touchEnd"
+>
+    <view class="carousel_content">
+        <slot></slot>
+    </view>
+    <view class="label_box">
+        <view 
+            wx:for="{{label}}" 
+            wx:key="label" 
+            wx:for-index="i" 
+            class="label_item{{i === index ? ' active' : ''}}"
+        ></view>
+    </view>
+</view>

@@ -36,7 +36,7 @@ Page({
             },
             {
                 name: '广告设置',
-                url: '/pages/ad/ad'
+                url: '/pages/ad_setting/ad'
             }
         ]
     },
