@@ -4,6 +4,7 @@
     bind:touchstart="touchStart"
     bind:touchmove="touchMove"
     bind:touchend="touchEnd"
+    hidden="{{!label.length}}"
 >
     <view class="carousel_content">
         <slot></slot>

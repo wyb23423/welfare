@@ -11,6 +11,7 @@ interface Carousel extends WxComponent {
         timer?: number; // 定时器id
         sx: number; // touchStart 的x坐标
         ex: number; // touchEnd 时的x坐标
+        isMoving: boolean;
 
         interval: number; // 定时器调用间隔
         initial: number; // 初始显示的组件索引
@@ -44,7 +45,8 @@ Component<Carousel>({
         index: 0,
         label: [],
         sx: 0,
-        ex: 0
+        ex: 0,
+        isMoving: false
     },
     relations: {
         './item/item': {
@@ -70,7 +72,13 @@ Component<Carousel>({
             this.data.ex = pageX;
         },
         touchEnd() {
-            const {sx, ex} = this.data;
+            const {sx, ex, items: {length}, isMoving} = this.data;
+
+            // 项目数不大于2, 手动滚动没什么太大必要，不处理
+            if(length <= 2 || isMoving) {
+                return;
+            }
+
             if(sx < ex - 50) {
                 this.prev();
             } else if(sx > ex + 50) {
@@ -99,12 +107,13 @@ Component<Carousel>({
             let arr = [...items.slice(index), ...items.slice(0, index)];
             arr = [...arr.slice(-offset), ...arr.slice(0, arr.length - offset)];
 
-            // 处理只有两项的情况
-            if(arr.length === 2) {
-                arr.push(arr[0]);
-            }
+            setTimeout(() => {
+                this.data.isMoving = false;
+                arr.length <= 2 && arr[0].setData({translate: '100%'});
+            }, 500);
 
             arr.forEach((v, i) => v.setData({translate: `${(i - offset) * 100}%`}) );
+            this.data.isMoving = true;
 
             return this;
         },
