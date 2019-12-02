@@ -33,15 +33,18 @@ Page({
                 name: '入驻商家',
                 icon: 'shangjiarenzheng',
                 url: '/pages/person/settled_in/settled_in'
+            },
+            {
+                name: '广告设置',
+                url: '/pages/ad/ad'
             }
         ]
     },
     onShow() {
-        this.data.menu.length = 4;
+        this.data.menu.length = 5;
         wx.getStorage({
             key: USER_AUTHENTICATION,
             success: ({ data }) => {
-                console.log(data, 2222222222222);
                 if(data === Authentication.commodity) {
                     this.commodity();
                 } else if (data === Authentication.official) {

@@ -1,0 +1,16 @@
+<view hidden="{{hidden}}">
+    <view>
+        <view wx:key="key" wx:for="{{imgs}}" mark:index="{{index}}" class="ad-item card">
+            <image src="{{item}}" mode="aspectFill" class="fill-box" />
+            <text class="delete-text" bind:tap="remove" data-index="{{index}}">删除</text>
+        </view>
+        <view class="ad-item card" bind:tap="add">
+            <view class="fill-box flex-center-v" style="color: rgba(0, 0, 0, 0.64)">
+                <view class="iconfont icon-shangchuan" style="font-size: 60rpx"></view>
+                <view style="font-size: 36rpx;">添加广告</view>
+            </view>
+        </view>
+        <!-- <view wx:if="{{isDouble}}" class="ad-item" style="opacity: 0"></view> -->
+    </view>
+    <button class="bottom-submit">提交广告</button>
+</view>

@@ -19,7 +19,8 @@
     "pages/person/settled_in/settled_in",
     "pages/person/points/details/details",
     "pages/comment/comment",
-    "pages/person/order/order"
+    "pages/person/order/order",
+    "pages/ad/ad"
   ],
   "window": {
     "backgroundTextStyle": "light",

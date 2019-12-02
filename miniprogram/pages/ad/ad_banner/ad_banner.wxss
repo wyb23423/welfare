@@ -1,0 +1,17 @@
+@import '../../../app.wxss';
+@import '../ad_scroll/ad_scroll.wxss';
+
+.main {
+    padding: 20rpx;
+    font-size: 28rpx;
+}
+
+radio {
+    transform: scale(0.5);
+}
+
+.radio {
+    justify-content: flex-start;
+    position: relative;
+}
+

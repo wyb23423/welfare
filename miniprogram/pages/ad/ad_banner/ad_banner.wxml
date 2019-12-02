@@ -1,0 +1,25 @@
+<view hidden="{{hidden}}">
+    <view class="main">
+        <view class="flex-container radio">
+            <view>广告位置: </view>
+            <radio-group style="height: 45rpx" bindchange="radioChange">
+                <label wx:for="{{options}}" wx:key="key">
+                    <radio value="{{index}}" checked="{{!index}}" color="#07c160"></radio>
+                    <text>{{options[index]}}</text>
+                </label>
+            </radio-group>
+        </view>
+        <view>
+            <view style="margin: 20rpx 0">广告图片: </view>
+            <view class="card" bind:tap="modify" style="position: relative">
+                <image wx:if="{{!!imgs[radioIndex]}}" src="{{imgs[radioIndex]}}" mode="aspectFill" class="fill-box" />
+                <text hidden="{{!imgs[radioIndex]}}" class="delete-text" catch:tap="remove">删除</text>
+                <view hidden="{{!!imgs[radioIndex]}}" class="fill-box flex-center-v" style="color: rgba(0, 0, 0, 0.64)">
+                    <view class="iconfont icon-shangchuan" style="font-size: 60rpx"></view>
+                    <view style="font-size: 36rpx;">添加广告</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <button class="bottom-submit" bind:tap="onSubmit">提交广告</button>
+</view>

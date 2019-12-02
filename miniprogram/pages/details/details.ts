@@ -8,7 +8,7 @@ import { exchange } from '../../template/list_item/list_item';
 Page({
     isGoods: 0,
     data: {
-        // id: 1,
+        id: 1,
         // details: '123',
         // integral: 21,
         // credit: 0,
@@ -18,9 +18,9 @@ Page({
         // startTime: formatTime(new Date()),
         // endTime: formatTime(new Date(Date.now() + 1000 * 60 * 60 * 24)),
         // look: 23,
-        // like: 40,
+        like: 40,
         // img: '/public/images/23.jpg',
-        // isCollected: false,
+        isCollected: false,
         // merchant: {
         //     name: '北京儿童医疗发展中心',
         //     activityCount: 12,

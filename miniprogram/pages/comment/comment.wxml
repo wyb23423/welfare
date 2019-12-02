@@ -22,7 +22,7 @@
 				<text>匿名评价</text>
 			</checkbox-group>
 		</view>
-		<button class="submit" form-type="submit">发起评价</button>
+		<button class="bottom-submit" form-type="submit">发起评价</button>
 	</form>
 </view>
 

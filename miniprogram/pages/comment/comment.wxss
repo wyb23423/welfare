@@ -34,14 +34,6 @@
     transform-origin: center 25%;
 }
 
-.submit {
-    height: 90rpx;
-    background: #07c160;
-    color: #fff;
-    font-size: 32rpx;
-    margin-top: 20rpx;
-}
-
 .icon-xing {
     transition: color .4s ease;
 }

@@ -38,5 +38,5 @@
             </app-form-item>
         </view>
     </app-form>
-    <button class="submit" bind:tap="onSubmit">创建活动</button>
+    <button class="bottom-submit" bind:tap="onSubmit">创建活动</button>
 </view>

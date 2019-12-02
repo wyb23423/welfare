@@ -1,11 +1,3 @@
-.submit {
-    margin-top: 30rpx;
-    height: 90rpx;
-    background: #07c160;
-    color: #fff;
-    font-size: 32rpx;
-}
-
 .form {
     padding: 0 30rpx;
     position: relative;
