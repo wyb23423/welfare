@@ -22,7 +22,8 @@ Component<PersonHead>({
     },
     data: {
         time: 0, // 上次点击头像时间
-        count: 0 // 连续点击头像次数
+        count: 0, // 连续点击头像次数
+        hasCommodity: false
     },
     ready() {
         const auth = wx.getStorageSync(USER_AUTHENTICATION);
