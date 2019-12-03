@@ -13,9 +13,9 @@
 			</navigator>
 		</view>
 		<navigator
-		 wx:for="{{activity}}"
-		 wx:key="key"
-		 url="/pages/details/details?id={{item.id}}&isGoods=0"
+            wx:for="{{activity}}"
+            wx:key="key"
+            url="/pages/details/details?id={{item.id}}&isGoods=0"
 		>
 			<template is="activity_item" data="{{...item}}" />
 		</navigator>
@@ -29,9 +29,9 @@
 			</navigator>
 		</view>
 		<navigator
-		 wx:for="{{goods}}"
-		 wx:key="key"
-		 url="/pages/details/details?id={{item.id}}&isGoods=1"
+            wx:for="{{goods}}"
+            wx:key="key"
+            url="/pages/details/details?id={{item.id}}&isGoods=1"
 		>
 			<template is="goods_item" data="{{...item}}" />
 		</navigator>
