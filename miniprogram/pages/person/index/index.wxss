@@ -3,13 +3,13 @@
 .menu {
     position: relative;
     font-size: 36rpx;
-    padding: 0 40rpx;
+    padding: 0 20rpx;
     line-height: 80rpx;
 }
 
 .right {
     position: absolute;
-    right: 40rpx;
+    right: 20rpx;
 }
 
 .history {
@@ -32,4 +32,31 @@
 .icon-jiantou {
     font-weight: normal !important;
     font-size: 24rpx !important;
+}
+
+.details_item {
+    border-width: 2rpx;
+    border-color: #f5f5f5;
+}
+
+.group {
+    padding: 0 20rpx;
+}
+
+.title {
+    margin: 40rpx 0 0;
+    font-size: 32rpx;
+    padding-bottom: 10rpx;
+    padding-left: 20rpx;
+    border-bottom: 6rpx solid #f5f5f5;
+}
+
+.red_point {
+    position: absolute;
+    width: 15rpx;
+    height: 15rpx;
+    border-radius: 50%;
+    background-color: #e00;
+    top: 16rpx;
+    left: 14rpx;
 }

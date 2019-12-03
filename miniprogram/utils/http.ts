@@ -3,7 +3,7 @@ import { COOKIE } from '../constant/store';
 
 function handle<T>(
     method: 'request' | 'uploadFile',
-    options: wx.RequestOption | wx.UploadFileOption
+    options: (wx.RequestOption | wx.UploadFileOption) & {notShowMsg?: boolean}
 ): Promise<RespoensData<T>> {
     const fail = options.fail;
     const success = options.success;
@@ -26,7 +26,7 @@ function handle<T>(
                     errMsg = (<RespoensData>res.data).msg;
                 }
 
-                if (errMsg) {
+                if (errMsg && !options.notShowMsg) {
                     wx.showToast({
                         title: errMsg,
                         icon: 'none'
@@ -55,11 +55,11 @@ function isSucess(res: wx.RequestSuccessCallbackResult | wx.UploadFileSuccessCal
     return res.statusCode >= 200 && res.statusCode < 300 && code >= 200 && code < 300;
 }
 
-export function request<T>(options: wx.RequestOption) {
+export function request<T>(options: wx.RequestOption & {notShowMsg?: boolean}) {
     return handle<T>('request', options);
 }
 
-export function uploadFile<T>(options: wx.UploadFileOption) {
+export function uploadFile<T>(options: wx.UploadFileOption & {notShowMsg?: boolean}) {
     options.name = options.name || 'file';
 
     return handle<T>('uploadFile', options);
