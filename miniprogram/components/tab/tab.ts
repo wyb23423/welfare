@@ -26,7 +26,7 @@ Component<Tab>({
     },
     ready(this: Tab) {
         this.displayChildren();
-        this.setData({tabItems: this.data.tabItems});
+        setTimeout(() => this.setData({tabItems: this.data.tabItems}), 100);
     },
     methods: {
         switchTab({target: {dataset: {tab}}}: BaseEvent) {

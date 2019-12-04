@@ -57,9 +57,11 @@ Component<Carousel>({
         }
     },
     ready(this: Carousel) {
-        const {initial, items} = this.data;
-        this.setActiveItem(initial > items.length - 1 ? 0 : initial)._loop()
+        setTimeout(() => {
+            const {initial, items} = this.data;
+            this.setActiveItem(initial > items.length - 1 ? 0 : initial)._loop()
             .setData({label: new Array(items.length).fill(1)});
+        }, 100);
     },
     detached(this: Carousel) {
         this._clearTimer();
