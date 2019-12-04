@@ -16,9 +16,8 @@
 		<view class="flex-container details_item" style="justify-content: flex-start">
 			<text class="iconfont icon-dollar"/>
 			<view style="color: #07c160; margin-right: 20rpx">
-				公益积分：{{integral}}
+                {{isActivity ? '获得收益' : '兑换价'}}: {{integral}}公益积分
 			</view>
-			<view style="color: #07c160">信用积分: {{credit}}</view>
 		</view>
 		<view style="margin: 20rpx 0;">{{details}}</view>
 	</view>
@@ -61,10 +60,10 @@
 			立即报名
 		</navigator>
 		<button
-		 class="submit"
-		 bind:tap="exchange"
-		 data-id="{{id}}"
-		 wx:else
+            class="submit"
+            bind:tap="exchange"
+            data-id="{{id}}"
+            wx:else
 		>
 			兑换
 		</button>

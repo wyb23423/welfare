@@ -1,6 +1,8 @@
 {
     "usingComponents": {
-        "person-head": "/components/person_head/person_head"
+        "person-head": "/components/person_head/person_head",
+        "tab": "/components/tab/tab",
+        "tab-item": "/components/tab/item/item"
     },
     "navigationBarTitleText": "个人中心"
 }

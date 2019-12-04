@@ -22,7 +22,7 @@
         </view>    
     </navigator>
     <view class="bottom">
-        <view class="merchan">{{info.merchan || 'this is merchan'}}</view>
+        <view class="merchan">{{info.merchan}}</view>
         <view
             wx:if="{{hasBtn}}"
             class="item_text item_info" 

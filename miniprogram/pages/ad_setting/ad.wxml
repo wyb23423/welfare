@@ -1,8 +1,4 @@
 <tab>
-    <tab-item name="滚动广告">
-        <ad_scroll></ad_scroll>
-    </tab-item>
-    <tab-item name="横幅广告">
-        <ad_banner></ad_banner>
-    </tab-item>
+    <tab-item name="轮播广告"><ad_scroll></ad_scroll></tab-item>
+    <tab-item name="横幅广告"><ad_banner></ad_banner></tab-item>
 </tab>

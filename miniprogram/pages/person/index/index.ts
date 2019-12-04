@@ -50,27 +50,16 @@ Page({
         ],
         bussiness: [
             {
-                name: '入驻商家',
+                name: '申请入驻',
                 icon: 'shangjiarenzheng',
                 url: '/pages/person/settled_in/settled_in'
             }
         ],
         admin: [
             {
-                name: '创建活动',
-                icon: 'chuangjianhuodong',
-                url: '/pages/activity/create/create',
-            },
-            {
                 name: '广告设置',
                 icon: 'guanggao',
                 url: '/pages/ad_setting/ad'
-            },
-            {
-                name: '我的发起',
-                icon: 'list-2-copy',
-                url: '../history/history?type=initiate',
-                flag: false
             },
             {
                 name: '审核商家',
@@ -110,15 +99,27 @@ Page({
 
         Promise.all(promises).then(([f1, f2]) => {
             this.setData!({
-                'admin[3].flag': f1,
-                'admin[4].flag': f2
+                'admin[1].flag': f1,
+                'admin[2].flag': f2
             });
         });
     },
     merchant() {
-        const bussiness: MenuItem[]  = this.data.bussiness;
-        bussiness[0].name = '商家信息';
+        const bussiness: Array<MenuItem | string> = this.data.bussiness;
+        (<MenuItem>bussiness[0]).name = '修改信息';
         bussiness.push(
+            '活动',
+            {
+                name: '创建活动',
+                icon: 'chuangjianhuodong',
+                url: '/pages/activity/create/create',
+            },
+            {
+                name: '我的发起',
+                icon: 'list-2-copy',
+                url: '../history/history?type=initiate'
+            },
+            '商品',
             {
                 name: '商品上架',
                 icon: 'shangjia',
