@@ -18,35 +18,23 @@ Page({
             {
                 name: '待审核',
                 icon: 'daishenhe',
-                type: 'auditing'
+                url: '../history/history?type=auditing'
             },
             {
                 name: '待参加',
                 icon: 'wendang',
-                type: 'await'
+                url: '../history/history?type=await'
             },
             {
                 name: '待评价',
                 icon: 'daipingjia',
-                type: 'evaluate'
+                url: '../history/history?type=evaluate'
             },
             {
                 name: '已参加',
                 icon: 'yiwancheng',
-                type: 'complete'
+                url: '../history/history?type=complete'
             }
-        ],
-        person: [
-            {
-                name: '我的关注',
-                icon: 'heart',
-                url: '../follow/follow'
-            },
-            {
-                name: '我的收藏',
-                icon: 'shoucang',
-                url: '../history/history?type=collection'
-            },
         ],
         bussiness: [
             {

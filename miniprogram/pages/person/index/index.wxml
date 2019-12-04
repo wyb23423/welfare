@@ -7,43 +7,33 @@
     </navigator>
 </template>
 
-<view>
-    <person-head isindex="true" />
-    <view style="height: 25rpx"></view>
-    <tab>
-        <tab-item name="个人">
-            <view class="tab_item">
-                <navigator class="details_item menu" url="../points/points">
-                    <text>我的积分</text>
-                    <text class="iconfont icon-jiantou right"/>
-                </navigator>
-                <view class="details_item menu flex-container history">
-                    <navigator 
-                        wx:for="{{history}}" 
-                        wx:key="history" 
-                        class="flex-center-v" 
-                        hover-class="none" 
-                        url="../history/history?type={{item.type}}"
-                    >
-                        <text class="iconfont icon-{{item.icon}}"/>
-                        <text>{{item.name}}</text>
-                    </navigator>
+<view class="box" style="padding-top: 23vh;">
+    <image 
+        src="/public/images/3314c85667b447181414e64c28f11830.jpg" 
+        class="bg"
+        mode="aspectFill"
+    />
+    <view class="main">
+        <person-head isindex="true" />
+        <view style="height: 25rpx"></view>
+        <tab>
+            <tab-item name="活动历史">
+                <view class="tab_item">
+                    <template is="navigator" wx:for="{{history}}" wx:key="history" data="{{...item}}" />
                 </view>
-                <template is="navigator" wx:for="{{person}}" wx:key="person" data="{{...item}}" />
-            </view>
-        </tab-item>
-        <tab-item name="组织">
-            <view class="tab_item" wx:for="{{bussiness}}" wx:key="bussiness">
-                <template wx:if="{{!!item.name}}" is="navigator" data="{{...item}}" />
-                <view class="title" wx:else>{{item}}</view>
-            </view>
-        </tab-item>
-        <tab-item name="社区" wx:if="{{isAdmin}}">
-            <view class="tab_item">
-                <template is="navigator" wx:for="{{admin}}" wx:key="admin" data="{{...item}}" />
-            </view>
-        </tab-item>
-    </tab>
-	<view class="ad" />
+            </tab-item>
+            <tab-item name="组织">
+                <view class="tab_item" wx:for="{{bussiness}}" wx:key="bussiness">
+                    <template wx:if="{{!!item.name}}" is="navigator" data="{{...item}}" />
+                    <view class="title" wx:else>{{item}}</view>
+                </view>
+            </tab-item>
+            <tab-item name="社区" wx:if="{{isAdmin}}">
+                <view class="tab_item">
+                    <template is="navigator" wx:for="{{admin}}" wx:key="admin" data="{{...item}}" />
+                </view>
+            </tab-item>
+        </tab>
+    </view>
 </view>
 

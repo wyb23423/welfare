@@ -1,21 +1,33 @@
-<view>
-    <navigator wx:if="{{isindex}}" url="../info/info" hover-class="none">
-        <view class="info">
-            <view class="avator" catch:tap="clickAvator"><open-data type="userAvatarUrl" /></view>
-            <view style="margin: 10rpx 0">
-                <view class="name"><open-data type="userNickName" /></view>
-                <view style="margin-left: 20rpx;">ID: {{username}}</view>
-            </view>
-            <text class="point iconfont icon-jiantou"></text>
-        </view>
-    </navigator>
-    <view style="position: relative;" wx:else>
-        <view class="info">
-            <view class="avator" catch:tap="clickAvator"><open-data type="userAvatarUrl" /></view>
-            <view style="margin: 10rpx 0">
-                <view class="name"><open-data type="userNickName" /></view>
-                <view style="margin-left: 20rpx;">ID: {{username}}</view>
-            </view>
+<view wx:if="{{isindex}}" style="position: relative;">
+    <view class="index">
+        <view class="avator" catch:tap="clickAvator"><open-data type="userAvatarUrl" /> </view>
+        <view style="font-size: 36rpx;"><open-data type="userNickName" /></view>
+    </view>
+    <navigator class="button" url="../info/info">编辑个人资料</navigator>
+    <view class="info_index">
+        <navigator style="width: 25%" hover-class="none" url="/pages/person/points/points">
+            <view class="info_value">{{integral}}</view>
+            <view class="info_name">积分</view>
+        </navigator>
+        <view class="divider"></view>
+        <navigator style="width: 25%" hover-class="none" url="/pages/person/follow/follow">
+            <view class="info_value">{{follow}}</view>
+            <view class="info_name">关注</view>
+        </navigator>
+        <view class="divider"></view>
+        <navigator style="width: 25%" hover-class="none" url="/pages/person/history/history?type=collection">
+            <view class="info_value">{{collection}}</view>
+            <view class="info_name">收藏</view>
+        </navigator>
+    </view>
+</view>
+
+<view style="position: relative;" wx:else>
+    <view class="info">
+        <view class="avator" catch:tap="clickAvator"><open-data type="userAvatarUrl" /></view>
+        <view style="margin: 10rpx 0">
+            <view class="name"><open-data type="userNickName" /></view>
+            <view style="margin-left: 20rpx;">ID: {{username}}</view>
         </view>
     </view>
 </view>

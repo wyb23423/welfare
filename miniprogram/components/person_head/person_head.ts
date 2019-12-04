@@ -7,6 +7,7 @@ import { request } from '../../utils/http';
 
 interface PersonHead extends WxComponent {
     authentication(): void;
+    initInfoValue(): void;
 }
 
 Component<PersonHead>({
@@ -14,21 +15,24 @@ Component<PersonHead>({
         isindex: {
             type: Boolean,
             value: false
-        },
-        hasinfo: {
-            type: Boolean,
-            value: true
         }
     },
     data: {
         time: 0, // 上次点击头像时间
         count: 0, // 连续点击头像次数
-        hasCommodity: false
+        hasCommodity: false,
+        integral: 0,
+        follow: 0,
+        collection: 0
     },
-    ready() {
-        const auth = wx.getStorageSync(USER_AUTHENTICATION);
-        this.data.hasCommodity = !(auth === Authentication.commodity || auth === Authentication.auditing);
-        this.setData({username: wx.getStorageSync(USER_NAME)});
+    pageLifetimes: {
+        show(this: PersonHead) {
+            this.data.isindex && this.initInfoValue();
+
+            const auth = wx.getStorageSync(USER_AUTHENTICATION);
+            this.data.hasCommodity = !(auth === Authentication.commodity || auth === Authentication.auditing);
+            this.setData({username: wx.getStorageSync(USER_NAME)});
+        }
     },
     methods: {
         clickAvator() {
@@ -58,6 +62,28 @@ Component<PersonHead>({
                 },
                 complete: () => this.data.count = this.data.time = 0
             });
+        },
+        initInfoValue() {
+            // 关注数
+            request<IMerchant[]>({ url: '/api/follow', notShowMsg: true })
+                .then(({ data }) => this.setData!({ follow: data.length }))
+                .catch(console.log);
+
+            // 收藏数
+            Promise.all([0, 1].map(type =>
+                request<ICommodity[] | IActive[]>({
+                    url: '/api/like',
+                    data: { type },
+                    notShowMsg: true
+                }).catch(() => ({data: []}))
+            ))
+                .then(([{ data: res1 }, { data: res2 }]) => this.setData!({ collection: res1.length + res2.length }))
+                .catch(console.log);
+
+            // 积分(公益)
+            request<IUser>({ url: '/api/user', notShowMsg: true })
+                .then(({ data: { integral } }) => this.setData!({ integral }))
+                .catch(console.log);
         }
     }
 });

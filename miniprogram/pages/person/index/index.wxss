@@ -1,8 +1,25 @@
 @import '/pages/details/details.wxss';
 
+.bg {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    filter: brightness(80%);
+}
+
+.main {
+    border-radius: 30rpx 30rpx 0 0;
+    position: relative;
+    z-index: 1;
+    background: #fff;
+    min-height: 77vh;
+}
+
 .menu {
     position: relative;
-    font-size: 36rpx;
+    font-size: 28rpx;
     padding: 0 20rpx;
     line-height: 80rpx;
 }
@@ -12,25 +29,17 @@
     right: 20rpx;
 }
 
-.history {
-    align-items: stretch;
-    line-height: normal;
-    font-size: 24rpx;
-    padding: 0 80rpx;
-    height: 140rpx;
-}
-
-.history .iconfont {
-    margin: 0;
-    margin-bottom: 10rpx;
-}
 .ad {
     height: 120rpx;
     margin-top: 10rpx;
 }
 
-.icon-jiantou {
+.iconfont {
     font-weight: normal !important;
+    font-size: 32rpx !important;
+}
+
+.icon-jiantou {
     font-size: 24rpx !important;
 }
 

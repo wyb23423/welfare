@@ -1,7 +1,7 @@
 <view class="item_box">
     <navigator 
         class="grid_item_box" 
-        style="height: 165rpx" 
+        style="height: 175rpx" 
         url="/pages/details/details?id={{info.id}}&isGoods={{isGoods}}"
     >
         <image
