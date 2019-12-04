@@ -2,7 +2,7 @@
 <view style="padding-top: 15rpx">
 	<view class="flex-container title" wx:if="{{!isGoods}}">
         <text style="font-weight: 700; font-size: 36rpx; flex-shrink: 0;">活动列表</text>
-        <view class="flex-container search_box">
+        <!-- <view class="flex-container search_box">
             <text class="iconfont icon-sousuo"/>
             <input
                 value=""
@@ -11,17 +11,16 @@
                 bind:confirm="search"
                 confirm-type="search"
             />
-        </view>
+        </view> -->
 	</view>
     <view wx:else class="goods_list_title title">兑换商品列表</view>
-    <navigator
-        wx:for="{{list}}"
-        wx:key="key"
-        hover-class="none"
-        url="/pages/details/details?id={{item.id}}&isGoods={{isGoods}}"
-    >
-        <template is="{{isGoods ? 'goods' : 'activity'}}_item" data="{{...item}}" />
-    </navigator>
+    <list-item 
+        wx:for="{{list}}" 
+        wx:key="key" 
+        hasBtn="{{true}}" 
+        info="{{item}}"
+        isGoods="{{isGoods}}"
+    />
     <view class="more"><text wx:if="{{!hasMore}}">暂无更多</text></view>
 </view>
 
