@@ -4,6 +4,7 @@ interface IGoodsWithOrder {
     id: number;
     img: string;
     name: string;
+    sign: number;
     size: number;
     orders: IOrder[];
 }
@@ -26,8 +27,13 @@ Page({
         this.setData!({isShow: false});
     },
     onShow() {
-        request<PageData<IOrder>>({url: '/api/commodity/participation/merchant/list'})
-            .then(({data: {list}}) => this.setData!({list}))
+        request<PageData>({url: '/api/commodity/participation/merchant/list'})
+            .then(({data: {list}}) => this.setData!({list: list.map(v => {
+                v.sign = v.orders.length;
+                v.img += '?thumb=true';
+
+                return v;
+            })}))
             .catch(console.log);
     },
     openConfirm({target: {dataset: {index}}}: BaseEvent<{index: number}>) {

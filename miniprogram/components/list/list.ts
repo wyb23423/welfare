@@ -1,8 +1,6 @@
 /**
  * 活动/商品列表
  */
-
-import * as listFunc from '../../template/list_item/list_item';
 import PageQuery, { ListComponent } from '../../behavior/page_query';
 
 Component<ListComponent>({
@@ -20,7 +18,6 @@ Component<ListComponent>({
         }
     },
     methods: {
-        ...listFunc,
         search(e: IAnyObject) {
             console.log(e.detail.value);
         }

@@ -1,0 +1,22 @@
+.tab-item {
+    text-align: center;
+    line-height: 70rpx;
+    font-size: 28rpx;
+    color: #666;
+    border-bottom: 6rpx solid #e7e3e3;
+}
+
+.tab-active {
+    color: #000;
+    font-size: 32rpx;
+    border-color: #07c160;
+}
+
+.title {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+}

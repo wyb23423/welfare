@@ -1,5 +1,6 @@
 {
     "usingComponents": {
-        "en-list": "/components/enlist/enlist"
+        "en-list": "/components/enlist/enlist",
+        "list-item": "/components/list/item/item"
     }
 }

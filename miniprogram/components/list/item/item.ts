@@ -102,24 +102,6 @@ export function exchange(this: any, e: BaseEvent<{id: number}>) {
         .catch(console.log);
 }
 
-/**
- * (取消)收藏商品
- */
-export async function collect(e: BaseEvent<{id: number; collect: boolean}>) {
-    // tslint:disable-next-line:no-shadowed-variable
-    const { id, collect } = e.target.dataset;
-
-    await request({
-        url: '/api/like',
-        method: collect ? 'DELETE' : 'PUT',
-        data: {
-            targetId: id,
-            type: 1
-        }
-    });
-    return ({ id, collect });
-}
-
 export function createEvent<T extends object>(dataset: T): BaseEvent<T> {
     return {
         type: 'simulation',

@@ -1,0 +1,14 @@
+<view>
+    <view class="title" bind:tap="switchTab">
+        <view
+            style="width: {{100 / tabItems.length}}%"
+            wx:for="{{tabItems}}"
+            wx:key="key"
+            class="tab-item{{index === tabIndex ? ' tab-active' : ''}}" 
+            data-tab="{{index}}"
+        >
+            {{item}}
+        </view>
+    </view>
+    <slot></slot>
+</view>

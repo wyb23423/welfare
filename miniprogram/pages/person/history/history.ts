@@ -6,11 +6,12 @@ import { ActiveStatus } from '../../../constant/index';
 type HistoryType = '_await' | '_auditing' | '_complete';
 
 Page({
+    activity: <IActive[] | null>null,
+    goods: <ICommodity[] | null>null,
     data: {
         history: [] as Array<IActive | ICommodity>,
         type: '',
-        tabType: 0,
-        another: <Array<IActive | ICommodity>>[]
+        tabType: 0
     },
     onLoad(query: IAnyObject) {
         this.data.type = query.type;
@@ -86,11 +87,11 @@ Page({
         //
     },
     switch(e: WxTouchEvent) {
-        this.data.tabType = +e.target.dataset.type;
-        const another = this.data.another;
-        this.data.another = this.data.history;
+        const type = +e.target.dataset.type;
+        this.data.tabType = type;
+        const another = type ? this.goods : this.activity;
 
-        if (another.length) {
+        if (another) {
             this.data.history = another;
             return this.setData!(this.data);
         }
@@ -137,11 +138,15 @@ Page({
             url: '/api/like',
             data: { type: tabType }
         })
-            .then(({ data }) => this.setData!({
-                history: (<any[]>data).map(parseData),
-                type: this.data.type,
-                tabType
-            }))
+            .then(({ data }) => {
+                const list = (<any[]>data).map(parseData);
+                this[tabType ? 'goods' : 'activity'] = list;
+                this.setData!({
+                    history: list,
+                    type: this.data.type,
+                    tabType
+                });
+            })
             .catch(console.log);
     },
     _request(url: string) {

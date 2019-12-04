@@ -1,5 +1,4 @@
 @import '/app.wxss';
-@import "/template/list_item/list_item.wxss";
 
 .more {
     font-weight: normal;

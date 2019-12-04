@@ -1,6 +1,4 @@
 /**index.wxss**/
-@import "/template/list_item/list_item.wxss";
-
 .main {
   margin-bottom: 60rpx;
 }

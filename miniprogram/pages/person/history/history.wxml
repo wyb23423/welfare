@@ -18,11 +18,11 @@
 <template name="complete">
 	<view style="text-align: right; width: 100%">
 		<button
-		 class="iconfont icon-delete"
-		 hover-class="btn-tap"
-		 hover-stop-propagation="true"
-		 data-index="{{index}}"
-		 catch:tap="delete"
+            class="iconfont icon-delete"
+            hover-class="btn-tap"
+            hover-stop-propagation="true"
+            data-index="{{index}}"
+            catch:tap="delete"
 		/>
 	</view>
 </template>
@@ -30,18 +30,18 @@
 <template name="evaluate">
 	<view class="evaluate_box flex-container">
 		<navigator
-		 class="iconfont icon-pingjia"
-		 hover-class="btn-tap"
-		 hover-stop-propagation="true"
-		 url="/pages/comment/comment?id={{id}}&name={{name}}&authentication={{authentication}}&img={{originImg}}"
-		 catch:tap="none"
+            class="iconfont icon-pingjia"
+            hover-class="btn-tap"
+            hover-stop-propagation="true"
+            url="/pages/comment/comment?id={{id}}&name={{name}}&authentication={{authentication}}&img={{originImg}}"
+            catch:tap="none"
 		/>
 		<button
-		 class="iconfont icon-delete"
-		 hover-class="btn-tap"
-		 hover-stop-propagation="true"
-		 data-index="{{index}}"
-		 catch:tap="delete"
+            class="iconfont icon-delete"
+            hover-class="btn-tap"
+            hover-stop-propagation="true"
+            data-index="{{index}}"
+            catch:tap="delete"
 		/>
 	</view>
 </template>
@@ -49,29 +49,29 @@
 <template name="initiate">
 	<view class="ok" wx:if="{{status === 2}}">
 		<button
-		 class="iconfont icon-delete"
-		 hover-class="btn-tap"
-		 hover-stop-propagation="true"
-		 data-index="{{index}}"
-		 catch:tap="delete"
+            class="iconfont icon-delete"
+            hover-class="btn-tap"
+            hover-stop-propagation="true"
+            data-index="{{index}}"
+            catch:tap="delete"
 		/>
 	</view>
 	<view class="initiate_btn_group" wx:elif="{{status === 0}}">
 		<button
-		 class="item_text item_info"
-		 data-index="{{index}}"
-		 hover-stop-propagation="true"
-		 style="border-radius: 10rpx; margin: 0 20rpx;"
-		 catch:tap="openEnList"
+            class="item_text item_info"
+            data-index="{{index}}"
+            hover-stop-propagation="true"
+            style="border-radius: 10rpx; margin: 0 20rpx;"
+            catch:tap="openEnList"
 		>
 			报名审核
 		</button>
 		<button
-		 class="item_text item_info"
-		 data-index="{{index}}"
-		 hover-stop-propagation="true"
-		 style="border-radius: 10rpx; margin: 0; padding: 0 20rpx"
-		 catch:tap="ok"
+            class="item_text item_info"
+            data-index="{{index}}"
+            hover-stop-propagation="true"
+            style="border-radius: 10rpx; margin: 0; padding: 0 20rpx"
+            catch:tap="ok"
 		>
 			完成
 		</button>
@@ -91,25 +91,10 @@
 	<view class="tab" wx:if="{{type==='collection'}}" bind:tap="switch">
 		<view class="{{tabType ? '' : 'active'}}" data-type="0">活动</view>
 		<view class="{{tabType ? 'active' : ''}}" data-type="1">商品</view>
-	</view>
-	<navigator
-	 class="flex-container item_box"
-	 wx:for="{{history}}"
-	 wx:key="key"
-	 url="/pages/details/details?id={{item.id}}&isGoods={{tabType}}"
-	>
-		<image
-		 src="{{item.img}}"
-		 lazy-load="true"
-		 mode="aspectFill"
-		 style="max-height: 100%; width: 50%"
-		/>
-		<view class="info_box">
-			<view class="list_item_title">{{item.name}}</view>
-			<view class="item_text authentication">{{item.authentication}}</view>
-			<template is="{{type}}" data="{{...item}}" />
-		</view>
-	</navigator>
+    </view>
+    <list-item wx:for="{{history}}" wx:key="key" info="{{item}}" isGoods="{{tabType}}">
+        <template is="{{type}}" data="{{...item}}" />
+    </list-item>
 	<en-list id="en-list" />
 </view>
 

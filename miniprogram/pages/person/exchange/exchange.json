@@ -1,4 +1,6 @@
 {
-    "usingComponents": {},
+    "usingComponents": {
+        "list-item": "/components/list/item/item"
+    },
     "navigationBarTitleText": "我的兑换"
 }

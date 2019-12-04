@@ -1,12 +1,4 @@
-<import src="/template/list_item/list_item.wxml" />
 <view>
-	<navigator
-	 wx:for="{{exchanges}}"
-	 wx:key="key"
-	 hover-class="none"
-	 url="/pages/details/details?id={{item.id}}&isGoods=1"
-	>
-		<template is="goods_item" data="{{...item}}" />
-	</navigator>
+    <list-item wx:for="{{exchanges}}" wx:key="key" isGoods="{{1}}" hasBtn="{{true}}" info="{{item}}"></list-item>
 </view>
 
