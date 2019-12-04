@@ -1,6 +1,11 @@
 /**app.wxss**/
 @import '/public/css/iconfont.wxss';
 
+page {
+    font-size: 24rpx;
+    /* padding: 15rpx 0 0; */
+}
+
 .flex-container {
   display: flex;
   align-items: center;
@@ -25,11 +30,6 @@
 
 .btn-tap {
   transform: scale(1.2);
-}
-
-page {
-  font-size: 24rpx;
-  /* padding: 15rpx 0 0; */
 }
 
 button::after {

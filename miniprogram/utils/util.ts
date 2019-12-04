@@ -1,13 +1,23 @@
 import { AUTHENTICATION } from '../constant/index';
 
 export function formatTime(date: Date): string {
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-  const hour = date.getHours();
-  const minute = date.getMinutes();
-
+  const {year, month, day, hour, minute} = resolveTime(date);
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute].map(formatNumber).join(':');
+}
+
+/**
+ * 将时间分解为 年月日，时分秒
+ */
+export function resolveTime(time: number | Date) {
+    const date = time instanceof Date ? time : new Date(time);
+
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const hour = date.getHours();
+    const minute = date.getMinutes();
+
+    return {year, month, day, hour, minute};
 }
 
 /**

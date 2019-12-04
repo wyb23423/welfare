@@ -12,5 +12,5 @@
             </app-form-item>
         </view>
     </app-form>
-    <button class="submit" bind:tap="onSubmit">立即提交</button>
+    <button class="bottom-submit" bind:tap="onSubmit">立即提交</button>
 </view>

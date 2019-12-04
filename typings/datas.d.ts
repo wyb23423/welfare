@@ -38,7 +38,6 @@ declare interface IActive extends Base, ActiveCommodity {
     integral: number; // 完成后获取的公益积分
     intro: string; // 简介
     location: string; // 活动地址
-    money: number;
     name: string;
     size: number; // 活动人数
     status: number; // 活动状态

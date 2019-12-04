@@ -1,0 +1,36 @@
+<view class="item_box">
+    <navigator 
+        class="grid_item_box" 
+        style="height: 165rpx" 
+        url="/pages/details/details?id={{info.id}}&isGoods={{isGoods}}"
+    >
+        <image
+            src="{{info.img}}"
+            lazy-load="true"
+            mode="aspectFill"
+            class="grid_img"
+        />
+        <text class="grid_name ellipsis" style="font-size: 28rpx;">{{info.name}}</text>
+        <view class="grid_authentication" style="transform: scale(0.7); transform-origin: left;">
+            <text class="authentication">{{info.authentication}}</text>
+        </view>
+        <view class="grid_other"><slot name="other"></slot></view>
+        <text class="grid_time" style="color: #cac7c7">{{time}}</text>
+        <view class="grid_integral">
+            <text class="integral">{{info.integral}}</text>
+            <text style="color: #cac7c7">积分</text>
+        </view>    
+    </navigator>
+    <view class="bottom">
+        <view class="merchan">{{info.merchan || 'this is merchan'}}</view>
+        <view
+            wx:if="{{hasBtn}}"
+            class="item_text item_info" 
+            catch:tap="clickBtn" 
+            style="border-radius: 6rpx"
+        >
+            {{btn}}
+        </view>
+        <view wx:else><slot></slot></view>
+    </view>
+</view>
