@@ -3,13 +3,11 @@
     line-height: 70rpx;
     font-size: 28rpx;
     color: #666;
-    border-bottom: 6rpx solid #e7e3e3;
 }
 
 .tab-active {
     color: #000;
     font-size: 32rpx;
-    border-color: #07c160;
 }
 
 .title {
@@ -19,4 +17,17 @@
     background: #fff;
     display: flex;
     justify-content: space-between;
+}
+
+.divider {
+    height: 6rpx;
+    background: #e7e3e3;
+    position: relative;
+}
+
+.slide {
+    height: 6rpx;
+    background: #07c160;
+    position: absolute;
+    transition: left 300ms ease-out;
 }

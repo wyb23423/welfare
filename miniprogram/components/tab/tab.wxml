@@ -10,5 +10,8 @@
             {{item}}
         </view>
     </view>
+    <view class="divider">
+        <view class="slide" style="width: {{100 / tabItems.length}}%; left: {{tabIndex * 100 / tabItems.length}}%"></view>
+    </view>
     <slot></slot>
 </view>

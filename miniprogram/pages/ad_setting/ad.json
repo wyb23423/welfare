@@ -1,7 +1,9 @@
 {
     "usingComponents": {
         "ad_scroll": "./ad_scroll/ad_scroll",
-        "ad_banner": "./ad_banner/ad_banner"
+        "ad_banner": "./ad_banner/ad_banner",
+        "tab": "/components/tab/tab",
+        "tab-item": "/components/tab/item/item"
     },
     "navigationBarTitleText": "广告设置"
 }

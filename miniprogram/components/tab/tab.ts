@@ -26,7 +26,7 @@ Component<Tab>({
     },
     ready(this: Tab) {
         this.displayChildren();
-        this.setData({});
+        this.setData({tabItems: this.data.tabItems});
     },
     methods: {
         switchTab({target: {dataset: {tab}}}: BaseEvent) {

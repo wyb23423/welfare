@@ -1,4 +1,4 @@
-<view hidden="{{hidden}}">
+<view hidden="{{hidden}}" style="margin-top: 15rpx">
     <view>
         <view wx:key="key" wx:for="{{imgs}}" mark:index="{{index}}" class="ad-item card">
             <image src="{{item}}" mode="aspectFill" class="fill-box" />
@@ -10,7 +10,6 @@
                 <view style="font-size: 36rpx;">添加广告</view>
             </view>
         </view>
-        <!-- <view wx:if="{{isDouble}}" class="ad-item" style="opacity: 0"></view> -->
     </view>
     <button class="bottom-submit">提交广告</button>
 </view>

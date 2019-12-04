@@ -1,14 +1,8 @@
-<view>
-    <view class="flex-container sticky" bind:tap="switchTab">
-        <view 
-            wx:for="{{tabItems}}"
-            wx:key="key"
-            class="tab-item{{index === tabIndex ? ' tab-active' : ''}}" 
-            data-tab="{{index}}"
-        >
-            {{item}}
-        </view>
-    </view>
-    <ad_scroll hidden="{{tabIndex !== 0}}"></ad_scroll>
-    <ad_banner hidden="{{tabIndex === 0}}"></ad_banner>
-</view>
+<tab>
+    <tab-item name="滚动广告">
+        <ad_scroll></ad_scroll>
+    </tab-item>
+    <tab-item name="横幅广告">
+        <ad_banner></ad_banner>
+    </tab-item>
+</tab>
