@@ -30,13 +30,16 @@
             <app-form-item prop="size" label="活动人数" required>
                 <input id="size" value="{{form.size}}" type="number" bindinput="onInput" />
             </app-form-item>
-            <app-form-item prop="time" label="活动时间" rules="{{[timeRule]}}" required>
-                <datetimerange id="time" value="{{form.time}}" bindinput="onInput" bindmask="mask"></datetimerange>
+            <app-form-item prop="origination" label="开始时间" required>
+                <date-time id="origination" value="{{form.origination}}" bindinput="onInput" />
+            </app-form-item>
+            <app-form-item prop="finish" label="结束时间" required>
+                <date-time id="finish" value="{{form.finish}}" bindinput="onInput" />
             </app-form-item>
             <app-form-item prop="location" label="活动地点" required>
                 <input id="location" value="{{form.location}}" bindinput="onInput" />
             </app-form-item>
         </view>
     </app-form>
-    <button class="bottom-submit" bind:tap="onSubmit">创建活动</button>
+    <button class="bottom-submit" bind:tap="onSubmit">{{oldImg ? '修改活动信息' : '创建活动'}}</button>
 </view>

@@ -1,4 +1,4 @@
-@import '../activity/create/create.wxss';
+@import '../activity/edit/edit.wxss';
 
 .submit {
     position: absolute;

@@ -1,0 +1,6 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var project_form_1 = require("../../../behavior/project_form");
+var edit_1 = require("../../../behavior/edit");
+Component({ behaviors: [project_form_1.default, edit_1.default] });
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZWRpdC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImVkaXQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFHQSwrREFBaUU7QUFDakUsK0NBQWtEO0FBRWxELFNBQVMsQ0FBQyxFQUFDLFNBQVMsRUFBRSxDQUFDLHNCQUFtQixFQUFFLGNBQVksQ0FBQyxFQUFDLENBQUMsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxyXG4gKiDliJvlu7ov57yW6L6R5rS75YqoXHJcbiAqL1xyXG5pbXBvcnQgUHJvamVjdEZvcm1CZWhhdmlvciBmcm9tICcuLi8uLi8uLi9iZWhhdmlvci9wcm9qZWN0X2Zvcm0nO1xyXG5pbXBvcnQgRWRpdEJlaGF2aW9yIGZyb20gJy4uLy4uLy4uL2JlaGF2aW9yL2VkaXQnO1xyXG5cclxuQ29tcG9uZW50KHtiZWhhdmlvcnM6IFtQcm9qZWN0Rm9ybUJlaGF2aW9yLCBFZGl0QmVoYXZpb3JdfSk7XHJcbiJdfQ==

@@ -2,8 +2,8 @@
     "usingComponents": {
         "app-form": "/components/form/form",
         "app-form-item": "/components/form_item/form_item",
-        "datetimerange": "/components/date_time_range/date_time_range",
-        "upload": "/components/upload/upload"
+        "upload": "/components/upload/upload",
+        "date-time": "/components/date_time/date_time"
     },
     "navigationBarTitleText": "创建商品"
 }

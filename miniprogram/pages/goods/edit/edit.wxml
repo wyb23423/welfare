@@ -27,8 +27,11 @@
             <app-form-item prop="size" label="商品数量" required>
                 <input id="size" value="{{form.size}}" type="number" bindinput="onInput" />
             </app-form-item>
-            <app-form-item prop="time" label="兑换时间" rules="{{[timeRule]}}" required>
-                <datetimerange id="time" value="{{form.time}}" bindinput="onInput" bindmask="mask"></datetimerange>
+            <app-form-item prop="origination" label="开始时间" required>
+                <date-time id="origination" value="{{form.origination}}" bindinput="onInput" />
+            </app-form-item>
+            <app-form-item prop="finish" label="结束时间" required>
+                <date-time id="finish" value="{{form.finish}}" bindinput="onInput" />
             </app-form-item>
         </view>
     </app-form>

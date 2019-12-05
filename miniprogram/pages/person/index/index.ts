@@ -100,7 +100,7 @@ Page({
             {
                 name: '创建活动',
                 icon: 'chuangjianhuodong',
-                url: '/pages/activity/create/create',
+                url: '/pages/activity/edit/edit',
             },
             {
                 name: '我的活动',
@@ -111,7 +111,7 @@ Page({
             {
                 name: '创建商品',
                 icon: 'shangjia',
-                url: '/pages/goods/create/create',
+                url: '/pages/goods/edit/edit',
             },
             {
                 name: '我的商品',

@@ -1,0 +1,8 @@
+<picker 
+    mode="multiSelector"
+    range="{{range}}"
+    value="{{selected}}"
+    bindchange="onChange"
+>
+    {{timeStr}}
+</picker>

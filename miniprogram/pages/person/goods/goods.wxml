@@ -2,7 +2,7 @@
     <list-item wx:for="{{list}}" wx:key="key" info="{{item}}" isGoods="{{1}}">
         <view style="display: flex;">
             <navigator 
-                url="/pages/goods/create/create?id={{item.id}}" 
+                url="/pages/goods/edit/edit?id={{item.id}}" 
                 hover-class="btn-tap" 
                 class="iconfont icon-icon-test"
             />
