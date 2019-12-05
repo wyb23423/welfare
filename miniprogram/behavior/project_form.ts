@@ -3,12 +3,14 @@
  */
 import { Form } from '../components/form/form';
 
+export interface ProjectFormData {
+    formEl?: Form | null;
+    form: IAnyObject;
+    hasMask: boolean;
+}
+
 export interface ProjectForm extends WxComponent {
-    data: {
-        formEl?: Form | null,
-        form: IAnyObject,
-        hasMask: boolean
-    };
+    data: ProjectFormData;
     _submit(): Promise<true> | void;
     _parseValue(value: string, name: string): any;
 }

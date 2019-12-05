@@ -1,0 +1,23 @@
+<view>
+    <list-item wx:for="{{list}}" wx:key="key" info="{{item}}" isGoods="{{1}}">
+        <view style="display: flex;">
+            <navigator 
+                url="/pages/goods/create/create?id={{item.id}}" 
+                hover-class="btn-tap" 
+                class="iconfont icon-icon-test"
+            />
+            <button 
+                hover-class="btn-tap" 
+                class="iconfont icon-xiajia" 
+                data-id="{{item.id}}"
+                bind:tap="lowerShelf" 
+            />
+            <button 
+                hover-class="btn-tap" 
+                class="iconfont icon-delete"
+                data-id="{{item.id}}"
+                bind:tap="delete" 
+            ></button>
+        </view>
+    </list-item>
+</view>

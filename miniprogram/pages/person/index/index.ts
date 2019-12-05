@@ -50,13 +50,13 @@ Page({
                 url: '/pages/ad_setting/ad'
             },
             {
-                name: '审核商家',
+                name: '商家审核',
                 icon: 'shangjiarenzheng1',
                 url: '/pages/audit/business/business',
                 flag: false
             },
             {
-                name: '审核商品',
+                name: '商品审核',
                 icon: 'shangpinrenzheng',
                 url: '/pages/audit/goods/goods',
                 flag: false
@@ -73,7 +73,7 @@ Page({
                 isAdmin && this.commodity();
 
                 this.data.bussiness.length = 1;
-                data === Authentication.official && this.merchant();
+                this.merchant();
             }
         });
     },
@@ -103,20 +103,25 @@ Page({
                 url: '/pages/activity/create/create',
             },
             {
-                name: '我的发起',
+                name: '我的活动',
                 icon: 'list-2-copy',
                 url: '../history/history?type=initiate'
             },
             '商品',
             {
-                name: '商品上架',
+                name: '创建商品',
                 icon: 'shangjia',
                 url: '/pages/goods/create/create',
             },
             {
+                name: '我的商品',
+                icon: 'shangpin',
+                url: '../goods/goods'
+            },
+            {
                 name: '我的订单',
                 icon: 'dingdan',
-                url: '/pages/person/order/order'
+                url: '../order/order'
             }
         );
         this.setData!({ bussiness });

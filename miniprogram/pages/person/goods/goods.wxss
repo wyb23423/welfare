@@ -1,0 +1,19 @@
+.iconfont {
+    width: auto;
+    background: none;
+    padding: 0;
+}
+
+.icon-icon-test {
+    font-size: 38rpx;
+    color: #409eff;
+}
+
+.icon-xiajia {
+    margin: 0 20rpx;
+    color: #e6a23c;
+}
+
+.icon-delete {
+    color: #e00;
+}

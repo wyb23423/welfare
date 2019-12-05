@@ -5,5 +5,5 @@
         "datetimerange": "/components/date_time_range/date_time_range",
         "upload": "/components/upload/upload"
     },
-    "navigationBarTitleText": "兑换商品上架"
+    "navigationBarTitleText": "创建商品"
 }
