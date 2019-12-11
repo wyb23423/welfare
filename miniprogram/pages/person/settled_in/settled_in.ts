@@ -30,6 +30,8 @@ Component({
                     this.setData!({form: data});
                 })
                 .catch(console.log);
+
+            wx.setNavigationBarTitle({title: '修改信息'});
         }
     },
     methods: {

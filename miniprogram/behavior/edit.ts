@@ -66,6 +66,7 @@ export default Behavior<EditFormBehavior>({
             formEl && formEl.reset();
         },
         modify() {
+            // TODO 调用接口修改数据
             console.log(this.data.form);
         },
         _submit() {

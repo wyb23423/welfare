@@ -17,7 +17,7 @@
         <person-head isindex="true" />
         <view style="height: 25rpx"></view>
         <tab>
-            <tab-item name="活动历史">
+            <tab-item name="活动">
                 <view class="tab_item">
                     <template is="navigator" wx:for="{{history}}" wx:key="history" data="{{...item}}" />
                 </view>

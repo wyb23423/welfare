@@ -4,5 +4,5 @@
         "app-form-item": "/components/form_item/form_item",
         "upload": "/components/upload/upload"
     },
-    "navigationBarTitleText": "入驻商家"
+    "navigationBarTitleText": "申请入驻"
 }

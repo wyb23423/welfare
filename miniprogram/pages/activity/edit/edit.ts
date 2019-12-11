@@ -4,4 +4,7 @@
 import ProjectFormBehavior from '../../../behavior/project_form';
 import EditBehavior from '../../../behavior/edit';
 
-Component({behaviors: [ProjectFormBehavior, EditBehavior]});
+Component({
+    behaviors: [ProjectFormBehavior, EditBehavior],
+    data: {isGoods: false}
+});
