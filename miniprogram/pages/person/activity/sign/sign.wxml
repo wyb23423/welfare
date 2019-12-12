@@ -6,7 +6,7 @@
             <text>{{item.phone}}</text>
             <view style="font-size: 48rpx" bind:tap="doAuit" data-index="{{index}}">
                 <text style="color: #e00; margin-right: 20rpx">×</text>
-                <text style="color: #6fc" data-ok="1">√</text>
+                <text style="color: #07c160" data-ok="1">√</text>
             </view>
         </view>
         <view class="empty" wx:if="{{!auditing.length}}" />
@@ -16,10 +16,8 @@
         <view wx:for="{{handled}}" class="list-item" style="padding: 0 20rpx" wx:key="handled">
             <text>{{item.name}}</text>
             <text>{{item.phone}}</text>
-            <view style="font-size: 48rpx">
-                <text style="color: #e00;" wx:if="{{item.status === STATUS.REFUSE}}">已拒绝</text>
-                <text style="color: #6fc" wx:else>已通过</text>
-            </view>
+            <text style="color: #e00;" wx:if="{{item.status === STATUS.REFUSE}}">已拒绝</text>
+            <text style="color: #07c160" wx:else>已通过</text>
         </view>
         <view class="empty" wx:if="{{!handled.length}}" />
     </view>

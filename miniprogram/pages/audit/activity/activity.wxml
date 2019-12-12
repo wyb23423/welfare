@@ -1,0 +1,10 @@
+<view>
+    <list-item wx:for="{{list}}" wx:key="key" info="{{item}}">
+        <view style="font-size: 36rpx" bind:tap="doAuit" data-index="{{index}}">
+            <text style="color: #e00; margin-right: 20rpx">×</text>
+            <text style="color: #07c160" data-ok="1">√</text>
+        </view>
+    </list-item>
+    <view class="empty" wx:if="{{!list.length}}" />
+</view>
+    

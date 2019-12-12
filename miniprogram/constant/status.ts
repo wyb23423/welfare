@@ -1,10 +1,10 @@
 
 /**
  * 商品状态
- * @enum AUDITING: 审核中
- * @enum NORMAL: 正常
- * @enum SOLD_OUT: 下架
- * @enum CLOSE: 审核未通过
+ * @prop AUDITING: 审核中
+ * @prop NORMAL: 正常
+ * @prop SOLD_OUT: 下架
+ * @prop CLOSE: 审核未通过
  */
 export enum GOODS_STATUS {
     AUDITING = 0,
@@ -15,11 +15,11 @@ export enum GOODS_STATUS {
 
 /**
  * 活动状态
- * @enum PREPARE: 准备中
- * @enum PROGRESS: 正在进行
- * @enum COMPLETE: 已完成
- * @enum AUDITING: 审核中
- * @enum CLOSE: 审核未通过
+ * @prop PREPARE: 准备中
+ * @prop PROGRESS: 正在进行
+ * @prop COMPLETE: 已完成
+ * @prop AUDITING: 审核中
+ * @prop CLOSE: 审核未通过
  */
 export enum ACTIVITY_STATUS {
     PREPARE = 0,
@@ -31,12 +31,12 @@ export enum ACTIVITY_STATUS {
 
 /**
  * 参加活动状态
- * @enum AUDITING: 报名审核中
- * @enum AWAIT: 待参加
- * @enum QUIT: 已退出
- * @enum EVALUATE: 待评价
- * @enum COMPLETE: 已完成
- * @enum REFUSE: 报名被拒绝
+ * @prop AUDITING: 报名审核中
+ * @prop AWAIT: 待参加
+ * @prop QUIT: 已退出
+ * @prop EVALUATE: 待评价
+ * @prop COMPLETE: 已完成
+ * @prop REFUSE: 报名被拒绝
  */
 export enum SIGN_STATUS {
     AUDITING = 0,

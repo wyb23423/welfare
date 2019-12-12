@@ -1,4 +1,4 @@
 {
-    "usingComponents": {},
-    "navigationBarTitleText": "商品审核"
+    "component": true,
+    "usingComponents": {}
 }

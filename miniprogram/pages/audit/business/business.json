@@ -1,4 +1,4 @@
 {
-    "usingComponents": {},
-    "navigationBarTitleText": "商家审核"
+    "component": true,
+    "usingComponents": {}
 }

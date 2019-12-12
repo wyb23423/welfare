@@ -1,0 +1,6 @@
+<tab>
+    <tab-item name="商家审核"><business /></tab-item>
+    <tab-item name="商品审核"><goods /></tab-item>
+    <tab-item name="活动审核"><activity /></tab-item>
+</tab>
+    

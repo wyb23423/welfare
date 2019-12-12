@@ -1,4 +1,3 @@
-import { Authentication } from '../../../constant/index';
 import { request } from '../../../utils/http';
 import { IS_OFFICIAL } from '../../../constant/store';
 
@@ -50,15 +49,9 @@ Page({
                 url: '/pages/ad_setting/ad'
             },
             {
-                name: '商家审核',
+                name: '审核',
                 icon: 'shangjiarenzheng1',
-                url: '/pages/audit/business/business',
-                flag: false
-            },
-            {
-                name: '商品审核',
-                icon: 'shangpinrenzheng',
-                url: '/pages/audit/goods/goods',
+                url: '/pages/audit/audit',
                 flag: false
             }
         ],
@@ -85,16 +78,12 @@ Page({
         const promises = [
             request<PageData>({url: '/admin/auditMerchantList', data: {page: 1, rows: 1}, notShowMsg: true })
                 .then(({data: {total}}) => !!total).catch(() => false),
-            request<PageData>({url: '/api/commodity/auditList',data: {page: 1, rows: 1},notShowMsg: true})
-                .then(({data: {total}}) => !!total).catch(() => false)
+            request<PageData>({url: '/api/commodity/auditList', data: {page: 1, rows: 1}, notShowMsg: true})
+                .then(({data: {total}}) => !!total).catch(() => false),
+            request<IActive[]>({url: '/api/activity/auditList', notShowMsg: true})
+                .then(({data}) => !!data.length).catch(() => false)
         ];
-
-        Promise.all(promises).then(([f1, f2]) => {
-            this.setData!({
-                'admin[1].flag': f1,
-                'admin[2].flag': f2
-            });
-        });
+        Promise.all(promises).then((flags) => this.setData!({'admin[1].flag': flags.includes(true)}));
     },
     merchant() {
         const bussiness: Array<MenuItem | string> = this.data.bussiness;

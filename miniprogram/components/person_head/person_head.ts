@@ -2,7 +2,6 @@
  * 个人信息页顶部头像及名称
  */
 import { USER_NAME, IS_OFFICIAL } from '../../constant/store';
-import { Authentication } from '../../constant/index';
 import { request } from '../../utils/http';
 
 interface PersonHead extends WxComponent {

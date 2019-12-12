@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "审核",
+    "usingComponents": {
+        "tab": "/components/tab/tab",
+        "tab-item": "/components/tab/item/item",
+        "goods": "./goods/goods",
+        "business": "./business/business",
+        "activity": "./activity/activity"
+    }
+}
