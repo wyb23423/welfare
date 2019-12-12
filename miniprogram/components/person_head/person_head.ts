@@ -1,7 +1,7 @@
 /**
  * 个人信息页顶部头像及名称
  */
-import { USER_NAME, USER_AUTHENTICATION } from '../../constant/store';
+import { USER_NAME, IS_OFFICIAL } from '../../constant/store';
 import { Authentication } from '../../constant/index';
 import { request } from '../../utils/http';
 
@@ -28,9 +28,7 @@ Component<PersonHead>({
     pageLifetimes: {
         show(this: PersonHead) {
             this.data.isindex && this.initInfoValue();
-
-            const auth = wx.getStorageSync(USER_AUTHENTICATION);
-            this.data.hasCommodity = !(auth === Authentication.commodity || auth === Authentication.auditing);
+            this.data.hasCommodity = !wx.getStorageSync(IS_OFFICIAL);
             this.setData({username: wx.getStorageSync(USER_NAME)});
         }
     },

@@ -1,18 +1,20 @@
 <view>
     <list-item wx:for="{{list}}" wx:key="key" info="{{item}}">
-        <text wx:if="{{item.status === STATUS.CLOSE}}" name="other" style="color: #e00">审核未通过</text>
+        <text wx:if="{{item.status === STATUS.CLOSE}}" slot="other" style="color: #e00">审核未通过</text>
         <view style="display: flex;" wx:if="{{item.status !== STATUS.PROGRESS}}">
             <navigator 
                 url="/pages/activity/edit/edit?id={{item.id}}" 
                 hover-class="btn-tap" 
                 class="iconfont icon-icon-test"
                 wx:if="{{item.status !== STATUS.CLOSE}}"
+                style="margin-right: 20rpx"
             />
             <navigator 
                 url="./sign/sign?id={{item.id}}"
                 hover-class="btn-tap" 
                 class="iconfont icon-shangpinrenzheng"
                 wx:if="{{item.status === STATUS.PREPARE}}"
+                style="margin-right: 20rpx"
             />
             <button
                 hover-class="btn-tap" 

@@ -71,3 +71,12 @@ button {
     height: 338rpx;
     padding: 20rpx;
 }
+
+.more {
+    font-weight: normal;
+    color: #999;
+    font-size: 28rpx;
+    text-align: center;
+    margin: 20rpx 0;
+    padding: 10rpx 0;
+}

@@ -1,5 +1,13 @@
 import { request } from './utils/http';
-import { COOKIE, USER_NAME, USER_AUTHENTICATION } from './constant/store';
+import { COOKIE, USER_NAME, IS_MERCHANT, IS_OFFICIAL } from './constant/store';
+
+interface LoginRes {
+    username: string;
+    authorities: Array<{authority: string}>;
+}
+
+const ROLE_MERCHANT = 'ROLE_MERCHANT';
+const ROLE_OFFICIAL = 'ROLE_OFFICIAL';
 
 // app.ts
 App({
@@ -7,7 +15,7 @@ App({
     // 登录
     wx.login({
       success: ({ code }) => {
-        request({
+        request<LoginRes>({
           url: '/api/login',
           method: 'POST',
           data: { code },
@@ -19,16 +27,28 @@ App({
                 wx.setStorageSync(COOKIE, (<any>res.header)['set-cookie']);
               }
             }
-
-            const data = (<RespoensData>res.data).data;
-            const { authentication } = <IUser>data.user;
-
-            wx.setStorageSync(USER_NAME, data.username);
-            wx.setStorageSync(USER_AUTHENTICATION, authentication);
           }
         })
+            .then(({data: {username, authorities}}) => {
+                // 用户名
+                wx.setStorage({
+                    key: USER_NAME,
+                    data: username
+                });
+                // 是否商家(组织)
+                wx.setStorage({
+                    key: IS_MERCHANT,
+                    data: authorities.some(v => v.authority === ROLE_MERCHANT)
+                });
+                // 是否社区管理员
+                wx.setStorage({
+                    key: IS_OFFICIAL,
+                    data: authorities.some(v => v.authority === ROLE_OFFICIAL)
+                });
+            })
           .catch(console.log);
-      }
+      },
+      fail: console.log
     });
   }
 });

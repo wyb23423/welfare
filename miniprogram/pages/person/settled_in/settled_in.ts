@@ -2,10 +2,9 @@
  * 商家入驻
  */
 import ProjectFormBehavior from '../../../behavior/project_form';
-import { uploadFile, request } from '../../../utils/http';
-import { USER_AUTHENTICATION } from '../../../constant/store';
-import { Authentication } from '../../../constant/index';
+import { request } from '../../../utils/http';
 import { upload } from '../../../utils/util';
+import { IS_MERCHANT } from '../../../constant/store';
 
 interface SettledIn extends WxComponent {
     data: {
@@ -35,7 +34,7 @@ Component<SettledIn>({
     },
     ready() {
         this.data.oldData = {};
-        if(wx.getStorageSync(USER_AUTHENTICATION) === Authentication.official) {
+        if(wx.getStorageSync(IS_MERCHANT)) {
             request<IMerchant>({url: '/api/merchant/getByUserId'})
                 .then(({data}) => {
                     this.data.oldData = {...data};

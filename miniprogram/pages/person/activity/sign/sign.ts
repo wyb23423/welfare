@@ -17,8 +17,7 @@ Page({
             AUDITING: SIGN_STATUS.AUDITING,
             AWAIT: SIGN_STATUS.AWAIT,
             REFUSE: SIGN_STATUS.REFUSE
-        },
-        id: 0
+        }
     },
     onLoad(query: {id: string}) {
         const activityId = this.id = +query.id;

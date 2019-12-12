@@ -1,6 +1,6 @@
-import { USER_AUTHENTICATION } from '../../../constant/store';
 import { Authentication } from '../../../constant/index';
 import { request } from '../../../utils/http';
+import { IS_OFFICIAL } from '../../../constant/store';
 
 /**
  * 个人中心
@@ -66,15 +66,18 @@ Page({
     },
     onShow() {
         wx.getStorage({
-            key: USER_AUTHENTICATION,
+            key: IS_OFFICIAL,
             success: ({data}) => {
-                const isAdmin = data === Authentication.commodity;
-                this.setData!({ isAdmin});
-                isAdmin && this.commodity();
+                this.setData!({ isAdmin: data});
+                data && this.commodity();
+            }
+        });
 
+        wx.getStorage({
+            key: IS_OFFICIAL,
+            success: ({data}) => {
                 this.data.bussiness.length = 1;
-                // data === Authentication.official &&
-                this.merchant();
+                data && this.merchant();
             }
         });
     },

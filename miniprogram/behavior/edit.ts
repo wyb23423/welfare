@@ -1,4 +1,4 @@
-import { request, uploadFile } from '../utils/http';
+import { request } from '../utils/http';
 import { ProjectForm, ProjectFormData } from './project_form';
 import { upload } from '../utils/util';
 
