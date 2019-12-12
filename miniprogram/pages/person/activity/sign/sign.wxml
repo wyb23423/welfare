@@ -1,0 +1,26 @@
+<view>
+    <view class="main" style="margin-top: 20rpx">
+        <view class="title" style="display: bloack;"><text class="title_text">待审核</text></view>
+        <view wx:for="{{auditing}}" class="list-item" wx:key="key">
+            <text>{{item.name}}</text>
+            <text>{{item.phone}}</text>
+            <view style="font-size: 48rpx" bind:tap="doAuit" data-index="{{index}}">
+                <text style="color: #e00; margin-right: 20rpx">×</text>
+                <text style="color: #6fc" data-ok="1">√</text>
+            </view>
+        </view>
+        <view class="empty" wx:if="{{!auditing.length}}" />
+    </view>
+    <view class="main">
+        <view class="title" style="display: bloack;"><text class="title_text">已处理</text></view>
+        <view wx:for="{{handled}}" class="list-item" wx:key="key">
+            <text>{{item.name}}</text>
+            <text>{{item.phone}}</text>
+            <view style="font-size: 48rpx">
+                <text style="color: #e00;" wx:if="{{item.status === STATUS.REFUSE}}">×</text>
+                <text style="color: #6fc" wx:else>√</text>
+            </view>
+        </view>
+        <view class="empty" wx:if="{{!handled.length}}" />
+    </view>
+</view>

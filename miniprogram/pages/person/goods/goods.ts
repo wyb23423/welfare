@@ -4,11 +4,18 @@
 
 import { request } from '../../../utils/http';
 import PageQuery, {ListComponent} from '../../../behavior/page_query';
+import { GOODS_STATUS } from '../../../constant/status';
 
 Component<ListComponent>({
     behaviors: [PageQuery],
     data: {
-        url: '/api/commodity/my'
+        url: '/api/commodity/my',
+        STATUS: {
+            AUDITING: GOODS_STATUS.AUDITING,
+            NORMAL: GOODS_STATUS.NORMAL,
+            SOLD_OUT: GOODS_STATUS.SOLD_OUT,
+            CLOSE: GOODS_STATUS.CLOSE
+        }
     },
     pageLifetimes: {
         show(this: ListComponent) {
@@ -18,17 +25,17 @@ Component<ListComponent>({
     methods: {
         updateStatus({target: {dataset: {index}}}: BaseEvent<{index: number}>) {
             const data = this.data.list[index];
-            if(data.status === 2) {
+            if(data.status === GOODS_STATUS.AUDITING) {
                 return wx.showToast({icon: 'none', title: '商品审核中'});
             }
-            data.status = !data.status;
+            const status = data.status === GOODS_STATUS.NORMAL ? GOODS_STATUS.SOLD_OUT : GOODS_STATUS.NORMAL;
 
             request({
                 url: '/api/commodity',
-                data,
+                data: {...data, status},
                 method: 'POST'
             })
-                .then(() => this.setData({[`list${index}`]: data}))
+                .then(() => this.setData({[`list[${index}].status`]: status}))
                 .then(() => wx.showToast({title: '操作成功'}))
                 .catch(console.log);
         },

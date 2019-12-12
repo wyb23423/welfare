@@ -45,41 +45,7 @@
 		/>
 	</view>
 </template>
-<!-- 我的发起 -->
-<template name="initiate">
-	<view class="ok" wx:if="{{status === 2}}">
-		<button
-            class="iconfont icon-delete"
-            hover-class="btn-tap"
-            hover-stop-propagation="true"
-            data-index="{{index}}"
-            catch:tap="delete"
-		/>
-	</view>
-	<view class="initiate_btn_group" wx:elif="{{status === 0}}">
-		<button
-            class="item_text item_info"
-            data-index="{{index}}"
-            hover-stop-propagation="true"
-            style="border-radius: 10rpx; margin: 0 20rpx;"
-            catch:tap="openEnList"
-		>
-			报名审核
-		</button>
-		<button
-            class="item_text item_info"
-            data-index="{{index}}"
-            hover-stop-propagation="true"
-            style="border-radius: 10rpx; margin: 0; padding: 0 20rpx"
-            catch:tap="ok"
-		>
-			完成
-		</button>
-	</view>
-	<view class="ok" wx:else>
-		<text class="item_text item_info">{{status === 1 ? '进行中' : '意外中止'}}</text>
-	</view>
-</template>
+
 <!-- 我的收藏 -->
 <template name="collection">
 	<template is="complete" data="{{index}}" />
@@ -95,6 +61,5 @@
     <list-item wx:for="{{history}}" wx:key="key" info="{{item}}" isGoods="{{tabType}}">
         <template is="{{type}}" data="{{...item}}" />
     </list-item>
-	<en-list id="en-list" />
 </view>
 

@@ -106,7 +106,7 @@ Page({
             {
                 name: '我的活动',
                 icon: 'list-2-copy',
-                url: '../history/history?type=initiate'
+                url: '../activity/activity'
             },
             '商品',
             {

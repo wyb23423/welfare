@@ -1,1 +1,1 @@
-@import "/components/enlist/enlist.wxss";
+@import "../activity/sign/sign.wxss";

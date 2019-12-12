@@ -1,11 +1,3 @@
-// 活动状态
-export enum ActiveStatus {
-    preparation = 0, // 准备中
-    ongoing = 1, // 进行中
-    complete = 2, // 已顺利完成
-    accidental = 3 // 意外中止
-}
-
 // 认证类型
 export enum Authentication {
     none = 0, // 未认证

@@ -10,6 +10,8 @@
     "pages/audit/goods/goods",
     "pages/details/details",
     "pages/business/business",
+    "pages/comment/comment",
+    "pages/ad_setting/ad",
     "pages/person/index/index",
     "pages/person/info/info",
     "pages/person/exchange/exchange",
@@ -18,10 +20,10 @@
     "pages/person/points/points",
     "pages/person/settled_in/settled_in",
     "pages/person/points/details/details",
-    "pages/comment/comment",
     "pages/person/order/order",
     "pages/person/goods/goods",
-    "pages/ad_setting/ad"
+    "pages/person/activity/activity",
+    "pages/person/activity/sign/sign"
   ],
   "window": {
     "backgroundTextStyle": "light",

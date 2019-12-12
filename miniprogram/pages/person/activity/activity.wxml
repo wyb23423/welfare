@@ -1,27 +1,27 @@
 <view>
-    <list-item wx:for="{{list}}" wx:key="key" info="{{item}}" isGoods="{{1}}">
+    <list-item wx:for="{{list}}" wx:key="key" info="{{item}}">
         <text wx:if="{{item.status === STATUS.CLOSE}}" name="other" style="color: #e00">审核未通过</text>
-        <view style="display: flex;">
+        <view style="display: flex;" wx:if="{{item.status !== STATUS.PROGRESS}}">
             <navigator 
-                url="/pages/goods/edit/edit?id={{item.id}}" 
+                url="/pages/activity/edit/edit?id={{item.id}}" 
                 hover-class="btn-tap" 
                 class="iconfont icon-icon-test"
                 wx:if="{{item.status !== STATUS.CLOSE}}"
             />
-            <button 
+            <navigator 
+                url="./sign/sign?id={{item.id}}"
                 hover-class="btn-tap" 
-                class="iconfont icon-{{item.status === STATUS.NORMAL ? 'xiajia' : 'shangjia1'}}" 
-                data-index="{{index}}"
-                bind:tap="updateSatus"
-                wx:if="{{item.status !== STATUS.SOLD_OUT && item.status !== STATUS.CLOSE}}"
+                class="iconfont icon-shangpinrenzheng"
+                wx:if="{{item.status === STATUS.PREPARE}}"
             />
-            <button 
+            <button
                 hover-class="btn-tap" 
                 class="iconfont icon-delete"
                 data-index="{{index}}"
-                bind:tap="delete" 
+                bind:tap="delete"
             ></button>
         </view>
+        <icon type="success_no_circle" size="16" color="#07c160" wx:else bind:tap="ok" data-index="{{index}}" />
     </list-item>
     <view class="more"><text wx:if="{{!hasMore}}">暂无更多</text></view>
 </view>
