@@ -1,29 +1,18 @@
-import { request } from '../../../utils/http';
+/**
+ * 我的商品
+ */
 
-Component({
+import { request } from '../../../utils/http';
+import PageQuery, {ListComponent} from '../../../behavior/page_query';
+
+Component<ListComponent>({
+    behaviors: [PageQuery],
     data: {
-        list: <ICommodity[]>[]
+        url: '/api/commodity/my'
     },
     pageLifetimes: {
-        show() {
-            // TODO 从服务器拉取数据
-            const list = [];
-            for(let i=0; i<10; i++) {
-                list.push({
-                    id: i,
-                    img: '/public/images/23.jpg',
-                    name: '测试: ' + i,
-                    authentication: '社区认证',
-                    origination: Date.now(),
-                    finish: Date.now() + 1000000,
-                    integral: 10,
-                    size: 10,
-                    sign: 8,
-                    status: [0, 1, 2][Math.round(Math.random() * 2)]
-                });
-            }
-
-            this.setData!({list});
+        show(this: ListComponent) {
+            this.onShow();
         }
     },
     methods: {
@@ -35,11 +24,34 @@ Component({
             data.status = !data.status;
 
             request({
-                url: ''
-            });
+                url: '/api/commodity',
+                data,
+                method: 'POST'
+            })
+                .then(() => this.setData({[`list${index}`]: data}))
+                .then(() => wx.showToast({title: '操作成功'}))
+                .catch(console.log);
         },
-        delete({target: {dataset: {id}}}: BaseEvent<{id: number}>) {
-            console.log(id, 'delete');
+        delete({target: {dataset: {index}}}: BaseEvent<{index: number}>) {
+            const list: ICommodity[] = this.data.list;
+            const data = list[index];
+            wx.showModal({
+                content: `删除商品${data.name}?`,
+                success: ({confirm}) => {
+                    if(!confirm) {
+                        return;
+                    }
+
+                    request({
+                        url: '/api/commodity',
+                        data: {id: data.id},
+                        method: 'DELETE'
+                    })
+                        .then(() => this.reflash())
+                        .then(() => wx.showToast({title: '删除成功'}))
+                        .catch(console.log);
+                }
+            });
         }
     }
 });

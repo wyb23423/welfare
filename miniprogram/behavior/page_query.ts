@@ -2,7 +2,7 @@ import { request } from '../utils/http';
 import { parseData } from '../utils/util';
 
 export interface ListComponent extends WxComponent {
-    reflash(): void;
+    reflash(isDel?: boolean): void;
     onShow(): void;
     getMore(): void;
     getPageData(page?: number, size?: number): Promise<{
@@ -18,11 +18,16 @@ export default Behavior<ListComponent>({
         dataConfig: {
             currentPage: 'currentPage',
             pageSize: 'pageSize'
-        }
+        },
+        url: ''
     },
     methods: {
-        reflash() {
-            this.data.list.length > 1 ? this.onShow() : this.setData({list: []});
+        reflash(isDel: boolean = true) {
+            if(isDel && this.data.list.length <= 1) {
+                this.setData({list: []});
+            } else {
+                this.onShow();
+            }
         },
         onShow() {
             this.getPageData(1, this.data.list.length || 8)

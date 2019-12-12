@@ -16,9 +16,10 @@
             <button 
                 hover-class="btn-tap" 
                 class="iconfont icon-delete"
-                data-id="{{item.id}}"
+                data-index="{{item.index}}"
                 bind:tap="delete" 
             ></button>
         </view>
     </list-item>
+    <view class="more"><text wx:if="{{!hasMore}}">暂无更多</text></view>
 </view>
