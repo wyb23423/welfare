@@ -1,10 +1,13 @@
 import { chooseImage } from '../../../components/upload/upload';
+import { request } from '../../../utils/http';
+import { AD_TYPE } from '../../../constant/index';
+
+type ADItem = Pick<IAD, 'img' | 'id' | 'url'>;
 
 interface AdIndex extends WxComponent {
     data: {
-        imgs: string[];
+        ads: ADItem[];
     };
-    _setImgs(srcOrIndex: string | number): void;
 }
 
 Component<AdIndex>({
@@ -15,23 +18,52 @@ Component<AdIndex>({
         }
     },
     data: {
-        imgs: [],
+        ads: <ADItem[]>[],
         isDouble: true
+    },
+    attached() {
+        request<IAD[]>({url: '/api/ad/getCarouse'})
+            .then(({data}) => this.setData({ads: data}))
+            .catch(console.log);
     },
     methods: {
         remove({currentTarget: {dataset: {index}}}: BaseEvent) {
-            // if(index === this.data.imgs.length - 1) {
-            //     return;
-            // }
-            this._setImgs(index);
+            wx.showModal({
+                content: '删除该广告?',
+                success: ({confirm}) => {
+                    if(confirm) {
+                        const ads = this.data.ads;
+                        request({
+                            url: '/api/ad/remove',
+                            data: {id: ads[index].id}
+                        })
+                            .then(() => {
+                                wx.showToast({title: '删除成功'});
+                                ads.splice(index, 1);
+                                this.setData({ads});
+                            })
+                            .catch(console.log);
+                    }
+                }
+            });
         },
         add() {
-            chooseImage().then(this._setImgs.bind(this)).catch(console.log);
+            chooseImage()
+                .then((src) =>
+                    request<number>({
+                        url: '/api/ad',
+                        method: 'PUT',
+                        data: {
+                            img: src,
+                            url: '',
+                            type: AD_TYPE.INDEX
+                        }
+                    })
+                    .then(({data: id}) => this.data.ads.push({img: src, id, url: ''}))
+                )
+                .then(() => this.setData(this.data))
+                .then(() => wx.showToast({title: '添加成功'}))
+                .catch(console.log);
         },
-        _setImgs(srcOrIndex: string | number) {
-            const imgs = this.data.imgs;
-            typeof srcOrIndex === 'number' ? imgs.splice(srcOrIndex, 1) : imgs.push(srcOrIndex);
-            this.setData({imgs, isDouble: !(imgs.length % 2)});
-        }
     }
 });

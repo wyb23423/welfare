@@ -12,14 +12,14 @@
         <view>
             <view style="margin: 20rpx 0">广告图片: </view>
             <view class="card" bind:tap="modify" style="position: relative">
-                <image wx:if="{{!!imgs[radioIndex]}}" src="{{imgs[radioIndex]}}" mode="aspectFill" class="fill-box" />
-                <text hidden="{{!imgs[radioIndex]}}" class="delete-text" catch:tap="remove">删除</text>
-                <view hidden="{{!!imgs[radioIndex]}}" class="fill-box flex-center-v" style="color: rgba(0, 0, 0, 0.64)">
+                <image wx:if="{{!!ads[radioIndex]}}" src="{{ads[radioIndex].img}}" mode="aspectFill" class="fill-box" />
+                <text hidden="{{!ads[radioIndex]}}" class="delete-text" catch:tap="remove">删除</text>
+                <view hidden="{{!!ads[radioIndex]}}" class="fill-box flex-center-v" style="color: rgba(0, 0, 0, 0.64)">
                     <view class="iconfont icon-shangchuan" style="font-size: 60rpx"></view>
                     <view style="font-size: 36rpx;">添加广告</view>
                 </view>
             </view>
         </view>
     </view>
-    <button class="bottom-submit" bind:tap="onSubmit">提交广告</button>
+    <!-- <button class="bottom-submit" bind:tap="onSubmit">提交广告设置</button> -->
 </view>

@@ -22,7 +22,7 @@ Page({
     onLoad(query: {id: string}) {
         const activityId = this.id = +query.id;
         request<EnInfo[]>({
-            url: '/api/activity/auditList',
+            url: '/api/activity/participation/auditList',
             data: { activityId }
         })
             .then(({data: list}) => {
@@ -55,7 +55,7 @@ Page({
         const {auditing, handled} = this.data;
 
         request({
-            url: '/api/activity/audit',
+            url: '/api/activity/participation/audit',
             data: {
                 flag: isOk,
                 activityId: this.id,

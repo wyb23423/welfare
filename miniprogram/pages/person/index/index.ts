@@ -49,7 +49,7 @@ Page({
                 url: '/pages/ad_setting/ad'
             },
             {
-                name: '审核',
+                name: '审核申请',
                 icon: 'shangjiarenzheng1',
                 url: '/pages/audit/audit',
                 flag: false

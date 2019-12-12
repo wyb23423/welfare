@@ -14,3 +14,10 @@ export const AUTHENTICATION = {
 
 export const HOST = 'http://192.168.1.128:8080'; // 'https://www.cdjcsq.cn:8080'; //  请求域名
 export const COMPRESS_SIZE = 300;
+
+export enum AD_TYPE {
+    INDEX = 0,
+    ACTIVITY = 1,
+    GOODS = 2,
+    PERSON = 3
+}

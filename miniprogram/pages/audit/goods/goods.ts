@@ -22,7 +22,6 @@ Component<ListComponent>({
                 itemList: ['拒绝', '通过'],
                 success: ({tapIndex}) => {
                   request({
-                        method: 'POST',
                         url: '/api/commodity/audit',
                         data: {
                             isOk: !!tapIndex,

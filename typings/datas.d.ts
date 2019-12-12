@@ -70,6 +70,12 @@ declare interface IUser extends Base<string> {
     adress: string;
 }
 
+declare interface IAD extends Base {
+    img: string;
+    url: string;
+    type: number;
+}
+
 // ======================================
 declare interface IMerchant {
     index: number;

@@ -1,7 +1,7 @@
 <view hidden="{{hidden}}" style="margin-top: 15rpx">
     <view>
-        <view wx:key="key" wx:for="{{imgs}}" mark:index="{{index}}" class="ad-item card">
-            <image src="{{item}}" mode="aspectFill" class="fill-box" />
+        <view wx:key="key" wx:for="{{ads}}" class="ad-item card">
+            <image src="{{item.img}}" mode="aspectFill" class="fill-box" />
             <text class="delete-text" bind:tap="remove" data-index="{{index}}">删除</text>
         </view>
         <view class="ad-item card" bind:tap="add">
