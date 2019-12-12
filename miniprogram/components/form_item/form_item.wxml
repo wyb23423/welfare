@@ -3,7 +3,7 @@
         <text style="color: #e00" wx:if="{{isRequired}}">*</text>
         {{label}}
     </label>
-    <view class="input_box">
+    <view class="input_box input-box-class">
         <view class="input {{errMsg ? 'error' : ''}} input-class">
             <slot></slot>
         </view>

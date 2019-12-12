@@ -73,7 +73,8 @@ Page({
                 isAdmin && this.commodity();
 
                 this.data.bussiness.length = 1;
-                data === Authentication.official && this.merchant();
+                // data === Authentication.official &&
+                this.merchant();
             }
         });
     },

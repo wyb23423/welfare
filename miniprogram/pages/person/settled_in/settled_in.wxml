@@ -16,6 +16,12 @@
             <app-form-item prop="address" label="地址" required>
                 <input id="address" value="{{form.address}}" bindinput="onInput" />
             </app-form-item>
+            <app-form-item prop="idCard" label="负责人身份证" required>
+                <upload id="idCard" value="{{form.idCard}}" bind:input="onInput"></upload>
+            </app-form-item>
+            <app-form-item prop="credentials" label="相关证件(营业执照、自由从业证等)" required>
+                <upload id="credentials" value="{{form.credentials}}" bind:input="onInput"></upload>
+            </app-form-item>
         </view>
     </app-form>
     <button class="bottom-submit" bind:tap="onSubmit">{{oldImg ? '提交信息' : '申请入驻'}}</button>

@@ -1,4 +1,5 @@
 import { AUTHENTICATION } from '../constant/index';
+import { uploadFile } from './http';
 
 export function formatTime(date: Date): string {
   const {year, month, day, hour, minute} = resolveTime(date);
@@ -55,6 +56,23 @@ export function parseData<T extends IActive | ICommodity | IMerchant>(v: T, i: n
   v.isCollected = !!v.liked; // 转化是否收藏/关注字段名(该字段是前端完成后服务端才在返回数据中添加的)
 
   return v;
+}
+
+export function upload(newSrc: string, oldSrc: string) {
+    if(!newSrc) {
+        console.warn('文件路径不能为空');
+        return Promise.resolve(oldSrc);
+    }
+
+    if(oldSrc === newSrc) {
+        return Promise.resolve(newSrc);
+    }
+
+    return uploadFile<string>({
+        url: '/api/file',
+        name: 'file',
+        filePath: newSrc
+    }).then(res => res.data);
 }
 
 function formatNumber(n: number) {

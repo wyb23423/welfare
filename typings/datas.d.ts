@@ -26,6 +26,7 @@ declare interface ICommodity extends Base, ActiveCommodity {
     isCollected: boolean;
     isHeat: boolean;
     liked: boolean;
+    status: number;
 }
 
 declare interface IActive extends Base, ActiveCommodity {
@@ -53,6 +54,8 @@ declare interface IMerchant extends Base {
     phone: string;
     userId: string;
     liked: boolean;
+    idCard: string;
+    credentials: string;
 }
 
 declare interface IUser extends Base<string> {

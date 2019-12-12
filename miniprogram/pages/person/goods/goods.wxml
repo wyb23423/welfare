@@ -8,9 +8,10 @@
             />
             <button 
                 hover-class="btn-tap" 
-                class="iconfont icon-xiajia" 
-                data-id="{{item.id}}"
-                bind:tap="lowerShelf" 
+                class="iconfont icon-{{item.status ? 'xiajia' : 'shangjia1'}}" 
+                data-index="{{index}}"
+                bind:tap="updateSatus"
+                wx:if="{{item.status !== 2}}"
             />
             <button 
                 hover-class="btn-tap" 

@@ -10,7 +10,7 @@ export interface FormItem extends WxComponent {
 }
 
 Component<FormItem>({
-    externalClasses: ['custom-class', 'label-class', 'input-class', 'msg-class'],
+    externalClasses: ['custom-class', 'label-class', 'input-class', 'msg-class', 'input-box-class'],
     properties: {
         label: {
             type: String,

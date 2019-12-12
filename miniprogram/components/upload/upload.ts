@@ -29,6 +29,14 @@ Component({
         value: {
             type: String,
             value: ''
+        },
+        text: {
+            type: String,
+            value: '上传图片'
+        },
+        height: {
+            type: String,
+            value: 'auto'
         }
     },
     methods: {

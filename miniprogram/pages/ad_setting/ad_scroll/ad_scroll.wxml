@@ -11,5 +11,5 @@
             </view>
         </view>
     </view>
-    <button class="bottom-submit">提交广告</button>
+    <!-- <button class="bottom-submit">提交广告</button> -->
 </view>

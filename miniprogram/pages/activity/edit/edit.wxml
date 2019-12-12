@@ -41,5 +41,5 @@
             </app-form-item>
         </view>
     </app-form>
-    <button class="bottom-submit" bind:tap="onSubmit">{{oldImg ? '修改活动信息' : '创建活动'}}</button>
+    <button class="bottom-submit" bind:tap="onSubmit">{{oldImg ? '修改活动信息' : '申请创建活动'}}</button>
 </view>

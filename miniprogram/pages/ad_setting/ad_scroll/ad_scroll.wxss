@@ -19,3 +19,9 @@
     right: 0;
     border: 2rpx dashed #e00;
 }
+.url {
+    position: absolute;
+    left: 20rpx;
+    bottom: 20rpx;
+    color: #cac7c7;
+}

@@ -5,8 +5,17 @@ import ProjectFormBehavior from '../../../behavior/project_form';
 import { uploadFile, request } from '../../../utils/http';
 import { USER_AUTHENTICATION } from '../../../constant/store';
 import { Authentication } from '../../../constant/index';
+import { upload } from '../../../utils/util';
 
-Component({
+interface SettledIn extends WxComponent {
+    data: {
+        form: IMerchant;
+        oldData: IMerchant;
+    };
+    upload(key: string): Promise<string>;
+}
+
+Component<SettledIn>({
     behaviors: [ProjectFormBehavior],
     data: {
         form: {
@@ -14,19 +23,22 @@ Component({
             phone: '',
             detail: '',
             address: '',
-            img: ''
+            img: '',
+            idCard: '',
+            credentials: ''
         },
         telRule: {
             regexp: '^1[3456789]\\d{9}$',
             message: '无效电话号码'
         },
-        oldImg: ''
+        oldData: <IMerchant>{}
     },
     ready() {
+        this.data.oldData = {};
         if(wx.getStorageSync(USER_AUTHENTICATION) === Authentication.official) {
             request<IMerchant>({url: '/api/merchant/getByUserId'})
                 .then(({data}) => {
-                    this.data.oldImg = data.img;
+                    this.data.oldData = {...data};
                     this.setData!({form: data});
                 })
                 .catch(console.log);
@@ -36,22 +48,20 @@ Component({
     },
     methods: {
         _submit() {
-            const {oldImg, form} = this.data;
-            const url = oldImg ? '/api/merchant/update' : '/api/merchant';
-            const message = oldImg ? '修改信息成功' : '入驻成功';
-            if(oldImg === form.img) {
-                request({ url, data: form })
-                    .then(() => wx.showToast({ title: message }))
-                    .catch(console.log);
-            } else {
-                uploadFile({
-                    url, name: 'file',
-                    filePath: form.img,
-                    formData: form
+            const filePromises = ['img', 'idCard', 'credentials'].map(this.upload, this);
+            const {oldData: {img}, form} = this.data;
+            Promise.all(filePromises)
+                .then(([newImg, idCard, credentials]) => {
+                    const data = {...form, idCard, credentials, img: newImg};
+                    const url = img ? '/api/merchant/update' : '/api/merchant';
+                    return request({url, data, method: img ? 'POST' : 'PUT'});
                 })
-                    .then(() => wx.showToast({ title: message }))
-                    .catch(console.log);
-            }
+                .then(() => wx.showToast({ title: `${img ? '修改' : '申请'}成功` }))
+                .catch(console.log);
+        },
+        upload(key: 'idCard' | 'credentials' | 'img') {
+            const {oldData, form} = this.data;
+            return upload(form[key], oldData[key]);
         }
     }
 });

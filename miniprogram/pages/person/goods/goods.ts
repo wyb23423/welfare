@@ -1,3 +1,5 @@
+import { request } from '../../../utils/http';
+
 Component({
     data: {
         list: <ICommodity[]>[]
@@ -16,7 +18,8 @@ Component({
                     finish: Date.now() + 1000000,
                     integral: 10,
                     size: 10,
-                    sign: 8
+                    sign: 8,
+                    status: [0, 1, 2][Math.round(Math.random() * 2)]
                 });
             }
 
@@ -24,8 +27,16 @@ Component({
         }
     },
     methods: {
-        lowerShelf({target: {dataset: {id}}}: BaseEvent<{id: number}>) {
-            console.log(id, 'lowerShelf');
+        updateStatus({target: {dataset: {index}}}: BaseEvent<{index: number}>) {
+            const data = this.data.list[index];
+            if(data.status === 2) {
+                return wx.showToast({icon: 'none', title: '商品审核中'});
+            }
+            data.status = !data.status;
+
+            request({
+                url: ''
+            });
         },
         delete({target: {dataset: {id}}}: BaseEvent<{id: number}>) {
             console.log(id, 'delete');

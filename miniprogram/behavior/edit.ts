@@ -1,10 +1,11 @@
 import { request, uploadFile } from '../utils/http';
 import { ProjectForm, ProjectFormData } from './project_form';
+import { upload } from '../utils/util';
 
 interface EditFormBehavior extends ProjectForm {
     data: ProjectFormData & {oldImg: string; isGoods: boolean};
-    add(): Promise<void>;
-    modify(): void;
+    add(data: ICommodity): Promise<void>;
+    modify(data: ICommodity): Promise<void>;
 }
 
 export default Behavior<EditFormBehavior>({
@@ -49,28 +50,43 @@ export default Behavior<EditFormBehavior>({
         }
     },
     methods: {
-        async add() {
-            const {form, isGoods, formEl} = this.data;
+        async add(data: ICommodity) {
+            const {isGoods} = this.data;
             try {
-                await uploadFile({
+                await request({
                     url: `/api/${isGoods ? 'commodity' : 'activity'}`,
-                    filePath: form.img,
-                    name: 'file',
-                    formData: form
+                    data,
+                    method: 'PUT'
                 });
             } catch(e) {
                 return;
             }
 
-            wx.showToast({ title: '添加成功' });
-            formEl && formEl.reset();
+            wx.showToast({ title: '申请成功' });
         },
-        modify() {
-            // TODO 调用接口修改数据
-            console.log(this.data.form);
+        async modify(data: ICommodity) {
+            const {isGoods} = this.data;
+            try {
+                await request({
+                    url: `/api/${isGoods ? 'commodity' : 'activity'}`,
+                    data,
+                    method: 'POST'
+                });
+            } catch(e) {
+                return;
+            }
+
+            wx.showToast({ title: '修改成功' });
         },
         _submit() {
-            this.data.oldImg ? this.modify() : this.add();
+            const {oldImg, form, formEl} = this.data;
+            upload(form.img, oldImg)
+                .then(img => {
+                    const data = <ICommodity>{...form, img};
+                    return oldImg ? this.modify(data) : this.add(data);
+                })
+                .then(() => formEl && formEl.reset())
+                .catch(console.log);
         },
         _parseValue(value: string, name: string) {
             if (['size', 'integral', 'credit'].includes(name)) {
