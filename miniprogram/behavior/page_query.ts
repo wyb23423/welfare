@@ -19,6 +19,7 @@ export default Behavior<ListComponent>({
             currentPage: 'currentPage',
             pageSize: 'pageSize'
         },
+        all: false,
         url: ''
     },
     methods: {
@@ -51,14 +52,16 @@ export default Behavior<ListComponent>({
                 .catch(e => console.log(e.errMsg));
         },
         async getPageData(page: number = 1, size: number = 8) {
-            if(!this.data.url) {
+            const {url, all} = this.data;
+            if(!url) {
                 return Promise.reject({errMsg: '请求路径错误'});
             }
 
             const {currentPage, pageSize} = this.data.dataConfig;
             const { data: { list, total } } = await (request<PageData<any>>({
-                url: this.data.url,
+                url,
                 data: {
+                    all,
                     [currentPage]: page,
                     [pageSize]: size
                 }

@@ -4,10 +4,10 @@
         <text style="border-right: 2rpx solid #ccc">公益积分: {{integral}}</text>
         <text>信用积分: {{credit}}</text>
     </view>
-    <navigator class="details_item menu" url="./details/details">
+    <!-- <navigator class="details_item menu" url="./details/details">
         <text>积分明细</text>
         <text class="iconfont icon-jiantou right"></text>
-    </navigator>
+    </navigator> -->
     <navigator class="details_item menu" url="/pages/person/exchange/exchange">
         <text>我的兑换</text>
         <text class="iconfont icon-jiantou right"></text>

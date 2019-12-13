@@ -9,7 +9,7 @@
     padding-left: 20rpx;
 }
 
-.merchan {
+.merchant {
     overflow: hidden;
     text-overflow:ellipsis;
     white-space: nowrap;

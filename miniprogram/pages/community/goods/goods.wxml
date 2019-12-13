@@ -1,0 +1,23 @@
+<view>
+    <list-item wx:for="{{list}}" wx:key="key" info="{{item}}">
+        <text wx:if="{{item.status !== NORMAL}}" slot="other" style="color: #cac7c7">已下架。。。</text>
+        <view style="display: flex;">
+            <button 
+                hover-class="btn-tap" 
+                class="iconfont icon-xiajia" 
+                data-index="{{index}}"
+                bind:tap="updateSatus"
+                style="margin: 0 20rpx;"
+                wx:if="{{item.status === NORMAL}}"
+            />
+            <button 
+                hover-class="btn-tap" 
+                class="iconfont icon-delete"
+                data-index="{{index}}"
+                bind:tap="delete" 
+            ></button>
+        </view>
+    </list-item>
+    <view class="more"><text wx:if="{{!hasMore}}">暂无更多</text></view>
+</view>
+    

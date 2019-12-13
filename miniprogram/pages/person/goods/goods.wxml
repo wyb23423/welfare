@@ -1,6 +1,10 @@
 <view>
     <list-item wx:for="{{list}}" wx:key="key" info="{{item}}" isGoods="{{1}}">
-        <text wx:if="{{item.status === STATUS.CLOSE}}" slot="other" style="color: #e00">审核未通过</text>
+        <view style="color: #cac7c7" slot="other">
+            <text wx:if="{{item.status === STATUS.CLOSE}}"  style="color: #e00">审核未通过</text>
+            <text wx:elif="{{item.status === STATUS.AUDITING}}">审核中。。。</text>
+        </view>
+        
         <view style="display: flex;">
             <navigator 
                 url="/pages/goods/edit/edit?id={{item.id}}" 
@@ -14,7 +18,7 @@
                 data-index="{{index}}"
                 bind:tap="updateSatus"
                 style="margin: 0 20rpx;"
-                wx:if="{{item.status !== STATUS.SOLD_OUT && item.status !== STATUS.CLOSE}}"
+                wx:if="{{item.status !== STATUS.AUDITING && item.status !== STATUS.CLOSE}}"
             />
             <button 
                 hover-class="btn-tap" 

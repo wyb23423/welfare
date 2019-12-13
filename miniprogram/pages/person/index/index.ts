@@ -59,6 +59,11 @@ Page({
                 name: '组织列表',
                 icon: 'shangjiarenzheng1',
                 url: '/pages/community/business/business'
+            },
+            {
+                name: '商品列表',
+                icon: 'shangpinliebiaotubiao01',
+                url: '/pages/community/goods/goods'
             }
         ],
         isAdmin: false,

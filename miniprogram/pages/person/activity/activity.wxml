@@ -2,7 +2,7 @@
     <list-item wx:for="{{list}}" wx:key="key" info="{{item}}">
         <view style="color: #cac7c7" slot="other">
             <text wx:if="{{item.status === STATUS.CLOSE}}"  style="color: #e00">审核未通过</text>
-            <text wx:elif="{{item.status === STATUS.PREPARE}}">审核中。。。</text>
+            <text wx:elif="{{item.status === STATUS.AUDITING}}">审核中。。。</text>
             <text wx:elif="{{item.status === STATUS.PREPARE}}">准备中。。。</text>
             <text wx:elif="{{item.status === STATUS.PROGRESS}}">进行中。。。</text>
             <text wx:elif="{{item.status === STATUS.COMPLETE}}" slot="other" style="color: #07c160">已完成</text>

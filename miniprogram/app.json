@@ -23,7 +23,8 @@
     "pages/person/activity/sign/sign",
     "pages/community/audit/audit",
     "pages/community/ad_setting/ad",
-    "pages/community/business/business"
+    "pages/community/business/business",
+    "pages/community/goods/goods"
   ],
   "window": {
     "backgroundTextStyle": "light",
