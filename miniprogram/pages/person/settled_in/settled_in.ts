@@ -52,8 +52,7 @@ Component<SettledIn>({
             Promise.all(filePromises)
                 .then(([newImg, idCard, credentials]) => {
                     const data = {...form, idCard, credentials, img: newImg};
-                    const url = img ? '/api/merchant/update' : '/api/merchant';
-                    return request({url, data, method: img ? 'POST' : 'PUT'});
+                    return request({url: '/api/merchant', data, method: img ? 'POST' : 'PUT'});
                 })
                 .then(() => wx.showToast({ title: `${img ? '修改' : '申请'}成功` }))
                 .catch(console.log);

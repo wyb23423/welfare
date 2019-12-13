@@ -14,16 +14,26 @@ export function updateStatus(component: ListComponent, index: number) {
     if(data.status === GOODS_STATUS.AUDITING) {
         return wx.showToast({icon: 'none', title: '商品审核中'});
     }
-    const status = data.status === GOODS_STATUS.NORMAL ? GOODS_STATUS.SOLD_OUT : GOODS_STATUS.NORMAL;
 
-    request({
-        url: '/api/commodity',
-        data: {...data, status},
-        method: 'POST'
-    })
-        .then(() => component.setData({[`list[${index}].status`]: status}))
-        .then(() => wx.showToast({title: '操作成功'}))
-        .catch(console.log);
+    const isNormal = data.status === GOODS_STATUS.NORMAL;
+    wx.showModal({
+        content: (isNormal ? '下' :'上') + '架该商品?',
+        success: ({confirm}) => {
+            if(!confirm) {
+                return;
+            }
+
+            const status = isNormal ? GOODS_STATUS.SOLD_OUT : GOODS_STATUS.NORMAL;
+            request({
+                url: '/api/commodity',
+                data: {id: data.id, status},
+                method: 'POST'
+            })
+                .then(() => component.setData({[`list[${index}].status`]: status}))
+                .then(() => wx.showToast({title: '操作成功'}))
+                .catch(console.log);
+        }
+    });
 }
 
 /**
@@ -33,7 +43,7 @@ export function deleteGoods(component: ListComponent, index: number) {
     const list: ICommodity[] = component.data.list;
     const data = list[index];
     wx.showModal({
-        content: `删除商品${data.name}?`,
+        content: '删除该商品?',
         success: ({confirm}) => {
             if(!confirm) {
                 return;

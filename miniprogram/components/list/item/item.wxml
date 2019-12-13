@@ -12,7 +12,7 @@
         />
         <text class="grid_name ellipsis" style="font-size: 28rpx;">{{info.name}}</text>
         <view class="grid_authentication" style="transform: scale(0.7); transform-origin: left;">
-            <text class="authentication">{{info.authentication}}</text>
+            <text class="authentication">{{info.authStr}}</text>
         </view>
         <view class="grid_other"><slot name="other"></slot></view>
         <text class="grid_time" style="color: #cac7c7">{{time}}</text>

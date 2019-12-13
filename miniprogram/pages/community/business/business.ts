@@ -36,7 +36,7 @@ Component<ListComponent>({
                         const isCommunity = wx.getStorageSync(IS_OFFICIAL);
                         authentication = isCommunity ? BUSINESS_STATUS.COMMUNITY : BUSINESS_STATUS.NORMAL;
                     }
-                    request({ url: '/api/merchant',  method: 'PUT', data: {...item, authentication} })
+                    request({ url: '/api/merchant', method: 'POST', data: {id: item.id, authentication} })
                         .then(() => {
                             wx.showToast({title: '操作成功'});
                             this.setData({[`list[${index}].authentication`]: authentication});

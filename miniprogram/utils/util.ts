@@ -46,7 +46,7 @@ export function getOptions(path: string) {
  * @param i 源数据在数据列表中的索引
  */
 export function parseData<T extends IActive | ICommodity | IMerchant>(v: T, i: number = 0): T {
-  v.authentication = Reflect.get(AUTHENTICATION, v.authentication) || '未认证';
+  (<any>v).authStr = Reflect.get(AUTHENTICATION, v.authentication) || '未认证';
 
   v.originImg = v.img; // 保存原始图片
   v.img = v.img + '?thumb=true'; // 获取压缩图片路径
@@ -58,10 +58,10 @@ export function parseData<T extends IActive | ICommodity | IMerchant>(v: T, i: n
   return v;
 }
 
-export function upload(newSrc: string, oldSrc: string) {
+export function upload(newSrc: string, oldSrc: string): Promise<string> {
     if(!newSrc) {
         console.warn('文件路径不能为空');
-        return Promise.resolve(oldSrc);
+        return Promise.resolve(<any>null);
     }
 
     if(oldSrc === newSrc) {

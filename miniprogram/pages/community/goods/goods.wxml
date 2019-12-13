@@ -6,7 +6,7 @@
                 hover-class="btn-tap" 
                 class="iconfont icon-xiajia" 
                 data-index="{{index}}"
-                bind:tap="updateSatus"
+                bind:tap="updateStatus"
                 style="margin: 0 20rpx;"
                 wx:if="{{item.status === NORMAL}}"
             />
