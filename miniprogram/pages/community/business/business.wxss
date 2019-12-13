@@ -1,0 +1,16 @@
+.btn {
+    float: right;
+    margin-right: 20rpx;
+}
+
+.btn button {
+    width: 200rpx;
+    height: 48rpx;
+    background: none;
+    border: 2rpx solid #e00;
+    border-radius: 10rpx;
+}
+
+.btn .iconfont {
+    margin-right: 10rpx;
+}

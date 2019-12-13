@@ -1,4 +1,4 @@
-@import '../../../app.wxss';
+@import '/app.wxss';
 @import '../ad_scroll/ad_scroll.wxss';
 
 .main {

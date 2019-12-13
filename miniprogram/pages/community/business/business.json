@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "组织列表",
+    "usingComponents": {
+        "business-item": "/components/business_item/business_item"
+    }
+}

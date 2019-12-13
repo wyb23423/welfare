@@ -46,3 +46,19 @@ export enum SIGN_STATUS {
     COMPLETE = 4,
     REFUSE = 5
 }
+
+/**
+ * 商家状态
+ * @prop NORMAL: 普通商家
+ * @prop COMMUNITY: 社区认证
+ * @prop OFFICIAL: 官方认证
+ * @prop BANNED: 被封禁
+ * @prop REFUSE: 审核未通过
+ */
+export enum BUSINESS_STATUS {
+    NORMAL = 0,
+    COMMUNITY = 1,
+    OFFICIAL = 2,
+    BANNED = 3,
+    REFUSE = 4
+}

@@ -51,9 +51,14 @@ Page({
             },
             {
                 name: '审核申请',
-                icon: 'shangjiarenzheng1',
+                icon: 'shenhe',
                 url: '/pages/community/audit/audit',
                 flag: false
+            },
+            {
+                name: '组织列表',
+                icon: 'shangjiarenzheng1',
+                url: '/pages/community/business/business'
             }
         ],
         isAdmin: false,

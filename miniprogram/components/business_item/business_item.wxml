@@ -1,5 +1,5 @@
 <view class="box box-class" wx:if="{{!!data}}">
-    <navigator class="user" url="/pages/business/business?userId={{data.userId}}">
+    <navigator class="user" url="/pages/details/business/business?userId={{data.userId}}">
         <view class="flex-container avator_box">
             <image src="{{data.img}}" class="avator" mode="aspectFill" />
         </view>

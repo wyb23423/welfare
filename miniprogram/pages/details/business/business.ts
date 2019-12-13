@@ -1,14 +1,14 @@
 /**
  * 商家信息
  */
-import { request } from '../../utils/http';
-import { USER_NAME } from '../../constant/store';
-import { parseData } from '../../utils/util';
+import { request } from '../../../utils/http';
+import { USER_NAME } from '../../../constant/store';
+import { parseData } from '../../../utils/util';
 
 Page({
     data: {
         img: '/public/images/23.jpg',
-        details: 'this is details '.repeat(20).trim(),
+        detail: 'this is details '.repeat(20).trim(),
         name: 'this is name',
         fans: 10,
         activityCount: 10,

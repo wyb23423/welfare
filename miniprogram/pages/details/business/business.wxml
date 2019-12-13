@@ -14,7 +14,7 @@
             <text>{{phone}}</text>
         </view>
     </view>
-    <view class="user">{{details}}</view>
+    <view class="user">{{detail}}</view>
     <button class="bottom collect" bind:tap="collect" wx:if="{{!disabled}}">
         <text class="iconfont icon-heart{{isCollected ? '-solid' : ''}}"></text>
         <text>收藏</text>
