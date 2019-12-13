@@ -1,8 +1,8 @@
 /**
  * 审核商家
  */
-import PageQuery, { ListComponent } from '../../../behavior/page_query';
-import { request } from '../../../utils/http';
+import PageQuery, { ListComponent } from '../../../../behavior/page_query';
+import { request } from '../../../../utils/http';
 
 Component<ListComponent>({
     behaviors: [PageQuery],

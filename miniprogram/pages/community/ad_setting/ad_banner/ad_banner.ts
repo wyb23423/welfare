@@ -1,7 +1,7 @@
-import { chooseImage } from '../../../components/upload/upload';
-import { AD_TYPE } from '../../../constant/index';
-import { request } from '../../../utils/http';
-import { upload } from '../../../utils/util';
+import { chooseImage } from '../../../../components/upload/upload';
+import { AD_TYPE } from '../../../../constant/index';
+import { request } from '../../../../utils/http';
+import { upload } from '../../../../utils/util';
 
 const typeArr = [AD_TYPE.ACTIVITY, AD_TYPE.GOODS, AD_TYPE.PERSON];
 

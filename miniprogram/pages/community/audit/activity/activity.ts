@@ -2,7 +2,7 @@
  * 审核商品
  */
 // import PageQuery, { ListComponent } from '../../../behavior/page_query';
-import { request } from '../../../utils/http';
+import { request } from '../../../../utils/http';
 
 Component({
     // behaviors: [PageQuery],

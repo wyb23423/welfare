@@ -3,6 +3,7 @@
  */
 import { request } from '../../utils/http';
 import { USER_NAME } from '../../constant/store';
+import { parseData } from '../../utils/util';
 
 Page({
     data: {
@@ -15,14 +16,16 @@ Page({
         userId: '',
         disabled: false
     },
-    onLoad(query?: IAnyObject) {
-        query = query || {};
-        console.log(query);
-        this.setData!({
-            ...query,
-            disabled: query.userId === wx.getStorageSync(USER_NAME),
-            isCollected: !!+query.isCollected
-        });
+    onLoad(query: {userId: string}) {
+        request<IMerchant>({
+            url: '/api/merchant/getByUserId',
+            data: {userId: query.userId}
+        })
+            .then(({data}) => {
+                data = parseData(data);
+                this.setData!({...data, disabled: query.userId === wx.getStorageSync(USER_NAME)});
+            })
+            .catch(console.log);
     },
     collect() {
         const collect = this.data.isCollected;

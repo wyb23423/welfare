@@ -47,12 +47,12 @@ Page({
             {
                 name: '广告设置',
                 icon: 'guanggao',
-                url: '/pages/ad_setting/ad'
+                url: '/pages/community/ad_setting/ad'
             },
             {
                 name: '审核申请',
                 icon: 'shangjiarenzheng1',
-                url: '/pages/audit/audit',
+                url: '/pages/community/audit/audit',
                 flag: false
             }
         ],

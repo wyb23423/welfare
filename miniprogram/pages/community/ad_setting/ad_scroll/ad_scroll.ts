@@ -1,7 +1,7 @@
-import { chooseImage } from '../../../components/upload/upload';
-import { request } from '../../../utils/http';
-import { AD_TYPE } from '../../../constant/index';
-import { upload } from '../../../utils/util';
+import { chooseImage } from '../../../../components/upload/upload';
+import { request } from '../../../../utils/http';
+import { AD_TYPE } from '../../../../constant/index';
+import { upload } from '../../../../utils/util';
 
 type ADItem = Pick<IAD, 'img' | 'id' | 'url'>;
 
