@@ -5,6 +5,6 @@
             <text style="color: #07c160" data-ok="1">√</text>
         </view>
     </list-item>
-    <view class="empty" wx:if="{{!list.length}}" />
+    <view class="more"><text wx:if="{{!hasMore}}">暂无更多</text></view>
 </view>
     

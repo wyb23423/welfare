@@ -1,6 +1,6 @@
 
 /**
- * 商家列表
+ * 组织列表(管理)
  */
 import PageQuery, { ListComponent } from '../../../behavior/page_query';
 import { BUSINESS_STATUS } from '../../../constant/status';

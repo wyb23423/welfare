@@ -2,7 +2,7 @@
     <business-item wx:for="{{list}}" wx:key="key" data="{{item}}">
         <button hover-class="btn-tap" class="btn" mark:index="{{index}}" catch:tap="showModal">审核</button>
     </business-item>
-    <view class="empty" wx:if="{{!list.length}}" />
+    <view class="more"><text wx:if="{{!hasMore}}">暂无更多</text></view>
     <modal isShow="{{!!info}}" bindclose="close" title="商家申请">
         <view wx:if="{{!!info}}">
             <business-item data="{{info}}"></business-item>

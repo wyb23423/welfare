@@ -15,5 +15,5 @@
             </button>
         </view>
     </business-item>
-    <view class="empty" wx:if="{{!list.length}}" />
+    <view class="more"><text wx:if="{{!hasMore}}">暂无更多</text></view>
 </view>
