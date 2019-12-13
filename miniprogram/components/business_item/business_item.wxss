@@ -1,0 +1,25 @@
+@import '/app.wxss';
+
+.box {
+    border-bottom: 8rpx solid #ebe7e7;
+}
+.user {
+    display: flex;
+    align-items: stretch;
+    padding: 20rpx 0;
+}
+.user_name {
+    font-size: 32rpx;
+    font-weight: 700;
+}
+
+.avator_box {
+    width: 40%;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.avator {
+    border-radius: 50%;
+    width: 160rpx;
+    height: 160rpx;
+}

@@ -1,7 +1,7 @@
 <view>
     <carousel>
-        <carousel-item wx:for="{{ad}}" wx:key="ad">
-            <image src="{{item}}" mode="aspectFill" class="fill-box" />
+        <carousel-item wx:for="{{ads}}" wx:key="ad">
+            <image src="{{item.img}}" mode="aspectFill" class="fill-box" />
         </carousel-item>
     </carousel>
 	<view class="main" style="margin-top: 20rpx">

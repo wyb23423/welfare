@@ -18,25 +18,9 @@
 }
 
 .user {
-    display: flex;
-    align-items: stretch;
+    border-bottom: none !important;
     border-top: 8rpx solid #ccc;
-    padding: 30rpx 0 140rpx;
-}
-.user_name {
-    font-size: 32rpx;
-    font-weight: 700;
-}
-
-.avator_box {
-    width: 40%;
-    justify-content: center;
-    flex-shrink: 0;
-}
-.avator {
-    border-radius: 50%;
-    width: 160rpx;
-    height: 160rpx;
+    padding: 10rpx 0 120rpx;
 }
 
 .bottom {

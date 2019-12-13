@@ -1,14 +1,16 @@
-<view bind:tap="authentication">
-    <view class="user" wx:for="{{list}}" wx:key="key" mark:user="{{item.userId}}">
-        <view class="flex-container avator_box">
-            <image src="{{item.img}}" class="avator" mode="aspectFill" />
+<view>
+    <business-item wx:for="{{list}}" wx:key="key" data="{{item}}">
+        <button hover-class="btn-tap" class="btn" mark:index="{{index}}" catch:tap="showModal">审核</button>
+    </business-item>
+    <view class="empty" wx:if="{{!list.length}}" />
+    <modal isShow="{{!!info}}" bindclose="close" title="商家申请">
+        <view wx:if="{{!!info}}">
+            <business-item data="{{info}}"></business-item>
+            <image class="card img" mode="aspectFit" src="{{info.idCard}}" />
+            <image class="card img" mode="aspectFit" src="{{info.credentials}}" />
+            <button class="bottom-submit" style="background-color: #e00;" bind:tap="doAuit">拒绝</button>
+            <button class="bottom-submit" data-ok="1" bind:tap="doAuit">通过</button>
         </view>
-        <view style="flex-grow: 1; padding-right: 40rpx">
-            <view class="user_name">{{item.name}}</view>
-            <view class="ellipsis" style="line-height: 36rpx; margin: 20rpx 0 40rpx;">
-                {{item.detail}}
-            </view>
-        </view>
-    </view>
+    </modal>
 </view>
 

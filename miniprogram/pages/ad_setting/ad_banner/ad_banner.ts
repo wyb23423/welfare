@@ -14,7 +14,8 @@ Component({
     data: {
         ads: [null, null, null],
         radioIndex: 0,
-        options: ['活动列表', '商品列表', '个人中心']
+        options: ['活动列表', '商品列表', '个人中心'],
+        showMessage: [true, true]
     },
     attached() {
         typeArr.forEach((v, i) => {
@@ -39,6 +40,10 @@ Component({
                     method: 'PUT',
                     data: { img, url: '', type: typeArr[index] }
                 });
+                if(this.data.showMessage[0]) {
+                    this.data.showMessage[0] = false;
+                    wx.showToast({title: '设置成功'});
+                }
                 this.setData({[`imgs[${index}]`]: { img, id, url: '' }});
             } catch(e) {
                 //
@@ -55,6 +60,12 @@ Component({
                             data: {id: ads[index].id}
                         })
                             .then(() => this.setData({[`ads[${index}]`]: null}))
+                            .then(() => {
+                                if(this.data.showMessage[1]) {
+                                    this.data.showMessage[1] = false;
+                                    wx.showToast({title: '删除成功'});
+                                }
+                            })
                             .catch(console.log);
                     }
                 }

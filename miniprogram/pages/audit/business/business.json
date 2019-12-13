@@ -1,4 +1,7 @@
 {
     "component": true,
-    "usingComponents": {}
+    "usingComponents": {
+        "modal": "/components/modal/modal",
+        "business-item": "/components/business_item/business_item"
+    }
 }

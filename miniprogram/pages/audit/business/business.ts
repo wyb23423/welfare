@@ -11,29 +11,41 @@ Component<ListComponent>({
         dataConfig: {
             currentPage: 'page',
             pageSize: 'rows'
-        }
+        },
+        info: null,
     },
     ready(this: ListComponent) {
         this.onShow();
     },
     methods: {
-        authentication({mark: {user}}: BaseEvent<IAnyObject, IAnyObject, {user: string;}>) {
-            wx.showActionSheet({
-                itemList: ['拒绝', '通过'],
-                success: ({tapIndex}) => {
-                  request({
-                        url: '/admin/auditMerchant',
+        close() {
+            this.setData({info: null});
+        },
+        showModal({mark: {index}}: BaseEvent<IAnyObject, IAnyObject, {index: number;}>) {
+            this.setData({info: this.data.list[index]});
+        },
+        doAuit(e: BaseEvent<{ok?: string}>) {
+            const isOk = !!e.target.dataset.ok;
+            wx.showModal({
+                content: isOk ? '审核通过？' : '审核不通过？',
+                success: ({confirm}) => {
+                    if(!confirm) {
+                        return;
+                    }
+
+                    request({
+                        url: '/api/auditMerchant',
                         data: {
-                            isOk: !!tapIndex,
-                            userId: user
-                        },
-                        header: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
+                            isOk,
+                            userId: this.data.info.userId
                         }
-                  })
-                    .then(() => wx.showToast({title: '操作成功'}))
-                    .then(() => this.reflash())
-                    .catch(console.log);
+                    })
+                        .then(() => {
+                            wx.showToast({title: '操作成功'});
+                            this.setData({info: null});
+                            this.reflash();
+                        })
+                        .catch(console.log);
                 }
             });
         }

@@ -1,17 +1,7 @@
 <view>
-    <navigator class="user" wx:for="{{list}}" wx:key="key" url="/pages/business/business?img={{item.originImg}}&name={{item.name}}&details={{item.detail}}&userId={{item.userId}}&isCollected=true&address={{item.address}}&phone={{merchant.phone}}">
-        <view class="flex-container avator_box">
-            <image src="{{item.img}}" class="avator" mode="aspectFill" />
+    <business-item wx:for="{{list}}" wx:key="key" data="{{item}}">
+        <view class="btn">
+            <button hover-class="btn-tap" class="iconfont icon-delete" data-index="{{item.index}}" bind:tap="delete" />
         </view>
-        <view style="flex-grow: 1; padding-right: 40rpx">
-            <view class="user_name">
-                {{item.name}}
-                <!-- <icon type="success" color="rgb(255, 152, 0)" size="12" wx:if="{{item.authentication}}"></icon> -->
-            </view>
-            <view class="ellipsis" style="line-height: 36rpx; margin: 20rpx 0 40rpx;">
-                {{item.detail}}
-            </view>
-        </view>
-        <button hover-class="btn-tap" class="delete iconfont icon-delete" data-index="{{item.index}}" catch:tap="delete"></button>
-    </navigator>
+    </business-item>
 </view>

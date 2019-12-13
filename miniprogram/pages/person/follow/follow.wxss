@@ -1,17 +1,13 @@
-@import '/pages/details/details.wxss';
-
-.user {
-    border-top: none;
-    border-bottom: 2rpx solid #ccc;
-    position: relative;
-    padding: 20rpx;
+.btn {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 20rpx;
 }
 
-.delete {
+.btn button {
     color: #e00;
     background: none;
     font-size: 36rpx;
-    position: absolute;
-    right: 0;
-    top: 20rpx;
+    width: 38rpx;
+    margin: 0;
 }

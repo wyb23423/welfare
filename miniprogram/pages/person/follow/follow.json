@@ -1,4 +1,6 @@
 {
-    "usingComponents": {},
+    "usingComponents": {
+        "business-item": "/components/business_item/business_item"
+    },
     "navigationBarTitleText": "我关注的主办方"
 }
