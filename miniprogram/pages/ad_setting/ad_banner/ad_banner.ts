@@ -1,6 +1,7 @@
 import { chooseImage } from '../../../components/upload/upload';
 import { AD_TYPE } from '../../../constant/index';
 import { request } from '../../../utils/http';
+import { upload } from '../../../utils/util';
 
 const typeArr = [AD_TYPE.ACTIVITY, AD_TYPE.GOODS, AD_TYPE.PERSON];
 
@@ -33,7 +34,7 @@ Component({
         },
         async modify() {
             try {
-                const img = await chooseImage();
+                const img = await upload(await chooseImage(), '');
                 const index = this.data.radioIndex;
                 const {data: id} = await request<number>({
                     url: '/api/ad',
@@ -49,7 +50,7 @@ Component({
                 }
                 this.setData({[`ads[${index}]`]: { img, id, url: '' }});
             } catch(e) {
-                //
+                console.log(e);
             }
         },
         remove() {
