@@ -53,11 +53,8 @@ Component<AdIndex>({
                     request<number>({
                         url: '/api/ad',
                         method: 'PUT',
-                        data: {
-                            img: src,
-                            url: '',
-                            type: AD_TYPE.INDEX
-                        }
+                        data: { img: src, url: '', type: AD_TYPE.INDEX },
+                        header: { 'Content-type': 'application/x-www-form-urlencoded' }
                     })
                     .then(({data: id}) => this.data.ads.push({img: src, id, url: ''}))
                 )

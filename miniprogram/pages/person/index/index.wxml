@@ -34,6 +34,12 @@
                 </view>
             </tab-item>
         </tab>
+        <image 
+            wx:if="{{!!ad}}" 
+            src="{{ad}}"
+            mode="aspectFill"
+            style="height: 220rpx; margin-top: 20rpx; width: 100%"
+        />
     </view>
 </view>
 

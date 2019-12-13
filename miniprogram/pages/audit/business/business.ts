@@ -35,10 +35,7 @@ Component<ListComponent>({
 
                     request({
                         url: '/api/auditMerchant',
-                        data: {
-                            isOk,
-                            userId: this.data.info.userId
-                        }
+                        data: { isOk, userId: this.data.info.userId }
                     })
                         .then(() => {
                             wx.showToast({title: '操作成功'});

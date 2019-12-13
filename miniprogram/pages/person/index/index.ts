@@ -1,9 +1,10 @@
-import { request } from '../../../utils/http';
-import { IS_OFFICIAL } from '../../../constant/store';
-
 /**
  * 个人中心
  */
+
+import { request } from '../../../utils/http';
+import { IS_OFFICIAL } from '../../../constant/store';
+import { AD_TYPE } from '../../../constant/index';
 
 interface MenuItem {
     name: string;
@@ -55,7 +56,8 @@ Page({
                 flag: false
             }
         ],
-        isAdmin: false
+        isAdmin: false,
+        ad: ''
     },
     onShow() {
         wx.getStorage({
@@ -73,6 +75,14 @@ Page({
                 data && this.merchant();
             }
         });
+
+        request<IAD>({
+            url: '/api/ad/getAd',
+            data: {type: AD_TYPE.PERSON},
+            notShowMsg: true
+        })
+            .then(({data}) => this.setData!({ad: data.img}))
+            .catch(console.log);
     },
     commodity() {
         const promises = [

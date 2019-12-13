@@ -38,13 +38,16 @@ Component({
                 const {data: id} = await request<number>({
                     url: '/api/ad',
                     method: 'PUT',
-                    data: { img, url: '', type: typeArr[index] }
+                    data: { img, url: '', type: typeArr[index] },
+                    header: {
+                        'Content-type': 'application/x-www-form-urlencoded'
+                    }
                 });
                 if(this.data.showMessage[0]) {
                     this.data.showMessage[0] = false;
                     wx.showToast({title: '设置成功'});
                 }
-                this.setData({[`imgs[${index}]`]: { img, id, url: '' }});
+                this.setData({[`ads[${index}]`]: { img, id, url: '' }});
             } catch(e) {
                 //
             }
