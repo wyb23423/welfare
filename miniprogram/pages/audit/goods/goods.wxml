@@ -1,20 +1,10 @@
-<view bind:tap="authentication">
-    <view wx:for="{{list}}" wx:key="key" mark:id="{{item.id}}" class="grid_item_box item_box">
-        <image
-            src="{{item.img}}"
-            lazy-load="true"
-            mode="aspectFill"
-            class="grid_img"
-        />
-        <view class="grid_name">
-            <text class="iconfont icon-huo" style="color: #e00" wx:if="{{isHeat}}"/>
-            <text class="list_item_title">{{item.name}}</text>
+<view>
+    <list-item wx:for="{{list}}" wx:key="key" info="{{item}}">
+        <view style="font-size: 36rpx" bind:tap="doAuit" data-index="{{index}}">
+            <text style="color: #e00; margin-right: 20rpx">×</text>
+            <text style="color: #07c160" data-ok="1">√</text>
         </view>
-        <view class="grid_authentication flex-container" style="font-size: 28rpx;justify-content: flex-start;">
-            <text class="iconfont icon-dollar" style="color: #e00; font-size: 24rpx"/>
-            <view style="color: #e00; font-size: 32rpx;">{{item.integral}}</view>
-            <text decode="true">&nbsp;积分</text>
-        </view>
-    </view>
+    </list-item>
+    <view class="empty" wx:if="{{!list.length}}" />
 </view>
     

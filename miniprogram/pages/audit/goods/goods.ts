@@ -17,23 +17,25 @@ Component<ListComponent>({
         this.onShow();
     },
     methods: {
-        authentication({mark: {id}}: BaseEvent<IAnyObject, IAnyObject, {id: string;}>) {
-            wx.showActionSheet({
-                itemList: ['拒绝', '通过'],
-                success: ({tapIndex}) => {
-                  request({
+        doAuit(e: BaseEvent<{ok?: string}, {index: number}>) {
+            const isOk = !!e.target.dataset.ok;
+            const index = e.currentTarget.dataset.index;
+            const list: ICommodity[] = this.data.list;
+
+            wx.showModal({
+                content: isOk ? '审核通过？' : '审核不通过？',
+                success: ({confirm}) => {
+                    if(!confirm) {
+                        return;
+                    }
+
+                    request({
                         url: '/api/commodity/audit',
-                        data: {
-                            isOk: !!tapIndex,
-                            commodityId: id
-                        },
-                        header: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        }
-                  })
-                    .then(() => wx.showToast({title: '操作成功'}))
-                    .then(() => this.reflash())
-                    .catch(console.log);
+                        data: { isOk, commodityId: list[index].id }
+                    })
+                        .then(() => wx.showToast({title: '操作成功'}))
+                        .then(() => this.reflash())
+                        .catch(console.log);
                 }
             });
         }
