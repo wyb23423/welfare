@@ -1871,6 +1871,12 @@ backgroundAudioManager.src = 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb
     /** 接口调用成功的回调函数 */
     success?: HideToastSuccessCallback;
   }
+
+  interface HideHomeButtonOption extends HideToastOption {
+
+  }
+
+
   interface IBeaconInfo {
     /** iBeacon 设备的距离 */
     accuracy: number;
@@ -8777,6 +8783,9 @@ wx.hideShareMenu()
      *
      * 隐藏消息提示框 */
     hideToast(option?: HideToastOption): void;
+
+    hideHomeButton(option?: HideHomeButtonOption): void;
+
     /** [wx.loadFontFace(Object object)](wx.loadFontFace.md)
 *
 * 动态加载网络字体。文件地址需为下载类型。iOS 仅支持 https 格式文件地址。

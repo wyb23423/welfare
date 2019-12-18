@@ -34,7 +34,7 @@ Page({
             .catch(console.log);
 
         // 广告
-        request<IAD[]>({url: '/api/ad/getCarouse', notShowMsg: true})
+        request<IAD[]>({url: '/api/ad/getCarouse'})
             .then(({data}) => this.setData!({ads: data}))
             .catch(console.log);
     },

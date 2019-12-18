@@ -70,6 +70,17 @@ Page({
         ad: ''
     },
     onShow() {
+        wx.getSetting({
+            success: ({authSetting}) => {
+                if(!authSetting['scope.userInfo']) {
+                    wx.reLaunch({url:'/pages/login/login'});
+                } else {
+                    this.init();
+                }
+            }
+        });
+    },
+    init() {
         wx.getStorage({
             key: IS_OFFICIAL,
             success: ({data}) => {

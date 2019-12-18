@@ -51,13 +51,15 @@ Component<AdIndex>({
         add() {
             chooseImage()
                 .then((src) => upload(src, ''))
-                .then(src => request<number>({
-                    url: '/api/ad',
-                    method: 'PUT',
-                    data: { img: src, url: '', type: AD_TYPE.INDEX },
-                    header: { 'Content-type': 'application/x-www-form-urlencoded' }
+                .then(src => {
+                    return request<number>({
+                        url: '/api/ad',
+                        method: 'PUT',
+                        data: { img: src, url: '', type: AD_TYPE.INDEX },
+                        header: { 'Content-type': 'application/x-www-form-urlencoded' }
+                    })
+                    .then(({data: id}) => this.data.ads.push({img: src, id, url: ''}));
                 })
-                .then(({data: id}) => this.data.ads.push({img: src, id, url: ''})))
                 .then(() => this.setData(this.data))
                 .then(() => wx.showToast({title: '添加成功'}))
                 .catch(console.log);

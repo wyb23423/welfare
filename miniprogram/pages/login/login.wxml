@@ -1,0 +1,8 @@
+<view class="flex-center-v" style="height: 100vh">
+    <view style="font-size: 36rpx">小程序 申请使用</view>
+    <view style="font-size: 42rpx; margin: 20rpx 0 40rpx">你的公开信息(头像、昵称等)</view>
+    <view class="avator"><open-data type="userAvatarUrl"></open-data></view>
+    <view class="nickName"><open-data type="userNickName"></open-data></view>
+    <button class="button" style="background: #07c160;" open-type="getUserInfo" bindgetuserinfo="getUserInfo">确认</button>
+    <button class="button" style="background: #e00" bind:tap="cancel">取消</button>
+</view>
