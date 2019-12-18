@@ -19,14 +19,15 @@ Component<Tab>({
         './item/item': {
             type: 'child',
             linked(target: TabItem) {
-                this.data.items.push(target);
-                this.data.tabItems.push(target.data.name);
+                const {items, tabItems} = this.data;
+                items.push(target);
+                tabItems.push(target.data.name);
+                this.setData({tabItems});
             }
         }
     },
     ready(this: Tab) {
         this.displayChildren();
-        setTimeout(() => this.setData({tabItems: this.data.tabItems}), 100);
     },
     methods: {
         switchTab({target: {dataset: {tab}}}: BaseEvent) {

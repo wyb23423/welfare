@@ -3,7 +3,7 @@
  */
 
 import { request } from '../../../utils/http';
-import { IS_OFFICIAL } from '../../../constant/store';
+import { IS_OFFICIAL, IS_MERCHANT } from '../../../constant/store';
 import { AD_TYPE } from '../../../constant/index';
 
 interface MenuItem {
@@ -90,7 +90,7 @@ Page({
         });
 
         wx.getStorage({
-            key: IS_OFFICIAL,
+            key: IS_MERCHANT,
             success: ({data}) => {
                 this.data.bussiness.length = 1;
                 data && this.merchant();
