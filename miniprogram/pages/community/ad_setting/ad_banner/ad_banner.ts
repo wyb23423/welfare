@@ -34,7 +34,8 @@ Component({
         },
         async modify() {
             try {
-                const img = await upload(await chooseImage(), '');
+                const src = await chooseImage();
+                const img = await upload(src, '');
                 const index = this.data.radioIndex;
                 const {data: id} = await request<number>({
                     url: '/api/ad',
@@ -48,7 +49,7 @@ Component({
                     this.data.showMessage[0] = false;
                     wx.showToast({title: '设置成功'});
                 }
-                this.setData({[`ads[${index}]`]: { img, id, url: '' }});
+                this.setData({[`ads[${index}]`]: { img: src, id, url: '' }});
             } catch(e) {
                 console.log(e);
             }

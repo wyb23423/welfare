@@ -12,7 +12,8 @@ Page({
     id: 0,
     data: {
         auditing: <EnInfo[]>[], // 待审核
-        handled: <EnInfo[]>[], // 已处理
+        join: <EnInfo[]>[], // 参加者列表
+        refuse: <EnInfo[]>[], // 已拒绝
         STATUS: {
             AUDITING: SIGN_STATUS.AUDITING,
             AWAIT: SIGN_STATUS.AWAIT,
@@ -27,17 +28,21 @@ Page({
         })
             .then(({data: list}) => {
                 const auditing: EnInfo[] = [];
-                const handled: EnInfo[] = [];
+                const refuse: EnInfo[] = [];
+                const join: EnInfo[] = [];
+
 
                 list.forEach(v => {
                     if(v.status === SIGN_STATUS.AUDITING) {
                         auditing.push(v);
+                    } else if(v.status === SIGN_STATUS.REFUSE) {
+                        refuse.push(v);
                     } else {
-                        handled.push(v);
+                        join.push(v);
                     }
                 });
 
-                this.setData!({handled, auditing});
+                this.setData!({refuse, auditing, join});
             })
             .catch(console.log);
     },
@@ -52,7 +57,7 @@ Page({
         });
     },
     _doAuit(isOk: boolean, index: number) {
-        const {auditing, handled} = this.data;
+        const {auditing, refuse, join} = this.data;
 
         request({
             url: '/api/activity/participation/audit',
@@ -66,7 +71,8 @@ Page({
             wx.showToast({title: '操作成功' });
             const item = auditing.splice(index, 1)[0];
             item.status = isOk ? SIGN_STATUS.AWAIT : SIGN_STATUS.REFUSE;
-            this.setData!({auditing, [`handled[${handled.length}]`]: item});
+            (isOk  ? join : refuse).push(item);
+            this.setData!({auditing, join, refuse});
         })
         .catch(console.log);
     }

@@ -20,7 +20,7 @@
                 url="./sign/sign?id={{item.id}}"
                 hover-class="btn-tap" 
                 class="iconfont icon-shangpinrenzheng"
-                wx:if="{{item.status === STATUS.PREPARE}}"
+                wx:if="{{item.status === STATUS.PREPARE || item.status === STATUS.PROGRESS}}"
                 style="margin-right: 20rpx"
             />
             <button

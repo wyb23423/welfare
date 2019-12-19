@@ -1,5 +1,5 @@
 <view>
-    <view class="main" style="margin-top: 20rpx">
+    <view class="main" style="margin-top: 20rpx" wx:if="{{!!auditing.length}}">
         <view class="title" style="display: bloack;"><text class="title_text">待审核</text></view>
         <view wx:for="{{auditing}}" class="list-item" style="padding: 0 20rpx" wx:key="auditing">
             <text>{{item.name}}</text>
@@ -9,16 +9,25 @@
                 <text style="color: #07c160" data-ok="1">√</text>
             </view>
         </view>
-        <view class="empty" wx:if="{{!auditing.length}}" />
     </view>
     <view class="main">
-        <view class="title" style="display: bloack;"><text class="title_text">已处理</text></view>
-        <view wx:for="{{handled}}" class="list-item" style="padding: 0 20rpx" wx:key="handled">
+        <view class="title" style="display: bloack;"><text class="title_text">参加者列表</text></view>
+        <view wx:for="{{join}}" class="list-item" style="padding: 0 20rpx" wx:key="join">
             <text>{{item.name}}</text>
             <text>{{item.phone}}</text>
-            <text style="color: #e00;" wx:if="{{item.status === STATUS.REFUSE}}">已拒绝</text>
-            <text style="color: #07c160" wx:else>已通过</text>
+            <!-- <view style="font-size: 48rpx" bind:tap="doAuit" data-index="{{index}}">
+                <text style="color: #e00; margin-right: 20rpx">×</text>
+                <text style="color: #07c160" data-ok="1">√</text>
+            </view> -->
         </view>
-        <view class="empty" wx:if="{{!handled.length}}" />
+        <view class="empty" wx:if="{{!join.length}}" />
+    </view>
+    <view class="main">
+        <view class="title" style="display: bloack;"><text class="title_text">已拒绝</text></view>
+        <view wx:for="{{refuse}}" class="list-item" style="padding: 0 20rpx" wx:key="refuse">
+            <text>{{item.name}}</text>
+            <text>{{item.phone}}</text>
+        </view>
+        <view class="empty" wx:if="{{!refuse.length}}" />
     </view>
 </view>

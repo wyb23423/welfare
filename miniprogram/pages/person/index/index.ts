@@ -30,11 +30,11 @@ Page({
                 icon: 'daipingjia',
                 url: '../history/history?type=evaluate'
             },
-            {
-                name: '已参加',
-                icon: 'yiwancheng',
-                url: '../history/history?type=complete'
-            }
+            // {
+            //     name: '已参加',
+            //     icon: 'yiwancheng',
+            //     url: '../history/history?type=complete'
+            // }
         ],
         bussiness: [
             {

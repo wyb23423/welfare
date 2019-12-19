@@ -24,7 +24,7 @@
                 hover-class="btn-tap" 
                 class="iconfont icon-delete"
                 data-index="{{index}}"
-                bind:tap="delete" 
+                bind:tap="delete"
             ></button>
         </view>
     </list-item>
