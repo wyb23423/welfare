@@ -91,10 +91,11 @@ Component<Carousel>({
             }
         },
         setActiveItem(nameOrIndex: string | number) {
-            const items = this.data.items;
+            const {items, index: preIndex} = this.data;
 
-            // 处理小于两项的情况
+            // 小于两项不需要滚动
             if(items.length <= 1) {
+                preIndex !== 0 && this.setData({index: 0});
                 return this;
             }
 
@@ -112,13 +113,15 @@ Component<Carousel>({
             let arr = [...items.slice(index), ...items.slice(0, index)];
             arr = [...arr.slice(-offset), ...arr.slice(0, arr.length - offset)];
 
+            // 设置滚动动画结束回调
+            // 500: 滚动动画的时间
             setTimeout(() => {
                 this.data.isMoving = false;
                 arr.length <= 2 && arr[0].setData({translate: '100%'});
             }, 500);
 
             arr.forEach((v, i) => v.setData({translate: `${(i - offset) * 100}%`}) );
-            this.data.isMoving = true;
+            this.data.isMoving = true; // 滚动动画中手动滚动无效
 
             return this;
         },
