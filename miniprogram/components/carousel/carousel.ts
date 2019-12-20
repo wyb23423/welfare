@@ -8,7 +8,7 @@ interface Carousel extends WxComponent {
         index: number; // 当前显示组件索引
 
         items: WxComponent[]; // 滚动组件
-        timer?: number; // 定时器id
+        timer: number; // 定时器id
         sx: number; // touchStart 的x坐标
         ex: number; // touchEnd 时的x坐标
         isMoving: boolean;
@@ -42,26 +42,29 @@ Component<Carousel>({
     },
     data: {
         items: [],
-        index: 0,
+        index: -1,
         label: [],
         sx: 0,
         ex: 0,
-        isMoving: false
+        isMoving: false,
+        timer: 0
     },
     relations: {
         './item/item': {
             type: 'child',
-            linked(target: WxComponent) {
-                this.data.items.push(target);
+            linked(this: Carousel, target: WxComponent) {
+                this._clearTimer();
+
+                const {items, initial, index, label} = this.data;
+                items.push(target);
+                label.push(1);
+
+                this.data.timer = setTimeout(() => {
+                    const active = index < 0 ? (initial > items.length - 1 ? 0 : Math.max(0, initial)) : index;
+                    this.setActiveItem(active)._loop().setData({label});
+                });
             }
         }
-    },
-    ready(this: Carousel) {
-        setTimeout(() => {
-            const {initial, items} = this.data;
-            this.setActiveItem(initial > items.length - 1 ? 0 : initial)._loop()
-            .setData({label: new Array(items.length).fill(1)});
-        }, 100);
     },
     detached(this: Carousel) {
         this._clearTimer();
@@ -153,10 +156,10 @@ Component<Carousel>({
             return this;
         },
         _clearTimer() {
-            const timer = this.data.timer;
+            const {timer} = this.data;
             if(timer) {
                 clearTimeout(timer);
-                this.data.timer = void 0;
+                this.data.timer = 0;
             }
 
             return this;
