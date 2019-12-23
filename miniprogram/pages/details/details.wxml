@@ -1,7 +1,7 @@
 <view>
-	<image src="{{img}}" mode="aspectFill"style="width: 100%; height: 45vw;" />
-	<view class="details" style="padding-bottom: {{merchant ? 0 : 140}}rpx">
-		<view style="font-weight: 700; font-size: 48rpx">{{name}}</view>
+    <view class="details" style="padding-bottom: {{merchant ? 0 : 140}}rpx; z-index: 1; position: relative;">
+        <image src="{{img}}" class="card" />
+		<view style="font-weight: 700; font-size: 40rpx;">{{name}}</view>
 		<view style="line-height: 80rpx; color: #cac7c7">
 			<text decode="true">浏览&nbsp;{{look || 0}}&nbsp;&nbsp;&nbsp;收藏&nbsp;{{like}}</text>
         </view>

@@ -1,5 +1,5 @@
 {
-    "component": true,
+    "navigationBarTitleText": "商品列表",
     "usingComponents": {
         "list-item": "/components/list/item/item"
     }

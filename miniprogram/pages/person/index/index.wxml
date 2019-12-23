@@ -34,12 +34,9 @@
                 </view>
             </tab-item>
         </tab>
-        <image 
-            wx:if="{{!!ad}}" 
-            src="{{ad}}"
-            mode="aspectFill"
-            style="height: 220rpx; margin-top: 20rpx; width: 100%"
-        />
+        <view wx:if="{{!!ad}}"  style="height: 59vw; width: 100%; padding: 20rpx">
+            <image  src="{{ad}}" class="fill-box card" style="padding: 0" />
+        </view>
     </view>
 </view>
 

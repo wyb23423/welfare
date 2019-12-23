@@ -29,7 +29,7 @@ Component<Carousel>({
     properties: {
         height: {
             type: String,
-            value: '40vw'
+            value: '59vw'
         },
         initial: {
             type: Number,

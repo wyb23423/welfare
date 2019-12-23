@@ -1,6 +1,6 @@
 <view 
     class="carousel_item"
-    style="transform: translateX({{translate}});z-index: {{zIndex}};"
+    style="transform: translateX({{translate}});z-index: {{zIndex}};opacity: {{zIndex >= 8 ? 1 : 0}};"
 >
     <slot></slot>
 </view>

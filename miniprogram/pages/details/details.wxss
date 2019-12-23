@@ -1,8 +1,13 @@
-@import '/app.wxss';
-
 .details {
     padding: 20rpx;
     font-size: 28rpx;
+}
+.details .card {
+    width: 100%;
+    height: 59vw;
+    padding: 0;
+    margin-bottom: 30rpx;
+    border-radius: 20rpx;
 }
 
 .details_item {
