@@ -27,7 +27,7 @@
 .item_box {
     border-bottom: 8rpx solid #ebe7e7;
     margin-bottom: 10rpx;
-    padding: 15rpx 15rpx 0;
+    padding: 15rpx 30rpx 0;
 }
 
 .item_text {
