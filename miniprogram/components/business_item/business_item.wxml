@@ -1,14 +1,12 @@
 <view class="box box-class" wx:if="{{!!data}}">
     <navigator class="user" url="/pages/details/business/business?userId={{data.userId}}">
-        <view class="flex-container avator_box">
-            <image src="{{data.img}}" class="avator" mode="aspectFill" />
-        </view>
+        <image src="{{data.img}}" class="avator" mode="aspectFill" />
         <view style="flex-grow: 1;">
             <view class="user_name">
                 <slot name="icon"></slot>
                 {{data.name}}
             </view>
-            <view class="ellipsis" style="line-height: 36rpx; margin: 20rpx 0 40rpx;">
+            <view class="ellipsis detail">
                 {{data.detail}}
             </view>
             <slot></slot>

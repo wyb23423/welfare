@@ -1,5 +1,5 @@
 .details {
-    padding: 20rpx;
+    padding: 30rpx;
     font-size: 28rpx;
 }
 .details .card {
@@ -9,10 +9,17 @@
     margin-bottom: 30rpx;
     border-radius: 20rpx;
 }
+.details_name {
+    font-weight: 700;
+    font-size: 40rpx;
+}
+.details_data {
+    color: #cac7c7;
+    padding: 10rpx 0 20rpx;
+}
 
 .details_item {
-    border-bottom: 4rpx solid #ccc;
-    line-height: 70rpx;
+    line-height: 60rpx;
     font-weight: 500;
 }
 
@@ -24,8 +31,8 @@
 
 .user {
     border-bottom: none !important;
-    border-top: 8rpx solid #ccc;
-    padding: 10rpx 0 120rpx;
+    border-top: 8rpx solid #ebe7e7;
+    padding: 10rpx 30rpx;
 }
 
 .bottom {
@@ -55,4 +62,27 @@
     font-size: 28rpx;
     background: #07c160 !important;
     color: #fff;
+}
+
+.details_title {
+    font-size: 32rpx;
+    padding: 10rpx 30rpx;
+    border-bottom: 2rpx solid #ebe7e7;
+}
+
+.details_content {
+    padding: 20rpx 30rpx;
+    color: #888;
+    font-size: 28rpx;
+    line-height: 1.5;
+}
+
+.merchant_info {
+    color: #888;
+    justify-content: flex-start;
+}
+
+.merchant_info .iconfont {
+    font-size: 24rpx;
+    margin-right: 5rpx;
 }

@@ -8,7 +8,7 @@ Page({
     data: {
         activity: [] as IActive[],
         goods: [] as ICommodity[],
-        ads: <IAD[]>new Array(5).fill({img: '/public/images/23.jpg'})
+        ads: <IAD[]>[]
     },
     onShow() {
         // 活动
@@ -34,8 +34,8 @@ Page({
             .catch(console.log);
 
         // 广告
-        // request<IAD[]>({url: '/api/ad/getCarouse'})
-        //     .then(({data}) => this.setData!({ads: data}))
-        //     .catch(console.log);
+        request<IAD[]>({url: '/api/ad/getCarouse'})
+            .then(({data}) => this.setData!({ads: data}))
+            .catch(console.log);
     },
 });

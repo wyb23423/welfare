@@ -2,6 +2,7 @@
     <navigator 
         class="grid_item_box" 
         style="height: 175rpx" 
+        hover-class="none"
         url="/pages/details/details?id={{info.id}}&isGoods={{isGoods}}"
     >
         <image

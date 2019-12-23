@@ -13,13 +13,17 @@
     font-weight: 700;
 }
 
-.avator_box {
-    width: 40%;
-    justify-content: center;
+.avator {
+    border-radius: 10rpx;
+    width: 100rpx;
+    height: 100rpx;
+    margin-right: 20rpx;
     flex-shrink: 0;
 }
-.avator {
-    border-radius: 50%;
-    width: 160rpx;
-    height: 160rpx;
+
+.detail {
+    color: #888;
+    line-height: 36rpx;
+    margin: 10rpx 0;
+    padding-left: 10rpx;
 }

@@ -11,7 +11,7 @@ Page({
         // detail: 'this is details '.repeat(20).trim(),
         // name: 'this is name',
         fans: 10,
-        // activityCount: 10,
+        activityCount: 10,
         isCollected: false,
         userId: '',
         disabled: false
