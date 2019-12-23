@@ -1,6 +1,7 @@
 {
     "usingComponents": {
-        "app-list": "/components/list/list"
+        "app-list": "/components/list/list",
+        "ad-item": "/components/ad_item/ad_item"
     },
     "navigationBarTitleText": "积分兑换"
 }

@@ -1,7 +1,5 @@
 <!-- 小程序tab页无法传参, 使用两个页面构建 -->
 <view>
-    <view wx:if="{{!!ad}}"  style="height: 60vw; padding: 20rpx 30rpx">
-        <image  src="{{ad}}" class="fill-box card" style="padding: 0" />
-    </view>
+    <ad-item wx:if="{{!!ad}}" src="{{ad}}"></ad-item>
     <app-list isGoods="{{1}}" id="list" />
 </view>

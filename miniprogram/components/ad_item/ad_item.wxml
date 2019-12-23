@@ -1,0 +1,1 @@
+<view class="box" style="height: {{height}}"><image src="{{src}}" class="card fill-box" /></view>

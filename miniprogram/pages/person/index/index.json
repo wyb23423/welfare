@@ -2,7 +2,8 @@
     "usingComponents": {
         "person-head": "/components/person_head/person_head",
         "tab": "/components/tab/tab",
-        "tab-item": "/components/tab/item/item"
+        "tab-item": "/components/tab/item/item",
+        "ad-item": "/components/ad_item/ad_item"
     },
     "navigationBarTitleText": "个人中心"
 }

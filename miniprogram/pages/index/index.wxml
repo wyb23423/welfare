@@ -1,9 +1,7 @@
 <view>
     <carousel>
         <carousel-item wx:for="{{ads}}" wx:key="ad">
-            <view style="padding: 20rpx 30rpx; height: 100%; box-sizing: border-box">
-                <image src="{{item.img}}" class="card fill-box" style="padding: 0" />
-            </view>
+            <ad-item src="{{item.img}}" height="100%"></ad-item>
         </carousel-item>
     </carousel>
 	<view class="main" style="margin-top: 20rpx">
