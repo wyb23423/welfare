@@ -22,7 +22,8 @@ Component({
                 regexp: '^(\\w-*\\.*)+@(\\w-?)+(\\.\\w{2,})+$',
                 message: '无效邮箱'
             }
-        }
+        },
+        hasOldData: false
     },
     methods: {
         _submit() {

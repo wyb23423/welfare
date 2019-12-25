@@ -33,20 +33,20 @@ export enum ACTIVITY_STATUS {
  * 参加活动状态
  * @prop AUDITING: 报名审核中
  * @prop AWAIT: 待参加
+ * @prop JOINING: 已签到, 正在参加
  * @prop QUIT: 已退出
  * @prop EVALUATE: 待评价
  * @prop COMPLETE: 已完成
  * @prop REFUSE: 报名被拒绝
- * @prop JOINING: 已签到, 正在参加
  */
 export enum SIGN_STATUS {
     AUDITING = 0,
     AWAIT = 1,
-    QUIT = 2,
-    EVALUATE = 3,
-    COMPLETE = 4,
-    REFUSE = 5,
-    JOINING = 6
+    JOINING = 2,
+    QUIT = 3,
+    EVALUATE = 4,
+    COMPLETE = 5,
+    REFUSE = 6,
 }
 
 /**

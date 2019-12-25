@@ -23,8 +23,9 @@ Component<ListComponent>({
         },
         showModal({mark: {index}}: BaseEvent<IAnyObject, IAnyObject, {index: number;}>) {
             const item = this.data.list[index];
-            const [idCard1, idCard2] = JSON.parse(item.idCard);
-            item && this.setData({info: {...item, idCard1, idCard2}});
+
+            const [idCard1, idCard2] = item.idCard;
+            this.setData({info: {...item, idCard1, idCard2}});
         },
         doAuit(e: BaseEvent<{ok?: string}>) {
             const isOk = !!e.target.dataset.ok;

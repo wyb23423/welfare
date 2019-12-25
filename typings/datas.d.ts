@@ -54,7 +54,7 @@ declare interface IMerchant extends Base {
     phone: string;
     userId: string;
     liked: boolean;
-    idCard: string;
+    idCard: string[];
     credentials: string;
 }
 

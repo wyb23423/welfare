@@ -2,12 +2,12 @@
     <app-form rules="{{rules}}" model="{{form}}" id="form">
         <view style="padding: 0 30rpx">
             <app-form-item prop="name" label="姓名" required>
-                <input id="name" value="{{form.name}}" bindinput="onInput" />
+                <input id="name" value="{{form.name}}" disabled="{{hasOldData}}" bindinput="onInput" />
             </app-form-item>
             <app-form-item prop="phone" label="手机" required>
                 <input id="phone" value="{{form.phone}}" bindinput="onInput" />
             </app-form-item>
-            <app-form-item prop="mail" label="邮箱" required>
+            <app-form-item prop="mail" label="邮箱">
                 <input id="mail" value="{{form.mail}}" bindinput="onInput"></input>
             </app-form-item>
         </view>

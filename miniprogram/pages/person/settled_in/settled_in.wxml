@@ -25,5 +25,5 @@
             </app-form-item>
         </view>
     </app-form>
-    <button class="bottom-submit" bind:tap="onSubmit">{{oldImg ? '提交信息' : '申请入驻'}}</button>
+    <button class="bottom-submit" bind:tap="onSubmit">{{hasOld ? '提交信息' : '申请入驻'}}</button>
 </view>

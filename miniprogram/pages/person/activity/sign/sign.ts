@@ -74,9 +74,10 @@ Page({
                         user: item.userId
                     }
                 })
-                .then(() =>  this.setData!({
+                .then(() => this.setData!({
                     [`join[${index}].status`]: SIGN_STATUS.JOINING
                 }))
+                .then(() => wx.showToast({title: '签到成功'}))
                 .catch(console.log);
             }
         });
