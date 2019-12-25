@@ -16,8 +16,9 @@
             <app-form-item prop="address" label="地址" required>
                 <input id="address" value="{{form.address}}" bindinput="onInput" />
             </app-form-item>
-            <app-form-item prop="idCard" label="负责人身份证" required>
-                <upload id="idCard" value="{{form.idCard}}" bind:input="onInput"></upload>
+            <app-form-item prop="idCard" label="负责人身份证(正反面)" required input-class="idcard-box">
+                <upload id="idCard1" custom-class="idcard" value="{{form.idCard1}}" bind:input="onInput"></upload>
+                <upload id="idCard2" custom-class="idcard" value="{{form.idCard2}}" bind:input="onInput"></upload>
             </app-form-item>
             <app-form-item prop="credentials" label="相关证件(营业执照、自由从业证等)" required>
                 <upload id="credentials" value="{{form.credentials}}" bind:input="onInput"></upload>

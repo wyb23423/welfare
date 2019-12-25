@@ -25,6 +25,7 @@ export function chooseImage(): Promise<string> {
 }
 
 Component({
+    externalClasses: ['custom-class'],
     properties: {
         value: {
             type: String,

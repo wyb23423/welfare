@@ -6,7 +6,8 @@
     <modal isShow="{{!!info}}" bindclose="close" title="商家申请">
         <view wx:if="{{!!info}}">
             <business-item data="{{info}}"></business-item>
-            <image class="card img" mode="aspectFit" src="{{info.idCard}}" />
+            <image class="card img" mode="aspectFit" src="{{info.idCard1}}" />
+            <image class="card img" mode="aspectFit" src="{{info.idCard2}}" />
             <image class="card img" mode="aspectFit" src="{{info.credentials}}" />
             <button class="bottom-submit" style="background-color: #e00;" bind:tap="doAuit">拒绝</button>
             <button class="bottom-submit" data-ok="1" bind:tap="doAuit">通过</button>

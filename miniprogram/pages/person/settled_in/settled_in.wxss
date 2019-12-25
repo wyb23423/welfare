@@ -1,1 +1,12 @@
 @import '../../activity/edit/edit.wxss';
+
+.idcard-box {
+    border: none !important;
+    padding: 0 !important;
+}
+
+.idcard {
+    padding: 10rpx;
+    border: 2rpx solid #ccc;
+    margin-bottom: 10rpx;
+}

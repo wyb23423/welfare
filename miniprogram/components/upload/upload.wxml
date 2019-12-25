@@ -1,4 +1,4 @@
-<view class="flex-container" bind:tap="choose" style="height: {{height}}">
+<view class="flex-container custom-class" bind:tap="choose" style="height: {{height}}">
     <view wx:if="{{!value}}" style="color: rgba(0, 0, 0, 0.64);text-align: center">
         <view class="iconfont icon-shangchuan" style="font-size: 120rpx"></view>
         <view style="font-size: 36rpx;">{{text}}</view>
