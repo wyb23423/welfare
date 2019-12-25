@@ -89,13 +89,15 @@ Page({
             }
         });
 
-        wx.getStorage({
-            key: IS_MERCHANT,
-            success: ({data}) => {
-                this.data.bussiness.length = 1;
-                data && this.merchant();
-            }
-        });
+        this.merchant();
+
+        // wx.getStorage({
+        //     key: IS_MERCHANT,
+        //     success: ({data}) => {
+        //         this.data.bussiness.length = 1;
+        //         data && this.merchant();
+        //     }
+        // });
 
         request<IAD>({
             url: '/api/ad/getAd',

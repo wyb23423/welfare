@@ -62,18 +62,3 @@
     padding: 20rpx 40rpx;
     border-bottom: 6rpx solid #ccc;
 }
-
-.point {
-    position: absolute;
-    top: 50%;
-    right: 50rpx;
-    transform: translateY(-50%);
-}
-
-.btn {
-    text-decoration: underline;
-    font-weight: 400;
-    font-size: 28rpx;
-    color: #07c160;
-    margin-left: 40rpx;
-}

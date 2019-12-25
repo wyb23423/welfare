@@ -37,6 +37,7 @@ export enum ACTIVITY_STATUS {
  * @prop EVALUATE: 待评价
  * @prop COMPLETE: 已完成
  * @prop REFUSE: 报名被拒绝
+ * @prop JOINING: 已签到, 正在参加
  */
 export enum SIGN_STATUS {
     AUDITING = 0,
@@ -44,7 +45,8 @@ export enum SIGN_STATUS {
     QUIT = 2,
     EVALUATE = 3,
     COMPLETE = 4,
-    REFUSE = 5
+    REFUSE = 5,
+    JOINING = 6
 }
 
 /**

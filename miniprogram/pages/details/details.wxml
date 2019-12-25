@@ -1,5 +1,5 @@
 <view>
-    <view class="details" style="padding-bottom: {{merchant ? 0 : 140}}rpx; z-index: 1; position: relative;">
+    <view class="details" style="z-index: 1; position: relative;">
         <image src="{{img}}" class="card" />
 		<view class="details_name">{{name}}</view>
 		<view class="details_data">

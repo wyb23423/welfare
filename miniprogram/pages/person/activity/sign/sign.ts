@@ -17,6 +17,7 @@ Page({
         STATUS: {
             AUDITING: SIGN_STATUS.AUDITING,
             AWAIT: SIGN_STATUS.AWAIT,
+            JOINING: SIGN_STATUS.JOINING,
             REFUSE: SIGN_STATUS.REFUSE
         }
     },
@@ -31,7 +32,6 @@ Page({
                 const refuse: EnInfo[] = [];
                 const join: EnInfo[] = [];
 
-
                 list.forEach(v => {
                     if(v.status === SIGN_STATUS.AUDITING) {
                         auditing.push(v);
@@ -45,6 +45,24 @@ Page({
                 this.setData!({refuse, auditing, join});
             })
             .catch(console.log);
+    },
+    doSign({currentTarget: {dataset: {index}}}: BaseEvent<{index: number}>) {
+        const item = this.data.join[index];
+        if(!item) {
+            return;
+        }
+
+        wx.showModal({
+            title: item.name,
+            content: '活动签到确认',
+            success: ({confirm}) => {
+                if(confirm) {
+                    this.setData!({
+                        [`join[${index}].status`]: SIGN_STATUS.JOINING
+                    });
+                }
+            }
+        });
     },
     doAuit(e: BaseEvent<{ok?: string}, {index: number}>) {
         const isOk = !!e.target.dataset.ok;
