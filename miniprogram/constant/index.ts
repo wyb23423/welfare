@@ -12,7 +12,7 @@ export const AUTHENTICATION = {
     [Authentication.official]: '官方认证'
 };
 
-export const HOST = 'https://www.cdjcsq.cn:8080'; // 'http://192.168.1.168:8080'; //  请求域名
+export const HOST = 'http://192.168.1.168:8080'; // 'https://www.cdjcsq.cn:8080'; //  请求域名
 export const COMPRESS_SIZE = 300;
 
 export enum AD_TYPE {

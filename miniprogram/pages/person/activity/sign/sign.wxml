@@ -27,12 +27,11 @@
         </view>
         <view class="empty" wx:if="{{!join.length}}" />
     </view>
-    <view class="main">
+    <view class="main" wx:if="{{!!refuse.length}}">
         <view class="title" style="display: bloack;"><text class="title_text">已拒绝</text></view>
         <view wx:for="{{refuse}}" class="flex-container list-item" wx:key="refuse">
             <text>{{item.name}}</text>
             <text style="text-align: right;">{{item.phone}}</text>
         </view>
-        <view class="empty" wx:if="{{!refuse.length}}" />
     </view>
 </view>

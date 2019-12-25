@@ -1,3 +1,12 @@
+<template name="signList">
+    <navigator 
+        url="./sign/sign?id={{id}}"
+        hover-class="btn-tap" 
+        class="iconfont icon-shangpinrenzheng"
+        style="margin-right: 20rpx"
+    />
+</template>
+
 <view>
     <list-item wx:for="{{list}}" wx:key="key" info="{{item}}">
         <view style="color: #cac7c7" slot="other">
@@ -16,13 +25,11 @@
                 wx:if="{{item.status !== STATUS.CLOSE}}"
                 style="margin-right: 20rpx"
             />
-            <navigator 
-                url="./sign/sign?id={{item.id}}"
-                hover-class="btn-tap" 
-                class="iconfont icon-shangpinrenzheng"
-                wx:if="{{item.status === STATUS.PREPARE || item.status === STATUS.PROGRESS}}"
-                style="margin-right: 20rpx"
-            />
+            <template 
+                is="signList" 
+                data="{{...item}}" 
+                wx:if="{{item.status === STATUS.PREPARE || item.status === STATUS.COMPLETE}}"
+            ></template>
             <button
                 hover-class="btn-tap" 
                 class="iconfont icon-delete"
@@ -30,7 +37,10 @@
                 bind:tap="delete"
             ></button>
         </view>
-        <icon type="success_no_circle" size="16" color="#07c160" wx:else bind:tap="ok" data-index="{{index}}" />
+        <view style="display: flex;">
+            <template is="signList" data="{{...item}}"></template>
+            <icon type="success_no_circle" size="16" color="#07c160" bind:tap="ok" data-index="{{index}}" />
+        </view>
     </list-item>
     <view class="more"><text wx:if="{{!hasMore}}">暂无更多</text></view>
 </view>

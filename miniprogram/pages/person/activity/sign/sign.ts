@@ -33,12 +33,18 @@ Page({
                 const join: EnInfo[] = [];
 
                 list.forEach(v => {
-                    if(v.status === SIGN_STATUS.AUDITING) {
-                        auditing.push(v);
-                    } else if(v.status === SIGN_STATUS.REFUSE) {
-                        refuse.push(v);
-                    } else {
-                        join.push(v);
+                    switch(v.status) {
+                        case SIGN_STATUS.AUDITING:
+                            auditing.push(v);
+                            break;
+                        case SIGN_STATUS.REFUSE:
+                            refuse.push(v);
+                            break;
+                        case SIGN_STATUS.AWAIT:
+                        case SIGN_STATUS.JOINING:
+                            join.push(v);
+                            break;
+                        default: break;
                     }
                 });
 
@@ -46,6 +52,7 @@ Page({
             })
             .catch(console.log);
     },
+    // 签到
     doSign({currentTarget: {dataset: {index}}}: BaseEvent<{index: number}>) {
         const item = this.data.join[index];
         if(!item) {
@@ -56,14 +63,25 @@ Page({
             title: item.name,
             content: '活动签到确认',
             success: ({confirm}) => {
-                if(confirm) {
-                    this.setData!({
-                        [`join[${index}].status`]: SIGN_STATUS.JOINING
-                    });
+                if(!confirm) {
+                    return;
                 }
+
+                request({
+                    url: '/api/activity/participation/signIn',
+                    data: {
+                        activityId: this.id,
+                        user: item.userId
+                    }
+                })
+                .then(() =>  this.setData!({
+                    [`join[${index}].status`]: SIGN_STATUS.JOINING
+                }))
+                .catch(console.log);
             }
         });
     },
+    // 报名审核
     doAuit(e: BaseEvent<{ok?: string}, {index: number}>) {
         const isOk = !!e.target.dataset.ok;
         const index = e.currentTarget.dataset.index;
