@@ -1,5 +1,5 @@
 <view>
-    <business-item wx:for="{{list}}" wx:key="key" data="{{item}}">
+    <business-item wx:for="{{list}}" wx:key="key" data="{{item}}" box-class="item">
         <button hover-class="btn-tap" class="btn" mark:index="{{index}}" catch:tap="showModal">审核</button>
     </business-item>
     <view class="more"><text wx:if="{{!hasMore}}">暂无更多</text></view>

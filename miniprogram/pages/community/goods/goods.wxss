@@ -1,2 +1,2 @@
 @import '/app.wxss';
-@import '../../person/goods/goods.wxss';
+@import '/pages/person/commodity/commodity.wxss';

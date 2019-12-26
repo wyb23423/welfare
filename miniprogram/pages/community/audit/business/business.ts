@@ -37,7 +37,7 @@ Component<ListComponent>({
                     }
 
                     request({
-                        url: '/api/auditMerchant',
+                        url: '/admin/auditMerchant',
                         data: { isOk, userId: this.data.info.userId }
                     })
                         .then(() => {

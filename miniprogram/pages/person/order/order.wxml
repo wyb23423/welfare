@@ -11,7 +11,7 @@
         </button>
     </list-item>
 	<modal isShow="{{isShow}}" title="确认订单" bindclose="close">
-		<view wx:for="{{list[index].orders}}" class="list-item" wx:key="key">
+		<view wx:for="{{list[index].orders}}" class="flex-container list-item" wx:key="key">
 			<text>{{item.userId}}</text>
 			<view style="font-size: 48rpx" bind:tap="doConfirm" data-index="{{index}}">
 				<text style="color: #e00; margin-right: 20rpx">×</text>

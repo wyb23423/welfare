@@ -1,1 +1,2 @@
+@import "/components/list/item/item.wxss";
 @import "../activity/sign/sign.wxss";

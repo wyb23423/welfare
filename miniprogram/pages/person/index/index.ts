@@ -66,8 +66,7 @@ Page({
                 url: '/pages/community/goods/goods'
             }
         ],
-        isAdmin: false,
-        ad: ''
+        isAdmin: false
     },
     onShow() {
         wx.getSetting({
@@ -102,7 +101,7 @@ Page({
             data: {type: AD_TYPE.PERSON},
             notShowMsg: true
         })
-            .then(({data}) => this.setData!({ad: data.img}))
+            .then(({data}) => this.setData!({ad: data}))
             .catch(console.log);
     },
     commodity() {
@@ -140,7 +139,7 @@ Page({
             {
                 name: '我的商品',
                 icon: 'shangpin',
-                url: '../goods/goods'
+                url: '../commodity/commodity'
             },
             {
                 name: '我的订单',

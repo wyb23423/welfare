@@ -85,7 +85,7 @@ export default Behavior<EditFormBehavior>({
                     const data = <ICommodity>{...form, img};
                     return oldImg ? this.modify(data) : this.add(data);
                 })
-                .then(() => formEl && formEl.reset())
+                .then(() => !oldImg && formEl && formEl.reset())
                 .catch(console.log);
         },
         _parseValue(value: string, name: string) {

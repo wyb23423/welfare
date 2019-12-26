@@ -28,7 +28,8 @@ Component<SettledIn>({
             img: '',
             credentials: '',
             idCard1: '',
-            idCard2: ''
+            idCard2: '',
+            idCard: ['', '']
         },
         telRule: {
             regexp: '^1[3456789]\\d{9}$',
@@ -56,7 +57,7 @@ Component<SettledIn>({
     },
     methods: {
         _submit() {
-            const {hasOld, form} = this.data;
+            const {hasOld, form, oldData: {idCard}} = this.data;
 
             if(!(form.idCard1 && form.idCard2)) {
                 return wx.showToast({title: '身份证必须包含正反面', icon: 'none'});
@@ -65,7 +66,15 @@ Component<SettledIn>({
             const filePromises = ['img', 'idCard1', 'idCard2', 'credentials'].map(this.upload, this);
             Promise.all(filePromises)
                 .then(([newImg, idCard1, idCard2, credentials]) => {
-                    const data = {...form, idCard: [idCard1, idCard2], credentials, img: newImg};
+                    const data = {...form, credentials, img: newImg};
+                    if(idCard1 || idCard2) {
+                        const idCardSrc: string[] = data.idCard = [];
+                        idCardSrc.push(idCard1 || idCard[0]);
+                        idCardSrc.push(idCard2 || idCard[1]);
+                    } else {
+                        data.idCard = <any>null;
+                    }
+
                     return request({url: '/api/merchant', data, method: hasOld ? 'POST' : 'PUT'});
                 })
                 .then(() => wx.showToast({ title: `${hasOld ? '修改' : '申请'}成功` }))

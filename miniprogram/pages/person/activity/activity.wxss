@@ -1,2 +1,2 @@
-@import '../goods/goods.wxss';
+@import '../commodity/commodity.wxss';
 

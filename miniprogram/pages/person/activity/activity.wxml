@@ -1,6 +1,6 @@
 <template name="signList">
     <navigator 
-        url="./sign/sign?id={{id}}"
+        url="./sign/sign?id={{id}}&status={{status}}"
         hover-class="btn-tap" 
         class="iconfont icon-shangpinrenzheng"
         style="margin-right: 20rpx"

@@ -1,7 +1,8 @@
+<import src="/template/ad_item" />
 <view>
     <carousel>
         <carousel-item wx:for="{{ads}}" wx:key="ad">
-            <ad-item src="{{item.img}}" height="100%"></ad-item>
+            <template is="adItem" data="{{...item}}"></template>
         </carousel-item>
     </carousel>
 	<view class="main" style="margin-top: 20rpx">

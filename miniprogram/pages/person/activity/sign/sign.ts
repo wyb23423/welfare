@@ -1,4 +1,4 @@
-import { SIGN_STATUS } from '../../../../constant/status';
+import { SIGN_STATUS, ACTIVITY_STATUS } from '../../../../constant/status';
 import { request } from '../../../../utils/http';
 
 interface EnInfo {
@@ -19,10 +19,13 @@ Page({
             AWAIT: SIGN_STATUS.AWAIT,
             JOINING: SIGN_STATUS.JOINING,
             REFUSE: SIGN_STATUS.REFUSE
-        }
+        },
+        canSign: false
     },
-    onLoad(query: {id: string}) {
+    onLoad(query: {id: string, status: string}) {
         const activityId = this.id = +query.id;
+        console.log(query.status);
+        this.setData!({canSign: +query.status === ACTIVITY_STATUS.PROGRESS});
         request<EnInfo[]>({
             url: '/api/activity/participation/auditList',
             data: { activityId }

@@ -1,0 +1,5 @@
+<template name="adItem">
+    <view class="box" style="padding: 20rpx 30rpx;box-sizing: border-box; height: 100%">
+        <image src="{{img}}" style="padding: 0" class="card fill-box" />
+    </view>
+</template>

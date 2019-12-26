@@ -1,4 +1,5 @@
 import { request } from '../../../utils/http';
+import { parseData } from '../../../utils/util';
 
 interface IGoodsWithOrder {
     id: number;
@@ -29,8 +30,8 @@ Page({
     onShow() {
         request<PageData>({url: '/api/commodity/participation/merchant/list'})
             .then(({data: {list}}) => this.setData!({list: list.map(v => {
+                v = parseData(v);
                 v.sign = v.orders.length;
-                v.img += '?thumb=true';
 
                 return v;
             })}))
@@ -56,8 +57,11 @@ Page({
             url: '/api/commodity/participation/confirm',
             method: 'POST',
             data: {
-                commodityId: orders[index].id,
+                orderId: orders[index].id,
                 confirm: flag
+            },
+            header: {
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
         })
         .then(this.callback.bind(this, orders, index))

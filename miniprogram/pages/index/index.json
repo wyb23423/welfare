@@ -2,7 +2,6 @@
   "usingComponents": {
     "carousel": "/components/carousel/carousel",
     "carousel-item": "/components/carousel/item/item",
-    "list-item": "/components/list/item/item",
-    "ad-item": "/components/ad_item/ad_item"
+    "list-item": "/components/list/item/item"
   }
 }

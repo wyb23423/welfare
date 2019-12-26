@@ -1,5 +1,7 @@
 import { AUTHENTICATION } from '../constant/index';
-import { uploadFile } from './http';
+import { uploadFile, request } from './http';
+import { ListComponent } from '../behavior/page_query';
+import { GOODS_STATUS } from '../constant/status';
 
 export function formatTime(date: Date): string {
   const {year, month, day, hour, minute} = resolveTime(date);
@@ -65,7 +67,7 @@ export function upload(newSrc: string, oldSrc: string): Promise<string> {
     }
 
     if(oldSrc === newSrc) {
-        return Promise.resolve(newSrc);
+        return Promise.resolve(<any>null);
     }
 
     return uploadFile<string>({
@@ -73,6 +75,63 @@ export function upload(newSrc: string, oldSrc: string): Promise<string> {
         name: 'file',
         filePath: newSrc
     }).then(res => res.data);
+}
+
+
+
+/**
+ * 更新商品状态
+ */
+export function updateStatus(component: ListComponent, index: number) {
+    const data = component.data.list[index];
+    if(data.status === GOODS_STATUS.AUDITING) {
+        return wx.showToast({icon: 'none', title: '商品审核中'});
+    }
+
+    const isNormal = data.status === GOODS_STATUS.NORMAL;
+    wx.showModal({
+        content: (isNormal ? '下' :'上') + '架该商品?',
+        success: ({confirm}) => {
+            if(!confirm) {
+                return;
+            }
+
+            const status = isNormal ? GOODS_STATUS.SOLD_OUT : GOODS_STATUS.NORMAL;
+            request({
+                url: '/api/commodity',
+                data: {id: data.id, status},
+                method: 'POST'
+            })
+                .then(() => component.setData({[`list[${index}].status`]: status}))
+                .then(() => wx.showToast({title: '操作成功'}))
+                .catch(console.log);
+        }
+    });
+}
+
+/**
+ * 删除商品
+ */
+export function deleteGoods(component: ListComponent, index: number) {
+    const list: ICommodity[] = component.data.list;
+    const data = list[index];
+    wx.showModal({
+        content: '删除该商品?',
+        success: ({confirm}) => {
+            if(!confirm) {
+                return;
+            }
+
+            request({
+                url: '/api/commodity',
+                data: {id: data.id},
+                method: 'DELETE'
+            })
+                .then(() => component.reflash())
+                .then(() => wx.showToast({title: '删除成功'}))
+                .catch(console.log);
+        }
+    });
 }
 
 function formatNumber(n: number) {

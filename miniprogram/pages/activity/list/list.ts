@@ -15,7 +15,7 @@ Page({
             data: {type: AD_TYPE.ACTIVITY},
             notShowMsg: true
         })
-            .then(({data}) => this.setData!({ad: data.img}))
+            .then(({data}) => this.setData!({ad: data}))
             .catch(console.log);
     },
     onReachBottom() {

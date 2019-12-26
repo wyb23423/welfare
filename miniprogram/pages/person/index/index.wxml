@@ -6,6 +6,7 @@
         <view class="red_point" wx:if="{{!!flag}}"></view>
     </navigator>
 </template>
+<import src="/template/ad_item" />
 
 <view class="box" style="padding-top: 23vh;">
     <image 
@@ -34,7 +35,7 @@
                 </view>
             </tab-item>
         </tab>
-        <ad-item wx:if="{{!!ad}}" src="{{ad}}"></ad-item>
+        <template is="adItem" wx:if="{{!!ad}}" data="{{{...ad}}}" ></template>
     </view>
 </view>
 

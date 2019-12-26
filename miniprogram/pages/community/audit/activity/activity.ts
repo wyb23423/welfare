@@ -3,6 +3,7 @@
  */
 // import PageQuery, { ListComponent } from '../../../behavior/page_query';
 import { request } from '../../../../utils/http';
+import { parseData } from '../../../../utils/util';
 
 Component({
     // behaviors: [PageQuery],
@@ -16,7 +17,7 @@ Component({
     },
     attached() {
         request<IActive[]>({ url: this.data.url })
-            .then(({data}) => this.setData({list: data}))
+            .then(({data}) => this.setData({list: data.map(parseData)}))
             .catch(console.log);
     },
     methods: {
