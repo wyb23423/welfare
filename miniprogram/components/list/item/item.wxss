@@ -59,6 +59,7 @@
 
 .grid_item_box {
     display: grid;
+    column-gap: 20rpx;
     grid-template-columns: 42% auto auto;
     grid-template-rows: 4fr 3fr 3fr;
     grid-template-areas: 'img name name'

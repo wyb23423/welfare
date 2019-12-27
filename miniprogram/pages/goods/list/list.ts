@@ -7,7 +7,7 @@ import { AD_TYPE } from '../../../constant/index';
 
 Page({
     data: {
-        ad: ''
+        ad: null
     },
     onShow() {
         request<IAD>({

@@ -23,6 +23,7 @@ interface Carousel extends WxComponent {
     _getIndex(nameOrIndex: string | number): number | void;
     _loop(): Carousel;
     _clearTimer(): Carousel;
+    _update(): void;
 }
 
 Component<Carousel>({
@@ -55,14 +56,21 @@ Component<Carousel>({
             linked(this: Carousel, target: WxComponent) {
                 this._clearTimer();
 
-                const {items, initial, index, label} = this.data;
+                const {items, label} = this.data;
                 items.push(target);
                 label.push(1);
 
-                this.data.timer = setTimeout(() => {
-                    const active = index < 0 ? (initial > items.length - 1 ? 0 : Math.max(0, initial)) : index;
-                    this.setActiveItem(active)._loop().setData({label});
-                });
+                this._update();
+            },
+            unlinked(this: Carousel, target: WxComponent) {
+                this._clearTimer();
+
+                const {items, label} = this.data;
+                const index = items.indexOf(target);
+                index > -1 && items.splice(index, 1);
+                label.pop();
+
+                this._update();
             }
         }
     },
@@ -95,6 +103,7 @@ Component<Carousel>({
 
             // 小于两项不需要滚动
             if(items.length <= 1) {
+                items[0] && items[0].setData({translate: '0%'});
                 preIndex !== 0 && this.setData({index: 0});
                 return this;
             }
@@ -166,6 +175,13 @@ Component<Carousel>({
             }
 
             return this;
+        },
+        _update() {
+            const {items, initial, index, label} = this.data;
+            this.data.timer = setTimeout(() => {
+                const active = index < 0 ? (initial > items.length - 1 ? 0 : Math.max(0, initial)) : index;
+                this.setActiveItem(active)._loop().setData({label});
+            });
         }
     }
 });

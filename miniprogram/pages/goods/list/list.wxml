@@ -1,6 +1,5 @@
 <!-- 小程序tab页无法传参, 使用两个页面构建 -->
-<import src="/template/ad_item" />
 <view>
-    <template is="adItem" wx:if="{{!!ad}}" data="{{{...ad}}}" ></template>
+    <ad-item wx:if="{{!!ad}}" src="{{ad.img}}"></ad-item>
     <app-list isGoods="{{1}}" id="list" />
 </view>

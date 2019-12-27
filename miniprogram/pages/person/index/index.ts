@@ -66,7 +66,8 @@ Page({
                 url: '/pages/community/goods/goods'
             }
         ],
-        isAdmin: false
+        isAdmin: false,
+        ad: null
     },
     onShow() {
         wx.getSetting({
