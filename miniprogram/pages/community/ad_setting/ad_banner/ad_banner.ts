@@ -16,7 +16,8 @@ Component({
         ads: [null, null, null],
         radioIndex: 0,
         options: ['活动列表', '商品列表', '个人中心'],
-        showMessage: [true, true]
+        showMessage: [true, true],
+        loading: false
     },
     attached() {
         typeArr.forEach((v, i) => {
@@ -33,8 +34,15 @@ Component({
             this.setData({radioIndex: value});
         },
         async modify() {
+            if(this.data.loading) {
+                return;
+            }
+
             try {
                 const src = await chooseImage();
+
+                this.setData({loading: true});
+
                 const img = await upload(src, '');
                 const index = this.data.radioIndex;
                 const {data: id} = await request<number>({
@@ -53,6 +61,8 @@ Component({
             } catch(e) {
                 console.log(e);
             }
+
+            this.setData({loading: false});
         },
         remove() {
             wx.showModal({

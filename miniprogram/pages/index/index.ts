@@ -36,6 +36,6 @@ Page({
         // 广告
         request<IAD[]>({url: '/api/ad/getCarouse', notShowMsg: true})
             .then(({data}) => this.setData!({ads: data}))
-            .catch(console.log);
+            .catch(() => this.setData!({ads: []}));
     },
 });

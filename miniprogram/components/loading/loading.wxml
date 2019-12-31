@@ -1,0 +1,7 @@
+<view class="loading" hidden="{{!loading}}">
+    <view class="loader">
+        <view style="animation-delay: -0.35s"></view>
+        <view></view>
+        <view style="animation-delay: -0.35s"></view>
+    </view>
+</view>

@@ -16,7 +16,7 @@ Page({
             notShowMsg: true
         })
             .then(({data}) => this.setData!({ad: data}))
-            .catch(console.log);
+            .catch(() => this.setData!({ad: null}));
     },
     onReachBottom() {
         const component = <ListComponent>this.selectComponent!('#list');

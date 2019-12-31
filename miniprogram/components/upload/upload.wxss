@@ -1,17 +1,9 @@
-.iconfont {
-    font-family: "iconfont" !important;
-    font-size: 32rpx;
-    font-style: normal;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-shangchuan:before {
-    content: "\e61a";
-}
+@import '/app.wxss';
 
 .flex-container {
-    display: flex;
-    align-items: center;
     justify-content: center;
+}
+
+.card {
+    width: 100%;
 }

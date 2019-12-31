@@ -8,6 +8,7 @@ type ADItem = Pick<IAD, 'img' | 'id' | 'url'>;
 interface AdIndex extends WxComponent {
     data: {
         ads: ADItem[];
+        loading: boolean;
     };
 }
 
@@ -20,7 +21,8 @@ Component<AdIndex>({
     },
     data: {
         ads: <ADItem[]>[],
-        isDouble: true
+        isDouble: true,
+        loading: false
     },
     attached() {
         request<IAD[]>({url: '/api/ad/getCarouse'})
@@ -49,8 +51,15 @@ Component<AdIndex>({
             });
         },
         add() {
+            if(this.data.loading) {
+                return;
+            }
+
             chooseImage()
-                .then((src) => Promise.all([upload(src, ''), src]))
+                .then((src) => {
+                    this.setData({loading: true});
+                    return Promise.all([upload(src, ''), src]);
+                })
                 .then(async ([origin, src]) => {
                     const { data: id } = await request<number>({
                         url: '/api/ad',
@@ -62,7 +71,8 @@ Component<AdIndex>({
                 })
                 .then(() => this.setData(this.data))
                 .then(() => wx.showToast({title: '添加成功'}))
-                .catch(console.log);
+                .catch(console.log)
+                .finally(() => this.setData({loading: false}));
         },
     }
 });

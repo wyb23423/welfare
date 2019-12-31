@@ -6,15 +6,13 @@ import { request } from '../../../utils/http';
 import { upload } from '../../../utils/util';
 import { IS_MERCHANT } from '../../../constant/store';
 
-type MerchantData = IMerchant & {idCard1: string; idCard2: string};
-
 interface SettledIn extends WxComponent {
     data: {
-        form: MerchantData;
-        oldData: MerchantData;
+        form: IMerchant;
+        oldData: IMerchant;
         hasOld: boolean;
     };
-    upload(key: string): Promise<string>;
+    upload(key: string): Promise<string |string[]>;
 }
 
 Component<SettledIn>({
@@ -27,9 +25,11 @@ Component<SettledIn>({
             address: '',
             img: '',
             credentials: '',
-            idCard1: '',
-            idCard2: '',
-            idCard: ['', '']
+            idCard: []
+        },
+        imgRule: {
+            min: 2,
+            message: '身份证必须包含正反面'
         },
         telRule: {
             regexp: '^1[3456789]\\d{9}$',
@@ -43,10 +43,9 @@ Component<SettledIn>({
         if(wx.getStorageSync(IS_MERCHANT)) {
             request<IMerchant>({url: '/api/merchant/getByUserId'})
                 .then(({data}) => {
-                    const [idCard1, idCard2] = data.idCard;
-                    this.data.oldData = {...data, idCard1, idCard2};
+                    this.data.oldData = {...data};
                     this.setData!({
-                        form: {...data, idCard1, idCard2},
+                        form: data,
                         hasOld: true
                     });
                 })
@@ -57,32 +56,26 @@ Component<SettledIn>({
     },
     methods: {
         _submit() {
-            const {hasOld, form, oldData: {idCard}} = this.data;
+            const {hasOld, form } = this.data;
 
-            if(!(form.idCard1 && form.idCard2)) {
-                return wx.showToast({title: '身份证必须包含正反面', icon: 'none'});
-            }
-
-            const filePromises = ['img', 'idCard1', 'idCard2', 'credentials'].map(this.upload, this);
+            const filePromises = ['img', 'idCard', 'credentials'].map(this.upload, this);
             Promise.all(filePromises)
-                .then(([newImg, idCard1, idCard2, credentials]) => {
+                .then(([newImg, idCard, credentials]) => {
                     const data = {...form, credentials, img: newImg};
-                    if(idCard1 || idCard2) {
-                        const idCardSrc: string[] = data.idCard = [];
-                        idCardSrc.push(idCard1 || idCard[0]);
-                        idCardSrc.push(idCard2 || idCard[1]);
-                    } else {
-                        data.idCard = <any>null;
-                    }
+                    data.idCard = idCard[0] ? idCard : <any>null;
 
                     return request({url: '/api/merchant', data, method: hasOld ? 'POST' : 'PUT'});
                 })
                 .then(() => wx.showToast({ title: `${hasOld ? '修改' : '申请'}成功` }))
                 .catch(console.log);
         },
-        upload(key: 'idCard1' | 'idCard2' | 'credentials' | 'img') {
-            const {oldData, form} = this.data;
-            return upload(form[key], oldData[key]);
+        upload(key: 'idCard' | 'credentials' | 'img') {
+            const {oldData: {[key]: oldPath}, form: {[key]: newPath}} = this.data;
+            if(Array.isArray(newPath)) {
+                return Promise.all(newPath.map((v, i) => upload(v, oldPath[i])));
+            }
+
+            return upload(newPath, <string>oldPath);
         }
     }
 });

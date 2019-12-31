@@ -1,0 +1,33 @@
+.loading {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.loader > view {
+    background-color: #b2b2c1;
+    width: 30rpx;
+    height: 30rpx;
+    border-radius: 100%;
+    margin: 4rpx;
+    animation-fill-mode: both;
+    animation: ball-beat 0.7s 0s infinite linear;
+    display: inline-block;
+}
+
+@keyframes ball-beat {
+    50% {
+        opacity: 0.2;
+        transform: scale(0.75);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

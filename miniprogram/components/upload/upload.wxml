@@ -1,7 +1,12 @@
 <view class="flex-container custom-class" bind:tap="choose" style="height: {{height}}">
-    <view wx:if="{{!value}}" style="color: rgba(0, 0, 0, 0.64);text-align: center">
+    <view wx:if="{{!value || !value.length}}" style="color: rgba(0, 0, 0, 0.64);text-align: center">
         <view class="iconfont icon-shangchuan" style="font-size: 120rpx"></view>
         <view style="font-size: 36rpx;">{{text}}</view>
     </view>
-    <image src="{{value}}" wx:else mode="aspectFill" style="width: 100%; max-height: 100%"></image>
+    <div wx:else style="width: 100%">
+        <image wx:if="{{count === 1}}" src="{{value}}" class="card" mode="aspectFill"></image>
+        <div wx:else>
+            <image wx:key="image" wx:for="{{value}}" src="{{item}}" class="card" mode="aspectFill"></image>
+        </div>
+    </div>
 </view>

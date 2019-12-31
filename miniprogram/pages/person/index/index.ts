@@ -70,15 +70,16 @@ Page({
         ad: null
     },
     onShow() {
-        wx.getSetting({
-            success: ({authSetting}) => {
-                if(!authSetting['scope.userInfo']) {
-                    wx.reLaunch({url:'/pages/login/login'});
-                } else {
-                    this.init();
-                }
-            }
-        });
+        this.init();
+        // wx.getSetting({
+        //     success: ({authSetting}) => {
+        //         if(!authSetting['scope.userInfo']) {
+        //             wx.reLaunch({url:'/pages/login/login'});
+        //         } else {
+        //             this.init();
+        //         }
+        //     }
+        // });
     },
     init() {
         wx.getStorage({
@@ -103,7 +104,7 @@ Page({
             notShowMsg: true
         })
             .then(({data}) => this.setData!({ad: data}))
-            .catch(console.log);
+            .catch(() => this.setData!({ad: null}));
     },
     commodity() {
         const promises = [

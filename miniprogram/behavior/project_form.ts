@@ -7,6 +7,7 @@ export interface ProjectFormData {
     formEl?: Form | null;
     form: IAnyObject;
     hasMask: boolean;
+    loading: boolean;
 }
 
 export interface ProjectForm extends WxComponent {
@@ -36,19 +37,24 @@ export default Behavior<ProjectForm>({
                     .catch(console.log);
             }
         },
-        onSubmit() {
-            if (this.data.formEl) {
-                this.data.formEl.valid()
-                    .then(() => this._submit() || true)
-                    .catch(console.log);
-            } else {
-                this._submit();
+        async onSubmit() {
+            try {
+                if (this.data.formEl) {
+                    await this.data.formEl.valid();
+                }
+
+                this.setData({loading: true});
+                await this._submit();
+            } catch(e) {
+                //
             }
+
+            this.setData({loading: false});
         },
         _submit() {
             console.log(this.data.form);
         },
-        _parseValue(value: string) {
+        _parseValue(value: string | string[]) {
             return value;
         }
     }
