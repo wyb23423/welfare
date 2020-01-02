@@ -1,0 +1,6 @@
+<view class="flex-center-v">
+    <icon type="success" color="#07c160" size="200rpx" />
+    <view class="title">{{title}}</view>
+    <view class="content">{{content}}</view>
+    <button class="button" bind:tap="ok">确定</button>
+</view>

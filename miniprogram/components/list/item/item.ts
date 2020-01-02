@@ -98,7 +98,7 @@ export function parseBtnText(sign: number, size: number) {
 export function exchange(this: any, e: BaseEvent<{id: number}>) {
     const id = e.target.dataset.id;
     request({ url: '/api/commodity/participation/deal/' + id })
-        .then(() => wx.showToast({ title: '兑换成功' }))
+        .then(() => wx.navigateTo({url: '/pages/success/success?title=兑换成功&content=请尽快到发布者处获取商品'}))
         .catch(console.log);
 }
 
