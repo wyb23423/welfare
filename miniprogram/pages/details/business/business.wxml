@@ -16,7 +16,7 @@
     </view>
     <view style="margin: 30rpx 0 120rpx;">
         <view class="details_title">组织详情</view>
-        <view class="details_content">{{detail}}</view>
+        <view class="details_content"><text>{{detail}}</text></view>
     </view>
     <button class="bottom collect" bind:tap="collect" wx:if="{{!disabled}}">
         <text class="iconfont icon-heart{{isCollected ? '-solid' : ''}}"></text>

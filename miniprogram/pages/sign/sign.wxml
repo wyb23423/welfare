@@ -1,4 +1,4 @@
-<view>
+<view style="padding-top: 20rpx">
     <app-form rules="{{rules}}" model="{{form}}" id="form">
         <view style="padding: 0 30rpx">
             <app-form-item prop="name" label="姓名" required>

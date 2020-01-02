@@ -76,7 +76,7 @@
 }
 .grid_name {
     grid-area: name;
-
+    overflow: visible;
 }
 .grid_authentication {
     grid-area: authentication;

@@ -29,7 +29,7 @@
     </business-item>
     <view style="margin: 10rpx 0 120rpx;">
         <view class="details_title">{{isActivity ? '活动' : '商品'}}详情</view>
-        <view class="details_content">{{details}}</view>
+        <view class="details_content"><text>{{details}}</text></view>
     </view>
 	<view class="flex-container bottom">
 		<navigator url="/pages/index/index" open-type="switchTab">
