@@ -4,6 +4,7 @@
 
 import ProjectFormBehavior from '../../behavior/project_form';
 import { request } from '../../utils/http';
+import { EnInfo } from '../person/activity/sign/sign';
 
 Component({
     behaviors: [ProjectFormBehavior],
@@ -24,6 +25,11 @@ Component({
             }
         },
         hasOldData: false
+    },
+    attached() {
+        request<EnInfo>({url: '/api/activity/participation/lastJoin', notShowMsg: true})
+            .then(({data: {name, phone, mail}}) => this.setData({form: {name, phone, mail}, hasOldData: true}))
+            .catch(console.error);
     },
     methods: {
         _submit() {

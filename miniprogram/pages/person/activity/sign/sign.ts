@@ -5,6 +5,7 @@ export interface EnInfo {
     name: string;
     phone: string;
     userId: string;
+    mail: string;
     status: SIGN_STATUS;
 }
 
