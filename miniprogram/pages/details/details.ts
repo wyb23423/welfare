@@ -4,6 +4,7 @@
 import { request } from '../../utils/http';
 import { parseData, formatTime } from '../../utils/util';
 import { exchange } from '../../components/list/item/item';
+import { GOODS_STATUS } from '../../constant/status';
 
 Page({
     isGoods: 0,
@@ -11,6 +12,7 @@ Page({
         id: 1,
         like: 40,
         isCollected: false,
+        canOp: true // 是否可以进行报名或兑换
     },
     onLoad(query?: Record<'isGoods' | 'id', string>) {
         if(!query) {
@@ -51,9 +53,18 @@ Page({
                     endTime: formatTime(new Date(+data.finish)),
                     img: data.originImg,
                     merchant: data.merchant ? parseData(data.merchant) : null,
-                    isActivity: !isGoods
+                    isActivity: !isGoods,
+                    canOp: isGoods ? this.canExchange(<ICommodity>data) : this.canSign(<IActive>data)
                 });
             })
             .catch(console.log);
+    },
+    canExchange(data: ICommodity) {
+        const now = Date.now();
+        const isTimeValid = data.finish >= now && data.origination <= now;
+        return isTimeValid && data.size > data.sign && data.status === GOODS_STATUS.NORMAL;
+    },
+    canSign(data: IActive) {
+        return data.origination >= Date.now() && data.size > data.sign;
     }
 });

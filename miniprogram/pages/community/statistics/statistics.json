@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "统计",
+    "usingComponents": {
+        "list-item": "/components/list/item/item",
+        "date-time": "/components/date_time/date_time",
+        "app-form-item": "/components/form_item/form_item",
+        "tab": "/components/tab/tab",
+        "tab-item": "/components/tab/item/item"
+    }
+}

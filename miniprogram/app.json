@@ -26,6 +26,7 @@
     "pages/community/ad_setting/ad",
     "pages/community/business/business",
     "pages/community/goods/goods",
+    "pages/community/statistics/statistics",
     "pages/success/success"
   ],
   "window": {

@@ -43,18 +43,25 @@
 		<button open-type="share">
 			<text class="iconfont icon-fenxiang"/>
 			<text>分享</text>
-		</button>
-		<navigator class="submit" url="/pages/sign/sign?id={{id}}" wx:if="{{isActivity}}">
+        </button>
+        <navigator 
+            class="submit"
+            style="background: #07c160;"
+            url="/pages/sign/sign?id={{id}}"
+            wx:if="{{isActivity && canOp}}"
+        >
 			立即报名
 		</navigator>
 		<button
             class="submit"
             bind:tap="exchange"
             data-id="{{id}}"
-            wx:else
+            style="background: #07c160;"
+            wx:if="{{!isActivity && canOp}}"
 		>
 			兑换
-		</button>
+        </button>
+        <button class="submit" style="background: #cfcfcf" wx:if="{{!canOp}}">不可操作</button>
 	</view>
 </view>
 

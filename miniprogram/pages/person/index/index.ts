@@ -64,6 +64,11 @@ Page({
                 name: '商品列表',
                 icon: 'shangpinliebiaotubiao01',
                 url: '/pages/community/goods/goods'
+            },
+            {
+                name: '统计',
+                icon: 'tongji',
+                url: '/pages/community/statistics/statistics'
             }
         ],
         isAdmin: false,

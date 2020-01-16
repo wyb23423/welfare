@@ -1,7 +1,7 @@
 import { SIGN_STATUS, ACTIVITY_STATUS } from '../../../../constant/status';
 import { request } from '../../../../utils/http';
 
-interface EnInfo {
+export interface EnInfo {
     name: string;
     phone: string;
     userId: string;

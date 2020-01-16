@@ -1,0 +1,58 @@
+<view>
+    <tab>
+        <tab-item name="活动">
+            <view style="padding: 20rpx; border-bottom: 12rpx solid #f5f5f5;">
+                <view class="title">时间</view>
+                <app-form-item label="开始时间" custom-class="flex-container">
+                    <date-time id="start" value="{{start}}" bindinput="onInput" />
+                </app-form-item>
+                <app-form-item label="结束时间" custom-class="flex-container">
+                    <date-time id="end" value="{{end}}" bindinput="onInput" />
+                </app-form-item>
+                <button class="bottom-submit" bind:tap="statistics">统计</button>
+            </view>
+            <view class="info_index">
+                <view>
+                    <view class="info_value">{{count.activity}}</view>
+                    <view class="info_name">活动完成</view>
+                </view>
+                <view class="divider"></view>
+                <view>
+                    <view class="info_value">{{count.join}}</view>
+                    <view class="info_name">参加人数</view>
+                </view>
+            </view>
+            <view>
+                <list-item  
+                    wx:for="{{activityList}}" 
+                    wx:key="activity"
+                    info="{{item}}"
+                >
+                    <text style="color: #cac7c7">参加人数: {{item.participators.length}}</text>
+                </list-item>
+            </view>
+        </tab-item>
+        <tab-item name="志愿者">
+            <view class="people" wx:if="{{!!peopleList.length}}">
+                <view class="sum">
+                    总人数: <text style="color: #07c160">{{peopleList.length}}</text>
+                </view>
+                <view class="info_index table-head">
+                    <view>姓名</view>
+                    <view class="divider"></view>
+                    <view>手机号</view>
+                </view>
+                <view 
+                    class="info_index" 
+                    wx:for="{{peopleList}}" 
+                    wx:key="people"
+                >
+                    <view>{{item.name}}</view>
+                    <view class="divider"></view>
+                    <view>{{item.phone}}</view>
+                </view>
+            </view>
+            <view class="empty" wx:else></view>
+        </tab-item>
+    </tab>
+</view>
