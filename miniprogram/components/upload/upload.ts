@@ -75,10 +75,7 @@ Component({
         choose() {
             chooseImage<string | string[]>(this.data.count)
                 .then(value => this.triggerEvent('input', { value }, {}))
-                .catch(msg => wx.showToast({
-                    title: msg,
-                    icon: 'none'
-                }));
+                .catch(console.error);
         }
     }
 });
