@@ -44,6 +44,22 @@ Component<ListComponent>({
                         .catch(console.log);
                 }
             });
+        },
+        delete({currentTarget: {dataset: {index}}}: BaseEvent<{index: number}>) {
+            const list: IMerchant[] = this.data.list;
+            const item = list[index];
+
+            wx.showModal({
+                content: '删除该组织？',
+                success: ({confirm}) => {
+                    if(!confirm) {
+                        return;
+                    }
+
+                    // TODO
+                    console.log(item);
+                }
+            });
         }
     }
 });

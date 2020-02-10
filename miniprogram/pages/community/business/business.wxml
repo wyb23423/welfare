@@ -1,19 +1,27 @@
 <view>
-    <business-item wx:for="{{list}}" wx:key="key" data="{{item}}">
-        <view data-index="{{index}}" class="btn" catch:tap="liftOrBan">
-            <button 
-                hover-class="btn-tap" 
-                wx:if="{{item.authentication === BANNED}}" 
-                style="color: #07c160; border-color: #07c160"
-            >
-                <text class="iconfont icon-jiejin"></text>
-                <text>解封</text>
-            </button>
-            <button hover-class="btn-tap" wx:else style="color: #e00">
-                <text class="iconfont icon-fengjin"></text>
-                <text>封禁</text>
-            </button>
-        </view>
-    </business-item>
-    <view class="more"><text wx:if="{{!hasMore}}">暂无更多</text></view>
+	<business-item
+	 wx:for="{{list}}"
+	 wx:key="key"
+	 data="{{item}}"
+	 box-class="item-box"
+	>
+		<view data-index="{{index}}" class="btn" catch:tap="liftOrBan">
+			<button hover-class="btn-tap" wx:if="{{item.authentication === BANNED}}" style="color: #07c160; border-color: #07c160">
+				<text class="iconfont icon-jiejin"/>
+				<text>解封</text>
+			</button>
+			<button hover-class="btn-tap" wx:else style="color: #e00">
+				<text class="iconfont icon-fengjin"/>
+				<text>封禁</text>
+			</button>
+            <button hover-class="btn-tap" data-index="{{index}}" style="color: #e00" catch:tap="delete">
+				<text class="iconfont icon-delete"/>
+				<text>删除</text>
+			</button>
+		</view>
+	</business-item>
+	<view class="more">
+		<text wx:if="{{!hasMore}}">暂无更多</text>
+	</view>
 </view>
+

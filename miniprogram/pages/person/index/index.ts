@@ -66,7 +66,7 @@ Page({
                 url: '/pages/community/goods/goods'
             },
             {
-                name: '统计',
+                name: '参加统计',
                 icon: 'tongji',
                 url: '/pages/community/statistics/statistics'
             }

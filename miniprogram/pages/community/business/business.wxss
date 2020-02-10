@@ -1,6 +1,8 @@
 .btn {
     float: right;
-    margin-right: 20rpx;
+    display: flex;
+    align-items: center;
+    /* margin-right: 20rpx; */
 }
 
 .btn button {
@@ -11,6 +13,15 @@
     border-radius: 10rpx;
 }
 
+.btn button:last-child {
+    margin-left: 10rpx;
+}
+
 .btn .iconfont {
     margin-right: 10rpx;
+}
+
+.item-box {
+    padding-left: 20rpx;
+    padding-right: 20rpx;
 }
