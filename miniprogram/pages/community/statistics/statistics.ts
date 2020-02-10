@@ -52,5 +52,8 @@ Page({
             });
         })
         .catch(console.error);
+    },
+    paint() {
+        console.log('paint');
     }
 });

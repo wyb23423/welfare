@@ -34,8 +34,11 @@
         </tab-item>
         <tab-item name="志愿者">
             <view class="people" wx:if="{{!!peopleList.length}}">
-                <view class="sum">
-                    总人数: <text style="color: #07c160">{{peopleList.length}}</text>
+                <view class="flex-container">
+                    <view class="sum">
+                        总人数: <text style="color: #07c160">{{peopleList.length}}</text>
+                    </view>
+                    <button class="paint-button" hover-class="btn-tap" bind:tap="paint">导出为excel</button>
                 </view>
                 <view class="info_index table-head">
                     <view>姓名</view>
