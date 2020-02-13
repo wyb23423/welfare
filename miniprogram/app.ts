@@ -26,7 +26,7 @@ App({
             fail: console.log
         });
     },
-    setStore({data: {username, authorities}}: RespoensData<LoginRes>) {
+    setStore({data: {username, authorities}}: ResponseData<LoginRes>) {
         // 用户名
         wx.setStorage({
             key: USER_NAME,

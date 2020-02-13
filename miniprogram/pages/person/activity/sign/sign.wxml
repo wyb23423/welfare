@@ -1,38 +1,49 @@
 <view>
-    <view class="main" style="margin-top: 20rpx" wx:if="{{!!auditing.length}}">
-        <view class="title" style="display: bloack;"><text class="title_text">待审核</text></view>
-        <view wx:for="{{auditing}}" class="flex-container list-item" wx:key="auditing">
-            <text>{{item.name}}</text>
-            <text>{{item.phone}}</text>
-            <view style="font-size: 48rpx" bind:tap="doAuit" data-index="{{index}}">
-                <text style="color: #e00; margin-right: 20rpx">×</text>
-                <text style="color: #07c160" data-ok="1">√</text>
+  <view style="min-height: calc(100vh - 170rpx)">
+        <view class="main" style="margin-top: 20rpx" wx:if="{{!!auditing.length}}">
+            <view class="title" style="display: bloack;"><text class="title_text">待审核</text></view>
+            <view wx:for="{{auditing}}" class="flex-container list-item" wx:key="auditing">
+                <text>{{item.name}}</text>
+                <text>{{item.phone}}</text>
+                <view style="font-size: 48rpx" bind:tap="doAuit" data-index="{{index}}">
+                    <text style="color: #e00; margin-right: 20rpx">×</text>
+                    <text style="color: #07c160" data-ok="1">√</text>
+                </view>
             </view>
         </view>
-    </view>
-    <view class="main">
-        <view class="title" style="display: bloack;"><text class="title_text">参加者列表</text></view>
-        <view wx:for="{{join}}" class="flex-container list-item" wx:key="join">
-            <text>{{item.name}}</text>
-            <text>{{item.phone}}</text>
-            <view class="text-button" style="border: none" wx:if="{{item.status !== STATUS.AWAIT}}">已签到</view>
-            <view 
-                class="text-button" 
-                wx:elif="{{canSign}}" 
-                data-index="{{index}}"
-                bind:tap="doSign"
-            >
-                签到
+        <view class="main">
+            <view class="title" style="display: bloack;"><text class="title_text">参加者列表</text></view>
+            <view wx:for="{{join}}" class="flex-container list-item" wx:key="join">
+                <text>{{item.name}}</text>
+                <text>{{item.phone}}</text>
+                <view class="text-button" style="border: none" wx:if="{{item.status !== STATUS.AWAIT}}">已签到</view>
+                <view 
+                    class="text-button" 
+                    wx:elif="{{canSign}}" 
+                    data-index="{{index}}"
+                    bind:tap="doSign"
+                >
+                    签到
+                </view>
+                <view class="text-button" style="border: none" wx:else>等待中...</view>
             </view>
-            <view class="text-button" style="border: none" wx:else>等待中...</view>
+            <view class="empty" wx:if="{{!join.length}}" />
         </view>
-        <view class="empty" wx:if="{{!join.length}}" />
-    </view>
-    <view class="main" wx:if="{{!!refuse.length}}">
-        <view class="title" style="display: bloack;"><text class="title_text">已拒绝</text></view>
-        <view wx:for="{{refuse}}" class="flex-container list-item" wx:key="refuse">
-            <text>{{item.name}}</text>
-            <text style="text-align: right;">{{item.phone}}</text>
+        <view class="main" wx:if="{{!!refuse.length}}">
+            <view class="title" style="display: bloack;"><text class="title_text">已拒绝</text></view>
+            <view wx:for="{{refuse}}" class="flex-container list-item" wx:key="refuse">
+                <text>{{item.name}}</text>
+                <text style="text-align: right;">{{item.phone}}</text>
+            </view>
         </view>
-    </view>
+   </view>
+    <button 
+        class="bottom-submit"
+        bind:tap="paint"
+        wx:if="{{canPaint}}"
+        loading="{{loading}}"
+        disabled="{{loading}}"
+    >
+      导出为excel
+    </button>
 </view>

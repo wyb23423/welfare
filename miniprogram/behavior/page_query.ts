@@ -3,7 +3,7 @@ import { parseData } from '../utils/util';
 
 export interface ListComponent extends WxComponent {
     reflash(isDel?: boolean): void;
-    onShow(): void;
+    showHandler(): void;
     getMore(): void;
     getPageData(page?: number, size?: number): Promise<{
         list: Array<IActive | ICommodity>;
@@ -27,10 +27,10 @@ export default Behavior<ListComponent>({
             if(isDel && this.data.list.length <= 1) {
                 this.setData({list: []});
             } else {
-                this.onShow();
+                this.showHandler();
             }
         },
-        onShow() {
+        showHandler() {
             this.getPageData(1, this.data.list.length || 8)
                 .then(({ list, total }) => this.setData!({ list, hasMore: total > list.length }))
                 .catch(e => console.log(e.errMsg));

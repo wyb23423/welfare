@@ -77,8 +77,6 @@ export function upload(newSrc: string, oldSrc: string): Promise<string> {
     }).then(res => res.data);
 }
 
-
-
 /**
  * 更新商品状态
  */

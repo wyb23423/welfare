@@ -28,7 +28,15 @@
                     wx:key="activity"
                     info="{{item}}"
                 >
-                    <text style="color: #cac7c7">参加人数: {{item.participators.length}}</text>
+                    <text style="color: #cac7c7" slot="other">参加人数: {{item.participators.length}}</text>
+                    <button 
+                        class="paint-button" 
+                        data-index="{{index}}" 
+                        hover-class="btn-tap" 
+                        bind:tap="paint"
+                        loading="{{!!item.loading}}"
+                        disabled="{{!!item.loading}}"
+                    >导出</button>
                 </list-item>
             </view>
         </tab-item>
@@ -38,7 +46,7 @@
                     <view class="sum">
                         总人数: <text style="color: #07c160">{{peopleList.length}}</text>
                     </view>
-                    <button class="paint-button" hover-class="btn-tap" bind:tap="paint">导出为excel</button>
+                    <!-- <button class="paint-button" hover-class="btn-tap" bind:tap="paint">导出为excel</button> -->
                 </view>
                 <view class="info_index table-head">
                     <view>姓名</view>

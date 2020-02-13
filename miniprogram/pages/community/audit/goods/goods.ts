@@ -14,7 +14,7 @@ Component<ListComponent>({
         }
     },
     ready(this: ListComponent) {
-        this.onShow();
+        this.showHandler();
     },
     methods: {
         doAuit(e: BaseEvent<{ok?: string}, {index: number}>) {

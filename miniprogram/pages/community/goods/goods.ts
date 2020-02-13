@@ -13,7 +13,7 @@ Component<ListComponent>({
         NORMAL: GOODS_STATUS.NORMAL
     },
     ready(this: ListComponent) {
-        this.onShow();
+        this.showHandler();
     },
     methods: {
         updateStatus({target: {dataset: {index}}}: BaseEvent<{index: number}>) {

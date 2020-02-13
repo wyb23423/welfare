@@ -88,7 +88,7 @@ declare interface IMerchant {
     sign?: number;
 }
 
-declare interface RespoensData<T = any> {
+declare interface ResponseData<T = any> {
     code: number;
     data: T;
     msg: string;

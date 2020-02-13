@@ -1,5 +1,5 @@
 import { SIGN_STATUS, ACTIVITY_STATUS } from '../../../../constant/status';
-import { request } from '../../../../utils/http';
+import * as http from '../../../../utils/http';
 
 export interface EnInfo {
     name: string;
@@ -21,13 +21,19 @@ Page({
             JOINING: SIGN_STATUS.JOINING,
             REFUSE: SIGN_STATUS.REFUSE
         },
-        canSign: false
+        canSign: false,
+        canPaint: false,
+        loading: false
     },
     onLoad(query: {id: string, status: string}) {
         const activityId = this.id = +query.id;
-        console.log(query.status);
-        this.setData!({canSign: +query.status === ACTIVITY_STATUS.PROGRESS});
-        request<EnInfo[]>({
+
+        const status = +query.status;
+        this.setData!({
+            canSign: status === ACTIVITY_STATUS.PROGRESS,
+            canPaint: status !== ACTIVITY_STATUS.CLOSE && status !== ACTIVITY_STATUS.AUDITING
+        });
+        http.request<EnInfo[]>({
             url: '/api/activity/participation/auditList',
             data: { activityId }
         })
@@ -71,7 +77,7 @@ Page({
                     return;
                 }
 
-                request({
+                http.request({
                     url: '/api/activity/participation/signIn',
                     data: {
                         activityId: this.id,
@@ -85,6 +91,13 @@ Page({
                 .catch(console.log);
             }
         });
+    },
+    paint() {
+        this.setData!({loading: true});
+        http.downloadFile({url: '/api/activity/download?id=' + this.id})
+            .then(({tempFilePath}) => http.saveFile(tempFilePath, 'xlsx'))
+            .catch(console.log)
+            .finally(() => this.setData!({loading: false}));
     },
     // 报名审核
     doAuit(e: BaseEvent<{ok?: string}, {index: number}>) {
@@ -100,7 +113,7 @@ Page({
     _doAuit(isOk: boolean, index: number) {
         const {auditing, refuse, join} = this.data;
 
-        request({
+        http.request({
             url: '/api/activity/participation/audit',
             data: {
                 flag: isOk,

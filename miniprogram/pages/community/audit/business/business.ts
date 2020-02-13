@@ -15,7 +15,7 @@ Component<ListComponent>({
         info: null,
     },
     ready(this: ListComponent) {
-        this.onShow();
+        this.showHandler();
     },
     methods: {
         close() {

@@ -1,4 +1,4 @@
-import { request } from '../../../utils/http';
+import { request, downloadFile, saveFile } from '../../../utils/http';
 import { EnInfo } from '../../person/activity/sign/sign';
 import { parseData } from '../../../utils/util';
 
@@ -53,7 +53,13 @@ Page({
         })
         .catch(console.error);
     },
-    paint() {
-        console.log('paint');
+    paint({currentTarget: {dataset: {index}}}: BaseEvent<{index: number}>) {
+        const key = `activityList[${index}].loading`;
+
+        this.setData!(({[key]: true}));
+        downloadFile({url: '/api/activity/download?id=' + this.data.activityList[index].id})
+            .then(({tempFilePath}) => saveFile(tempFilePath, 'xlsx'))
+            .catch(console.log)
+            .finally(() => this.setData!(({[key]: false})));
     }
 });

@@ -19,7 +19,7 @@ Component<ListComponent>({
     },
     pageLifetimes: {
         show(this: ListComponent) {
-            this.onShow();
+            this.showHandler();
         }
     },
     methods: {

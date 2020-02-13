@@ -14,7 +14,7 @@ Component<ListComponent>({
     pageLifetimes: {
         show(this: ListComponent) {
             this.setData({url: `/api/${this.data.isGoods ? 'commodity' : 'activity' }/pagingQuery`});
-            this.onShow();
+            this.showHandler();
         }
     },
     methods: {
